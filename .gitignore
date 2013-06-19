@@ -8,3 +8,8 @@
 *.perspectivev3
 *.swp
 .DS_Store
+
+/pelican/output/
+/pelican/pelican.pid
+/pelican/pelicanconf.pyc
+/pelican/srv.pid
