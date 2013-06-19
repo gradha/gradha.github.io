@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Rants from the Ballmer Peak</title><link href="http://gradha.github.io/" rel="alternate"></link><link href="http://gradha.github.io/feeds/misc.atom.xml" rel="self"></link><id>http://gradha.github.io/</id><updated>2013-06-19T00:00:00+02:00</updated><entry><title>First post!</title><link href="http://gradha.github.io/first-post.html" rel="alternate"></link><updated>2013-06-19T00:00:00+02:00</updated><author><name>Grzegorz Adam Hankiewicz</name></author><id>tag:gradha.github.io,2013-06-19:first-post.html</id><summary type="html">&lt;p&gt;Hey, so here we are in 2013! People from the past would be proud, I still use
+static files for websites despite the fancy pelican on my shoulder. I wonder
+how long will this last…&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;Hello interblags!&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;quit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="navel"></category></entry></feed>

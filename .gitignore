@@ -12,4 +12,5 @@
 /pelican/output/
 /pelican/pelican.pid
 /pelican/pelicanconf.pyc
+/pelican/publishconf.pyc
 /pelican/srv.pid

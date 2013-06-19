@@ -1,6 +1,6 @@
 #!/bin/sh
 
 make clean && \
-	make html && \
+	make publish && \
 	cp -r output/* .. && \
 	git status
