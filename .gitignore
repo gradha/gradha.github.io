@@ -1,0 +1,10 @@
+*.aspell
+*.bak
+*.mode1v3
+*.mode2v3
+*.nib
+*.pbxuser
+*.perspective
+*.perspectivev3
+*.swp
+.DS_Store
