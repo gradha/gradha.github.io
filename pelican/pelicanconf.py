@@ -21,12 +21,14 @@ FEED_MAX_ITEMS = 10
 LINKS =  (('Idiot Toys', 'http://idiottoys.com'),
 		('Kpop', 'http://www.reddit.com/r/kpop/'),
 		('Gon Lamperouge', 'http://gonlamperouge.tumblr.com'),
-		('FinoFIlipino', 'http://finofilipino.org'),
+		("Zor's Blog", 'http://blog.alexrp.com'),
+		("This PLT Life", 'http://this-plt-life.tumblr.com'),
+		("El Hematocrítico del Arte", "http://hematocritico.tumblr.com"),
 		)
 
 # Social widget
-SOCIAL = (('Nimrod', 'http://nimrod-code.org/news.xml'),
-		('Nimrod forum posts', 'http://forum.nimrod-code.org/postActivity.xml'),)
+SOCIAL = (('Nimrod forum', 'http://forum.nimrod-code.org'),
+		)
 
 DEFAULT_PAGINATION = 5
 
