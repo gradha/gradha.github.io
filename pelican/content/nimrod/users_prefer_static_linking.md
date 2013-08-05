@@ -8,7 +8,7 @@ Category: Nimrod
 
 Users prefer static linking. That is, if software users would
 actually know what static linking is. Most users don't know anything
-about software, how it is build, or how much time you pour into it,
+about software, how it is built, or how much time you pour into it,
 but they know one thing: if it works, they expect it to keep working.
 
 That's where the static linking is important. When a program is
@@ -22,15 +22,15 @@ The advantage of static linking is that you can copy the binary to
 another system and it will keep running, something which may not
 happen if the other system environment doesn't also have the same
 external library installed. The cost to pay for this is increased
-binary size, and there are also other drawbacks like the operative
+binary size, and there are also other drawbacks like the operating
 system not being able to share the library between processes and
 having duplicate instances of the same code in memory during
 execution.
 
-Mainstream consumer operative systems (Windows, Linux, OS X) provide
+Mainstream consumer operating systems (Windows, Linux, OS X) provide
 a big set of shared libraries, allowing programmers to not have to
 care distributing their own copy with the program. But that soon
-started to be a problem: different versions of each operative system
+started to be a problem: different versions of each operating system
 and/or library could be problematic for the programs. This is usually
 known as [DLL Hell](https://en.wikipedia.org/wiki/DLL_Hell), where
 installation of program A on the end user machine brings in version
@@ -55,13 +55,13 @@ written for say Python 2.5, it won't work on Python 3 because of
 language incompatibilities. This ends up creating a divide between
 programmers and affects end users too.
 
-If you thought your problems are only here, don't look at operative
+If you thought your problems are only here, don't look at operating
 system upgrades, the main reason people are *scared to death* to
 upgrade their system.  If you know of a computer end user who is
 not scared to death of upgrades it is only because he hasn't suffered
 the experience of *upgrading* the machine to only find out (sometimes
 weeks later) that a critical program stopped working because it is
-incompatible with the new version of the operative system. This
+incompatible with the new version of the operating system. This
 causes pain, gnashing of teeth and hatred towards computers and/or
 technology.
 
@@ -75,7 +75,7 @@ we should rephrase the term of static linking for the end user as
 a general problem of portability. We also need to consider different
 levels of portability, for instance:
 
-* The user installed some software, and it works fine. The operative
+* The user installed some software, and it works fine. The operating
   systems has the feature of multiple users and only the user who
   installed the software can run the program despite it being
   accessible to other users. Maybe the problem is the installation
@@ -83,14 +83,14 @@ levels of portability, for instance:
   not available to the other users.
 
 * The user copies the program to another machine, apparently using
-  the same operative system version. However, it won't run at all.
-  Maybe the *major* operative system version is the same, but
-  sometimes operative systems have different minor versions, maybe
+  the same operating system version. However, it won't run at all.
+  Maybe the *major* operating system version is the same, but
+  sometimes operating systems have different minor versions, maybe
   one was upgraded to the latest security patch and this breaks the
   program's behaviour.
 
 * The user copies the program to another machine or upgrades the
-  operative system. The program won't run at all, sometimes without
+  operating system. The program won't run at all, sometimes without
   giving any useful explanation.
 
 * The user wants to run the software in a cybercafe, or is otherwise
@@ -122,18 +122,17 @@ everything to a different machine and run it there.
 
 On OS X this is abstracted to the user through the use of [application
 bundles](https://en.wikipedia.org/wiki/Application_bundle). These
-are normal directories with a special structure the operative system
+are normal directories with a special structure the operating system
 recognizes and treads uniformly as a single entity. The Finder on
 OS X won't allow you to copy only part of the bundle's directory
-somewhere else, and should it fail it will either abort by deletion
-of the incomplete bundle. Even if it is left there broken, the
-system wont run it and will likely draw a translucent stop sign on
-its icon.
+somewhere else, and should it fail, it will delete the incomplete
+bundle. Even if it is left there broken, the system wont run it and
+will likely draw a translucent stop sign on its icon.
 
 Linux… Linux users usually don't care. They brag about sophisticate
 software management programs (oh, the meta) and tell end users they
 are crazy because they don't want to learn how to use it or search
-the net for solutions to a dependency which can be solved but
+the net for solutions to a dependency, which can be solved, but
 requires some obscure option/command line switch to work.
 
 Mobile software stores have adopted the bundle paradigm: they include
@@ -163,7 +162,7 @@ Nothing particularly new, but worth of appraise. Long forgotten
 MSDOS programmers also developed funny *tricks* to provide single
 binary portability (remember the times when having a hard disk was
 rare?). The most notable one was appending additional resources to
-the binary itself. The operative system would load the whole binary
+the binary itself. The operating system would load the whole binary
 into memory but will ignore the extraneous trailing data. Instead,
 the application could read it to avoid littering the disk with extra
 files.
