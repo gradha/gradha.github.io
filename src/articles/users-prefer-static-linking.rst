@@ -34,7 +34,7 @@ a big set of shared libraries, allowing programmers to not have to
 care distributing their own copy with the program. But that soon
 started to be a problem: different versions of each operating system
 and/or library could be problematic for the programs. This is usually
-known as [DLL Hell](https://en.wikipedia.org/wiki/DLL_Hell), where
+known as `DLL Hell <https://en.wikipedia.org/wiki/DLL_Hell>`_, where
 installation of program A on the end user machine brings in version
 1 of a shared library, and installation of program B brings in an
 incompatible version 2 of that same shared library.
@@ -48,14 +48,14 @@ behaviour, but not exactly right.
 
 Nowadays even bigger culprits of dynamic linking are dynamic or
 interpreted languages. Instead of producing compiled code, interpreted
-languages like [Python](http://www.python.org) or
-[Ruby](http://www.ruby-lang.org) are transformed into machine
-instructions each time they are run. Now they don't only depend on
-the availability of the dynamic libraries they require, they also
-depend on the version of the interpreter. If you try to run a script
-written for say Python 2.5, it won't work on Python 3 because of
-language incompatibilities. This ends up creating a divide between
-programmers and affects end users too.
+languages like `Python <http://www.python.org>`_ or `Ruby
+<http://www.ruby-lang.org>`_ are transformed into machine instructions
+each time they are run. Now they don't only depend on the availability
+of the dynamic libraries they require, they also depend on the
+version of the interpreter. If you try to run a script written for
+say Python 2.5, it won't work on Python 3 because of language
+incompatibilities. This ends up creating a divide between programmers
+and affects end users too.
 
 If you thought your problems are only here, don't look at operating
 system upgrades, the main reason people are *scared to death* to
@@ -97,10 +97,10 @@ levels of portability, for instance:
   giving any useful explanation.
 
 * The user wants to run the software in a cybercafe, or is otherwise
-  somewhere else on lent hardware. The user copies all program
-  files to an USB stick, but surprisingly it doesn't run there.
-  Why? Even though there are projects to create [portable versions
-  of applications](http://portableapps.com) most programs don't
+  somewhere else on lent hardware. The user copies all program files
+  to an USB stick, but surprisingly it doesn't run there.  Why?
+  Even though there are projects to create `portable versions of
+  applications <http://portableapps.com>`_ most programs don't
   expect to be run in such a fashion. Also, even if your spreadsheet
   software runs you don't want it to leave your bank details on a
   public computer at a cybercafe just because it thought for
@@ -124,8 +124,8 @@ programs may want to avoid writing into the registry so that copying
 the folder where the software was installed is enough to copy
 everything to a different machine and run it there.
 
-On OS X this is abstracted to the user through the use of [application
-bundles](https://en.wikipedia.org/wiki/Application_bundle). These
+On OS X this is abstracted to the user through the use of `application
+bundles <https://en.wikipedia.org/wiki/Application_bundle>`_. These
 are normal directories with a special structure the operating system
 recognizes and treads uniformly as a single entity. The Finder on
 OS X won't allow you to copy only part of the bundle's directory
@@ -157,8 +157,8 @@ Software proud to be portable
 =============================
 
 There are not many developer oriented tools which are written with
-portability in mind. The authors of [Sqlite](https://sqlite.org)
-and [Fossil](http://fossil-scm.org/index.html/doc/trunk/www/index.wiki)
+portability in mind. The authors of `Sqlite <https://sqlite.org>`_
+and `Fossil <http://fossil-scm.org/index.html/doc/trunk/www/index.wiki>`_
 are one exceptional case. They aim for the highest level of
 portability: a single binary which can be copied anywhere and it
 works.
@@ -173,14 +173,15 @@ the application could read it to avoid littering the disk with extra
 files.
 
 Surprisingly this technique still works on today's systems. Even
-more, programs like [UPX](http://upx.sourceforge.net) which compress
-binaries also know how to handle trailing data and are known to
-work with binary appending tools, like the one provided by the [C
-game programming library Allegro](http://alleg.sourceforge.net).
+more, programs like `UPX <http://upx.sourceforge.net>`_ which
+compress binaries also know how to handle trailing data and are
+known to work with binary appending tools, like the one provided
+by the `C game programming library Allegro
+<http://alleg.sourceforge.net>`_.
 
 However, USB level portability is hard to find for most programming
-languages compilers and interpreters. The closest may be the [Nimrod
-programming language](http://nimrod-code.org), since it compiles
+languages compilers and interpreters. The closest may be the `Nimrod
+programming language <http://nimrod-code.org>`_, since it compiles
 everything into a single nimrod binary, which can be run everywhere.
 
 The problem is, will it work? Compiling most source code will require
@@ -205,8 +206,8 @@ However, couldn't we all be nice and provide 100% portable tools
 too? Why do we provide portability to end users yet again and again
 we torture ourselves with DLL Hell? Do we enjoy it so much?
 
-
-	:::text
-	$ nimrod c forum.nim
-	$ ./forum
-	could not load: libcairo.dylib
+```nimrod
+$ nimrod c forum.nim
+$ ./forum
+could not load: libcairo.dylib
+```
