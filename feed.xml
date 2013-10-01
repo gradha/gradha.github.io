@@ -5,7 +5,25 @@
   <link href="http://gradha.github.io/feed.xml" rel="self" />
   <id>http://gradha.github.io/</id>
   <generator>ipsumgenera</generator>
-  <updated>2013-10-01T00:43:34Z</updated>
+  <updated>2013-10-01T14:10:14Z</updated>
+    <entry>
+      <title>You have to realise that someday you will die…</title>
+      <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2013/10/you-have-to-realise-that-someday-you-will-die….html"/>
+      <id>http://gradha.github.io/articles/2013/10/you-have-to-realise-that-someday-you-will-die….html</id>
+      <updated>2013-10-01T14:45:00Z</updated>
+      <author><name>Grzegorz Adam Hankiewicz</name></author>
+      <content type="html">
+        &lt;h1&gt;You have to realise that someday you will die…&lt;/h1&gt;&lt;p&gt;…until you know that, you are useless. That's part of the lyrics of &lt;a href=&quot;http://www.leoslyrics.com/tyler-durden/this-is-your-life-lyrics/&quot;&gt;This is your life&lt;/a&gt;, part of the soundtrack to the &lt;a href=&quot;http://www.imdb.com/title/tt0137523/&quot;&gt;Fight club film&lt;/a&gt;, based on &lt;a href=&quot;http://chuckpalahniuk.net/books/fight-club&quot;&gt;a book by Chuck Palahniuk&lt;/a&gt;. It's a sentence I like to remember during the times when everything goes wrong: broken hardware, service providers going out of business, breaking relationships, etc. Focusing on whatever &lt;span style=&quot;font-style: italic;&quot;&gt;is gone&lt;/span&gt; is the result of getting too attached, and that can interfere with new things in life. It simply means change, and people who are unable to change will have a harder time than those who can adapt.&lt;/p&gt;
+&lt;p&gt;So my old project Electric Hands Software is gone, and the most disgusting part of &lt;code&gt;http://elhaso.com/&lt;/code&gt; not being available any more is that it has been claimed by automatic spambots, turning it into a casino. With black jack. And hopefully, whores:&lt;/p&gt;
+&lt;p&gt;image&lt;/p&gt;
+&lt;p&gt;It is clearly a sign of irrelevance when automatic software cares more about your out of business ideas than human people, I don't think that website registered more than 2000 hits during several years. So let the new &lt;a href=&quot;http://www.elhaso.es/&quot;&gt;Electric Hands Software website at http://www.elhaso.es/&lt;/a&gt; shine! But this time it won't be ambitious, I've already been taught all that went wrong and why, there's no point in repeating mistakes.&lt;/p&gt;
+&lt;p&gt;Instead, it will live on as a hobby. And since my new hobby is &lt;a href=&quot;http://nimrod-code.org&quot;&gt;the Nimrod programming language&lt;/a&gt;, maybe I should take the crusty C source code of &lt;a href=&quot;http://www.elhaso.es/subhunt/index.en.html&quot;&gt;Submarine Hunt&lt;/a&gt; and rewrite it opensource in nimrod?  Ah, if only these feelings of inebriation lasted a little bit longer…&lt;/p&gt;
+&lt;p&gt;&lt;pre class='code'&gt;&lt;span class=&quot;Operator&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;nimrod&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;Operator&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;r&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;life&lt;/span&gt;&lt;span class=&quot;Operator&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;nim&lt;/span&gt;
+&lt;span class=&quot;Identifier&quot;&gt;SIGSEGV&lt;/span&gt;&lt;span class=&quot;Punctation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;Illegal&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;storage&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;access&lt;/span&gt;&lt;span class=&quot;Operator&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;Punctation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;Attempt&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;read&lt;/span&gt; &lt;span class=&quot;Keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;Keyword&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;Operator&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;Punctation&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt; &lt;/p&gt;
+
+      </content>
+    </entry>
     <entry>
       <title>Users prefer static linking</title>
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2013/08/users-prefer-static-linking.html"/>
