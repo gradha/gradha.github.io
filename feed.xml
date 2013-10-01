@@ -5,7 +5,7 @@
   <link href="http://gradha.github.io/feed.xml" rel="self" />
   <id>http://gradha.github.io/</id>
   <generator>ipsumgenera</generator>
-  <updated>2013-10-01T00:18:31Z</updated>
+  <updated>2013-10-01T00:20:50Z</updated>
     <entry>
       <title>Users prefer static linking</title>
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2013/08/users-prefer-static-linking.html"/>
@@ -37,6 +37,20 @@
 &lt;p&gt;&lt;pre class='code'&gt;&lt;span class=&quot;Operator&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;nimrod&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;forum&lt;/span&gt;&lt;span class=&quot;Operator&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;nim&lt;/span&gt;
 &lt;span class=&quot;Operator&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;Operator&quot;&gt;./&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;forum&lt;/span&gt;
 &lt;span class=&quot;Identifier&quot;&gt;could&lt;/span&gt; &lt;span class=&quot;Keyword&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;Punctation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;libcairo&lt;/span&gt;&lt;span class=&quot;Operator&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;dylib&lt;/span&gt;
+&lt;/pre&gt; &lt;/p&gt;
+
+      </content>
+    </entry>
+    <entry>
+      <title>First post!</title>
+      <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2013/06/first-post.html"/>
+      <id>http://gradha.github.io/articles/2013/06/first-post.html</id>
+      <updated>2013-06-19T12:31:00Z</updated>
+      <author><name>Grzegorz Adam Hankiewicz</name></author>
+      <content type="html">
+        &lt;p&gt;Hey, so here we are in 2013! People from the past would be proud, I still use static files for websites despite the fancy ipsum genera on my shoulder. I wonder how long will this last…&lt;/p&gt;
+&lt;p&gt;&lt;pre class='code'&gt;&lt;span class=&quot;Identifier&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;StringLit&quot;&gt;&amp;quot;Hello interblags!&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;Identifier&quot;&gt;quit&lt;/span&gt;&lt;span class=&quot;Punctation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;Punctation&quot;&gt;)&lt;/span&gt;
 &lt;/pre&gt; &lt;/p&gt;
 
       </content>
