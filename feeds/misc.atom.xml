@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Rants from the Ballmer Peak</title>
+  <link href="http://gradha.github.io/" rel="alternate"/>
+  <link href="http://gradha.github.io/feeds/misc.atom.xml" rel="self"/>
+  <id>http://gradha.github.io/</id>
+  <updated>2013-10-01T00:00:00+02:00</updated>
+  <entry>
+    <title>Rss moved</title>
+    <link href="http://gradha.github.io/" rel="alternate"/>
+    <updated>2013-10-01T00:00:00+02:00</updated>
+    <author>
+      <name>Grzegorz Adam Hankiewicz</name>
+    </author>
+    <id>2013-10-01</id>
+    <summary type="html">Please update your bookmarks, the rss has moved.</summary>
+  </entry>
+</feed>
