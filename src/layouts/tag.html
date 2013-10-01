@@ -1,9 +1,15 @@
 <html>
 	<head>
 		<title>${title}: ${tag}</title>
+		<link rel="stylesheet" href="${prefix}css/normalize.css">
+		<link rel="stylesheet" href="${prefix}css/style.css">
+		<link href="${prefix}feed.xml" title="Articles" type="application/atom+xml" rel="alternate">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	</head>
 	<body>
+		<h1><a href="${prefix}index.html">Rants from the Ballmer Peak</a></h1>
+		<h2>Browsing articles for tag: ${tag}</h2>
 		${body}
+		<p>Copyright 2013 by ${author}.</p>
 	</body>
 </html>
