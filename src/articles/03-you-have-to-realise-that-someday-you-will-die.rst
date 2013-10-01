@@ -23,7 +23,7 @@ of ``http://elhaso.com/`` not being available any more is that it has been
 claimed by automatic spambots, turning it into a casino. With black jack. And
 hopefully, whores:
 
-image
+.. image:: /i/the_definition_of_crap.png
 
 It is clearly a sign of irrelevance when automatic software cares more about
 your out of business ideas than human people, I don't think that website
