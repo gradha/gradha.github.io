@@ -117,8 +117,9 @@ CPU has to change a lot of internal state and then the next task has to recover
 it.  It takes time. And the more processes you run the worse it gets. So we end
 up with a machine which for each process overspawns many threads instead of
 getting one thread per core. Where doing tasks serially would take ``A + B +
-C`` seconds, now we have ``A + B + C + OS overhead`` seconds, and the ``OS
-overhead`` part can grow quite a lot, especially the more processes there are.
+C`` seconds, now we have ``A + B + C + task switching overhead`` seconds, and
+the ``task switching overhead`` part can grow quite a lot, especially the more
+processes there are.
 
 This considers a situation where the number of processing units is static all
 the time, but things can be harder especially on mobile devices where the
