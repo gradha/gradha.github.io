@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>${title}: ${tag}</title>
+		<title>${blog_title}: ${tag}</title>
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
 		<link rel="stylesheet" href="${prefix}css/normalize.css">
 		<link rel="stylesheet" href="${prefix}css/style.css">
@@ -8,11 +8,11 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	</head>
 	<body>
-		<h1><a href="${prefix}index.html">Rants from the Ballmer Peak</a></h1>
+		<h1><a href="${prefix}index.html">${blog_title}</a></h1>
 		<h2>Browsing articles for tag: ${tag}</h2>
 		${body}
 		<hr>
-		<p>Copyright 2013 by <a href="https://github.com/gradha">${author}</a>.<br>
+		<p>Copyright 2013 by <a href="https://github.com/gradha">${blog_author}</a>.<br>
 		Generated with <a href="https://github.com/dom96/ipsumgenera">ipsum genera</a>. Look at <a href="https://github.com/gradha/gradha.github.io/tree/master/src">the source code</a>.</p>
 	</body>
 </html>
