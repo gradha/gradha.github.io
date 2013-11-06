@@ -65,7 +65,7 @@ the experience of *upgrading* the machine to only find out (sometimes
 weeks later) that a critical program stopped working because it is
 incompatible with the new version of the operating system. This
 causes pain, gnashing of teeth and hatred towards computers and/or
-technology.
+programmers.
 
 
 Levels of portability
@@ -127,7 +127,7 @@ everything to a different machine and run it there.
 On OS X this is abstracted to the user through the use of `application
 bundles <https://en.wikipedia.org/wiki/Application_bundle>`_. These
 are normal directories with a special structure the operating system
-recognizes and treads uniformly as a single entity. The Finder on
+recognizes and treats uniformly as a single entity. The Finder on
 OS X won't allow you to copy only part of the bundle's directory
 somewhere else, and should it fail, it will delete the incomplete
 bundle. Even if it is left there broken, the system wont run it and
