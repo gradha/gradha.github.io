@@ -33,7 +33,7 @@ shine! But this time it won't be ambitious, I've already been taught all that
 went wrong and why, there's no point in repeating mistakes.
 
 Instead, it will live on as a hobby. And since my new hobby is `the Nimrod
-programming language <http://nimrod-code.org>`_, maybe I should take the crusty
+programming language <http://nimrod-lang.org>`_, maybe I should take the crusty
 C source code of `Submarine Hunt <http://www.elhaso.es/subhunt/index.en.html>`_
 and rewrite it opensource in nimrod?  Ah, if only these feelings of inebriation
 lasted a little bit longer…
