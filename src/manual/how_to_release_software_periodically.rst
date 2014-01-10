@@ -147,7 +147,13 @@ Even active projects with several developers with commit rights are not safe if
 there is no strict guideline on who does what. As such, if a pull request or
 issue falls *between boundaries* of these developers, the time to address the
 pull request or issue grows exponentially with the number of overlapping
-developers (see figure).
+developers (see Figure 1).
+
+.. figure:: figure.png
+    :width: 100%
+
+    **Figure 1**. Venn diagram.
+    We don't understand either.
 
 
 Feature creep
