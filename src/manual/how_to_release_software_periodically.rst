@@ -93,7 +93,7 @@ place when you can put everything in *master*.
 
 As such, the best practice of creating a branch per feature of the software is
 usually neglected and the *master* branch of git used as a recycle bin, with
-software stability hopefully drawing a sinusoid function between official
+software stability hopefully drawing a sinusoidal function between official
 release versions (but no guarantees on that). There is no exit from this pit of
 despair, and we understand that developers who fall through it actually reach
 one of the Circles of Hell in life [#hell]_.
@@ -169,7 +169,7 @@ Hitler [#kitlers]_ being posted on the internet.
 
 Feature creep is usually attributed to lack of focus. Lack of an updated task
 list (aka vague TODO last updated two years ago), hundreds of issues piling up,
-or mentions of heavy use of alcohol in forums or irc channels are indicators of
+or mentions of heavy use of alcohol in forums or IRC channels are indicators of
 this. You are a firefly and get distracted by shiny new things; we understand.
 
 
@@ -194,15 +194,16 @@ Master is not the master any more?
 
 The first big change of how git-flow works is that by default it considers the
 *master* branch to be stable. And rightly so: a newcomer to a project may want
-to clone the repo and compile it. Since the default branch is *master*, it is
-best if it is stable and compiles without issues. Hence, a secondary branch
-named *develop* is created, where the actual commit and merge orgy happens.
+to clone the repository and compile it. Since the default branch is *master*,
+it is best if it is stable and compiles without issues. Hence, a secondary
+branch named *develop* is created, where the actual commit and merge orgy
+happens.
 
 When the developers consider that the contents of *develop* should be made
 public, they can merge that branch with master. Git-flow will also tag the
 source tree at that point with a version number and a message. Tags are
-automatically understood by hosts like GitHub as software release points [#qlreleases]_, and
-it is very easy to create software releases from them.
+automatically understood by hosts like GitHub as software release points
+[#qlreleases]_, and it is very easy to create software releases from them.
 
 Through this simple change an easy pattern is established: any branch merged
 with master means a *public* change is done. During normal development these
@@ -213,10 +214,10 @@ Hotfixes
 --------
 
 Things go south. You know this if you are a developer. And to fix them,
-*hotfixes* [#engineer]_ are issued. Sometimes a bug might be too embarrassing to leave out
-there, or it involves the pride of your employer's son. Whatever the reason,
-your normal development cycle is not fast enough and you have to stop whatever
-you were happily doing in *develop* and fix *master* instead.
+*hotfixes* [#engineer]_ are issued. Sometimes a bug might be too embarrassing
+to leave out there, or it involves the pride of your employer's son. Whatever
+the reason, your normal development cycle is not fast enough and you have to
+stop whatever you were happily doing in *develop* and fix *master* instead.
 
 For these situations you start with git-flow a *hotfix* branch based on
 *master*. In this branch you commit everything needed to make the software work
@@ -287,9 +288,9 @@ Clear task domain division
 
 The solution to the missing leadership in the case of multiple developers with
 commit rights can be solved through a simple wiki page modified by all of them.
-Initially this wiki page can start with the repo owner, and from then on each
-new member can be listed there. The project needs to subdivide itself in
-manageable tasks, for instance: documentation, online support (forums, irc,
+Initially this wiki page can start with the repository owner, and from then on
+each new member can be listed there. The project needs to subdivide itself in
+manageable tasks, for instance: documentation, online support (forums, IRC,
 twitter, issues, etc. further subdivided if necessary), web design and updates,
 software quality (also known as continuous integration), core development,
 additional tools, etc.
@@ -311,7 +312,7 @@ in the early learning stage, he should always *ping* the supervisor when the
 task is meant to be reviewed. As such, if a GitHub issue is seen by the new
 member and marked as ready, the supervisor can directly apply the changes.
 Also, a *dispatcher* can be assigned to decide who does what, which is usually
-best left to the original developer or whoever has the most knowhow of the
+best left to the original developer or whoever has the most know-how of the
 project.
 
 
@@ -346,7 +347,7 @@ CONCLUSION
 1. Use git-flow [#gitflow1]_. It may feel like a corset in the beginning,
    slightly constraining, but corsets can be sexy too [#kang]_.
 
-2. Don't watch too many Youtube videos [#youtube]_.
+2. Don't watch too many YouTube videos [#youtube]_.
 
 3. Program in Nimrod [#nimrod]_ FTW.
 
