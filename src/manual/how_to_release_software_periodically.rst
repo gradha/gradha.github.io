@@ -448,5 +448,5 @@ REFERENCES
 
 .. [#nimrod] `Nimrod programming language <http://nimrod-lang.org>`_.
 
-.. [#9muses] `131214 롯데월드 CBS공개방송 나인뮤지스(9muses) - glue 직캠
+.. [#9muses] `131214 9muses - Glue performance
     <http://www.youtube.com/watch?v=dEf4PJZXBxA>`_.
