@@ -6,6 +6,7 @@ How to release software periodically
 :department: Software releases
 :location: Spain, Colmenar Viejo 28770
 :contact: melissavirusiloveyou@gradha.imap.cc
+:adult rating: not safe for work (NSFW)
 
 ABSTRACT
 ========
@@ -13,47 +14,86 @@ ABSTRACT
 We explain the perils and hiccups of existing software development both
 professionally and in amateur circles with regards to software releases.
 Software releases can be tamed and we propose a method which can be applied to
-most software. We demonstrate how different projects stored in Github compare
-and how they can improve. We dislike BitBucket and therefore don't say much
-about them. We also talk in plural form despite us being a single being,
-hopefully not because we suffer from schizophrenia or delusions of grandeur;
-also we use semicolons whenever we feel like it and try to concatenate word
-after word to create long enough sentences that not even a professional Opera
-singer could say out loud in a single breath despite not saying much at all.
+most software. We demonstrate how different projects stored in Github
+[#github]_ compare and how they can improve. We dislike Bitbucket [#bitbucket]_
+and therefore don't say much about them. We also talk in plural form despite us
+being a single being, hopefully not because we suffer from schizophrenia or
+delusions of grandeur; also we use semicolons whenever we feel like it and try
+to concatenate word after word to create long enough sentences that not even a
+professional Opera singer could say out loud in a single breath despite not
+saying much at all; maybe.
+
+.. [#github] `https://github.com <https://github.com>`_.
+.. [#bitbucket] `Atlassian Bitbucket <https://bitbucket.org>`_.
 
 Keywords
 --------
 
-Nimrod, babel, nake, nakefiles, kpop, metal, politics, bike shedding, rst, pdf,
-github, 9muses, snsd.
+9muses
+Nimrod
+babel
+bike
+github
+kpop
+metal
+nake
+nakefiles
+nsfw
+dvcs
+pdf
+politics
+rst
+shedding
+snsd
 
 INTRODUCTION
 ============
 
-Releasing software is boring; even an underage monkey trained in Ruby or Python
-can access Github and upload anything, therefore giving the impression of being
-hipster, but the question is how to follow the initial release. In particular,
-there are many trained monkeys uploading software to repositories seemingly at
-random and then leaving them to wither without subsequent changes. Individual
-talks (please see NSA archives for the recorded conversations) suggested the
-main reason for the halting of the development was a lack of defined guidelines
-for software releases, troubles handling distributed version control systems,
-missing leadership, insufficient contact information for potential contributors
-and feature creep among others.
+Releasing software once is simple; even an underage monkey trained in Ruby or
+Python [#python]_ can access Github and upload anything, therefore giving the
+impression of being hipster, but the question is how to follow the initial
+release. In particular, there are many trained monkeys uploading software to
+repositories seemingly at random and then leaving them to wither without
+subsequent changes.  Individual talks [#nsa]_ suggested the main reasons for
+the halting of the development was a lack of defined guidelines for software
+releases, troubles handling distributed version control systems, missing
+leadership, insufficient contact information for potential contributors and
+feature creep among others.  We leave other bus related [#bus]_ arguments out
+of the equation as we are interested only in the situations where the will is
+there, but it is obstructed by something else.
+
+.. [#ruby] `Ruby, a programmer's best friend <http://www.ruby-lang.org/>`_
+
+.. [#python] `Python Programming Language <http://www.python.org>`_
+
+.. [#nsa] See `NSA archives <http://www.nsa.gov>`_ for the recorded
+    conversations.
+
+.. [#bus] `What if Linus Torvalds Gets Hit By A Bus?
+    <http://www.crummy.com/writing/segfault.org/Bus.html>`_
 
 Troubles handling distributed version control systems
 -----------------------------------------------------
 
-BitBucket sucks, so we will ignore it and talk only about Github which is super
-cool. As many of the world's developers woke up from the prehistory of zip
-files and maybe CVS or Subversion directly into the bright and sparkling world
-of git, the transition was less than ideal and we have found many of the
-cro-magnon developers kept using their methodologies (or rather lack of any
-formal methodology) for… ever. Despite git being a distributed version control
-system allowing individuals to create peer to peer micro networks, the social
-nature of humans forces them to stick all together like a pile of excrement to
-a single known server, because God forbid anybody have a different opinion.
-Hence Github.
+Bitbucket sucks [#bbsucks]_, so we will ignore it and talk only about Github
+which is super cool. As many of the world's developers woke up from the
+prehistory of zip files and maybe CVS [#cvs]_ or Subversion [#subversion]_
+directly into the bright and sparkling world of git [#git]_, the transition was
+less than ideal and we have found many of the cro-magnon developers kept using
+their methodologies (or rather lack of any formal methodology) for… ever.
+Despite git being a distributed version control system allowing individuals to
+create peer to peer micro networks, the social nature of humans forces them to
+stick all together like a pile of excrement to a single known server, because
+God forbid anybody have a different opinion.  Hence Github.
+
+.. [#bbsucks] `Spooning by Bitbucket <https://bitbucket.org/spooning/>`_.
+
+.. [#cvs] `Concurrent Versions System <http://www.nongnu.org/cvs/>`_.
+
+.. [#subversion] `Apache™ Subversion®, Enterprise-class centralized version
+    control for the masses <https://subversion.apache.org>`_.
+
+.. [#git] `git --distributed-is-the-new-centralized <http://git-scm.com>`_.
 
 Branches are a much appreciated feature of git and other distributed version
 control systems, but developers mostly talk about branches in future tense
@@ -65,7 +105,10 @@ usually neglected and the *master* branch of git used as a recycle bin, with
 software stability hopefully drawing a sinusoid function between official
 release versions (but no guarantees on that). There is no exit from this pit of
 despair, and we understand that developers who fall through it actually reach
-one of the Circles of Hell in life.
+one of the Circles of Hell in life [#hell]_.
+
+.. [#hell] `Infero, by Dante Alighieri
+    <https://en.wikipedia.org/wiki/Circles_of_hell>`_.
 
 A little education of the tools you use every day can go a long way. Look, even
 learning to read is hard, but you are reading this, so can't you see how much
@@ -128,8 +171,11 @@ keep adding without consideration. Instead of finishing fixing minor bugs, new
 incomplete features are added to a project preventing it from ever reaching a
 *stable* state. Combined with the lack of branches of most projects even
 newcomers to a project will check out a repository and never get it working,
-most of them leaving at that point to watch pictures of cats being posted to
-reddit.
+most of them leaving at that point to watch pictures of cats that look like
+Hitler [#kitlers]_ being posted on the internet.
+
+.. [#kitlers] `Cats that look like hitler
+    <http://www.catsthatlooklikehitler.com/>`_.
 
 Feature creep is usually attributed to lack of focus. Lack of an updated task
 list (aka vague TODO last updated two years ago), hundreds of issues piling up,
@@ -233,6 +279,8 @@ and unstable. Aren't we clever? Any of your arguments against this is invalid
 unless you prove that your software is more complex than an operative system
 with thousands of interdependent packages. QED.
 
+* modify other stuff to "watch videos" and put youtube
+* change cat reference to kitlers
 
 CONCLUSION AND LIMITATIONS
 ==========================
