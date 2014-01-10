@@ -14,7 +14,7 @@ ABSTRACT
 We explain the perils and hiccups of existing software development both
 professionally and in amateur circles with regards to software releases.
 Software releases can be tamed and we propose a method which can be applied to
-most software. We demonstrate how different projects stored in Github
+most software. We demonstrate how different projects stored in GitHub
 [#githubb]_ compare and how they can improve. We dislike Bitbucket [#bitbucket]_
 and therefore don't say much about them. We also talk in plural form despite us
 being a single being, hopefully not because we suffer from schizophrenia or
@@ -50,7 +50,7 @@ INTRODUCTION
 ============
 
 Releasing software once is simple; even an underage monkey trained in Ruby
-[#ruby]_ or Python [#python]_ can access Github and upload anything, therefore
+[#ruby]_ or Python [#python]_ can access GitHub and upload anything, therefore
 giving the impression of being hipster, but the question is how to follow the
 initial release. In particular, there are many trained monkeys uploading
 software to repositories seemingly at random and then leaving them to wither
@@ -67,7 +67,7 @@ obstructed by something else.
 Troubles handling distributed version control systems
 -----------------------------------------------------
 
-Bitbucket sucks [#bbsucks]_, so we will ignore it and talk only about Github
+Bitbucket sucks [#bbsucks]_, so we will ignore it and talk only about GitHub
 which is super cool. As many of the world's developers woke up from the
 prehistory of zip files and maybe CVS [#cvs]_ or Subversion [#subversion]_
 directly into the bright and sparkling world of git [#git]_, the transition was
@@ -76,7 +76,7 @@ their methodologies (or rather lack of any formal methodology) for… ever.
 Despite git being a distributed version control system allowing individuals to
 create peer to peer micro networks, the social nature of humans forces them to
 stick all together like a pile of excrement to a single known server, because
-God forbid anybody have a different opinion.  Hence Github [#githubb]_.
+God forbid anybody have a different opinion.  Hence GitHub [#githubb]_.
 
 Branches are a much appreciated feature of git and other distributed version
 control systems, but developers mostly talk about branches in future tense
@@ -187,7 +187,7 @@ named *develop* is created, where the actual commit and merge orgy happens.
 When the developers consider that the contents of *develop* should be made
 public, they can merge that branch with master. Git-flow will also tag the
 source tree at that point with a version number and a message. Tags are
-automatically understood by hosts like Github as software release points [#qlreleases]_, and
+automatically understood by hosts like GitHub as software release points [#qlreleases]_, and
 it is very easy to create software releases from them.
 
 Through this simple change an easy pattern is established: any branch merged
@@ -262,27 +262,74 @@ senseless commit-happy hackers. As such, these hackers will clash with the
 process unless it is clearly documented.
 
 The bare minimum is mentioning that you use a specific kind of process for
-software development. Mentioning git-flow and linking to it may be enough.
+software development. Mentioning git-flow and linking to it may be enough, but
+try to clearly mention that contributions are to be made from a specific branch
+(*develop*); it can be frustrating for a contributor to have his work rejected
+because he based it on the wrong branch.
 
-Clear domain division
----------------------
+
+Clear task domain division
+--------------------------
 
 The solution to the missing leadership in the case of multiple developers with
 commit rights can be solved through a simple wiki page modified by all of them.
-Initially this wiki page can start with the repo owner. The project needs to
-subdivide then kkjkkk
+Initially this wiki page can start with the repo owner, and from then on each
+new member can be listed there. The project needs to subdivide itself in
+manageable tasks, for instance: documentation, online support (forums, irc,
+twitter, issues, etc. further subdivided if necessary), web design and updates,
+software quality (also known as continuous integration), core development,
+additional tools, etc.
+
+These subdivisions can start small: if a project features just three people it
+may be unnecessary to subdivide the domain in more than three chunks if each
+people's task overlap. Then as people are added, the list can be refined.
+
+As people enter a team, they should be placed on a task with an explicit
+*supervisor*. This would be a person who verifies the work of the supervised.
+Initially the changes done by the new members should all be approved by the
+supervisor. Once the supervisor considers enough training has been done, the
+supervisor is still assigned but allows the new member to work directly. The
+assignment serves for the purpose of resolving strange conflicts, and the new
+member still knows whom to ask for help if needed.
+
+Communication is an important factor to help this succeed. When a new member is
+in the early learning stage, he should always *ping* the supervisor when the
+task is meant to be reviewed. As such, if a GitHub issue is seen by the new
+member and marked as ready, the supervisor can directly apply the changes.
+Also, a *dispatcher* can be assigned to decide who does what, which is usually
+best left to the original developer or whoever has the most knowhow of the
+project.
 
 
-CONCLUSION AND LIMITATIONS
-==========================
+Locked feature lists
+--------------------
+
+Nobody knows better when a release needs to be made than the project's
+developers. However, there is always the temptation to add *just a little bit
+more* to the next release, and so, never finish.
+
+In a similar fashion to the clear task domain division, another wiki page can
+hold the list of tasks that need to be done for a specific release. But rather
+than being modifiable by anybody, this page should be touched only by the
+person in charge of the project. Changes to the list should be discussed as a
+group and weighted over: how does this new task impact the release schedule? Is
+the new schedule delayed by how much? Should we delay some tasks from the
+feature list to compensate?
+
+Note again that this doesn't *prevent* developers from working on future
+developments. The main goal here is making sure everybody knows **when** the
+software is going to be released, and **what** has to be done to do so. When
+both of these are known, even random occasional contributors can step in and
+help with the release. But when the next release is *whenever it is ready*, how
+are contributors meant to help with that?
+
+
+CONCLUSION
+==========
 
 
 
 1. Lower collaboration threshold.
-
-
-LIMITATIONS
-===========
 
 RELATED WORK
 ============
