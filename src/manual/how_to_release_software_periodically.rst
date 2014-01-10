@@ -170,7 +170,7 @@ Hitler [#kitlers]_ being posted on the internet.
 Feature creep is usually attributed to lack of focus. Lack of an updated task
 list (aka vague TODO last updated two years ago), hundreds of issues piling up,
 or mentions of heavy use of alcohol in forums or IRC channels are indicators of
-this. You are a firefly and get distracted by shiny new things; we understand.
+this. You are a moth and get distracted by shiny new things; we understand.
 
 
 GIT-FLOW, SAVIOUR OF THE WORLD
@@ -358,6 +358,8 @@ ACKNOWLEDGEMENTS
 Thanks to Andreas Rumpf for making Nimrod [#nimrod]_.
 
 Thanks to 9muses for endless inspiration [#9muses]_.
+
+Thanks to BitPuffin for creating a Nimrod User Group for Varriount.
 
 Thanks to GitHub for hosting this paper.
 
