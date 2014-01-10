@@ -8,6 +8,14 @@ How to release software periodically
 :contact: melissavirusiloveyou@gradha.imap.cc
 :adult rating: not safe for work (NSFW)
 
+.. header::
+
+    ###Title###
+
+.. footer::
+
+    Page ###Page###
+
 .. section-numbering::
 
 ABSTRACT
