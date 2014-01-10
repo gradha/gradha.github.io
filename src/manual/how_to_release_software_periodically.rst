@@ -107,43 +107,39 @@ others require their users to write documents and publish them [#pep]_, which
 both informs and serves as a roadmap.
 
 Potential contributors find the lack of instructions or guidelines for
-contribution as a hurdle. There is always the expectation that Murphy will make
-your contribution, no matter how useful, linger in a special developer limbo
-because you forgot to tag the issue correctly or didn't explicitly address one
-of the developers with commit rights to the repository.
+contribution as a hurdle. There is always the fear that Murphy [#murphy]_
+will make your contribution, no matter how useful, linger in a special
+developer limbo because you forgot to tag the issue correctly or didn't
+explicitly address one of the developers with commit rights to the repository.
 
 
 Missing leadership
 ------------------
 
-There are many repositories which at some point *stall* development because its
-authors don't accept pull requests and Google still points to their fork
-despite others being more advanced. Sometimes a note like "*sorry, went out for
-coffee, will never be back*" could give ideas to the contributors that the
-selected fork is a dead end, but people don't want to be nice to each other,
-and therefore we can't have nice things [#medicaidd]_. In a few rare cases the
-community can pick up dead projects and fork [#sharekit]_ them successfully,
-but this requires a lot of mass to succeed, something which starts to be
-feasible when the number of active and maintained forks is greater than four
-[#xkcdd]_.
+There are many repositories [#sharekitrepo]_ which at some point *stall*
+development because its authors don't accept pull requests and Google still
+points to their fork despite others being more advanced. Sometimes a note like
+"*sorry, went out for coffee, will never be back*" could give ideas to the
+contributors that the selected fork is a dead end, but people don't want to be
+nice to each other, and therefore we can't have nice things [#medicaidd]_. In a
+few rare cases the community can pick up dead projects and fork
+[#sharekitissue]_ them successfully, but this requires a lot of mass to
+succeed, something which starts to be feasible when the number of active and
+maintained forks is greater than four [#xkcdd]_.
 
 A variant of this phenomena is the Ivory Tower Developer who once every two
 moons graces the mortal population with a visit, saying few words to some
 selected developers and leaving the rest wondering what have they done in this,
-or their previous life, to not be worthy. According to our measurements most
-thin skinned contributors are effectively dissuaded from the project and never
-come back, since they happen to fall somewhere in the middle between full moons
-and see no activity.
+or their previous life, to not be worthy. According to our measurements
+[#measurements]_ most thin skinned contributors are effectively dissuaded from
+the project and never come back, since they happen to fall somewhere in the
+middle between full moons and see no activity.
 
 Even active projects with several developers with commit rights are not safe if
 there is no strict guideline on who does what. As such, if a pull request or
 issue falls *between boundaries* of these developers, the time to address the
 pull request or issue grows exponentially with the number of overlapping
 developers (see figure).
-
-The solution to missing leadership is political and falls out of the scope of
-technology. Unless we could give electric shocks through the internet to other
-people. We can only dream…
 
 
 Feature creep
@@ -166,16 +162,16 @@ this. You are a firefly and get distracted by shiny new things; we understand.
 GIT-FLOW, SAVIOUR OF THE WORLD
 ==============================
 
-Git-flow is a solution which can help with many of the enumerated problems. It
-is essentially gratuitous bureaucracy applied to software development. At the
-mere mention of bureaucracy most developers flee leaving a trail of screams and
-pulled out hair. However, git-flow automates that bureaucracy to the bare
-minimum, enforcing a practical guideline to develop.  Nothing from the points
-described below actually require git-flow; it is just a bunch of scripts to
-deal with the bureaucracy.
+Git-flow [#gitflow1]_ is a software solution which can help with some of the
+enumerated problems. It is essentially gratuitous bureaucracy applied to
+software development. At the mere mention of bureaucracy most developers flee
+leaving a trail of screams and pulled out hair. However, git-flow automates
+that bureaucracy to the bare minimum, enforcing a practical guideline
+[#gitflow2]_ to develop.  Nothing from the points described below actually
+require git-flow; it is just a bunch of scripts to deal with the bureaucracy.
 
-Git-flow is well documented and has plenty of fans who have already documented
-how it works. These paper only highlights *why* it works, and how it solves the
+Git-flow has a good base documentation and plenty of fans have extended it
+[#gitflow3]_.  This paper only highlights *why* it works, and how it solves the
 problems software developers have.
 
 
@@ -191,7 +187,7 @@ named *develop* is created, where the actual commit and merge orgy happens.
 When the developers consider that the contents of *develop* should be made
 public, they can merge that branch with master. Git-flow will also tag the
 source tree at that point with a version number and a message. Tags are
-automatically understood by hosts like Github as software release points, and
+automatically understood by hosts like Github as software release points [#qlreleases]_, and
 it is very easy to create software releases from them.
 
 Through this simple change an easy pattern is established: any branch merged
@@ -203,7 +199,7 @@ Hotfixes
 --------
 
 Things go south. You know this if you are a developer. And to fix them,
-*hotfixes* are issued. Sometimes a bug might be too embarrassing to leave out
+*hotfixes* [#engineer]_ are issued. Sometimes a bug might be too embarrassing to leave out
 there, or it involves the pride of your employer's son. Whatever the reason,
 your normal development cycle is not fast enough and you have to stop whatever
 you were happily doing in *develop* and fix *master* instead.
@@ -217,11 +213,44 @@ it is applied in both places.
 
 In the case of the hotfix involving applying code already found in the
 *develop* branch because the political nature of the bug escalated (eg. known
-crash which somebody figures how leak Scarlett Johansson private pictures
-[#scarlett]_) you can simply cherry pick changes from the develop branch. Those
-will be merged into master, and the automatic merge into *develop* again will
-make sure that when your normal development cycle reaches the release state git
-won't complain about duplicate stuff.
+crash which somebody figures how to obtain Scarlett Johansson private pictures
+[#scarlett]_) you can simply cherry pick changes from the *develop* branch.
+Those will be merged into master, and the automatic merge into *develop* again
+will make sure that when your normal development cycle reaches the release
+state git won't complain about duplicate stuff.
+
+Sub develop branches
+--------------------
+
+The same process created around the master and develop branches can be reused
+recursively for the purpose of clearly limiting feature creep for each release.
+Moving development to a *develop* branch doesn't magically avoid feature creep.
+If the next software release has to have features ``A``, ``B``, ``C`` and you
+can't wait to implement ``D``, simply create another branch, maybe
+*develop-future* where you add these changes. This split avoids that ``A``,
+``B``, and ``C`` are eventually solved, but the *develop* branch can't be
+merged into *master* because it contains an incomplete ``D``, or worse, is left
+unstable. If you can't be arsed to finish the tasks required for the stable
+release, at least don't get in the way of others implementing then.
+
+This goes well also with periodical public releases. The old Vulcan [#vulcan]_
+saying "*Release early, release often*" is usually ignored in its second part,
+because most people try to avoid planning. Every three months in your
+development, decide what features are enough to make a stable release and keep
+*develop* only for them. Wow, we just rediscovered Debian's stable, testing
+and unstable distributions [#debiann]_ but using branches. Aren't we clever?
+This has been demonstrated to work for ages. Any of your arguments against this
+subdivision is invalid unless you prove that your software is more complex than
+an operative system with thousands of interdependent packages who has lived for
+longer than two decades [#debian2]_.
+
+
+NON TECHNOLOGICAL SOLUTIONS
+===========================
+
+Git-flow is a technical aid to the bureaucracy problem. Some of the problems we
+have mentioned don't have a clear software solution. We ask the community for
+feedback on how to deal with them and propose our own.
 
 Necessary documentation
 -----------------------
@@ -235,31 +264,14 @@ process unless it is clearly documented.
 The bare minimum is mentioning that you use a specific kind of process for
 software development. Mentioning git-flow and linking to it may be enough.
 
-Sub develop branches
---------------------
+Clear domain division
+---------------------
 
-The same process created around the master and develop branches can be reused
-recursively for the purpose of clearly limiting feature creep for each release.
-Moving development to a *develop* branch doesn't magically avoid feature creep.
-If the next software release has to have features ``A``, ``B``, ``C`` and you
-can't wait to implement ``D``, simply create another branch, maybe
-*develop-future* where you add these changes. This split avoids that ``A``,
-``B``, and ``C`` are eventually solved, but the *develop* branch can't be
-merged into *master* because it contains an incomplete ``D``, or worse,
-unstable. If you can't be arsed to finish the tasks required for the stable
-release, at least don't get in the way of others implementing then.
+The solution to the missing leadership in the case of multiple developers with
+commit rights can be solved through a simple wiki page modified by all of them.
+Initially this wiki page can start with the repo owner. The project needs to
+subdivide then kkjkkk
 
-This goes well also with periodical public releases. The old Vulcan saying
-"Release early, release often" is usually ignored in its second part, because
-most people try to avoid planning. Every three months in your development,
-decide what features are enough to make a stable release and keep develop only
-for them. Woah, we just rediscovered Debian's release cycle of stable, testing
-and unstable. Aren't we clever? Any of your arguments against this is invalid
-unless you prove that your software is more complex than an operative system
-with thousands of interdependent packages. QED.
-
-* modify other stuff to "watch videos" and put youtube
-* change cat reference to kitlers
 
 CONCLUSION AND LIMITATIONS
 ==========================
@@ -308,7 +320,7 @@ REFERENCES
 
 .. [#git] `git --distributed-is-the-new-centralized <http://git-scm.com>`_.
 
-.. [#hell] `Infero, by Dante Alighieri
+.. [#hell] `Infero, by Dante Alighieri at Wikipedia
     <https://en.wikipedia.org/wiki/Circles_of_hell>`_.
 
 .. [#progit] `Pro Git, by Scott Chacon <http://git-scm.com/book>`_.
@@ -321,16 +333,48 @@ REFERENCES
     old Python Releases
     <http://gregoryszorc.com/blog/2014/01/08/why-do-projects-support-old-python-releases/>`_.
 
-.. [#medicaidd] `Medicaid <https://en.wikipedia.org/wiki/Medicaid>`_.
+.. [#murphy] `Murphy's law at Wikipedia
+    <https://en.wikipedia.org/wiki/Murphy's_law>`_.
 
-.. [#sharekit] `SHAREKIT 2.0 – ONE MAIN GLOBAL FORK
+.. [#sharekitrepo] `ShareKit <https://github.com/ideashower/ShareKit>`_.
+
+.. [#medicaidd] `Medicaid at Wikipedia
+    <https://en.wikipedia.org/wiki/Medicaid>`_.
+
+.. [#sharekitissue] `SHAREKIT 2.0 – ONE MAIN GLOBAL FORK
     <https://github.com/ideashower/ShareKit/issues/283>`_.
 
 .. [#xkcdd] `XKCD 221: Random Number <http://www.xkcd.com/221/>`_.
 
+.. [#measurements] Vague mentions like *"Oh, I thought the project was dead*"
+    read on IRC channels.
+
 .. [#kitlers] `Cats that look like hitler
     <http://www.catsthatlooklikehitler.com/>`_.
+
+.. [#gitflow1] `Git extensions to provide high-level repository operations for
+    Vincent Driessen's branching model <https://github.com/nvie/gitflow>`_.
+
+.. [#gitflow2] `A successful Git branching model
+    <http://nvie.com/posts/a-successful-git-branching-model/>`_.
+
+.. [#gitflow3] `git-flow-cheatsheet
+    <http://danielkummer.github.io/git-flow-cheatsheet/>`_.
+
+.. [#qlreleases] `QuickLook render plugin for ReST (ReStructuredText) files.
+    Releases/Tags
+    <https://github.com/gradha/quicklook-rest-with-nimrod/releases>`_
+
+.. [#engineer] `Trust me, i'm an engineer !
+    <https://www.youtube.com/watch?v=rp8hvyjZWHs>`_
 
 .. [#scarlett] `Scarlett Johannson Nude Cell Phone Pics
     <http://www.kineda.com/scarlett-johannson-nude-cell-phone-pics/>`_.
 
+.. [#vulcan] `Vulcan (mythology) at Wikipedia
+    <https://en.wikipedia.org/wiki/Vulcan_(mythology)>`_.
+
+.. [#debiann] `The Debian GNU/Linux FAQ Chapter 6
+    <http://www.debian.org/doc/manuals/debian-faq/ch-ftparchives>`_.
+
+.. [#debian2] `Debian at Wikipedia <https://en.wikipedia.org/wiki/Debian>`_.
