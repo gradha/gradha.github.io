@@ -317,25 +317,34 @@ the new schedule delayed by how much? Should we delay some tasks from the
 feature list to compensate?
 
 Note again that this doesn't *prevent* developers from working on future
-developments. The main goal here is making sure everybody knows **when** the
-software is going to be released, and **what** has to be done to do so. When
-both of these are known, even random occasional contributors can step in and
-help with the release. But when the next release is *whenever it is ready*, how
-are contributors meant to help with that?
+developments since they can use many other branches other than *master* or
+*develop* (branches are free). The main goal here is making sure everybody
+knows **when** the software is going to be released, and **what** has to be
+done to do so. When both of these are known, even random occasional
+contributors can step in and help with the release. But when the next release
+is *whenever it is ready* or long overdue, how are contributors meant to help
+with that?
 
 
 CONCLUSION
 ==========
 
+1. Use git-flow [#gitflow1]_.
+
+2. Don't watch too many Youtube videos [#youtube]_.
+
+3. Program in Nimrod [#nimrod]_ FTW.
 
 
-1. Lower collaboration threshold.
-
-RELATED WORK
-============
-
-Acknowledgements
+ACKNOWLEDGEMENTS
 ----------------
+
+Thanks to Araq for making Nimrod [#nimrod]_.
+
+Thanks to 9muses for endless inspiration [#9muses]_.
+
+Thanks to GitHub for hosting this paper.
+
 
 .. raw:: pdf
 
@@ -425,3 +434,11 @@ REFERENCES
     <http://www.debian.org/doc/manuals/debian-faq/ch-ftparchives>`_.
 
 .. [#debian2] `Debian at Wikipedia <https://en.wikipedia.org/wiki/Debian>`_.
+
+.. [#youtube] `Nine Muses Youtube channel
+    <https://www.youtube.com/user/NineMusesCh/videos>`_.
+
+.. [#nimrod] `Nimrod programming language <http://nimrod-lang.org>`_.
+
+.. [#9muses] `131214 롯데월드 CBS공개방송 나인뮤지스(9muses) - glue 직캠
+    <http://www.youtube.com/watch?v=dEf4PJZXBxA>`_.
