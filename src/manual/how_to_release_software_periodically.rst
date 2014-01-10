@@ -420,7 +420,7 @@ REFERENCES
 .. [#measurements] Vague mentions like *"Oh, I thought the project was dead*"
     read on IRC channels.
 
-.. [#kitlers] `Cats that look like hitler
+.. [#kitlers] `Cats that look like Hitler
     <http://www.catsthatlooklikehitler.com/>`_.
 
 .. [#gitflow1] `Git extensions to provide high-level repository operations for
