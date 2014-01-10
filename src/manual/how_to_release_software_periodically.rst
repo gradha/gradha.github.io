@@ -15,7 +15,7 @@ We explain the perils and hiccups of existing software development both
 professionally and in amateur circles with regards to software releases.
 Software releases can be tamed and we propose a method which can be applied to
 most software. We demonstrate how different projects stored in Github
-[#github]_ compare and how they can improve. We dislike Bitbucket [#bitbucket]_
+[#githubb]_ compare and how they can improve. We dislike Bitbucket [#bitbucket]_
 and therefore don't say much about them. We also talk in plural form despite us
 being a single being, hopefully not because we suffer from schizophrenia or
 delusions of grandeur; also we use semicolons whenever we feel like it and try
@@ -28,6 +28,7 @@ Keywords
 
 9muses
 Nimrod
+alcohol
 babel
 bike
 dvcs
@@ -39,6 +40,7 @@ nakefiles
 nsfw
 pdf
 politics
+rant
 rst
 shedding
 snsd
@@ -74,7 +76,7 @@ their methodologies (or rather lack of any formal methodology) for… ever.
 Despite git being a distributed version control system allowing individuals to
 create peer to peer micro networks, the social nature of humans forces them to
 stick all together like a pile of excrement to a single known server, because
-God forbid anybody have a different opinion.  Hence Github [#github]_.
+God forbid anybody have a different opinion.  Hence Github [#githubb]_.
 
 Branches are a much appreciated feature of git and other distributed version
 control systems, but developers mostly talk about branches in future tense
@@ -88,20 +90,21 @@ release versions (but no guarantees on that). There is no exit from this pit of
 despair, and we understand that developers who fall through it actually reach
 one of the Circles of Hell in life [#hell]_.
 
-A little education of the tools you use every day can go a long way. Look, even
-learning to read is hard, but you are reading this, so can't you see how much
-you have already won? So go ahead and try reading some git documentation (see
-manual online).
+A little education of the tools you use every day can go a long way. Even
+learning to read is hard, but you are reading this; can't you see how much you
+have already won? So go ahead and try reading some git documentation
+[#progit]_, it can only help.
+
 
 Poor or wrong contact information
 ---------------------------------
 
-Projects, especially those in the open source domain, tout themselves as having
-the potential of attracting anybody and allowing them to contribute. But every
-software project is different and requires a different approach to
-contributions. Some projects require contributors to create issues while others
-require their users to write documents and publish them for everybody else to
-laugh at them (see pep)
+Open source projects tout themselves as having the potential of attracting
+anybody and allowing them to contribute. But every software project is
+different and requires a different approach to contributions. Some projects
+require contributors to create issues or follow a coding style [#style]_ while
+others require their users to write documents and publish them [#pep]_, which
+both informs and serves as a roadmap.
 
 Potential contributors find the lack of instructions or guidelines for
 contribution as a hurdle. There is always the expectation that Murphy will make
@@ -109,18 +112,20 @@ your contribution, no matter how useful, linger in a special developer limbo
 because you forgot to tag the issue correctly or didn't explicitly address one
 of the developers with commit rights to the repository.
 
-See http://code.google.com/p/openjpeg/wiki/DevelopmentProcess
 
 Missing leadership
 ------------------
 
-Talking about developers with commit rights, there are many repositories which
-at some point *block* development because its authors don't accept pull
-requests and Google still points to their fork despite others being more
-advanced. Sometimes a note like "*sorry, went out for coffee, will never be
-back*" could give ideas to the contributors that the selected fork is a dead
-end, but people don't want to be nice to each other, and therefore we can't
-have nice things (see obamacare).
+There are many repositories which at some point *stall* development because its
+authors don't accept pull requests and Google still points to their fork
+despite others being more advanced. Sometimes a note like "*sorry, went out for
+coffee, will never be back*" could give ideas to the contributors that the
+selected fork is a dead end, but people don't want to be nice to each other,
+and therefore we can't have nice things [#medicaidd]_. In a few rare cases the
+community can pick up dead projects and fork [#sharekit]_ them successfully,
+but this requires a lot of mass to succeed, something which starts to be
+feasible when the number of active and maintained forks is greater than four
+[#xkcdd]_.
 
 A variant of this phenomena is the Ivory Tower Developer who once every two
 moons graces the mortal population with a visit, saying few words to some
@@ -130,11 +135,11 @@ thin skinned contributors are effectively dissuaded from the project and never
 come back, since they happen to fall somewhere in the middle between full moons
 and see no activity.
 
-A similar problem happens when a project has several developers with commit
-rights but there is no strict guideline on who does what. As such, if a pull
-request or issue falls *between boundaries* of these developers, the time to
-address the pull request or issue grows exponentially with the number of
-overlapping developers (see figure).
+Even active projects with several developers with commit rights are not safe if
+there is no strict guideline on who does what. As such, if a pull request or
+issue falls *between boundaries* of these developers, the time to address the
+pull request or issue grows exponentially with the number of overlapping
+developers (see figure).
 
 The solution to missing leadership is political and falls out of the scope of
 technology. Unless we could give electric shocks through the internet to other
@@ -280,7 +285,7 @@ Acknowledgements
 REFERENCES
 ==========
 
-.. [#github] `_GitHub <https://github.com>`_.
+.. [#githubb] `GitHub <https://github.com>`_.
 
 .. [#bitbucket] `Atlassian Bitbucket <https://bitbucket.org>`_.
 
@@ -305,6 +310,23 @@ REFERENCES
 
 .. [#hell] `Infero, by Dante Alighieri
     <https://en.wikipedia.org/wiki/Circles_of_hell>`_.
+
+.. [#progit] `Pro Git, by Scott Chacon <http://git-scm.com/book>`_.
+
+.. [#style] `OpenJPEG library coding style
+    <http://code.google.com/p/openjpeg/wiki/CodingStyle>`_.
+
+.. [#pep] `PEP 404, Python 2.8 Un-release Schedule
+    <http://www.python.org/dev/peps/pep-0404/>`_ vs `Why do Projects Support
+    old Python Releases
+    <http://gregoryszorc.com/blog/2014/01/08/why-do-projects-support-old-python-releases/>`_.
+
+.. [#medicaidd] `Medicaid <https://en.wikipedia.org/wiki/Medicaid>`_.
+
+.. [#sharekit] `SHAREKIT 2.0 – ONE MAIN GLOBAL FORK
+    <https://github.com/ideashower/ShareKit/issues/283>`_.
+
+.. [#xkcdd] `XKCD 221: Random Number <http://www.xkcd.com/221/>`_.
 
 .. [#kitlers] `Cats that look like hitler
     <http://www.catsthatlooklikehitler.com/>`_.
