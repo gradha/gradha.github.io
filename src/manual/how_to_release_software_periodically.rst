@@ -2,11 +2,11 @@
 How to release software periodically
 ====================================
 
-:author: Grzegorz Adam Hankiewicz
-:department: Software releases
-:location: Spain, Colmenar Viejo, 28770
-:contact: melissavirusiloveyou@gradha.imap.cc
-:adult rating: not safe for work (NSFW)
+:Author: Grzegorz Adam Hankiewicz
+:Department: Software releases
+:Location: Spain, Colmenar Viejo, 28770
+:Contact: melissavirusiloveyou@gradha.imap.cc
+:Adult rating: not safe for work (NSFW)
 
 .. header::
 
