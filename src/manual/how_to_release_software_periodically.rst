@@ -8,6 +8,8 @@ How to release software periodically
 :contact: melissavirusiloveyou@gradha.imap.cc
 :adult rating: not safe for work (NSFW)
 
+.. section-numbering::
+
 ABSTRACT
 ========
 
@@ -35,8 +37,6 @@ dvcs
 github
 kpop
 metal
-nake
-nakefiles
 nsfw
 pdf
 politics
@@ -339,7 +339,7 @@ CONCLUSION
 ACKNOWLEDGEMENTS
 ----------------
 
-Thanks to Araq for making Nimrod [#nimrod]_.
+Thanks to Andreas Rumpf for making Nimrod [#nimrod]_.
 
 Thanks to 9muses for endless inspiration [#9muses]_.
 
