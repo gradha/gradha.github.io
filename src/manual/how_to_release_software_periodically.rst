@@ -337,7 +337,8 @@ with that?
 CONCLUSION
 ==========
 
-1. Use git-flow [#gitflow1]_.
+1. Use git-flow [#gitflow1]_. It may feel like a corset in the beginning,
+   slightly constraining, but corsets can be sexy too [#kang]_.
 
 2. Don't watch too many Youtube videos [#youtube]_.
 
@@ -442,6 +443,15 @@ REFERENCES
     <http://www.debian.org/doc/manuals/debian-faq/ch-ftparchives>`_.
 
 .. [#debian2] `Debian at Wikipedia <https://en.wikipedia.org/wiki/Debian>`_.
+
+.. [#kang] Kang YeBin
+    `1 <http://gonlamperouge.tumblr.com/post/72596775395/kang-yebin-everything-else>`_,
+    `2 <http://gonlamperouge.tumblr.com/post/72596798308/kang-yebin-everything-else-part-2>`_,
+    `3 <http://gonlamperouge.tumblr.com/post/72703822054/kang-yebin-everything-else-part-3>`_,
+    `4 <http://gonlamperouge.tumblr.com/post/72704022967/kang-yebin-everything-else-part-4>`_,
+    `5 <http://gonlamperouge.tumblr.com/post/72704104411/kang-yebin-everything-else-part-5>`_,
+    `6 <http://gonlamperouge.tumblr.com/post/72704202502/kang-yebin-everything-else-part-6>`_ and
+    `7 <http://gonlamperouge.tumblr.com/post/72813406443/kang-yebin-everything-else-part-7-final>`_. Whew!
 
 .. [#youtube] `Nine Muses Youtube channel
     <https://www.youtube.com/user/NineMusesCh/videos>`_.

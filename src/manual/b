@@ -1,4 +1,4 @@
 #!/bin/sh
 
-rst2pdf -s style.txt how_to_release_software_periodically.rst \
+rst2pdf -s style.txt -l en_GB how_to_release_software_periodically.rst \
 	&& open how_to_release_software_periodically.pdf
