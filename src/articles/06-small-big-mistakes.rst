@@ -10,12 +10,12 @@ Small big mistakes
 Open software is cool. Everybody can join in and tinker with the code. But
 sometimes the entrance threshold is too high and projects are kept *under the
 radar* for most people. I believe the `Nimrod programming language
-<http://nimrod-lang.org>`_ by `Andreas Rumpf <https://github.com/Araq>`_
-slightly tiptoes into the *could-be-much-better-with-a-little-more-care*. The
-disadvantage of Nimrod is that it is a programming language, and a really full
-fledged one which beats most commonly used ones in terms of flexibility and
-amazing features. Most potential contributors are intimidated by the initial
-complexity of such software (not everybody writes compilers for breakfast).
+<http://nimrod-lang.org>`_ by Andreas Rumpf & Contributors slightly tiptoes
+into the *could-be-much-better-with-a-little-more-care*. The disadvantage of
+Nimrod is that it is a programming language, and a really full fledged one
+which beats most commonly used ones in terms of flexibility and amazing
+features. Most potential contributors are intimidated by the initial complexity
+of such software (not everybody writes compilers for breakfast).
 
 But even more pitiful is what I consider basic administration mistakes which
 discourage potential users. It is not fun when `users have to report that the
