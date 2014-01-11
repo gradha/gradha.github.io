@@ -361,7 +361,8 @@ Thanks to 9muses for endless inspiration [#9muses]_.
 
 Thanks to BitPuffin for creating a Nimrod User Group for Varriount.
 
-Thanks to GitHub for hosting this paper.
+Thanks to GitHub for hosting this paper and allowing deranged subjects to
+express their ideas formally.
 
 
 .. raw:: pdf
