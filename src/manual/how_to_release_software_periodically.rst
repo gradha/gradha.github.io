@@ -400,7 +400,7 @@ CONCLUSION
 ==========
 
 1. Use git-flow [#gitflow1]_. It may feel like a corset in the beginning,
-   slightly constraining, but corsets can be sexy too [#kang]_.
+   slightly constraining, but corsets can be good too [#kang]_.
 
 2. Don't watch too many YouTube videos [#youtube]_.
 
