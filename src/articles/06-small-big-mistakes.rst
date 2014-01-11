@@ -34,19 +34,18 @@ the hell out of it. In this case, Andreas took the worst path for the
 visibility of Nimrod, as new users come and find something which doesn't work
 at first glance. Why should they keep bothering when there's a constant torrent
 of new shiny programming languages out there competing for everybody's
-attention? In more technical terms, it doesn't matter how many write users you
-have on the repo, since updating the website still has a `bus factor
+attention? In more technical terms, it doesn't matter how many users have write
+access to the repository, because updating the website still has a `bus factor
 <http://www.crummy.com/writing/segfault.org/Bus.html>`_ bottleneck.
 
 Some time ago `Babel, the official package manager for Nimrod
 <https://github.com/nimrod-code/babel>`_ was in a state of flux where some
 stuff did not work correctly, or required some prodding. I don't understand
 what is so hard about keeping the repository *master* branch compilable. Maybe
-I'm weird, drink too much alcohol, or both (lol). But it get's better!  Here's
-something to `facepalm <http://knowyourmeme.com/memes/facepalm>`_ if you want
-to use Babel to install `Aporia <https://github.com/nimrod-code/Aporia>`_.
-
-.. code-block::
+I'm weird. But it get's better!  Here's something to `facepalm
+<http://knowyourmeme.com/memes/facepalm>`_ if you want to use Babel to install
+`Aporia <https://github.com/nimrod-code/Aporia>`_, the *official* Nimrod
+editor, linked from the official webpage::
 
     $ babel install aporia
     Downloading aporia into /tmp/babel/aporia using git...
@@ -62,9 +61,11 @@ So the *secret handshake* this time is to run ``babel install aporia#head``.
 Totally obvious. The Aporia repository uses tags, but unfortunately the last
 one didn't have a ``.babel`` file with the package info, so the ``#head``
 suffix fixes that. As if version numbers were *expensive* and you could not
-simply bump the version number and re tag the repository. On the bright side
-Aporia specifies this in the `compiling section of the README
-<https://github.com/nimrod-code/Aporia#compiling>`_.
+simply bump the version number and re tag the repository with the added file.
+On the bright side Aporia specifies this in the `compiling section of the
+README <https://github.com/nimrod-code/Aporia#compiling>`_, but it is a weird
+bright side to be, demanding all your potential users to jump through hoops
+when the fix is quite easy.
 
 But it all makes you wonder: how many people did find Aporia listed in Babel's
 ``list`` command output and tried to install it? Hint: IRC logs show a few. How
@@ -86,12 +87,12 @@ only works if your project has essentially no value to you (or if you think
 100% of human people are good, something which is `easily disputed
 <http://www.penny-arcade.com/comic/2004/03/19/>`_).
 
-Unfortunately I'm preaching to the walls: as surreal as these situations may
-look, in my *professional* life as a software developer I've happened to find
-even worse blunders in commercial software. You know, the one where people's
-heads roll when something goes wrong. So my theory is that most people doing
-open source software simply replicate what they have learned at work. Or worse,
-are too lazy to even do that minimum effort!
+Unfortunately I'm preaching to the walls: in my *professional* life as a
+software developer I've happened to find even worse blunders in commercial
+software. You know, the one where people's heads roll when something goes
+wrong. So my theory is that most people doing open source software simply
+replicate what they have learned at work. Or worse, are too lazy to even do
+that minimum effort!
 
 That's when I ``<inception_bwaaaa>`` *step in to save the world of software*
 ``</inception_bwaaaa>``. Actually, I did read recently some hilarious articles
