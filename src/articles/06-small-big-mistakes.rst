@@ -27,15 +27,15 @@ manually upload files to the website, and starts to look like a bad joke when
 *after* updating the website, some pages are still missing due to human error,
 so another manual interaction is needed.
 
-For somebody capable of creating a programming language the only possible
-answer is lack of attention to releases. When a lazy programmer is confronted
-with a manual task, there are two possible paths: avoid the task or automate
-the hell out of it. In this case, Andreas took the worst path for the
-visibility of Nimrod, as new users come and find something which doesn't work
-at first glance. Why should they keep bothering when there's a constant torrent
-of new shiny programming languages out there competing for everybody's
-attention? In more technical terms, it doesn't matter how many users have write
-access to the repository, because updating the website still has a `bus factor
+For a group of people capable of creating a programming language the only
+possible answer is lack of attention to releases. When lazy programmers are
+confronted with a manual task, there are two possible paths: avoid the task or
+automate the hell out of it. In this case, Nimrod's visibility is hurt, as new
+users come and find something which doesn't work at first glance. Why should
+they keep bothering when there's a constant torrent of new shiny programming
+languages out there competing for everybody's attention? In more technical
+terms, it doesn't matter how many users have write access to the repository if
+updating the website still has a `bus factor
 <http://www.crummy.com/writing/segfault.org/Bus.html>`_ bottleneck.
 
 Some time ago `Babel, the official package manager for Nimrod
@@ -102,9 +102,8 @@ by `James Mickens <https://research.microsoft.com/en-us/people/mickens/>`_
 the `Programming is terrible blog
 <http://programmingisterrible.com/post/72437339273/james-mickens-the-funniest-person-in-microsoft>`_
 which is also a nice read), so I thought to myself, hey, why not try and write
-something absurd while being semi serious about the issue? Also, it seems that
-Andreas only reads stuff if it is in *paper* form, so here goes my paper in
-pedantic PDF form:
+something absurd while being semi serious about the issue? So here goes my
+paper in pedantic PDF form:
 
  * `How to release software periodically
    <how_to_release_software_periodically.pdf>`_.
