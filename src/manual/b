@@ -1,4 +1,6 @@
 #!/bin/sh
 
-rst2pdf -s style.txt -l en_GB how_to_release_software_periodically.rst \
-	&& open how_to_release_software_periodically.pdf
+TARGET="../../articles/2014/01/how_to_release_software_periodically.pdf"
+rst2pdf -s style.txt -l en_GB  --smart-quotes 1 \
+	how_to_release_software_periodically.rst \
+	-o "${TARGET}" && open "${TARGET}"
