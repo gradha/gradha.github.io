@@ -1,0 +1,112 @@
+---
+title: Small big mistakes
+date: 2014-01-11 00:01
+tags: programming,nimrod,bureaucracy
+---
+
+Small big mistakes
+==================
+
+Open software is cool. Everybody can join in and tinker with the code. But
+sometimes the entrance threshold is too high and projects are kept *under the
+radar* for most people. I believe the `Nimrod programming language
+<http://nimrod-lang.org>`_ by `Andreas Rumpf <https://github.com/Araq>`_
+slightly tiptoes into the *could-be-much-better-with-a-little-more-care*. The
+disadvantage of Nimrod is that it is a programming language, and a really full
+fledged one which beats most commonly used ones in terms of flexibility and
+amazing features. Most potential contributors are intimidated by the initial
+complexity of such software (not everybody writes compilers for breakfast).
+
+But even more pitiful is what I consider basic administration mistakes which
+discourage potential users. It is not fun when `users have to report that the
+build instructions fail <https://github.com/Araq/Nimrod/issues/750>`_ (wait a
+second, why are build instructions not part of the `continuous integration farm
+<http://build.nimrod-lang.org/>`_?) and the issue is neglected for weeks or
+months. It is even less funny that this is neglected because Andreas himself
+has to manually upload files to the website, and starts to look like a bad joke
+when *after* updating the website, some pages are still missing, so he goes and
+uploads *again*.
+
+For somebody capable of creating a programming language the only possible
+answer is lack of attention to releases. When a lazy programmer is confronted
+with a manual task, there are two possible paths: avoid the task or automate
+the hell out of it. In this case, Andreas took the worst path for the
+visibility of Nimrod, as new users come and find something which doesn't work
+at first glance. Why should they keep bothering when there's a constant torrent
+of new shiny programming languages out there competing for everybody's
+attention? In more technical terms, it doesn't matter how many write users you
+have on the repo, since updating the website still has a `bus factor
+<http://www.crummy.com/writing/segfault.org/Bus.html>`_ bottleneck.
+
+Some time ago `Babel, the official package manager for Nimrod
+<https://github.com/nimrod-code/babel>`_ was in a state of flux where some
+stuff did not work correctly, or required some prodding. I don't understand
+what is so hard about keeping the repository *master* branch compilable. Maybe
+I'm weird, drink too much alcohol, or both (lol). But it get's better!  Here's
+something to `facepalm <http://knowyourmeme.com/memes/facepalm>`_ if you want
+to use Babel to install `Aporia <https://github.com/nimrod-code/Aporia>`_.
+
+.. code-block::
+
+    $ babel install aporia
+    Downloading aporia into /tmp/babel/aporia using git...
+    Found tags...
+    blah
+    blah
+    more blah
+    and then…
+    FAILURE: Specified directory does not contain a .babel file.
+    $
+
+So the *secret handshake* this time is to run ``babel install aporia#head``.
+Totally obvious. The Aporia repository uses tags, but unfortunately the last
+one didn't have a ``.babel`` file with the package info, so the ``#head``
+suffix fixes that. As if version numbers were *expensive* and you could not
+simply bump the version number and re tag the repository. On the bright side
+Aporia specifies this in the `compiling section of the README
+<https://github.com/nimrod-code/Aporia#compiling>`_.
+
+But it all makes you wonder: how many people did find Aporia listed in Babel's
+``list`` command output and tried to install it? Hint: IRC logs show a few. How
+many didn't bother asking on IRC? We will never know… How many users did tried
+to compile Babel during the time it was *unstable*? Hopefully few. How many
+users did Nimrod lose to outdated github build instructions, since pretty much
+every other Nimrod software in active development requires the git version?
+These are all trivial things to solve really.
+
+Oh, and how much do I hate `people graciously giving commit access to github
+repositories <http://felixge.de/2013/03/11/the-pull-request-hack.html>`_. Let
+me explain: if this works for you it is only because you are a one man shop or
+don't really care about the project and are looking for somebody to replace
+you. Can you imagine a project like `Webkit <http://www.webkit.org>`_ or `the
+Linux kernel <https://www.kernel.org>`_ giving out write access to just about
+everybody? Not going to happen, that software has value, and random changes by
+random people are unlikely to increase value. Sorry, the *pull request hack*
+only works if your project has essentially no value to you (or if you think
+100% of human people are good, something which is `easily disputed
+<http://www.penny-arcade.com/comic/2004/03/19/>`_).
+
+Unfortunately I'm preaching to the walls: as surreal as these situations may
+look, in my *professional* life as a software developer I've happened to find
+even worse blunders in commercial software. You know, the one where people's
+heads roll when something goes wrong. So my theory is that most people doing
+open source software simply replicate what they have learned at work. Or worse,
+are too lazy to even do that minimum effort!
+
+That's when I ``<inception_bwaaaa>`` *step in to save the world of software*
+``</inception_bwaaaa>``. Actually, I did read recently some hilarious articles
+by `James Mickens <https://research.microsoft.com/en-us/people/mickens/>`_
+(scroll to the bottom of that page, or find the extracts and direct links at
+the `Programming is terrible blog
+<http://programmingisterrible.com/post/72437339273/james-mickens-the-funniest-person-in-microsoft>`_
+which is also a nice read), so I thought to myself, hey, why not try and write
+something absurd while being semi serious about the issue? Also, it seems that
+Andreas only reads stuff if it is in *paper* form, so here goes my paper in
+pedantic PDF form:
+
+ * How to release software periodically
+
+```nimrod
+$ nimrod rst2html paper.rst
+paper.rst(5, 1) Error: invalid directive: 'humour'
+```
