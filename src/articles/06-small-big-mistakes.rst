@@ -45,7 +45,7 @@ what is so hard about keeping the repository *master* branch compilable. Maybe
 I'm weird. But it get's better!  Here's something to `facepalm
 <http://knowyourmeme.com/memes/facepalm>`_ if you want to use Babel to install
 `Aporia <https://github.com/nimrod-code/Aporia>`_, the *official* Nimrod
-editor, linked from the official webpage::
+editor, linked from the `Nimrod webpage <http://nimrod-lang.org>`_::
 
     $ babel install aporia
     Downloading aporia into /tmp/babel/aporia using git...
@@ -108,6 +108,8 @@ pedantic PDF form:
 
  * `How to release software periodically
    <how_to_release_software_periodically.pdf>`_.
+
+Hmm… maybe that wasn't such a good idea after all.
 
 ```nimrod
 $ nimrod rst2html paper.rst
