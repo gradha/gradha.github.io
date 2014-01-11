@@ -127,7 +127,7 @@ Missing leadership
 There are many repositories [#sharekitrepo]_ which at some point *stall*
 development because its authors don't accept pull requests and Google still
 points to their fork despite others being more advanced. Sometimes a note like
-"*sorry, went out for coffee, will never be back*" could give ideas to the
+*"sorry, went out for coffee, will never be back"* could give ideas to the
 contributors that the selected fork is a dead end, but people don't want to be
 nice to each other, and therefore we can't have nice things [#medicaidd]_. In a
 few rare cases the community can pick up dead projects and fork
@@ -249,7 +249,7 @@ unstable. If you can't be arsed to finish the tasks required for the stable
 release, at least don't get in the way of others implementing then.
 
 This goes well also with periodical public releases. The old Vulcan [#vulcan]_
-saying "*Release early, release often*" is usually ignored in its second part,
+saying *"Release early, release often"* is usually ignored in its second part,
 because most people try to avoid planning. Every three months in your
 development, decide what features are enough to make a stable release and keep
 *develop* only for them. Wow, we just rediscovered Debian's stable, testing
@@ -341,6 +341,61 @@ is *whenever it is ready* or long overdue, how are contributors meant to help
 with that?
 
 
+Traceability
+++++++++++++
+
+Every time you look at the ``CHANGES`` file of a project and it says *"And many
+bugfixes"*, the author(s) of that package are sending to you a big **FUCK YOU**
+with big bold colorful letters and a smirk on their faces. Why should you know
+if a potential security issue was fixed? Everybody has different levels for
+what *important* means, and hiding a group of changes under the *many bugfixes*
+label prevents your users to clearly address the advantages and disadvantages
+of investing their own time to migrate to the new release.
+
+Related to locked feature lists, if you are already doing the work of
+accounting which tasks go where for releases, you might as well remove them
+from the ``TODO`` list and put them in the ``CHANGES`` file. Basically, every
+branch merged with *develop* should modify those *meta* files too. And nowadays
+it is very common go use the syntax ``Refs #xx`` or ``Fixes #xx`` [#refs]_ in
+commits. Which increases the traceability, because you can now hyper link
+changes done to your project, and if your users are curious, they can find out
+[#changes]_ what exactly changed in the source code. Of course, if the project
+is big, post a pterodactyl view of the changes on your website and make the
+text *And many bugfixes* a hyper link to the detailed log with further hyper
+links.
+
+Just like version numbers, hyper links are cheap, you know…
+
+
+Limit the lifetime of public issues
+-----------------------------------
+
+Having unresolved issues for longer than a year sends a foul smell to users,
+and services like GitHub provide search options [#ghosts]_ to detect them. Some
+issues may have good reason to be kept open, as maybe they are future feature
+requests. First, the developers should address if the feature is accepted or
+not. If it is accepted, the project's *TODO* or *roadmap* list can be updated
+to describe the feature, and the issue can be closed indicating that it has
+been moved to the *TODO* or *roadmap* of the project.
+
+If the old issue happens to be a bug which can't be fixed, the list of *known
+bugs* for the project can be updated to include a description of the problem.
+The issue can also be scheduled for a future version in the *TODO* or *roadmap*
+files. With little documentation the project officially acknowledges the bug,
+and gives back feedback as to when it may be fixed. Much better than leaving
+the issue open to gather dust.
+
+
+LIMITATIONS
+===========
+
+The usage of git-flow may not be perfect [#hubflow]_ for a specific project.
+And that's perfectly fine. The conventions used by git-flow improve immediately
+the quality of many projects; where they don't fit, you simply change the
+rules. A fork of git-flow could be used, or manually just about any other
+policy.
+
+
 CONCLUSION
 ==========
 
@@ -364,10 +419,6 @@ Thanks to BitPuffin for creating a Nimrod User Group for Varriount.
 Thanks to GitHub for hosting this paper and allowing deranged subjects to
 express their ideas formally.
 
-
-.. raw:: pdf
-
-    PageBreak oneColumn
 
 REFERENCES
 ==========
@@ -453,6 +504,18 @@ REFERENCES
     <http://www.debian.org/doc/manuals/debian-faq/ch-ftparchives>`_.
 
 .. [#debian2] `Debian at Wikipedia <https://en.wikipedia.org/wiki/Debian>`_.
+
+.. [#refs] `Closing issues via commit messages
+    <https://help.github.com/articles/closing-issues-via-commit-messages>`_.
+
+.. [#changes] `Nimrod genie os module changes log
+    <https://github.com/gradha/genieos/blob/master/docs/CHANGES.rst>`_.
+
+.. [#ghosts] `The Ghost of Issues Past
+    <https://github.com/blog/1721-the-ghost-of-issues-past>`_.
+
+.. [#hubflow] `GitHub Flow, Issues with git-flow
+    <http://scottchacon.com/2011/08/31/github-flow.html>`_.
 
 .. [#kang] Kang YeBin
     `1 <http://gonlamperouge.tumblr.com/post/72596775395/kang-yebin-everything-else>`_,

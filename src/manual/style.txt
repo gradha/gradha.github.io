@@ -567,7 +567,7 @@
             [TOPPADDING, [ 0, 0 ], [ -1, -1 ], 0 ]
             [BOTTOMPADDING, [ 0, 0 ], [ -1, -1 ], 0 ]
             [RIGHTPADDING, [ 0, 0 ], [ 1, -1 ], 0 ]
-        colWidths: [3cm, null]
+        colWidths: [1.5cm, null]
 
     field-list:
         parent: bodytext
