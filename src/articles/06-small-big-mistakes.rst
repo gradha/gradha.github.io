@@ -65,7 +65,7 @@ simply bump the version number and re tag the repository with the added file.
 On the bright side Aporia specifies this in the `compiling section of the
 README <https://github.com/nimrod-code/Aporia#compiling>`_, but it is a weird
 bright side to be, demanding all your potential users to jump through hoops
-when the fix is quite easy.
+when you can easily avoid that collective pain.
 
 But it all makes you wonder: how many people did find Aporia listed in Babel's
 ``list`` command output and tried to install it? Hint: IRC logs show a few. How
@@ -83,16 +83,17 @@ you. Can you imagine a project like `Webkit <http://www.webkit.org>`_ or `the
 Linux kernel <https://www.kernel.org>`_ giving out write access to just about
 everybody? Not going to happen, that software has value, and random changes by
 random people are unlikely to increase value. Sorry, the *pull request hack*
-only works if your project has essentially no value to you (or if you think
-100% of human people are good, something which is `easily disputed
-<http://www.penny-arcade.com/comic/2004/03/19/>`_).
+only works if your project has essentially no value to you, or if you think
+100% of humans are good, something which is `easily disputed
+<http://www.penny-arcade.com/comic/2004/03/19/>`_. It's the reason we have
+`captchas <https://en.wikipedia.org/wiki/Captcha>`_ to give our opinion on many
+websites.
 
 Unfortunately I'm preaching to the walls: in my *professional* life as a
-software developer I've happened to find even worse blunders in commercial
-software. You know, the one where people's heads roll when something goes
-wrong. So my theory is that most people doing open source software simply
-replicate what they have learned at work. Or worse, are too lazy to even do
-that minimum effort!
+software developer I've seen even worse blunders in commercial software. You
+know, the one where people's heads roll when something goes wrong. So my theory
+is that most people doing open source software simply replicate what they have
+learned at work. Or worse, are too lazy to even do that minimum effort!
 
 That's when I ``<inception_bwaaaa>`` *step in to save the world of software*
 ``</inception_bwaaaa>``. Actually, I did read recently some hilarious articles
