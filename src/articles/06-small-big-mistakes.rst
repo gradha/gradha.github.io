@@ -106,7 +106,8 @@ something absurd while being semi serious about the issue? Also, it seems that
 Andreas only reads stuff if it is in *paper* form, so here goes my paper in
 pedantic PDF form:
 
- * How to release software periodically
+ * `How to release software periodically
+   <how_to_release_software_periodically.pdf>`_.
 
 ```nimrod
 $ nimrod rst2html paper.rst
