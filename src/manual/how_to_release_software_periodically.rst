@@ -394,7 +394,7 @@ REFERENCES
 
 .. [#git] `git --distributed-is-the-new-centralized <http://git-scm.com>`_.
 
-.. [#hell] `Infero, by Dante Alighieri at Wikipedia
+.. [#hell] `Inferno, by Dante Alighieri at Wikipedia
     <https://en.wikipedia.org/wiki/Circles_of_hell>`_.
 
 .. [#progit] `Pro Git, by Scott Chacon <http://git-scm.com/book>`_.
