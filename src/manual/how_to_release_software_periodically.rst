@@ -44,15 +44,15 @@ bike
 dvcs
 github
 kpop
-metal
 nsfw
 pdf
 politics
 rant
 rst
 shedding
-snsd
+software
 swearing
+wiki
 
 INTRODUCTION
 ============
