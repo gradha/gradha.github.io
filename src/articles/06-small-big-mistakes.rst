@@ -1,6 +1,6 @@
 ---
 title: Small big mistakes
-date: 2014-01-11 00:01
+date: 2014-01-14 09:02
 tags: programming,nimrod,bureaucracy
 ---
 
@@ -28,14 +28,18 @@ manually upload files to the website, and starts to look like a bad joke when
 so another manual interaction is needed.
 
 For a group of people capable of creating a programming language the only
-possible answer is lack of attention to releases. When lazy programmers are
-confronted with a manual task, there are two possible paths: avoid the task or
-automate the hell out of it. In this case, Nimrod's visibility is hurt, as new
-users come and find something which doesn't work at first glance. Why should
-they keep bothering when there's a constant torrent of new shiny programming
-languages out there competing for everybody's attention? In more technical
-terms, it doesn't matter how many users have write access to the repository if
-updating the website still has a `bus factor
+possible answer is lack of attention to releases. When `programmers who don't
+like repeating themselves
+<https://en.wikipedia.org/wiki/Don%27t_Repeat_Yourself>`_ (sometimes called
+`lazy <http://weblogs.asp.net/erobillard/pages/3801.aspx>`_ but `in a positive
+way <http://blogoscoped.com/archive/2005-08-24-n14.html>`_) are confronted with
+a manual task, there are two possible paths: avoid the task or automate the
+hell out of it. In this case, Nimrod's visibility is hurt, as new users come
+and find something which doesn't work at first glance. Why should they keep
+bothering when there's a constant torrent of new shiny programming languages
+out there competing for everybody's attention? In more technical terms, it
+doesn't matter how many users have write access to the repository if updating
+the website still has a `bus factor
 <http://www.crummy.com/writing/segfault.org/Bus.html>`_ bottleneck.
 
 Some time ago `Babel, the official package manager for Nimrod
