@@ -1,0 +1,109 @@
+<html>
+	<head>
+		<title>The tyranny of git-flow defaults - Rants from the Ballmer Peak</title>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="../../../css/normalize.css">
+		<link rel="stylesheet" href="../../../css/style.css">
+		<link href="../../../feed.xml" title="Articles" type="application/atom+xml" rel="alternate">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	</head>
+	<body>
+		<h3><a href="../../../index.html">Rants from the Ballmer Peak</a></h3>
+		<h1>The tyranny of git-flow defaults</h1><p>I'm a proponent of developing software in branches, and more particularly, having a <a href="https://www.atlassian.com/git/workflows#!workflow-gitflow">stable or production branch which tracks public software releases</a> for the purpose of performing hotfixes whenever necessary without interrupting the normal development cycle. One nice tool which helps enforce this style of development from the command line is <a href="https://github.com/nvie/gitflow">git-flow</a>. It's just a bunch of scripts which avoids typing repetitive commands. If you prefer using a GUI, the <a href="http://www.atlassian.com">nice folks from Atlassian</a>, creators of <a href="https://www.atlassian.com/software/bitbucket/overview">Bitbucket</a>, also have released <a href="http://www.sourcetreeapp.com">SourceTree</a>, a <a href="http://git-scm.com">git</a> and <a href="http://mercurial.selenic.com">Mercurial</a> client with <a href="http://blog.sourcetreeapp.com/2012/08/01/smart-branching-with-sourcetree-and-git-flow/">smart branching support for git-flow</a>.</p>
+<p>But the defaults for git-flow and any git host like <a href="https://github.com">GitHub</a> clash. By default git, and any git hosting, is going to create empty repositories with a default branch named <code>master</code>. When you initialize git-flow on such a repository, it will ask a set of questions and suggest defaults:<pre class='literal'>
+$ git-flow init
+No branches exist yet. Base branches must be created now.
+Branch name for production releases: [master]
+Branch name for &quot;next release&quot; development: [develop]
+
+How to name your supporting branch prefixes?
+Feature branches? [feature/]
+Release branches? [release/]
+Hotfix branches? [hotfix/]
+Support branches? [support/]
+Version tag prefix? []</pre></p>
+<p>This is bad. Everybody by default will make changes on the <code>master</code> branch, but that's not what you want! You actually want other people to make changes based off the <code>develop</code> branch. This is what I call the tyranny of the default, which I first heard from <a href="https://www.grc.com/securitynow.htm">Steve Gibson on the Security Now podcast</a>. The idea behind this tyranny is simple: most people don't touch the settings of their software.</p>
+<p>And therefore, if you are a git-flow user, you are likely using the wrong default for collaboration. It is the wrong default because anybody forking your project and sending pull requests will do so against the <code>master</code> branch. Fortunately, <a href="https://help.github.com/articles/setting-the-default-branch">GitHub allows one to change the default branch</a> of any repository. You can do this at any time: from that moment on, any user cloning the repository will get the new default branch, and</p>
+<h1>Should master die in a fire?</h1><p>The question is, should you keep using <code>master</code> for the stable even after changing GitHub default branch? Many users are unaware of sophisticated branch development, so they may anyway try to look at the <code>master</code> branch ignoring project documentation (which is likely to be missing anyway…). Also, since <code>master</code> is a default, it is likely there is software out there which has <span style="font-style: italic;">hardcoded</span> values which may fail.  Discovering these and communicating them to the developers is a nice touch.</p>
+<p>For these reasons it is best if you avoid having a <code>master</code> branch <span style="font-weight: bold;">at all</span>.  What would you call it? <code>releases</code> is too close to the <code>release</code> branches temporarily created by git-flow. <code>official</code> sounds weird. Maybe <code>stable</code>, which indicates to people that the branch is <span style="font-style: italic;">safe</span> and won't crash and burn.</p>
+<p>The rest of this post is a guide to perform the necessary changes to follow this convention of having a <code>stable</code> branch and a <code>develop</code> branch which is the default receiver of pull requests. Unfortunately git doesn't track branch renames, so if you already have a repository and plan to go on a renaming spree, you will hear a lot of complaints. On the other hand, git tells you if you try to pull from a branch which has disappeared, so at least people will notice, unlike a lot of RSS feeds which don't age well…</p>
+<h1>Cases for repository owners</h1><h2>Starting from scratch</h2><p>The ideal situation, create your project locally, then upload to GitHub. It's the ideal case because nobody will <span style="font-style: italic;">suffer</span> the change:<pre class='literal'>
+$ mkdir secretharem
+$ cd secretharem
+$ git init
+$ git-flow init
+[answer with 'stable' instead of the default 'mater']</pre></p>
+<p>The <code>git-flow init</code> command will create each branch with an initial commit. Now you can go to GitHub and create an empty repository, then we upload the branches (note we specify both <code>stable</code> and <code>develop</code>):<pre class='literal'>
+$ git remote add origin git@github.com:user/secretharem.git
+$ git push -u origin stable develop</pre></p>
+<p>Interestingly at this point GitHub will have picked <code>develop</code> as the default branch for the project, likely due to ASCII sorting. But it won't hurt if you go to <code>https://github.com/user/secretharem/settings</code> and verify that the default branch is set to <code>develop</code>.</p>
+<p>This is the ideal setup because your repository starts with the <span style="font-style: italic;">correct</span> configuration, and any future forks on GitHub will use that information for pull requests against the <code>develop</code> branch.</p>
+<h2>Moving an existing repo to git-flow</h2><p>Usually you will have a repository with the <code>master</code> branch and no more. Before initializing git-flow you should rename the master branch:<pre class='literal'>
+$ git clone git@github.com:user/worldneedsmorexml.git
+$ cd worldneedsmorexml
+$ git checkout -b develop
+$ git checkout -b stable
+$ git-flow init
+[answer with 'stable' first, 'develop' later]
+$ git push --set-upstream origin develop stable</pre></p>
+<p>From the lonely <code>master</code> branch we create first the aliases <code>develop</code> and <code>stable</code> because otherwise git-flow complaints that they don't exist. After the branches have been pushed to GitHub, go to <code>https://github.com/user/worldneedsmorexml/settings</code> and change the default branch from <code>master</code> to <code>develop</code>. If you don't this, trying to delete the master branch will fail because <span style="font-weight: bold;">you can't remove from GitHub the default branch</span>. After that, deletion is easy:<pre class='literal'>
+$ git branch -d master
+$ git push origin :master</pre></p>
+<p>The syntax for removing branches is that, pushing the branch with a colon before its name.</p>
+<h2>Renaming a git-flow master branch to stable</h2><p>If you have a repository using git-flow and want to rename <code>master</code> to <code>stable</code>, first go to GitHub's settings and change the default branch to <code>develop</code> which you will likely have not done yet. Then:<pre class='literal'>
+$ cd ilovekpop
+$ git checkout develop
+$ git branch -m master stable
+$ git push --set-upstream origin stable
+$ git push origin :master
+[now edit .git/config with your text editor]</pre></p>
+<p>Since git-flow is already initialized locally, it will be tracking the old <code>master</code> branch. Open <code>.git/config</code> and rename that to <code>stable</code>. After that everything should keep working as usual.</p>
+<h1>Cases for people with a cloned repository</h1><h2>Starting from scratch</h2><p>Not hard, you do a <code>git clone</code> and the default GitHub branch (<code>develop</code>) gets checked out.</p>
+<h2>Existing clone after branch rename</h2><p>Users with existing checkouts will get the following message when they try to pull from the deleted branch:<pre class='literal'>
+Your configuration specifies to merge with the ref 'master'
+from the remote, but no such ref was fetched.</pre></p>
+<p>This means that the branch has disappeared. And hopefully the user noticed during the previous <code>git pull</code> that new branches were created. The user can then check out one of the new branches and delete master:<pre class='literal'>
+$ git checkout develop|stable
+$ git branch -d master</pre></p>
+<h1>Cases for users with forks</h1><p>Well, this is interesting. If I recall correctly, in the good old days of GitHub each forked repository had a button on the website which allowed you to <span style="font-style: italic;">merge upstream changes</span> clicking on it. This seems to have been gone and replaced with <a href="https://help.github.com/articles/syncing-a-fork">instructions to perform those changes manually from the command line</a> (so much for GUIs, eh?). And likely for good reason: it rarely worked, and for popular repositories with many forks it surely taxed their servers, because it would look for changes not only in the <span style="font-style: italic;">upstream</span> repository but also other forks (remember, git is a distributed version control system, so there's no <span style="font-style: italic;">real</span> upstream or server). In fact, I remember having to refresh that page several times due to the amount of time it took to calculate <span style="font-style: italic;">changes</span> to merge.</p>
+<p>Well, presuming you have configured an <a href="https://help.github.com/articles/syncing-a-fork">upstream source like their instructions suggest</a>, you can update your <code>master</code> branch to follow either of the new ones with simple local commands, then delete your <code>master</code>:<pre class='literal'>
+$ git checkout -b develop
+$ git merge upstream/develop
+$ git push --set-upstream origin develop
+$ git branch -d master
+$ git push origin :master
+remote: error: refusing to delete the current branch: refs/heads/master
+To git@github.com:forkuser/healthyspam.git
+ ! [remote rejected] master (deletion of the current branch prohibited)
+ error: failed to push some refs to 'git@github.com:forkuser/healthyspam.git'
+$</pre></p>
+<p>Ah, indeed. Remember, <span style="font-weight: bold;">you can't remove GitHub's default branch</span>. You first need to go to your own fork on GitHub, change the repository settings to the recently pushed <code>develop</code> branch, and then you can remove your old <code>master</code>. Replace the commands with <code>stable</code> if you would prefer to track that instead.</p>
+<p>One strange feature of git is that after a remote branch has been deleted, you will likely still see it if you try to list it:<pre class='literal'>
+$ git fetch upstream
+remote: Counting objects: 8, done.
+remote: Total 6 (delta 1), reused 6 (delta 1)
+Unpacking objects: 100% (6/6), done.
+From github.com:remoteuser/healthyspam
+ * [new branch]      develop    -&gt; upstream/develop
+ * [new branch]      stable     -&gt; upstream/stable
+$ git branch -va
+* master                   a8e1d54 Initial commit
+  remotes/origin/HEAD      -&gt; origin/master
+  remotes/origin/master    a8e1d54 Initial commit
+  remotes/upstream/develop 280e777 Develop
+  remotes/upstream/master  a8e1d54 Initial commit
+  remotes/upstream/stable  8cdc31d Stable</pre></p>
+<p>You only need to <a href="http://stackoverflow.com/a/1072178/172690">run a command to prune the local cache</a>:<pre class='literal'>
+$ git remote prune upstream
+Pruning upstream
+URL: git@github.com:remoteuser/healthyspam.git
+ * [pruned] upstream/master</pre></p>
+<p>Now you are clean and properly updated with the upstream branches.</p>
+<h1>But users get now the develop branch by default!</h1><p>Indeed, if you have changed GitHub's default branch to <code>develop</code> and a user clones a repository, by default he gets that single development branch. And that's what you want, really. Git is not a software distribution platform (cue complaints from people downloading huge repository histories), it's for developers.  If you are in the situation of having multiple branches, one of them for releases, that's because you are <span style="font-style: italic;">doing</span> public releases. Your users willing to get a stable version will get those, or will follow your documentation (or their intuition) to check out the <code>stable</code> branch. </p>
+
+		<hr>
+		<p>Last update: 17/01/2014 23:39.<br>
+		Copyright 2014 by <a href="https://github.com/gradha">Grzegorz Adam Hankiewicz</a>.<br>
+		Generated with <a href="https://github.com/dom96/ipsumgenera">ipsum genera</a>. Look at <a href="https://github.com/gradha/gradha.github.io/tree/master/src">the source code</a>.</p>
+	</body>
+</html>
