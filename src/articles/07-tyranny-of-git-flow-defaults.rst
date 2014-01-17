@@ -1,6 +1,6 @@
 ---
 title: The tyranny of git-flow defaults
-date: 2014-01-14 21:18
+date: 2014-01-18 00:39
 tags: programming,bureaucracy,git
 ---
 
@@ -40,10 +40,10 @@ suggest defaults::
     Support branches? [support/]
     Version tag prefix? []
 
-This is bad. Everybody tool by default will make changes on the ``master``
-branch, but that's not what you want! You actually want other people to make
-changes based off the ``develop`` branch. This is what I call the tyranny of
-the default, which I first heard from `Steve Gibson on the Security Now podcast
+This is bad. Everybody by default will make changes on the ``master`` branch,
+but that's not what you want! You actually want other people to make changes
+based off the ``develop`` branch. This is what I call the tyranny of the
+default, which I first heard from `Steve Gibson on the Security Now podcast
 <https://www.grc.com/securitynow.htm>`_. The idea behind this tyranny is
 simple: most people don't touch the settings of their software.
 
@@ -74,9 +74,9 @@ and burn.
 
 The rest of this post is a guide to perform the necessary changes to follow
 this convention of having a ``stable`` branch and a ``develop`` branch which is
-the default receiver of pull requests. Unfortunately git doesn't trach
-branches, so if you already have a repository and plan to go on a renaming
-spree, you will hear a lot of complaints. On the other hand, git fails hard if
+the default receiver of pull requests. Unfortunately git doesn't track branch
+renames, so if you already have a repository and plan to go on a renaming
+spree, you will hear a lot of complaints. On the other hand, git tells you if
 you try to pull from a branch which has disappeared, so at least people will
 notice, unlike a lot of RSS feeds which don't age well…
 
@@ -86,7 +86,7 @@ Cases for repository owners
 Starting from scratch
 ---------------------
 
-The ideal situation, create your project locally, then upload to github. It's
+The ideal situation, create your project locally, then upload to GitHub. It's
 the ideal case because nobody will *suffer* the change::
 
     $ mkdir secretharem
@@ -130,10 +130,9 @@ From the lonely ``master`` branch we create first the aliases ``develop`` and
 the branches have been pushed to GitHub, go to
 ``https://github.com/user/worldneedsmorexml/settings`` and change the default
 branch from ``master`` to ``develop``. If you don't this, trying to delete the
-master branch will fail because you can't remove from GitHub the default
-branch. After that, deletion is easy::
+master branch will fail because **you can't remove from GitHub the default
+branch**. After that, deletion is easy::
 
-::
     $ git branch -d master
     $ git push origin :master
 
@@ -260,8 +259,3 @@ developers.  If you are in the situation of having multiple branches, one of
 them for releases, that's because you are *doing* public releases. Your users
 willing to get a stable version will get those, or will follow your
 documentation (or their intuition) to check out the ``stable`` branch.
-
-```
-$ git checkout develop
-error: pathspec 'develop' did not match any file(s) known to git.
-```
