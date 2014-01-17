@@ -158,16 +158,42 @@ Since git-flow is already initialized locally, it will be tracking the old
 ``master`` branch. Open ``.git/config`` and rename that to ``stable``. After
 that everything should keep working as usual.
 
+Cases for people with a cloned repository
+=========================================
+
+Starting from scratch
+---------------------
+
+Not hard, you do a ``git clone`` and the default GitHub branch (``develop``)
+gets checked out.
+
+Existing clone after branch rename
+----------------------------------
+
+Users with existing checkouts will get the following message when they try to
+pull from the deleted branch::
+
+    Your configuration specifies to merge with the ref 'master'
+    from the remote, but no such ref was fetched.
+
+This means that the branch has disappeared. And hopefully the user noticed
+during the previous ``git pull`` that new branches were created. The user can
+then check out one of the new branches and delete master::
+
+    $ git checkout develop|stable
+    $ git branch -d master
+
 
 But users get now the develop branch by default!
 ================================================
 
 Indeed, if you have changed GitHub's default branch to ``develop`` and a user
 clones a repository, by default he gets that single development branch. And
-that's what you want, really. Git is not a software distribution platform, it's
-for developers.  If you are in the situation of having multiple branches, one
-of them for releases, that's because you are *doing* public releases. Your
-users willing to get a stable version will get those, or will follow your
+that's what you want, really. Git is not a software distribution platform (cue
+complaints from people downloading huge repository histories), it's for
+developers.  If you are in the situation of having multiple branches, one of
+them for releases, that's because you are *doing* public releases. Your users
+willing to get a stable version will get those, or will follow your
 documentation (or their intuition) to check out the ``stable`` branch.
 
 ```
