@@ -183,6 +183,71 @@ then check out one of the new branches and delete master::
     $ git checkout develop|stable
     $ git branch -d master
 
+Cases for users with forks
+==========================
+
+Well, this is interesting. If I recall correctly, in the good old days of
+GitHub each forked repository had a button on the website which allowed you to
+*merge upstream changes* clicking on it. This seems to have been gone and
+replaced with `instructions to perform those changes manually from the command
+line <https://help.github.com/articles/syncing-a-fork>`_ (so much for GUIs,
+eh?). And likely for good reason: it rarely worked, and for popular
+repositories with many forks it surely taxed their servers, because it would
+look for changes not only in the *upstream* repository but also other forks
+(remember, git is a distributed version control system, so there's no *real*
+upstream or server). In fact, I remember having to refresh that page several
+times due to the amount of time it took to calculate *changes* to merge.
+
+Well, presuming you have configured an `upstream source like their instructions
+suggest <https://help.github.com/articles/syncing-a-fork>`_, you can update
+your ``master`` branch to follow either of the new ones with simple local
+commands, then delete your ``master``::
+
+    $ git checkout -b develop
+    $ git merge upstream/develop
+    $ git push --set-upstream origin develop
+    $ git branch -d master
+    $ git push origin :master
+    remote: error: refusing to delete the current branch: refs/heads/master
+    To git@github.com:forkuser/healthyspam.git
+     ! [remote rejected] master (deletion of the current branch prohibited)
+     error: failed to push some refs to 'git@github.com:forkuser/healthyspam.git'
+    $
+
+Ah, indeed. Remember, **you can't remove GitHub's default branch**. You first
+need to go to your own fork on GitHub, change the repository settings to the
+recently pushed ``develop`` branch, and then you can remove your old
+``master``. Replace the commands with ``stable`` if you would prefer to track
+that instead.
+
+One strange feature of git is that after a remote branch has been deleted, you
+will likely still see it if you try to list it::
+
+    $ git fetch upstream
+    remote: Counting objects: 8, done.
+    remote: Total 6 (delta 1), reused 6 (delta 1)
+    Unpacking objects: 100% (6/6), done.
+    From github.com:remoteuser/healthyspam
+     * [new branch]      develop    -> upstream/develop
+     * [new branch]      stable     -> upstream/stable
+    $ git branch -va
+    * master                   a8e1d54 Initial commit
+      remotes/origin/HEAD      -> origin/master
+      remotes/origin/master    a8e1d54 Initial commit
+      remotes/upstream/develop 280e777 Develop
+      remotes/upstream/master  a8e1d54 Initial commit
+      remotes/upstream/stable  8cdc31d Stable
+
+You only need to `run a command to prune the local cache
+<http://stackoverflow.com/a/1072178/172690>`_::
+
+    $ git remote prune upstream
+    Pruning upstream
+    URL: git@github.com:remoteuser/healthyspam.git
+     * [pruned] upstream/master
+
+Now you are clean and properly updated with the upstream branches.
+
 
 But users get now the develop branch by default!
 ================================================
