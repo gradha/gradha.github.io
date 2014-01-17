@@ -1,16 +1,16 @@
 ---
-title: Tyranny of the default
+title: The tyranny of git-flow defaults
 date: 2014-01-14 21:18
 tags: programming,bureaucracy,git
 ---
 
-Tyranny of the default
-======================
+The tyranny of git-flow defaults
+================================
 
 I'm a proponent of developing software in branches, and more particularly,
 having a `stable or production branch which tracks public software releases
 <https://www.atlassian.com/git/workflows#!workflow-gitflow>`_ for the purpose
-of issuing hotfixes whenever necessary without interrupting the normal
+of performing hotfixes whenever necessary without interrupting the normal
 development cycle. One nice tool which helps enforce this style of development
 from the command line is `git-flow <https://github.com/nvie/gitflow>`_. It's
 just a bunch of scripts which avoids typing repetitive commands. If you prefer
@@ -30,15 +30,15 @@ defaults::
 
     $ git-flow init
     No branches exist yet. Base branches must be created now.
-    Branch name for production releases: [master] 
-    Branch name for "next release" development: [develop] 
+    Branch name for production releases: [master]
+    Branch name for "next release" development: [develop]
 
     How to name your supporting branch prefixes?
-    Feature branches? [feature/] 
-    Release branches? [release/] 
-    Hotfix branches? [hotfix/] 
-    Support branches? [support/] 
-    Version tag prefix? [] 
+    Feature branches? [feature/]
+    Release branches? [release/]
+    Hotfix branches? [hotfix/]
+    Support branches? [support/]
+    Version tag prefix? []
 
 This is bad. Everybody tool by default will make changes on the ``master``
 branch, but that's not what you want! You actually want other people to make
@@ -48,12 +48,12 @@ the default, which I first heard from `Steve Gibson on the Security Now podcast
 simple: most people don't touch the settings of their software.
 
 And therefore, if you are a git-flow user, you are likely using the wrong
-default. It is the wrong default because anybody forking your project and
-sending pull requests will do so against the ``master`` branch. Fortunately,
-`GitHub allows one to change the default branch
+default for collaboration. It is the wrong default because anybody forking
+your project and sending pull requests will do so against the ``master``
+branch. Fortunately, `GitHub allows one to change the default branch
 <https://help.github.com/articles/setting-the-default-branch>`_ of any
 repository. You can do this at any time: from that moment on, any user cloning
-the repository will get the new default branch, and 
+the repository will get the new default branch, and
 
 Should master die in a fire?
 ============================
@@ -71,6 +71,24 @@ all**.  What would you call it? ``releases`` is too close to the ``release``
 branches temporarily created by git-flow. ``official`` sounds weird. Maybe
 ``stable``, which indicates to people that the branch is *safe* and won't crash
 and burn.
+
+The rest of this post is a guide to perform the necessary changes to follow
+this convention of having a ``stable`` branch and a ``develop`` branch which is
+the default receiver of pull requests. Unfortunately git doesn't trach
+branches, so if you already have a repo and plan to go on a renaming spree, you
+will hear a lot of complaints. On the other hand, git fails hard if you try to
+pull from a branch which has disappeared, so at least people will notice,
+unlike a lot of RSS feeds which don't age well…
+
+Cases
+=====
+
+Starting from scratch
+---------------------
+
+The ideal situation, create your project locally, then upload to github. It's the ideal case because nobody will *suffer* the change.
+
+
 
 ```
 $ git checkout develop
