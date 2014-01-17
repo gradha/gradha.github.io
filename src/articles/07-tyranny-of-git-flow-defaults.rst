@@ -25,8 +25,8 @@ support for git-flow
 But the defaults for git-flow and any git host like `GitHub
 <https://github.com>`_ clash. By default git, and any git hosting, is going to
 create empty repositories with a default branch named ``master``. When you
-initialize git-flow on such a repo, it will ask a set of questions and suggest
-defaults::
+initialize git-flow on such a repository, it will ask a set of questions and
+suggest defaults::
 
     $ git-flow init
     No branches exist yet. Base branches must be created now.
@@ -75,20 +75,100 @@ and burn.
 The rest of this post is a guide to perform the necessary changes to follow
 this convention of having a ``stable`` branch and a ``develop`` branch which is
 the default receiver of pull requests. Unfortunately git doesn't trach
-branches, so if you already have a repo and plan to go on a renaming spree, you
-will hear a lot of complaints. On the other hand, git fails hard if you try to
-pull from a branch which has disappeared, so at least people will notice,
-unlike a lot of RSS feeds which don't age well…
+branches, so if you already have a repository and plan to go on a renaming
+spree, you will hear a lot of complaints. On the other hand, git fails hard if
+you try to pull from a branch which has disappeared, so at least people will
+notice, unlike a lot of RSS feeds which don't age well…
 
-Cases
-=====
+Cases for repository owners
+===========================
 
 Starting from scratch
 ---------------------
 
-The ideal situation, create your project locally, then upload to github. It's the ideal case because nobody will *suffer* the change.
+The ideal situation, create your project locally, then upload to github. It's
+the ideal case because nobody will *suffer* the change::
+
+    $ mkdir secretharem
+    $ cd secretharem
+    $ git init
+    $ git-flow init
+    [answer with 'stable' instead of the default 'mater']
+
+The ``git-flow init`` command will create each branch with an initial commit.
+Now you can go to GitHub and create an empty repository, then we upload the
+branches (note we specify both ``stable`` and ``develop``)::
+
+    $ git remote add origin git@github.com:user/secretharem.git
+    $ git push -u origin stable develop
+
+Interestingly at this point GitHub will have picked ``develop`` as the default
+branch for the project, likely due to ASCII sorting. But it won't hurt if you
+go to ``https://github.com/user/secretharem/settings`` and verify that the
+default branch is set to ``develop``.
+
+This is the ideal setup because your repository starts with the *correct*
+configuration, and any future forks on GitHub will use that information for
+pull requests against the ``develop`` branch.
+
+Moving an existing repo to git-flow
+-----------------------------------
+
+Usually you will have a repository with the ``master`` branch and no more.
+Before initializing git-flow you should rename the master branch::
+
+    $ git clone git@github.com:user/worldneedsmorexml.git
+    $ cd worldneedsmorexml
+    $ git checkout -b develop
+    $ git checkout -b stable
+    $ git-flow init
+    [answer with 'stable' first, 'develop' later]
+    $ git push --set-upstream origin develop stable
+
+From the lonely ``master`` branch we create first the aliases ``develop`` and
+``stable`` because otherwise git-flow complaints that they don't exist. After
+the branches have been pushed to GitHub, go to
+``https://github.com/user/worldneedsmorexml/settings`` and change the default
+branch from ``master`` to ``develop``. If you don't this, trying to delete the
+master branch will fail because you can't remove from GitHub the default
+branch. After that, deletion is easy::
+
+::
+    $ git branch -d master
+    $ git push origin :master
+
+The syntax for removing branches is that, pushing the branch with a colon
+before its name.
+
+Renaming a git-flow master branch to stable
+-------------------------------------------
+
+If you have a repository using git-flow and want to rename ``master`` to
+``stable``, first go to GitHub's settings and change the default branch to
+``develop`` which you will likely have not done yet. Then::
+
+    $ cd ilovekpop
+    $ git checkout develop
+    $ git branch -m master stable
+    $ git push --set-upstream origin stable
+    $ git push origin :master
+    [now edit .git/config with your text editor]
+
+Since git-flow is already initialized locally, it will be tracking the old
+``master`` branch. Open ``.git/config`` and rename that to ``stable``. After
+that everything should keep working as usual.
 
 
+But users get now the develop branch by default!
+================================================
+
+Indeed, if you have changed GitHub's default branch to ``develop`` and a user
+clones a repository, by default he gets that single development branch. And
+that's what you want, really. Git is not a software distribution platform, it's
+for developers.  If you are in the situation of having multiple branches, one
+of them for releases, that's because you are *doing* public releases. Your
+users willing to get a stable version will get those, or will follow your
+documentation (or their intuition) to check out the ``stable`` branch.
 
 ```
 $ git checkout develop
