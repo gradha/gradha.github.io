@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<title>Master can't die - Rants from the Ballmer Peak</title>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="../../../css/normalize.css">
+		<link rel="stylesheet" href="../../../css/style.css">
+		<link href="../../../feed.xml" title="Articles" type="application/atom+xml" rel="alternate">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	</head>
+	<body>
+		<h3><a href="../../../index.html">Rants from the Ballmer Peak</a></h3>
+		<h1>Master can't die</h1><p>In a <a href="http://gradha.github.io/articles/2014/01/the-tyranny-of-gitflow-defaults.html">previous article</a> I suggested renaming repository branch <code>master</code> to <code>stable</code> and leave <code>develop</code> as the development hub. Part was to inform users, and part to detect which software is unable to work with git repositories without a master branch. Well, that didn't took long: no git clients on earth work properly if you remove master.</p>
+<p>The official git client comes closest: it <span style="font-style: italic;">works</span>, where <span style="font-style: italic;">works</span> means it gets the source code, but lacking a <code>master</code> branch prevents it from populating <span style="font-style: italic;">by default</span> the files in the directory and you are left with the hidden <code>.git</code> thinking something is not working. So you either have to specify the branch name to checkout during the cloning operation, or check out, get a weird warning, then manually checkout one of the available branches. Other clients like SourceTree seem to refuse to work with the empty repo, or don't know what to do next. I guess checking any branch if <code>master</code> is not available is too hard for developers to figure out. Or maybe it is part of the git spec?</p>
+<p>Anyway, you can't get rid off of <code>master</code> unless you want to deal with user support nightmares. So the alternative I'm settling for is to leave <code>master</code> as the unstable development branch (goes well with github and most people's expectations), and make git-flow use a <code>stable</code> branch for software releases. This is essentially the <span style="font-style: italic;">inverse</span> of git-flow defaults: where it creates an extra <code>develop</code> branch, I create a <code>stable</code> branch with reversed meaning.</p>
+<pre class='literal'>
+$ git clone https://github.com/gradha/seohtracker-ios.git
+...
+warning: remote HEAD refers to nonexistent ref, unable to checkout</pre>
+		<hr>
+		<p>Last update: 06/02/2014 09:34.<br>
+		Copyright 2014 by <a href="https://github.com/gradha">Grzegorz Adam Hankiewicz</a>.<br>
+		Generated with <a href="https://github.com/dom96/ipsumgenera">ipsum genera</a>. Look at <a href="https://github.com/gradha/gradha.github.io/tree/master/src">the source code</a>.</p>
+	</body>
+</html>
