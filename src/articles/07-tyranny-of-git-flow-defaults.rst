@@ -7,6 +7,11 @@ tags: programming,bureaucracy,git
 The tyranny of git-flow defaults
 ================================
 
+**UPDATE:** The suggestion to remove the git ``master`` branch is very bad. `It
+is better to keep it
+<http://gradha.github.io/articles/2014/02/master-cant-die.html>`_ and change
+git-flow's ``develop`` for a ``stable`` branch.
+
 I'm a proponent of developing software in branches, and more particularly,
 having a `stable or production branch which tracks public software releases
 <https://www.atlassian.com/git/workflows#!workflow-gitflow>`_ for the purpose
@@ -259,3 +264,8 @@ developers.  If you are in the situation of having multiple branches, one of
 them for releases, that's because you are *doing* public releases. Your users
 willing to get a stable version will get those, or will follow your
 documentation (or their intuition) to check out the ``stable`` branch.
+
+**UPDATE:** The suggestion to remove the git ``master`` branch is very bad. `It
+is better to keep it
+<http://gradha.github.io/articles/2014/02/master-cant-die.html>`_ and change
+git-flow's ``develop`` for a ``stable`` branch.
