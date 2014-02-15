@@ -5,7 +5,31 @@
   <link href="http://gradha.github.io/feed.xml" rel="self" />
   <id>http://gradha.github.io/</id>
   <generator>ipsumgenera</generator>
-  <updated>2014-02-06T09:42:16Z</updated>
+  <updated>2014-02-15T09:26:05Z</updated>
+    <entry>
+      <title>Invoking Dash from the command line Vim</title>
+      <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2014/02/invoking-dash-from-the-command-line-vim.html"/>
+      <id>http://gradha.github.io/articles/2014/02/invoking-dash-from-the-command-line-vim.html</id>
+      <updated>2014-02-15T09:06:00Z</updated>
+      <author><name>Grzegorz Adam Hankiewicz</name></author>
+      <content type="html">
+        &lt;h1&gt;Invoking Dash from the command line Vim&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://kapeli.com/dash&quot;&gt;Dash is a documentation browser and snippet manager for macosx&lt;/a&gt; which is much better than Xcode's documentation tool, and also allows one to browse other documentations. You can for instance download &lt;a href=&quot;http://forum.nimrod-lang.org/t/330&quot;&gt;a Dash docset for Nimrod&lt;/a&gt; and you will be able to instantly search &lt;a href=&quot;http://nimrod-lang.org&quot;&gt;Nimrod's&lt;/a&gt; documentation. A global keyboard shortcut displays Dash on top of whatever you are doing, you type stuff, then can hide it and continue.&lt;/p&gt;
+&lt;p&gt;My editor of choice is &lt;a href=&quot;http://www.vim.org&quot;&gt;Vim&lt;/a&gt; as invoked from the terminal command line, either the version which comes with MacOSX or one from &lt;a href=&quot;http://www.macports.org&quot;&gt;MacPorts&lt;/a&gt;. Pressing the upper case &lt;code&gt;K&lt;/code&gt; letter will make Vim invoke the man page viewer for whatever word your cursor is on top of. Wouldn't it be nice to have this integration with Dash too? Here's what I added to my &lt;code&gt;.vimrc&lt;/code&gt; file:&lt;/p&gt;
+&lt;pre class='literal'&gt;&amp;quot; Dash integration for objc and nimrod.
+command! DashNim silent !open -g dash://nimrod:&amp;quot;&amp;lt;cword&amp;gt;&amp;quot;
+command! DashDef silent !open -g dash://def:&amp;quot;&amp;lt;cword&amp;gt;&amp;quot;
+nmap K :DashDef&amp;lt;CR&amp;gt;\|:redraw!&amp;lt;CR&amp;gt;
+au FileType nim  nmap K :DashNim&amp;lt;CR&amp;gt;\|:redraw!&amp;lt;CR&amp;gt;&lt;/pre&gt;&lt;p&gt;What I define in these four lines of Vim configuration are two commands, &lt;code&gt;DashNim&lt;/code&gt; and &lt;code&gt;DashDef&lt;/code&gt;. The latter is bound to the upper case &lt;code&gt;K&lt;/code&gt; letter by default. The former is bound to the same letter but only if the file type of your current Vim buffer is of Nimrod type, which allows for more specific keyword matches.  In Dash I have set up the default docs I search with the &lt;code&gt;def:&lt;/code&gt; shortcut (see Dash's preferences).&lt;/p&gt;
+&lt;p&gt;With Dash installed, you can call the &lt;code&gt;open&lt;/code&gt; command passing the &lt;code&gt;dash://&lt;/code&gt; style URL with additional parameters, and there you have it, Vim will query Dash for the word your cursor is on top. The additional &lt;code&gt;redraw&lt;/code&gt; commands are to avoid having to wait to press Enter when the viewer is invoked and to redraw the current screen afterwards. That's because Vim expects the external program to draw stuff on the screen, and by default waits for user interaction.&lt;/p&gt;
+&lt;p&gt;Having said this, when you look at Dash's integration preferences, for Vim it points to &lt;a href=&quot;https://github.com/rizzatti/dash.vim#readme&quot;&gt;https://github.com/rizzatti/dash.vim#readme&lt;/a&gt;. I didn't manage to get that working, plus I don't understand why I have to install several software packages for what amounts to a few configuration lines in your &lt;code&gt;.vimrc&lt;/code&gt; file. Maybe it offers more, but quick lookups are all I need for the moment.&lt;/p&gt;
+&lt;pre class='literal'&gt;&amp;lt;K&amp;gt;
+No manual entry for nmap
+
+El intérprete de órdenes devolvió 1
+
+Pulse INTRO o escriba una orden para continuar&lt;/pre&gt;
+      </content>
+    </entry>
     <entry>
       <title>Master can't die</title>
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2014/02/master-cant-die.html"/>
