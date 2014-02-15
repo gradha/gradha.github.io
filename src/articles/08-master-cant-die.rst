@@ -1,7 +1,7 @@
 ---
 title: Master can't die
 date: 2014-02-06 10:34
-tags: programming,bureaucracy,git
+tags: programming,bureaucracy,git,tools
 ---
 
 Master can't die

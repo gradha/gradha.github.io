@@ -1,7 +1,7 @@
 ---
 title: The tyranny of git-flow defaults
 date: 2014-01-18 00:39
-tags: programming,bureaucracy,git
+tags: programming,bureaucracy,git,tools
 ---
 
 The tyranny of git-flow defaults
