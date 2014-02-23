@@ -15,23 +15,23 @@
 <p><pre class='code'><span class="Comment">#include &lt;stdio.h&gt;</span>
 <span class="Comment">#include &lt;string.h&gt;</span>
 
-<span class="Identifier">int</span> <span class="Identifier">amount</span> <span class="Operator">=</span> <span class="DecNumber">0</span><span class="Punctation">;</span>
+<span class="Identifier">int</span> <span class="Identifier">amount</span> <span class="Operator">=</span> <span class="DecNumber">0</span><span class="Punctuation">;</span>
 
-<span class="Identifier">void</span> <span class="Identifier">count_words</span><span class="Punctation">(</span><span class="Identifier">char</span> <span class="Operator">*</span><span class="Identifier">text</span><span class="Punctation">)</span>
-<span class="Punctation">{</span>
-    <span class="Keyword">const</span> <span class="Identifier">char</span> <span class="Operator">*</span><span class="Identifier">sep</span> <span class="Operator">=</span> <span class="StringLit">&quot;, </span><span class="EscapeSequence">\t</span><span class="StringLit">&quot;</span><span class="Punctation">;</span>
-    <span class="Keyword">for</span> <span class="Punctation">(</span><span class="Identifier">char</span> <span class="Operator">*</span><span class="Identifier">word</span> <span class="Operator">=</span> <span class="Identifier">strtok</span><span class="Punctation">(</span><span class="Identifier">text</span><span class="Punctation">,</span> <span class="Identifier">sep</span><span class="Punctation">)</span><span class="Punctation">;</span>
-            <span class="Identifier">word</span><span class="Punctation">;</span> <span class="Identifier">word</span> <span class="Operator">=</span> <span class="Identifier">strtok</span><span class="Punctation">(</span><span class="Identifier">NULL</span><span class="Punctation">,</span> <span class="Identifier">sep</span><span class="Punctation">)</span><span class="Punctation">)</span> <span class="Punctation">{</span>
-        <span class="Identifier">amount</span><span class="Operator">++</span><span class="Punctation">;</span>
-    <span class="Punctation">}</span>
-<span class="Punctation">}</span>
+<span class="Identifier">void</span> <span class="Identifier">count_words</span><span class="Punctuation">(</span><span class="Identifier">char</span> <span class="Operator">*</span><span class="Identifier">text</span><span class="Punctuation">)</span>
+<span class="Punctuation">{</span>
+    <span class="Keyword">const</span> <span class="Identifier">char</span> <span class="Operator">*</span><span class="Identifier">sep</span> <span class="Operator">=</span> <span class="StringLit">&quot;, </span><span class="EscapeSequence">\t</span><span class="StringLit">&quot;</span><span class="Punctuation">;</span>
+    <span class="Keyword">for</span> <span class="Punctuation">(</span><span class="Identifier">char</span> <span class="Operator">*</span><span class="Identifier">word</span> <span class="Operator">=</span> <span class="Identifier">strtok</span><span class="Punctuation">(</span><span class="Identifier">text</span><span class="Punctuation">,</span> <span class="Identifier">sep</span><span class="Punctuation">)</span><span class="Punctuation">;</span>
+            <span class="Identifier">word</span><span class="Punctuation">;</span> <span class="Identifier">word</span> <span class="Operator">=</span> <span class="Identifier">strtok</span><span class="Punctuation">(</span><span class="Identifier">NULL</span><span class="Punctuation">,</span> <span class="Identifier">sep</span><span class="Punctuation">)</span><span class="Punctuation">)</span> <span class="Punctuation">{</span>
+        <span class="Identifier">amount</span><span class="Operator">++</span><span class="Punctuation">;</span>
+    <span class="Punctuation">}</span>
+<span class="Punctuation">}</span>
 
-<span class="Identifier">int</span> <span class="Identifier">main</span><span class="Punctation">(</span><span class="Identifier">void</span><span class="Punctation">)</span>
-<span class="Punctation">{</span>
-    <span class="Identifier">char</span> <span class="Identifier">text</span><span class="Punctation">[</span><span class="Punctation">]</span> <span class="Operator">=</span> <span class="StringLit">&quot;Globals, globals everywhere&quot;</span><span class="Punctation">;</span>
-    <span class="Identifier">count_words</span><span class="Punctation">(</span><span class="Identifier">text</span><span class="Punctation">)</span><span class="Punctation">;</span>
-    <span class="Keyword">return</span> <span class="Identifier">printf</span><span class="Punctation">(</span><span class="StringLit">&quot;Words %d</span><span class="EscapeSequence">\n</span><span class="StringLit">&quot;</span><span class="Punctation">,</span> <span class="Identifier">amount</span><span class="Punctation">)</span><span class="Punctation">;</span>
-<span class="Punctation">}</span>
+<span class="Identifier">int</span> <span class="Identifier">main</span><span class="Punctuation">(</span><span class="Identifier">void</span><span class="Punctuation">)</span>
+<span class="Punctuation">{</span>
+    <span class="Identifier">char</span> <span class="Identifier">text</span><span class="Punctuation">[</span><span class="Punctuation">]</span> <span class="Operator">=</span> <span class="StringLit">&quot;Globals, globals everywhere&quot;</span><span class="Punctuation">;</span>
+    <span class="Identifier">count_words</span><span class="Punctuation">(</span><span class="Identifier">text</span><span class="Punctuation">)</span><span class="Punctuation">;</span>
+    <span class="Keyword">return</span> <span class="Identifier">printf</span><span class="Punctuation">(</span><span class="StringLit">&quot;Words %d</span><span class="EscapeSequence">\n</span><span class="StringLit">&quot;</span><span class="Punctuation">,</span> <span class="Identifier">amount</span><span class="Punctuation">)</span><span class="Punctuation">;</span>
+<span class="Punctuation">}</span>
 </pre></p>
 <p>This little program will display that there are 3 words in the text <code>Globals, globals everywhere</code>. This is done calling the <code>count_words</code> function, which then calls the libc <code>strtok</code> function to <span style="font-style: italic;">tokenize</span> the input. That is, <code>strtok</code> splits the input buffer and loops over it ignoring the separator characters.</p>
 <p>The function <code>count_words</code> stores into the global variable <code>amount</code> the number of words. And for this simple example it's enough, and it works. However, if we wanted to reuse the <code>count_words</code> function in other programs, we would quickly see that we <span style="font-style: italic;">have to carry</span> the global variable along: the function itself is not independent. Also, it is difficult to call, rather than assigning the result to any variable, we are forced to use <code>amount</code>.</p>
@@ -44,14 +44,14 @@
 <p><pre class='code'><span class="Keyword">type</span>
   <span class="Identifier">Tglobal</span> <span class="Operator">=</span> <span class="Keyword">object</span> <span class="Comment">## \</span>
     <span class="Comment">## Holds all the global variables of the process.</span>
-    <span class="Identifier">params</span><span class="Punctation">:</span> <span class="Identifier">Tcommandline_results</span>
-    <span class="Identifier">verbose</span><span class="Punctation">:</span> <span class="Identifier">bool</span> <span class="Comment">## Quick access to parsed values.</span>
-    <span class="Identifier">target_url</span><span class="Punctation">:</span> <span class="Identifier">string</span> <span class="Comment">## Were to download stuff from.</span>
-    <span class="Identifier">short_name</span><span class="Punctation">:</span> <span class="Identifier">string</span> <span class="Comment">## Prefix used for file directories.</span>
-    <span class="Identifier">dest_dir</span><span class="Punctation">:</span> <span class="Identifier">string</span> <span class="Comment">## Path for the destination directory.</span>
-    <span class="Identifier">post_process</span><span class="Punctation">:</span> <span class="Identifier">string</span> <span class="Comment">## Path to command to be run on final directory.</span>
+    <span class="Identifier">params</span><span class="Punctuation">:</span> <span class="Identifier">Tcommandline_results</span>
+    <span class="Identifier">verbose</span><span class="Punctuation">:</span> <span class="Identifier">bool</span> <span class="Comment">## Quick access to parsed values.</span>
+    <span class="Identifier">target_url</span><span class="Punctuation">:</span> <span class="Identifier">string</span> <span class="Comment">## Were to download stuff from.</span>
+    <span class="Identifier">short_name</span><span class="Punctuation">:</span> <span class="Identifier">string</span> <span class="Comment">## Prefix used for file directories.</span>
+    <span class="Identifier">dest_dir</span><span class="Punctuation">:</span> <span class="Identifier">string</span> <span class="Comment">## Path for the destination directory.</span>
+    <span class="Identifier">post_process</span><span class="Punctuation">:</span> <span class="Identifier">string</span> <span class="Comment">## Path to command to be run on final directory.</span>
 
-<span class="Keyword">var</span> <span class="Identifier">g</span><span class="Punctation">:</span> <span class="Identifier">Tglobal</span>
+<span class="Keyword">var</span> <span class="Identifier">g</span><span class="Punctuation">:</span> <span class="Identifier">Tglobal</span>
 </pre></p>
 <p>Command line parsing is a very good example of global state because it happens once, and it works for the whole execution of the program. When the user wants to have a <span style="font-style: italic;">verbose</span> execution you can store that in a global variable. Then you access <code>g.verbose</code> and do your thing. Instead, according to the singleton pattern I should be accessing some <span style="font-style: italic;">static</span> method of a class to read the value of a variable (which is not going to change). How wasteful is that, not only in terms of program runtime but also developer time, repeating that stupid pattern all over the place?</p>
 <h2>Crutches, not tools</h2><p>The fact is that Java or Objective-C are not good languages when it comes to implement global variables, each having downsides, imposing a development penalty on all of us. Global variables  won't go away, all but the most trivial programs have or need global state. It is damaging to ourselves when programmers, after having invested time in learning a programming language, throw excuses and tantrums to justify their broken tools.  That's an emotional answer, nobody wants to be told that they have wasted their time learning the wrong thing.</p>
@@ -59,7 +59,7 @@
 
 		<hr>
 		<p>Last update: 09/12/2013 10:54.<br>
-		Copyright 2014 by <a href="https://github.com/gradha">Grzegorz Adam Hankiewicz</a>.<br>
+		Copyright 2014 by <a href="../../../about.html">Grzegorz Adam Hankiewicz</a>.<br>
 		Generated with <a href="https://github.com/dom96/ipsumgenera">ipsum genera</a>. Look at <a href="https://github.com/gradha/gradha.github.io/tree/master/src">the source code</a>.</p>
 	</body>
 </html>
