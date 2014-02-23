@@ -99,7 +99,7 @@ know, the one where people's heads roll when something goes wrong. So my theory
 is that most people doing open source software simply replicate what they have
 learned at work. Or worse, are too lazy to even do that minimum effort!
 
-That's when I ``<inception_bwaaaa>`` *step in to save the world of software*
+That's when ``<inception_bwaaaa>`` *I step in to save the world of software*
 ``</inception_bwaaaa>``. Actually, I did read recently some hilarious articles
 by `James Mickens <https://research.microsoft.com/en-us/people/mickens/>`_
 (scroll to the bottom of that page, or find the extracts and direct links at
