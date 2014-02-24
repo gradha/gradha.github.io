@@ -26,7 +26,7 @@ If you want to contact me about something, send your bytes to
 
 ```nimrod
 proc love(name: string) =
-    echo " 💕 " & name
+    echo "♥ " & name
     love(name)
 
 love("gradha")
