@@ -4,6 +4,12 @@ date: 2013-02-23 21:05
 tags: misc
 ---
 
+.. raw:: html
+
+    <a href="http://stackoverflow.com/users/172690/grzegorz-adam-hankiewicz">
+    <img align="right" src="http://stackoverflow.com/users/flair/172690.png" width="208" height="58" alt="profile for Grzegorz Adam Hankiewicz at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Grzegorz Adam Hankiewicz at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
+    </a>
+
 Hello stranger!
 
 This is Grzegorz Adam Hankiewicz, extraordinary programmer.
