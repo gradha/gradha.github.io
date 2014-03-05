@@ -5,7 +5,7 @@
   <link href="http://gradha.github.io/feed.xml" rel="self" />
   <id>http://gradha.github.io/</id>
   <generator>ipsumgenera</generator>
-  <updated>2014-02-23T21:12:43Z</updated>
+  <updated>2014-03-05T23:24:02Z</updated>
     <entry>
       <title>Invoking Dash from the command line Vim</title>
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2014/02/invoking-dash-from-the-command-line-vim.html"/>
@@ -37,7 +37,7 @@ Pulse INTRO o escriba una orden para continuar&lt;/pre&gt;
       <updated>2014-02-06T09:34:00Z</updated>
       <author><name>Grzegorz Adam Hankiewicz</name></author>
       <content type="html">
-        &lt;h1&gt;Master can't die&lt;/h1&gt;&lt;p&gt;In a &lt;a href=&quot;http://gradha.github.io/articles/2014/01/the-tyranny-of-gitflow-defaults.html&quot;&gt;previous article&lt;/a&gt; I suggested renaming repository branch &lt;code&gt;master&lt;/code&gt; to &lt;code&gt;stable&lt;/code&gt; and leave &lt;code&gt;develop&lt;/code&gt; as the development hub. Part was to inform users, and part to detect which software is unable to work with git repositories without a master branch. Well, that didn't took long: no git clients on earth work properly if you remove master.&lt;/p&gt;
+        &lt;h1&gt;Master can't die&lt;/h1&gt;&lt;p&gt;In a &lt;a href=&quot;http://gradha.github.io/articles/2014/01/the-tyranny-of-gitflow-defaults.html&quot;&gt;previous article&lt;/a&gt; I suggested renaming repository branch &lt;code&gt;master&lt;/code&gt; to &lt;code&gt;stable&lt;/code&gt; and leave &lt;code&gt;develop&lt;/code&gt; as the development hub. Part was to inform users, and part to detect which software is unable to work with git repositories without a master branch. Well, that did not take long: no git clients on earth work properly if you remove master.&lt;/p&gt;
 &lt;p&gt;The official git client comes closest: it &lt;span style=&quot;font-style: italic;&quot;&gt;works&lt;/span&gt;, where &lt;span style=&quot;font-style: italic;&quot;&gt;works&lt;/span&gt; means it gets the source code, but lacking a &lt;code&gt;master&lt;/code&gt; branch prevents it from populating &lt;span style=&quot;font-style: italic;&quot;&gt;by default&lt;/span&gt; the files in the directory and you are left with the hidden &lt;code&gt;.git&lt;/code&gt; thinking something is not working. So you either have to specify the branch name to checkout during the cloning operation, or check out, get a weird warning, then manually checkout one of the available branches. Other clients like SourceTree seem to refuse to work with the empty repo, or don't know what to do next. I guess checking any branch if &lt;code&gt;master&lt;/code&gt; is not available is too hard for developers to figure out. Or maybe it is part of the git spec?&lt;/p&gt;
 &lt;p&gt;Anyway, you can't get rid off of &lt;code&gt;master&lt;/code&gt; unless you want to deal with user support nightmares. So the alternative I'm settling for is to leave &lt;code&gt;master&lt;/code&gt; as the unstable development branch (goes well with github and most people's expectations), and make git-flow use a &lt;code&gt;stable&lt;/code&gt; branch for software releases. This is essentially the &lt;span style=&quot;font-style: italic;&quot;&gt;inverse&lt;/span&gt; of git-flow defaults: where it creates an extra &lt;code&gt;develop&lt;/code&gt; branch, I create a &lt;code&gt;stable&lt;/code&gt; branch with reversed meaning.&lt;/p&gt;
 &lt;pre class='literal'&gt;
