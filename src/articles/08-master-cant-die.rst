@@ -12,7 +12,7 @@ In a `previous article
 I suggested renaming repository branch ``master`` to ``stable`` and leave
 ``develop`` as the development hub. Part was to inform users, and part to
 detect which software is unable to work with git repositories without a master
-branch. Well, that didn't took long: no git clients on earth work properly if
+branch. Well, that did not take long: no git clients on earth work properly if
 you remove master.
 
 The official git client comes closest: it *works*, where *works* means it gets
