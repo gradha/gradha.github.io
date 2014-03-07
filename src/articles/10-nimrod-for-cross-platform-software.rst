@@ -268,11 +268,79 @@ Thoughts:
   (right there, in the lower right corner of the left window). Any opportunity
   is good to make fun of the world for being such a shitty place.
 
+
 The good about using Nimrod
 ---------------------------
 
+* Awesome programming language, free of clutter, easy to write integrated
+  custom builders, compiles and runs at the speed of c (light).
+* Features like `exception tracking
+  <http://nimrod-lang.org/manual.html#exception-tracking>`_ in the language
+  allow one to `decorate the Nimrod API exported to C
+  <https://github.com/gradha/seohtracker-ios/commit/64252e473bb944f396a66c7bf27ea0fed8f7ea07>`_
+  and prevent uncaught Nimrod exceptions from crashing your pretty program.
+  Languages like Ruby or Python require you to write unit tests instead, and
+  depend on your skill to cover all cases.
+* Write once your logic, or test it once. Works on every platform the same. In
+  fact, I would not write or test in iOS at all! You simply run and debug on
+  your desktop machine, faster, easier, and when everything is all right it
+  just worked on the target platform.
+* Not specific of Nimrod but of the approach I took, by writing logic
+  separately you force yourself to write better code. I had much satisfaction
+  in ending the OS X client without having to modify a single line of code in
+  the logic module. Writing a logic module like this is more similar to
+  developing a library for other developers than normal applications where you
+  are free to do any number of untold abominations in order to reach your goal.
+* Future platforms will come, and I will have nearly zero work to do on them
+  regarding the logic. All users will experience the same quality of software
+  (which depending how you look at it could be bad! Embedded html apps, I'm
+  looking at you).
+
+
 The bad about using Nimrod
 --------------------------
+
+* Bugs. Prepare to find them and report them. IIRC I had a week where every day
+  I'd find one. Which means, you are sometimes forced to write ugly code to
+  work around them (if they can be worked around!).
+* Nimrod is underdeveloped. Sometimes you report a bug and get a fix some hours
+  later. But it's more likely that you will hear nothing for days and maybe
+  weeks. Don't plan on using Nimrod (yet) for software you have to delivery on
+  a schedule. You will just end up hating Nimrod.
+* Speaking of which, using a *stable* **and** *recent* compiler version can be
+  tricky. The last official stable version doesn't support all the awesome
+  features in development of the language. The git versions of the compiler may
+  eat your code for breakfast.  Play safe and always keep a log of which git
+  compiler commits did work or not. Store the generated C source safe
+  somewhere, you might need to diff it against newer versions.
+* No higher level integration at all with C++/Objective-C features, like `class
+  inheritance <https://github.com/Araq/Nimrod/issues/894>`_. You can easily
+  import single classes, but they won't have inheritance information, so you
+  can't pass an ``NSString`` to a method which expects any ``id``, which is
+  like the bread and butter of the Objective-C code. For this reason the logic
+  module uses the most simple plain C interface.
+* I have an idea of how to overcome this limitation, but when I tried, `I found
+  more bugs <https://github.com/Araq/Nimrod/issues/903>`_. Which is sort of
+  cool, now I *think* I have a work around around that bug to work around the
+  class inheritance limitation. If you like solving problems, Nimrod is great!
+* Threading `sucks big time <http://forum.nimrod-lang.org/t/365>`_. You can
+  thread in Nimrod. And you can thread in Objective-C. But if you try to `cross
+  the streams… total protonic reversal
+  <https://www.youtube.com/watch?v=jyaLZHiJJnE>`_, meaning your software
+  crashes.  This is a **really big** problem with mobile, because essentially
+  everything has to be async or the user will close your app because it took
+  too long to do something. And you can't call Nimrod code at all from a
+  background thread, so you have to contort your logic/code to funnel on the
+  main thread… somehow. I still haven't figured this out, so all the long
+  operations in Seohtracker are UI blocking. Fuck users.
+
+Maybe you have noticed a pattern here? Lack of developer power, since all of
+these issues are fixable. A one man language has little to do against projects
+sponsored by multimillion companies.  And multimillion companies lack the taste
+to fund a language like Nimrod, so this looks troubling. Again, if you are
+working on a tight schedule, not recommended (unless you overestimate like
+SLOCCount, hah!).
+
 
 You don't need Nimrod to write software for iOS and OSX
 -------------------------------------------------------
