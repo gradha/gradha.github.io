@@ -137,6 +137,10 @@ on the iOS, OSX and logic modules as tagged for the v4 release:
   starting an Objective-C file from the Xcode template tends to give you a full
   page chunk of code doing nothing at all. It's not as bad as Java, but still
   very verbose.
+* The reason iOS has more lines than OS X is because it is more *complex*, has
+  more screens, and requires special code to communicate between them. The OS X
+  version feels like `a global variable with less code overhead
+  <../../2013/12/worse-than-global-variables.html>`_.
 * Even though both the iOS and OSX clients are just interface, instead of shell
   scripts I used Nimrod through `nakefiles
   <https://github.com/fowlmouth/nake>`_ to drive compilation, generate and
@@ -162,10 +166,10 @@ on the iOS, OSX and logic modules as tagged for the v4 release:
   needs to exist only once. Compare this to current independent mobile
   developments where different teams develop iOS and Android (sometimes even
   different code bases for iPhone vs iPad!), each incurring its own share of
-  bugs and odd behaviours. Have you seen people update iOS/Android to leave
-  *the other* platform (whatever it might be) picking dust? In my case, the
-  testing can be done once, and from here on for each additional platform I add
-  to the suite I get *free time* to spend `browsing kpop videos on youtube
+  bugs and odd behaviours. Have you seen firms update their iOS/Android app to
+  leave *the other* platform (whatever it might be) picking dust? In my case,
+  the testing can be done once, and from here on for each additional platform I
+  add to the suite I get *free time* to spend `browsing kpop videos on youtube
   <https://www.youtube.com/watch?v=bZC7yA1Cymc>`_.
 * $56,286/year? Seriously? What parallel universe does that come from?
   According to `more recent articles
@@ -254,11 +258,11 @@ Thoughts:
 * An experienced OS X
   developer would have reduced the hour count of 56.42 hours even more. Despite
   being similar to iOS, OS X has its own share of weird oddities accrued
-  through years of bugs and incorrect API designs. Really, it took me 8h to
-  figure out how to correctly generate the OS X help from HTML files. Or 3h to
-  find out how to `keep widgets on top of a scrolling window from leaving
-  artifacts <http://stackoverflow.com/a/22183622/172690>`_. Which begs the
-  question: why are your defaults so sucky OSX? **WHY?!** Experience on a
+  through years of bugs and incorrect API designs. Really, it took me 8 hours
+  to figure out how to correctly generate the OS X help from HTML files. Or 3
+  hours to find out how to `keep widgets on top of a scrolling window from
+  leaving artifacts <http://stackoverflow.com/a/22183622/172690>`_. Which begs
+  the question: why are your defaults so sucky OSX? **WHY?!** Experience on a
   platform goes a long way towards being productive.
 * Looks like there are no good choices for OS X regarding in-app advertisements
   like on the mobile platforms. I did take a look at `BuySellAds
@@ -301,13 +305,19 @@ The good about using Nimrod
 The bad about using Nimrod
 --------------------------
 
-* Bugs. Prepare to find them and report them. IIRC I had a week where every day
-  I'd find one. Which means, you are sometimes forced to write ugly code to
-  work around them (if they can be worked around!).
+.. raw:: html
+
+    <img src="../../../i/bomi_calm_down.jpg" alt="Bomi asks you to calm down"
+        width="600" height="750" align="right" hspace="6pt" vspace="6pt">
+
+* Bugs. Prepare to find them and report them. I remember having a week where
+  I'd find one every day.  Which means, you are sometimes forced to write ugly
+  code to work around them (if they can be worked around!). And this means less
+  time working on creating code, more debugging Nimrod.
 * Nimrod is underdeveloped. Sometimes you report a bug and get a fix some hours
   later. But it's more likely that you will hear nothing for days and maybe
-  weeks. Don't plan on using Nimrod (yet) for software you have to delivery on
-  a schedule. You will just end up hating Nimrod.
+  weeks. Don't plan on using Nimrod (yet) for software you have to deliver on a
+  schedule. You will just end up hating Nimrod.
 * Speaking of which, using a *stable* **and** *recent* compiler version can be
   tricky. The last official stable version doesn't support all the awesome
   features in development of the language. The git versions of the compiler may
@@ -319,7 +329,7 @@ The bad about using Nimrod
   import single classes, but they won't have inheritance information, so you
   can't pass an ``NSString`` to a method which expects any ``id``, which is
   like the bread and butter of the Objective-C code. For this reason the logic
-  module uses the most simple plain C interface.
+  module has been implemented using the most simple plain C interface.
 * I have an idea of how to overcome this limitation, but when I tried, `I found
   more bugs <https://github.com/Araq/Nimrod/issues/903>`_. Which is sort of
   cool, now I *think* I have a work around around that bug to work around the
@@ -364,9 +374,9 @@ interface for the other future platforms will come. Just no guarantees on a
 delivery date, being a programmer means you have to master weaseling out of
 committing to a deadline, so whenever it's done.
 
-There you have it. My first little step. Hopefully it will turn into a long
-walk. Who knows, maybe Nimrod will even start to be relevant to Wikipedia? In
-your dreams…
+This is my first little step. Hopefully it will turn into a long walk. Who
+knows, maybe Nimrod will even start to be relevant to Wikipedia? In your
+dreams…
 
 .. raw:: html
     <small><table border="1" bgcolor="ffdbdb" cellpadding="8pt"><tr><td>
