@@ -39,19 +39,20 @@ Why not write **everything** in Nimrod? That's something I've heard a lot. The
 most important practical reason is I'm a simple guy doing this on his own, and
 I can't compare to `well paid and full of people firms <http://xamarin.com>`_
 doing the wrapping of all the little details. But also because each platform
-has a different UI which requires separate design. For instance, the iOS
-version of Seohtracker is split in multiple view controllers, each reigning its
-own screen, while the mac version is pretty much contained in a single root
-view controller for the main window. Or how about help? The mobile version
-includes little breadcrumbs of information in certain screens, while the mac
-version simply lets you go to the index and browse whatever your heart desires.
+has a different user interface which requires separate design. For instance,
+the iOS version of Seohtracker is split in multiple view controllers, each
+reigning its own screen, while the mac version is pretty much contained in a
+single root view controller for the main window. Or how about help? The mobile
+version includes little breadcrumbs of information in certain screens, while
+the mac version simply lets you go to the index and browse whatever your heart
+desires.
 
-And this is just the beginning! A planned iPad specific UI already requires a
-different approach from the iPhone version. But what about Android? And what
-about Linux? Yes, you can implement a GTK2 version for Linux/Windows too (plus
-there already are bindings for this toolkit). If you **try** to cram every
-platform under the same language and graphical toolkit, you are likely to piss
-off people on each platform, as the result won't be a 100% full citizen
+And this is just the beginning! A planned iPad specific user interface already
+requires a different approach from the iPhone version. But what about Android?
+And what about Linux? Yes, you can implement a GTK2 version for Linux/Windows
+too (plus there already are bindings for this toolkit). If you **try** to cram
+every platform under the same language and graphical toolkit, you are likely to
+piss off people on each platform, as the result won't be a 100% full citizen
 compared to the rest of the operating system, just that strange bloke with the
 weird hair, who hopefully gets the job done, or else…
 
@@ -328,11 +329,11 @@ The bad about using Nimrod
   the streams… total protonic reversal
   <https://www.youtube.com/watch?v=jyaLZHiJJnE>`_, meaning your software
   crashes.  This is a **really big** problem with mobile, because essentially
-  everything has to be async or the user will close your app because it took
-  too long to do something. And you can't call Nimrod code at all from a
+  everything has to be asynchronous or the user will close your app because it
+  took too long to do something. And you can't call Nimrod code at all from a
   background thread, so you have to contort your logic/code to funnel on the
   main thread… somehow. I still haven't figured this out, so all the long
-  operations in Seohtracker are UI blocking. Fuck users.
+  operations in Seohtracker are user interface blocking. Fuck users.
 
 Maybe you have noticed a pattern here? Lack of developer power, since all of
 these issues are fixable. A one man language has little to do against projects
