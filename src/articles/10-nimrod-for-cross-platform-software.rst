@@ -14,6 +14,11 @@ app. And now the app has crossed the bridge and made it to the Mac App Store as
 would this be of any relevance? Because both programs are partially implemented
 in the `Nimrod programming language <http://nimrod-lang.org>`_.
 
+.. raw:: html
+
+    <img src="../../../i/nimrod_doge.jpg" alt="Doge is very impressed"
+        width="680" height="510" align="right" hspace="8pt" vspace="8pt">
+
 The `Nimrod programming language <http://nimrod-lang.org>`_ compiles
 pythonesque style code into portable C. Might be more portable than Java. And
 more machine performant at the low level. And more developer performant at the
@@ -21,13 +26,13 @@ high level!  And more lisp macros. And… whatever man.  It's just cool, and I
 believe it is going to allow me to produce real life programs for more
 platforms with less effort (still working on the *less effort* part, though).
 
-But Nimrod is relatively new and unpopular. Despite the website stating "*The
-Nimrod Compiler can also generate C++ or Objective C for easier interfacing.*",
+But Nimrod is relatively new and unpopular. Despite the website stating *"The
+Nimrod Compiler can also generate C++ or Objective C for easier interfacing"*,
 there's not much *proof* out there you can take as reference. So I decided to
 start my own, and that's what Seohtracker is. The internal architecture of
 Seohtracker splits the interface from the logic. Hence, you have a `cross
 platform logic code <https://github.com/gradha/seohtracker-logic>`_ which is
-implemented in just Nimrod. Then, somewhere in the middle is floating a `thin
+implemented in pure Nimrod. Then, somewhere in the middle is floating a `thin
 Nimrod to Obj-C convenience layer
 <https://github.com/gradha/seohtracker-ios/blob/c512307ea505dc7c2262b88ddc8599e94f5f4a74/src/nim/n_global.nim>`_
 which exposes the Nimrod logic, and finally you have the `iOS
@@ -41,7 +46,7 @@ I can't compare to `well paid and full of people firms <http://xamarin.com>`_
 doing the wrapping of all the little details. But also because each platform
 has a different user interface which requires separate design. For instance,
 the iOS version of Seohtracker is split in multiple view controllers, each
-reigning its own screen, while the mac version is pretty much contained in a
+reigning its own screen, while the OS X version is pretty much contained in a
 single root view controller for the main window. Or how about help? The mobile
 version includes little breadcrumbs of information in certain screens, while
 the mac version simply lets you go to the index and browse whatever your heart
@@ -54,7 +59,10 @@ too (plus there already are bindings for this toolkit). If you **try** to cram
 every platform under the same language and graphical toolkit, you are likely to
 piss off people on each platform, as the result won't be a 100% full citizen
 compared to the rest of the operating system, just that strange bloke with the
-weird hair, who hopefully gets the job done, or else…
+weird hair, who hopefully gets the job done, or else… And if you don't use the
+same graphical toolkit for every platform, well, your bang for the buck for
+using Nimrod is very reduced, especially because there are few low level
+bindings.
 
 
 Show me the money!
@@ -70,12 +78,12 @@ on the iOS, OSX and logic modules as tagged for the v4 release:
     <table border="1pt">
     <tr><th>Category</th><th>iOS</th><th>OSX</th><th>Logic</th></tr>
     <tr>
-        <td>Lines of code in objc</td>
+        <td>Lines of code in Objective-C
         <td align="right">1886 (68.71%)</td>
         <td align="right">1107 (73.85%)</td>
         <td align="right"></td>
     </tr><tr>
-        <td>Lines of code in python</td>
+        <td>Lines of code in Python</td>
         <td align="right">792 (29.85%)</td>
         <td align="right">324 (21.61%)</td>
         <td align="right">832 (100%)</td>
@@ -130,7 +138,7 @@ on the iOS, OSX and logic modules as tagged for the v4 release:
 * Yuck! `Python <http://python.org>`_? Yeah, sorry about that shock.  SLOCCount
   doesn't support Nimrod, but since the source code and syntax is very similar
   with regards to line counting, I modified my copy of SLOCCount to treat
-  ``.nim`` files as python to get immediate results.
+  ``.nim`` files as Python to get immediate results.
 * The number of lines for Nimrod is really small compared to Objective-C
   because the logic is small as well, this kind of app is mostly user
   interface, plus Nimrod is a higher level language than Objective-C. Just
@@ -138,9 +146,9 @@ on the iOS, OSX and logic modules as tagged for the v4 release:
   page chunk of code doing nothing at all. It's not as bad as Java, but still
   very verbose.
 * The reason iOS has more lines than OS X is because it is more *complex*, has
-  more screens, and requires special code to communicate between them. The OS X
-  version feels like `a global variable with less code overhead
-  <../../2013/12/worse-than-global-variables.html>`_.
+  more screens, and requires special code to communicate between them. In
+  comparison the OS X version feels like `a global variable with less code
+  overhead <../../2013/12/worse-than-global-variables.html>`_.
 * Even though both the iOS and OSX clients are just interface, instead of shell
   scripts I used Nimrod through `nakefiles
   <https://github.com/fowlmouth/nake>`_ to drive compilation, generate and
@@ -202,8 +210,8 @@ on the iOS, OSX and logic modules as tagged for the v4 release:
     </td></tr></table>
 
 In any case, you should ignore the statistics for lines of code, they are
-pretty much useless in the real world, especially for experiments like this
-which don't fall into the *normal development* category.
+pretty much useless for experiments like this which don't fall into the *normal
+development* category.
 
 
 It's 16:27 past deadline
@@ -241,13 +249,12 @@ Thoughts:
 
 * No kidding, under 4 hours to implement the full logic of the code, split in a
   nice documented module, all with unit tests? Nah, that was essentially the
-  time it took me to *extirpate* the code from the iOS repo into the logic
-  repo.
-* The actual time I have probably spent on the Nimrod code is more in line with
-  40 hours, which is roughly the total iOS minus the OS X time. This would mean
-  that nearly half of development time was shaved off thanks to Nimrod. Even
-  though `you don't care <http://www.youtube.com/watch?v=4r7wHMg5Yjg>`_, thank
-  you, Nimrod!
+  time it took me to *extirpate* the code from the iOS repository into the
+  logic repository.  The actual time I have probably spent on the Nimrod code
+  is more in line with 40 hours, which is roughly the total iOS minus the OS X
+  time. This would mean that nearly half of development time was shaved off
+  thanks to Nimrod. Even though `you don't care
+  <http://www.youtube.com/watch?v=4r7wHMg5Yjg>`_, thank you, Nimrod!
 * Seriously, 226,570$ vs 6,979.73$? I know that SLOCCount has `a whole lot of
   documentation which I haven't even tried to read
   <http://www.dwheeler.com/sloccount/sloccount.html#cocomo>`_ explaining how to
@@ -255,6 +262,7 @@ Thoughts:
   ridiculous.  People using lines of code to measure anything should be hanged
   from trees (regardless of proper SLOCCount parameters). The true real cost of
   this software so far has been approximately one month of an iOS developer.
+  Extrapolate that to whatever local market prices are appropriate for you.
 * An experienced OS X
   developer would have reduced the hour count of 56.42 hours even more. Despite
   being similar to iOS, OS X has its own share of weird oddities accrued
@@ -308,16 +316,20 @@ The bad about using Nimrod
 .. raw:: html
 
     <img src="../../../i/bomi_calm_down.jpg" alt="Bomi asks you to calm down"
-        width="600" height="750" align="right" hspace="6pt" vspace="6pt">
+        width="600" height="750" align="right" hspace="8pt" vspace="8pt">
+
+Unfortunately, Nimrod `is not a girl, not yet a woman
+<https://www.youtube.com/watch?v=IlV7RhT6zHs>`_:
 
 * Bugs. Prepare to find them and report them. I remember having a week where
   I'd find one every day.  Which means, you are sometimes forced to write ugly
   code to work around them (if they can be worked around!). And this means less
   time working on creating code, more debugging Nimrod.
-* Nimrod is underdeveloped. Sometimes you report a bug and get a fix some hours
-  later. But it's more likely that you will hear nothing for days and maybe
-  weeks. Don't plan on using Nimrod (yet) for software you have to deliver on a
-  schedule. You will just end up hating Nimrod.
+* Nimrod is underdeveloped. Sometimes `you report a bug and get a fix some
+  hours later <http://forum.nimrod-lang.org/t/391>`_. But it's more likely that
+  you will hear nothing for days and maybe weeks. Don't plan on using Nimrod
+  (yet) for software you have to deliver on a schedule. You will just end up
+  hating Nimrod.
 * Speaking of which, using a *stable* **and** *recent* compiler version can be
   tricky. The last official stable version doesn't support all the awesome
   features in development of the language. The git versions of the compiler may
@@ -329,7 +341,10 @@ The bad about using Nimrod
   import single classes, but they won't have inheritance information, so you
   can't pass an ``NSString`` to a method which expects any ``id``, which is
   like the bread and butter of the Objective-C code. For this reason the logic
-  module has been implemented using the most simple plain C interface.
+  module has been implemented using the most simple plain C interface. This is
+  quite limiting and I could not implement ``NSNotification`` reporting in the
+  logic module. Had to do it in the user interface layer, which is **wrong**
+  and prone to mistakes.
 * I have an idea of how to overcome this limitation, but when I tried, `I found
   more bugs <https://github.com/Araq/Nimrod/issues/903>`_. Which is sort of
   cool, now I *think* I have a work around around that bug to work around the
@@ -343,13 +358,14 @@ The bad about using Nimrod
   took too long to do something. And you can't call Nimrod code at all from a
   background thread, so you have to contort your logic/code to funnel on the
   main thread… somehow. I still haven't figured this out, so all the long
-  operations in Seohtracker are user interface blocking. Fuck users.
+  operations in Seohtracker are user interface blocking. Fuck users. Good thing
+  I don't have any!
 
 Maybe you have noticed a pattern here? Lack of developer power, since all of
 these issues are fixable. A one man language has little to do against projects
 sponsored by multimillion companies.  And multimillion companies lack the taste
-to fund a language like Nimrod, so this looks troubling. Again, if you are
-working on a tight schedule, not recommended (unless you overestimate like
+to fund a language like Nimrod, so this looks troubling. If you are working on
+a tight schedule I don't recommend using Nimrod (unless you overestimate like
 SLOCCount, hah!).
 
 
@@ -369,14 +385,13 @@ to get past the `yuck factor <https://en.wikipedia.org/wiki/Yuck_factor>`_.
 But in the previous paragraphs I've already outlined the possibilities: the
 Nimrod logic code is already cross platform, you can grab the compiler and run
 the test suite on Windows, Mac, Linux and whatever else you are able to run
-Nimrod. Also, I'm just a single guy with limited time. Don't worry, the
-interface for the other future platforms will come. Just no guarantees on a
-delivery date, being a programmer means you have to master weaseling out of
-committing to a deadline, so whenever it's done.
+Nimrod. Don't worry, the interface for the other future platforms will come.
+Just no guarantees on a delivery date, being a programmer means you have to
+master weaseling out of committing to a deadline, so whenever it's done.
 
-This is my first little step. Hopefully it will turn into a long walk. Who
-knows, maybe Nimrod will even start to be relevant to Wikipedia? In your
-dreams…
+This is my first little step. Hopefully it will turn into a long walk and you
+will be able to witness **true** cross *platform-ness*. Who knows, maybe Nimrod
+will even start to be relevant to Wikipedia? In your dreams…
 
 .. raw:: html
     <small><table border="1" bgcolor="ffdbdb" cellpadding="8pt"><tr><td>
