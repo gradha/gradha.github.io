@@ -1,6 +1,6 @@
 ---
 title: Nimrod for cross platform software
-date: 2014-03-06 17:21
+date: 2014-03-10 22:17
 tags: programming,nimrod,seohtracker,elhaso
 ---
 
@@ -237,15 +237,15 @@ v2              22.08
 **v1+v2**       **66.41**
 v3              9.17
 **v1+v2+v3**    **75.58**
-v4              26.08         56.42           3.75
-**v1+v2+v3+v4** **101.66**
+v4              26.08         56.92           3.75
+**v1+v2+v3+v4** **102.16**
 --------------- ------------  --------------  ----------
 
-Total hours for the combined project: 161.83.
+Total hours for the combined project: 162.33.
 
-Estimated costs: ``161.83 * 26.96 = 4362.94$``
+Estimated costs: ``162.33 * 26.96 = 4376.41$``
 
-Or the more realistic average: ``161.83 * 41.13 = 6979.73$``
+Or the more realistic average: ``162.33 * 41.13 = 6676.63$``
 
 Thoughts:
 
@@ -257,7 +257,7 @@ Thoughts:
   time. This would mean that nearly half of development time was shaved off
   thanks to Nimrod. Even though `you don't care
   <http://www.youtube.com/watch?v=4r7wHMg5Yjg>`_, thank you, Nimrod!
-* Seriously, 226,570$ vs 6,979.73$? I know that SLOCCount has `a whole lot of
+* Seriously, 226,570$ vs 6,676.63$? I know that SLOCCount has `a whole lot of
   documentation which I haven't even tried to read
   <http://www.dwheeler.com/sloccount/sloccount.html#cocomo>`_ explaining how to
   fine tune the estimated cost of the lines of code, but the difference is
