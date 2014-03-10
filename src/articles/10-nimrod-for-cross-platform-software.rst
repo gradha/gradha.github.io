@@ -16,8 +16,10 @@ in the `Nimrod programming language <http://nimrod-lang.org>`_.
 
 .. raw:: html
 
-    <img src="../../../i/nimrod_doge.jpg" alt="Doge is very impressed"
-        width="680" height="510" align="right" hspace="8pt" vspace="8pt">
+    <a href="http://knowyourmeme.com/memes/doge"><img
+        src="../../../i/nimrod_doge.jpg" alt="Doge is very impressed"
+        width="680" height="510" align="right" hspace="8pt" vspace="8pt"
+        ></a>
 
 The `Nimrod programming language <http://nimrod-lang.org>`_ compiles
 pythonesque style code into portable C. Might be more portable than Java. And
@@ -315,8 +317,10 @@ The bad about using Nimrod
 
 .. raw:: html
 
-    <img src="../../../i/bomi_calm_down.jpg" alt="Bomi asks you to calm down"
-        width="600" height="750" align="right" hspace="8pt" vspace="8pt">
+    <a href="https://www.youtube.com/watch?v=d8jFCN-9EuM"><img
+        src="../../../i/bomi_calm_down.jpg" alt="Bomi asks you to calm down"
+        width="600" height="750" align="right" hspace="8pt" vspace="8pt"
+        ></a>
 
 Unfortunately, Nimrod `is not a girl, not yet a woman
 <https://www.youtube.com/watch?v=IlV7RhT6zHs>`_:
@@ -342,31 +346,32 @@ Unfortunately, Nimrod `is not a girl, not yet a woman
   can't pass an ``NSString`` to a method which expects any ``id``, which is
   like the bread and butter of the Objective-C code. For this reason the logic
   module has been implemented using the most simple plain C interface. This is
-  quite limiting and I could not implement ``NSNotification`` reporting in the
-  logic module. Had to do it in the user interface layer, which is **wrong**
-  and prone to mistakes.
+  quite limiting and I could not implement ``NSNotification`` reporting inside
+  the logic module. Had to do it in the user interface layer, which is
+  **wrong** and prone to mistakes.
 * I have an idea of how to overcome this limitation, but when I tried, `I found
   more bugs <https://github.com/Araq/Nimrod/issues/903>`_. Which is sort of
   cool, now I *think* I have a work around around that bug to work around the
   class inheritance limitation. If you like solving problems, Nimrod is great!
-* Threading `sucks big time <http://forum.nimrod-lang.org/t/365>`_. You can
-  thread in Nimrod. And you can thread in Objective-C. But if you try to `cross
-  the streams… total protonic reversal
-  <https://www.youtube.com/watch?v=jyaLZHiJJnE>`_, meaning your software
-  crashes.  This is a **really big** problem with mobile, because essentially
-  everything has to be asynchronous or the user will close your app because it
-  took too long to do something. And you can't call Nimrod code at all from a
-  background thread, so you have to contort your logic/code to funnel on the
-  main thread… somehow. I still haven't figured this out, so all the long
-  operations in Seohtracker are user interface blocking. Fuck users. Good thing
-  I don't have any!
+* Cross-language threading `sucks big time
+  <http://forum.nimrod-lang.org/t/365>`_. You can thread in Nimrod. And you can
+  thread in Objective-C. But if you try to `cross the streams… total protonic
+  reversal <https://www.youtube.com/watch?v=jyaLZHiJJnE>`_, meaning your
+  software crashes.  This is a **really big** problem with mobile, because
+  essentially everything has to be asynchronous or the user will close your app
+  because it took too long to do something. And you can't call Nimrod code at
+  all from a background thread, so you have to contort your logic/code to
+  funnel on the main thread… somehow. I still haven't figured this out, so all
+  the long operations in Seohtracker are user interface blocking. Fuck users.
+  Good thing I don't have any!
 
 Maybe you have noticed a pattern here? Lack of developer power, since all of
 these issues are fixable. A one man language has little to do against projects
 sponsored by multimillion companies.  And multimillion companies lack the taste
 to fund a language like Nimrod, so this looks troubling. If you are working on
 a tight schedule I don't recommend using Nimrod (unless you overestimate like
-SLOCCount, hah!).
+SLOCCount, hah!). If you like tinkering with cool stuff and don't mind getting
+dirty, go ahead.
 
 
 You don't need Nimrod to write software for iOS and OSX
@@ -385,9 +390,9 @@ to get past the `yuck factor <https://en.wikipedia.org/wiki/Yuck_factor>`_.
 But in the previous paragraphs I've already outlined the possibilities: the
 Nimrod logic code is already cross platform, you can grab the compiler and run
 the test suite on Windows, Mac, Linux and whatever else you are able to run
-Nimrod. Don't worry, the interface for the other future platforms will come.
-Just no guarantees on a delivery date, being a programmer means you have to
-master weaseling out of committing to a deadline, so whenever it's done.
+Nimrod. Don't worry, the clients for other platforms will come.  Just no
+guarantees on a delivery date, being a programmer means you have to master
+weaseling out of committing to a deadline. So whenever it's done.
 
 This is my first little step. Hopefully it will turn into a long walk and you
 will be able to witness **true** cross *platform-ness*. Who knows, maybe Nimrod
