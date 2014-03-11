@@ -18,8 +18,8 @@ in the `Nimrod programming language <http://nimrod-lang.org>`_.
 
     <a href="http://knowyourmeme.com/memes/doge"><img
         src="../../../i/nimrod_doge.jpg" alt="Doge is very impressed"
-        width="680" height="510" align="right" hspace="8pt" vspace="8pt"
-        ></a>
+        style="width:100%;max-width:680px" align="right"
+        hspace="8pt" vspace="8pt"></a>
 
 The `Nimrod programming language <http://nimrod-lang.org>`_ compiles
 pythonesque style code into portable C. Might be more portable than Java. And
@@ -318,8 +318,8 @@ The bad about using Nimrod
 
     <a href="https://www.youtube.com/watch?v=d8jFCN-9EuM"><img
         src="../../../i/bomi_calm_down.jpg" alt="Bomi asks you to calm down"
-        width="600" height="750" align="right" hspace="8pt" vspace="8pt"
-        ></a>
+        style="width:100%;max-width:600px" align="right"
+        hspace="8pt" vspace="8pt"></a>
 
 Unfortunately, Nimrod `is not a girl, not yet a woman
 <https://www.youtube.com/watch?v=IlV7RhT6zHs>`_:
