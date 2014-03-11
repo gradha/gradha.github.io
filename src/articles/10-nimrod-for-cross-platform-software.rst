@@ -38,7 +38,7 @@ implemented in pure Nimrod. Then, somewhere in the middle is floating a `thin
 Nimrod to Obj-C convenience layer
 <https://github.com/gradha/seohtracker-ios/blob/c512307ea505dc7c2262b88ddc8599e94f5f4a74/src/nim/n_global.nim>`_
 which exposes the Nimrod logic, and finally you have the `iOS
-<https://github.com/gradha/seohtracker-ios>`_ and `OS X
+<https://github.com/gradha/seohtracker-ios>`_ and `OSX
 <https://github.com/gradha/seohtracker-mac>`_ clients which are consumers of
 this API.
 
@@ -48,7 +48,7 @@ I can't compare to `well paid and full of people firms <http://xamarin.com>`_
 doing the wrapping of all the little details. But also because each platform
 has a different user interface which requires separate design. For instance,
 the iOS version of Seohtracker is split in multiple view controllers, each
-reigning its own screen, while the OS X version is pretty much contained in a
+reigning its own screen, while the OSX version is pretty much contained in a
 single root view controller for the main window. Or how about help? The mobile
 version includes little breadcrumbs of information in certain screens, while
 the mac version simply lets you go to the index and browse whatever your heart
@@ -63,7 +63,7 @@ piss off people on each platform, as the result won't be a 100% full citizen
 compared to the rest of the operating system, just that strange bloke with the
 weird hair, who hopefully gets the job done, or else… And if you don't use the
 same graphical toolkit for every platform, well, your bang for the buck for
-using Nimrod is very reduced, especially because there are few low level
+using Nimrod is very reduced, especially because there are only a few low level
 bindings.
 
 
@@ -73,7 +73,7 @@ Show me the money!
 In the spirit of releasing `some statistics like other projects do
 <http://praeclarum.org/post/42378027611/icircuit-code-reuse-part-cinq>`_, here
 are some results of running `SLOCCount <http://www.dwheeler.com/sloccount/>`_
-on the iOS, OSX and logic modules as tagged for the v4 release:
+on the iOS, OSX, and logic modules as tagged for the v4 release:
 
 .. raw:: html
 
@@ -85,7 +85,7 @@ on the iOS, OSX and logic modules as tagged for the v4 release:
         <td align="right">1107 (73.85%)</td>
         <td align="right"></td>
     </tr><tr>
-        <td>Lines of code in Python</td>
+        <td>Lines of code in Nimrod</td>
         <td align="right">792 (29.85%)</td>
         <td align="right">324 (21.61%)</td>
         <td align="right">832 (100%)</td>
@@ -137,19 +137,18 @@ on the iOS, OSX and logic modules as tagged for the v4 release:
     'SLOCCount'."
     </td></tr></table>
 
-* Yuck! `Python <http://python.org>`_? Yeah, sorry about that shock.  SLOCCount
-  doesn't support Nimrod, but since the source code and syntax is very similar
-  with regards to line counting, I modified my copy of SLOCCount to treat
-  ``.nim`` files as Python to get immediate results.
+* SLOCCount actually doesn't support Nimrod, but since the source code and
+  syntax is very similar with regards to line counting, I modified my copy of
+  SLOCCount to treat ``.nim`` files as Python to get immediate results.
 * The number of lines for Nimrod is really small compared to Objective-C
   because the logic is small as well, this kind of app is mostly user
   interface, plus Nimrod is a higher level language than Objective-C. Just
   starting an Objective-C file from the Xcode template tends to give you a full
   page chunk of code doing nothing at all. It's not as bad as Java, but still
   very verbose.
-* The reason iOS has more lines than OS X is because it is more *complex*, has
+* The reason iOS has more lines than OSX is because it is more *complex*, has
   more screens, and requires special code to communicate between them. In
-  comparison the OS X version feels like `a global variable with less code
+  comparison the OSX version feels like `a global variable with less code
   overhead <../../2013/12/worse-than-global-variables.html>`_.
 * Even though both the iOS and OSX clients are just interface, instead of shell
   scripts I used Nimrod through `nakefiles
@@ -166,10 +165,10 @@ on the iOS, OSX and logic modules as tagged for the v4 release:
   a separate module **happened later**. Which means that the iOS lines of codes
   for Nimrod are bogus, the current development branch shows just 204 lines of
   Nimrod code, which goes more in line with the 324 lines of Nimrod code for OS
-  X (the OS X nakefile does more to transform and generate native OS X help
+  X (the OSX nakefile does more to transform and generate native OSX help
   files). Anyway, the point here is that reducing the Nimrod lines of code
   attributed to the iOS client would increase the percentage of native
-  Objective-C code and put it more in line with the OS X version.
+  Objective-C code and put it more in line with the OSX version.
 * Thanks to the separation of logic vs interface, the `test suite of the logic
   module
   <https://github.com/gradha/seohtracker-logic/tree/bcb1fb7fec655a0b5714d1e9efd349abb257a6e4/tests>`_
@@ -230,7 +229,7 @@ developer earns 26.96 $/h, while the *corrected* averaged programmer earns
 let it be).
 
 --------------- ------------  --------------  ----------
-State           iOS           OS X            Logic
+State           iOS           OSX            Logic
 --------------- ------------  --------------  ----------
 v1              44.33
 v2              22.08
@@ -253,7 +252,7 @@ Thoughts:
   nice documented module, all with unit tests? Nah, that was essentially the
   time it took me to *extirpate* the code from the iOS repository into the
   logic repository.  The actual time I have probably spent on the Nimrod code
-  is more in line with 40 hours, which is roughly the total iOS minus the OS X
+  is more in line with 40 hours, which is roughly the total iOS minus the OSX
   time. This would mean that nearly half of development time was shaved off
   thanks to Nimrod. Even though `you don't care
   <http://www.youtube.com/watch?v=4r7wHMg5Yjg>`_, thank you, Nimrod!
@@ -265,16 +264,16 @@ Thoughts:
   from trees (regardless of proper SLOCCount parameters). The true real cost of
   this software so far has been approximately one month of an iOS developer.
   Extrapolate that to whatever local market prices are appropriate for you.
-* An experienced OS X
+* An experienced OSX
   developer would have reduced the hour count of 56.42 hours even more. Despite
-  being similar to iOS, OS X has its own share of weird oddities accrued
+  being similar to iOS, OSX has its own share of weird oddities accrued
   through years of bugs and incorrect API designs. Really, it took me 8 hours
-  to figure out how to correctly generate the OS X help from HTML files. Or 3
+  to figure out how to correctly generate the OSX help from HTML files. Or 3
   hours to find out how to `keep widgets on top of a scrolling window from
   leaving artifacts <http://stackoverflow.com/a/22183622/172690>`_. Which begs
   the question: why are your defaults so sucky OSX? **WHY?!** Experience on a
   platform goes a long way towards being productive.
-* Looks like there are no good choices for OS X regarding in-app advertisements
+* Looks like there are no good choices for OSX regarding in-app advertisements
   like on the mobile platforms. I did take a look at `BuySellAds
   <http://buysellads.com>`_ and `The DECK <http://decknetwork.net>`_, but they
   are so exclusive they don't answer email or they reject you. So I rolled my
@@ -302,7 +301,7 @@ The good about using Nimrod
   just worked on the target platform.
 * Not specific of Nimrod but of the approach I took, by writing logic
   separately you force yourself to write better code. I had much satisfaction
-  in ending the OS X client without having to modify a single line of code in
+  in ending the OSX client without having to modify a single line of code in
   the logic module. Writing a logic module like this is more similar to
   developing a library for other developers than normal applications where you
   are free to do any number of untold abominations in order to reach your goal.
