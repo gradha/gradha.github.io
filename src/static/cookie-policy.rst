@@ -1,7 +1,6 @@
 ---
 title: Cookie policy
 date: 2014-03-09 20:46
-tags: misc,bureaucracy
 ---
 
 This website uses `Google Analytics <http://www.google.es/analytics/>`_. That

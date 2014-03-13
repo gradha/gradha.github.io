@@ -1,7 +1,6 @@
 ---
 title: About Grzegorz Adam Hankiewicz
 date: 2013-02-23 21:05
-tags: misc
 ---
 
 .. raw:: html
