@@ -135,7 +135,7 @@ help you. How can this method crash?
 
 What happens is that a lot of library code ends up with many useless tests to
 verify that nothing has gone wrong. The language forces you to do the work a
-compiler would do. Let's see another example in Python::
+compiler would do. Let's see another example in Python:
 
 ```
 #!/bin/usr/env python
@@ -171,7 +171,7 @@ ensues. In a typed language, like C or C++, the compiler is able to scan the
 format string and detect that you are passing the wrong type. But this is not
 possible in Python because there is no static type information. This is such a
 pain that when I write Python code the first line of the *docstring* is the
-signature of the method with the parameter names replaced as types. Example::
+signature of the method with the parameter names replaced as types. Example:
 
 ```
 class MyFailure:
@@ -237,7 +237,7 @@ disappointing when you grow past single programmer code. Isn't there a middle
 ground? There is: instead of patching and old decrepit corpse, start from zero
 using what you have learned. Start using the `Nimrod programming language
 <http://nimrod-lang.org>`_, which would look like this for the previous
-examples::
+examples:
 
 ```
 import uri, strutils
@@ -279,7 +279,7 @@ If you try you get::
     urls.shortestURL(urls: seq[TUrl]): TUrl
 
 The other derived problems from the lack of types of the Objective-C version
-also disappear in Nimrod. Let's compare to the python snippet::
+also disappear in Nimrod. Let's compare to the python snippet:
 
 ```
 import strutils
