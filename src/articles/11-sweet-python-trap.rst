@@ -83,34 +83,34 @@ The most irritating *feature* of dynamic languages is that it is really hard to
 write well behaved deterministic code if you are a library developer. See this
 little snippet:
 
-::
+```
+- (NSURL*)shortestURL:(NSArray*)urls
+{
+    if (urls.count < 1)
+        return nil;
 
-    - (NSURL*)shortestURL:(NSArray*)urls
-    {
-        if (urls.count < 1)
-            return nil;
+    if (urls.count < 2)
+        return urls[0];
 
-        if (urls.count < 2)
-            return urls[0];
-
-        NSURL *url = urls[0];
-        NSUInteger len = [[url absoluteString] length];
-        for (int i = 1; i < urls.count; i++) {
-            NSURL *test = urls[i];
-            if ([[test absoluteString] length] < len) {
-                url = test;
-                len = [[test absoluteString] length];
-            }
+    NSURL *url = urls[0];
+    NSUInteger len = [[url absoluteString] length];
+    for (int i = 1; i < urls.count; i++) {
+        NSURL *test = urls[i];
+        if ([[test absoluteString] length] < len) {
+            url = test;
+            len = [[test absoluteString] length];
         }
-        return url;
     }
+    return url;
+}
 
-    - (void)testShortestURL
-    {
-        NSLog(@"shorty is %@", [self shortestURL:@[
-            [NSURL URLWithString:@"http://www.google.es"],
-            [NSURL URLWithString:@"http://google.es"]]]);
-    }
+- (void)testShortestURL
+{
+    NSLog(@"shorty is %@", [self shortestURL:@[
+        [NSURL URLWithString:@"http://www.google.es"],
+        [NSURL URLWithString:@"http://google.es"]]]);
+}
+```
 
 If you wonder why I chose Objective-C, it's because it is a compiled language,
 but it behaves like a dynamic language where any object can be anything at any
@@ -123,7 +123,7 @@ help you. How can this method crash?
   type of parameters in the method name, increasing verbosity.
 * If you pass an array with a single string, it works! The ``shortestURL``
   method could be renamed to ``magicallyTransformMyTypes``, since the compiler
-  will treat from that call on the NSString as an NSURL, likely ending in a
+  will treat the passed NSString as a returned NSURL, likely ending in a
   selector crash later when the ninja NSURL object is accessed.
 * Being pedantic, you can't even be sure that the ``urls`` parameter is an
   NSArray. Some JSON code I've seen presumes that the parsed input will return
@@ -137,20 +137,22 @@ What happens is that a lot of library code ends up with many useless tests to
 verify that nothing has gone wrong. The language forces you to do the work a
 compiler would do. Let's see another example in Python::
 
-    #!/bin/usr/env python
+```
+#!/bin/usr/env python
 
-    class MyFailure:
-        def __init__(self, age, name, language):
-            self.age = age
-            self.name = name
-            self.language = language
+class MyFailure:
+    def __init__(self, age, name, language):
+        self.age = age
+        self.name = name
+        self.language = language
 
-        def sayHello(self):
-            print "I'm %s, age %d, and speak %s" % (self.name,
-                self.age, self.language)
+    def sayHello(self):
+        print "I'm %s, age %d, and speak %s" % (self.name,
+            self.age, self.language)
 
-    rick = MyFailure("Rick", 23, "English")
-    rick.sayHello()
+rick = MyFailure("Rick", 23, "English")
+rick.sayHello()
+```
 
 If we try to run this code we get::
 
@@ -171,15 +173,17 @@ possible in Python because there is no static type information. This is such a
 pain that when I write Python code the first line of the *docstring* is the
 signature of the method with the parameter names replaced as types. Example::
 
-    class MyFailure:
-        def __init__(self, age, name, language):
-            """f(int, string, string) -> MyFailure
+```
+class MyFailure:
+    def __init__(self, age, name, language):
+        """f(int, string, string) -> MyFailure
 
-            blah blah blah
-            """
-            self.age = age
-            self.name = name
-            self.language = language
+        blah blah blah
+        """
+        self.age = age
+        self.name = name
+        self.language = language
+```
 
 Yes, I specify the returned object because you can't be sure either. In Python
 you can return different types, which is even more fun for programmers calling
@@ -205,9 +209,10 @@ testing your software with every possible 3rd party library version forever.
 
 These problems with dynamic languages highlight again why unit testing is
 precious: the programming language is forcing **you** to be the compiler. Why
-are firms like Facebook **adding type information** to dynamic languages rather
-than writing a static analyzer tool to check these problems? Surely for such
-code it would be possible to detect field renames or the appropriate types?
+are firms like Facebook **adding type information** to a dynamic language
+rather than writing a static analyzer tool to solve these issues? Surely for
+such code it would be possible to detect field renames or infer the appropriate
+types?
 
 Look at the `Shed Skin experimetal Python to C++ compiler
 <https://code.google.com/p/shedskin/>`_. You read *"Oh, a typical speed up of
@@ -234,31 +239,33 @@ using what you have learned. Start using the `Nimrod programming language
 <http://nimrod-lang.org>`_, which would look like this for the previous
 examples::
 
-    import uri, strutils
+```
+import uri, strutils
 
-    proc shortestURL(urls: seq[TUrl]): TUrl =
-      if urls.len < 1:
-        return TUrl(nil)
+proc shortestURL(urls: seq[TUrl]): TUrl =
+  if urls.len < 1:
+    return TUrl(nil)
 
-      if urls.len < 2:
-        return urls[0]
+  if urls.len < 2:
+    return urls[0]
 
-      var
-        url = urls[0]
-        length = len($url)
+  var
+    url = urls[0]
+    length = len($url)
 
-      for i in 1 .. <urls.len:
-        let test = urls[i]
-        if len($test) < length:
-          url = test
-          length = len($test)
+  for i in 1 .. <urls.len:
+    let test = urls[i]
+    if len($test) < length:
+      url = test
+      length = len($test)
 
-      return url
+  return url
 
-    proc testShortestURL() =
-      echo "shorty is ", shortestURL(@[
-        TUrl("http://www.google.es"),
-        TUrl("http://google.es")])
+proc testShortestURL() =
+  echo "shorty is ", shortestURL(@[
+    TUrl("http://www.google.es"),
+    TUrl("http://google.es")])
+```
 
 This version in Nimrod is not very idiomatic (e.g. it does not use the
 `implicit result variable
@@ -274,25 +281,27 @@ If you try you get::
 The other derived problems from the lack of types of the Objective-C version
 also disappear in Nimrod. Let's compare to the python snippet::
 
-    import strutils
+```
+import strutils
 
-    type
-      MyFailure = object
-        age: int
-        name: string
-        language: string
+type
+  MyFailure = object
+    age: int
+    name: string
+    language: string
 
-    proc initMyFailure(age: int, name, language: string): MyFailure =
-      result.age = age
-      result.name = name
-      result.language = language
+proc initMyFailure(age: int, name, language: string): MyFailure =
+  result.age = age
+  result.name = name
+  result.language = language
 
-    proc sayHello(self: MyFailure) =
-      echo "I'm $1, age $2, and speak $3" % [
-        self.name, $self.age, self.language]
+proc sayHello(self: MyFailure) =
+  echo "I'm $1, age $2, and speak $3" % [
+    self.name, $self.age, self.language]
 
-    var rick = initMyFailure("Rick", 23, "English")
-    rick.sayHello()
+var rick = initMyFailure("Rick", 23, "English")
+rick.sayHello()
+```
 
 That looks very close to Python, doesn't it? The differences are:
 
