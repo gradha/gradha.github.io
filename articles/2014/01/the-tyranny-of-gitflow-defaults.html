@@ -8,7 +8,10 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	</head>
 	<body>
-		<h3><a href="../../../index.html">Rants from the Ballmer Peak</a></h3>
+		<h3><a href="../../../index.html">Rants from the Ballmer Peak</a> <a
+				href="../../../feed.xml"><img
+			alt="rss feed" src="../../../i/Feed-icon.svg"
+			width="18pt" height="18pt"></a></h3>
 		<h1>The tyranny of git-flow defaults</h1><p><span style="font-weight: bold;">UPDATE:</span> The suggestion to remove the git <code>master</code> branch is very bad. <a href="http://gradha.github.io/articles/2014/02/master-cant-die.html">It is better to keep it</a> and change git-flow's <code>develop</code> for a <code>stable</code> branch.</p>
 <p>I'm a proponent of developing software in branches, and more particularly, having a <a href="https://www.atlassian.com/git/workflows#!workflow-gitflow">stable or production branch which tracks public software releases</a> for the purpose of performing hotfixes whenever necessary without interrupting the normal development cycle. One nice tool which helps enforce this style of development from the command line is <a href="https://github.com/nvie/gitflow">git-flow</a>. It's just a bunch of scripts which avoids typing repetitive commands. If you prefer using a GUI, the <a href="http://www.atlassian.com">nice folks from Atlassian</a>, creators of <a href="https://www.atlassian.com/software/bitbucket/overview">Bitbucket</a>, also have released <a href="http://www.sourcetreeapp.com">SourceTree</a>, a <a href="http://git-scm.com">git</a> and <a href="http://mercurial.selenic.com">Mercurial</a> client with <a href="http://blog.sourcetreeapp.com/2012/08/01/smart-branching-with-sourcetree-and-git-flow/">smart branching support for git-flow</a>.</p>
 <p>But the defaults for git-flow and any git host like <a href="https://github.com">GitHub</a> clash. By default git, and any git hosting, is going to create empty repositories with a default branch named <code>master</code>. When you initialize git-flow on such a repository, it will ask a set of questions and suggest defaults:<pre class='literal'>
@@ -104,7 +107,9 @@ URL: git@github.com:remoteuser/healthyspam.git
 <p><span style="font-weight: bold;">UPDATE:</span> The suggestion to remove the git <code>master</code> branch is very bad. <a href="http://gradha.github.io/articles/2014/02/master-cant-die.html">It is better to keep it</a> and change git-flow's <code>develop</code> for a <code>stable</code> branch. </p>
 
 		<hr>
-		<p>Last update: 17/01/2014 23:39.<br>
+		<p>Last update: 17/01/2014 23:39. <a href="../../../feed.xml"><img
+			alt="rss feed" src="../../../i/Feed-icon.svg"
+			width="18pt" height="18pt"></a><br>
 		Copyright 2014 by <a href="../../../about.html">Grzegorz Adam Hankiewicz</a>.<br>
 		Generated with <a href="https://github.com/dom96/ipsumgenera">ipsum
 			genera</a>. Look at <a

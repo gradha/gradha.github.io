@@ -8,7 +8,10 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	</head>
 	<body>
-		<h3><a href="../../../index.html">Rants from the Ballmer Peak</a></h3>
+		<h3><a href="../../../index.html">Rants from the Ballmer Peak</a> <a
+				href="../../../feed.xml"><img
+			alt="rss feed" src="../../../i/Feed-icon.svg"
+			width="18pt" height="18pt"></a></h3>
 		<h1>Worse than global variables</h1><p>Global variables are one of the lowest programming abstractions you can use today. They represent through a human readable name an arbitrary address of memory on the machine running a program. In the beginning, <span style="font-style: italic;">real</span> programmers would store their data at specific memory address locations, and this was tedious and error prone. Being able to <span style="font-style: italic;">name</span> those address locations with a meaningful name, hopefully indicating what the address was used for, decreased human errors and made reviewing code easier. Programmers didn't have to remember any more what the address <code>&amp;A0BFh</code> stood for while developing. They weren't even called <span style="font-style: italic;">global</span> variables, they were simply variables, saving the world and allowing civilization reach higher heights. They were good, and kittens were saved.</p>
 <p>So what happened? At some point <a href="https://en.wikipedia.org/wiki/Structured_programming">structured programming</a> happened and suddenly programmers realised that as code grew, it was useful to compartmentalize sections and try to make them independent of each other for reuse. Local variables entered the scene, having a shorter lifespan compared to that of the <span style="font-style: italic;">immortal</span> global variables. Now you could have <a href="https://en.wikipedia.org/wiki/Subroutines">subroutines</a> using their own variables without <span style="font-style: italic;">polluting</span> the global <span style="font-style: italic;">name space</span>. Note how even the words I just used (polluting) imply something negative. As if the global name space was as <span style="font-style: italic;">precious</span> as our <a href="https://www.youtube.com/watch?v=Qr2bSL5VQgM">bodily fluids</a>, and any attack against them had to be answered with resolution.</p>
 <p>Indeed, global variables are at odds with structured programming (and even more concurrent programming). Consider the following C program:</p>
@@ -58,7 +61,9 @@
 <p>The singleton pattern can be useful, but hiding simple global variables behind it is not a proper use of this pattern. Is your programming language preventing you from doing the right thing then? And more importantly, is your programming language preventing you from thinking about the right way to express your needs? </p>
 
 		<hr>
-		<p>Last update: 09/12/2013 10:54.<br>
+		<p>Last update: 09/12/2013 10:54. <a href="../../../feed.xml"><img
+			alt="rss feed" src="../../../i/Feed-icon.svg"
+			width="18pt" height="18pt"></a><br>
 		Copyright 2014 by <a href="../../../about.html">Grzegorz Adam Hankiewicz</a>.<br>
 		Generated with <a href="https://github.com/dom96/ipsumgenera">ipsum
 			genera</a>. Look at <a
