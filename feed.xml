@@ -5,7 +5,7 @@
   <link href="http://gradha.github.io/feed.xml" rel="self" />
   <id>http://gradha.github.io/</id>
   <generator>ipsumgenera</generator>
-  <updated>2014-03-24T22:19:36Z</updated>
+  <updated>2014-03-26T18:49:17Z</updated>
     <entry>
       <title>The sweet trap of dynamic languages and development time</title>
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2014/03/the-sweet-trap-of-dynamic-languages-and-development-time.html"/>
@@ -78,7 +78,7 @@ Traceback (most recent call last):
   File &amp;quot;t.py&amp;quot;, line 11, in sayHello
     self.age, self.language)
 TypeError: %d format: a number is required, not str&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;The failure is evident, the first parameter to the convenience constructor should be the age and not the name. The number &lt;code&gt;23&lt;/code&gt; is assigned to &lt;code&gt;self.name&lt;/code&gt; and the string &lt;code&gt;Rick&lt;/code&gt; is assigned to &lt;code&gt;self.age&lt;/code&gt;. Hilarity ensues. In a typed language, like C or C++, the compiler is able to scan the format string and detect that you are passing the wrong type. But this is not possible in Python because there is no static type information. This is such a pain that when I write Python code the first line of the &lt;span style=&quot;font-style: italic;&quot;&gt;docstring&lt;/span&gt; is the signature of the method with the parameter names replaced as types. Example:&lt;/p&gt;
+&lt;p&gt;The failure is evident, the first parameter to the convenience constructor should be the age and not the name. The number &lt;code&gt;23&lt;/code&gt; is assigned to &lt;code&gt;self.name&lt;/code&gt; and the string &lt;code&gt;Rick&lt;/code&gt; is assigned to &lt;code&gt;self.age&lt;/code&gt;. Hilarity ensues. In a typed language, like C or C++, the compiler is able to scan the format string and detect that you are passing the wrong type. But this is not possible in Python because there is no static type information. This is such a pain that when I write Python code the first line of the &lt;span style=&quot;font-style: italic;&quot;&gt;docstring&lt;/span&gt; is &lt;a href=&quot;https://github.com/gradha/apptaster-to-html/blob/master/apptaster-to-html.py#L21&quot;&gt;the signature of the method with the parameter names replaced as types&lt;/a&gt;. Example:&lt;/p&gt;
 &lt;p&gt;&lt;pre class='code'&gt;&lt;span class=&quot;Identifier&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;MyFailure&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;Identifier&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;:&lt;/span&gt;
         &lt;span class=&quot;LongStringLit&quot;&gt;&amp;quot;&amp;quot;&amp;quot;f(int, string, string) -&amp;gt; MyFailure
