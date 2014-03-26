@@ -338,8 +338,7 @@ That looks very close to Python, doesn't it? The differences are:
 * Writing Nimrod code is not that much different from the Python version. Note
   how the ``var rick`` line does not specify the type. This reduces source code
   noise. You can also use ``let`` instead of ``var`` to declare a variable
-  which can't change. There is no concept of ``let`` in Python, you can rebind
-  previous variables to different types without remorse.
+  which can't change. There is no concept of ``let`` or *const* in Python.
 
 Conclusion
 ==========
