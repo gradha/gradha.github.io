@@ -170,8 +170,10 @@ should be the age and not the name. The number ``23`` is assigned to
 ensues. In a typed language, like C or C++, the compiler is able to scan the
 format string and detect that you are passing the wrong type. But this is not
 possible in Python because there is no static type information. This is such a
-pain that when I write Python code the first line of the *docstring* is the
-signature of the method with the parameter names replaced as types. Example:
+pain that when I write Python code the first line of the *docstring* is `the
+signature of the method with the parameter names replaced as types
+<https://github.com/gradha/apptaster-to-html/blob/master/apptaster-to-html.py#L21>`_.
+Example:
 
 ```
 class MyFailure:
