@@ -33,11 +33,11 @@ improvement of Cython.
 
 At that point I really felt back stabbed. I really liked the language: it was
 easy to write, fast to develop, source code looked very good. But it failed to
-deliver. With time, maintaining larger Python source code bases I realised
+deliver. Once I started maintaining large Python source code bases I realised
 dynamic languages have other traps, like refactoring time and necessary unit
-testing afterwards or higher quality requirements for documentation because the
-programming interface tells you nothing (oh, give me an integer, or a string,
-or whatever you want, I'll just crash and burn later!).
+testing afterwards, or higher quality requirements for documentation because
+the programming interface tells you nothing (oh, give me an integer, or a
+string, or whatever you want, I'll just crash and burn later!).
 
 Performance gains are clear for entities of Facebook scale, but most small or
 middle size shops may have other pressing issues like time to market, so they
