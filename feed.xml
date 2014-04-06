@@ -5,12 +5,13 @@
   <link href="http://gradha.github.io/feed.xml" rel="self" />
   <id>http://gradha.github.io/</id>
   <generator>ipsumgenera</generator>
-  <updated>2014-04-05T18:33:21Z</updated>
+  <updated>2014-04-06T11:11:13Z</updated>
     <entry>
       <title>Could Dropbox switch to Nimrod?</title>
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2014/04/could-dropbox-switch-to-nimrod.html"/>
       <id>http://gradha.github.io/articles/2014/04/could-dropbox-switch-to-nimrod.html</id>
-      <updated>2014-04-04T19:12:00Z</updated>
+      <published>2014-04-04T19:12:00Z</published>
+      <updated>2014-04-04T19:19:00Z</updated>
       <author><name>Grzegorz Adam Hankiewicz</name></author>
       <content type="html">
         &lt;h1&gt;Could Dropbox switch to Nimrod?&lt;/h1&gt;&lt;p&gt;More interesting changes have been announced in the language arena &lt;a href=&quot;http://gradha.github.io/articles/2014/04/../03/the-sweet-trap-of-dynamic-languages-and-development-time.html&quot;&gt;just a few days after I wrote my opinion on Facebook announcing the Hack programming language&lt;/a&gt;. So rather than a longish useless rant, this is more like an appendix to that article. The interesting things announced were:&lt;/p&gt;
@@ -33,7 +34,8 @@ Error: execution of an external program failed
       <title>The sweet trap of dynamic languages and development time</title>
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2014/03/the-sweet-trap-of-dynamic-languages-and-development-time.html"/>
       <id>http://gradha.github.io/articles/2014/03/the-sweet-trap-of-dynamic-languages-and-development-time.html</id>
-      <updated>2014-03-24T21:57:00Z</updated>
+      <published>2014-03-24T21:57:00Z</published>
+      <updated>2014-04-04T18:00:00Z</updated>
       <author><name>Grzegorz Adam Hankiewicz</name></author>
       <content type="html">
         &lt;h1&gt;The sweet trap of dynamic languages and development time&lt;/h1&gt;&lt;p&gt;Recently &lt;a href=&quot;https://code.facebook.com/posts/264544830379293/hack-a-new-programming-language-for-hhvm&quot;&gt;Facebook announced Hack, a new programming language for HHVM&lt;/a&gt;. You can read the post yourself, but the summary is they are adding optional static typing to the &lt;a href=&quot;http://php.net/&quot;&gt;PHP&lt;/a&gt; language, transforming it in the process. The concept is not exactly new, if you like the &lt;a href=&quot;https://www.python.org&quot;&gt;Python programming language&lt;/a&gt; but require more performance, you can migrate your code to &lt;a href=&quot;http://cython.org&quot;&gt;Cython&lt;/a&gt;. In both Hack and Cython, final performance is important. If your PHP-like web framework is 100 times faster than &lt;a href=&quot;http://rubyonrails.org&quot;&gt;Ruby on rails&lt;/a&gt; it means that when you want to scale you need 1/100th of the hardware resources. Anything multiplied by 100 in the scale of Facebook is a lot of money. It's a great deal even if it was only 10 times better.&lt;/p&gt;
@@ -188,7 +190,8 @@ conclusion.nim(23, 6) Error: can raise an unlisted exception:
       <title>Nimrod for cross platform software</title>
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2014/03/nimrod-for-cross-platform-software.html"/>
       <id>http://gradha.github.io/articles/2014/03/nimrod-for-cross-platform-software.html</id>
-      <updated>2014-03-10T21:17:00Z</updated>
+      <published>2014-03-10T21:17:00Z</published>
+      <updated>2014-03-11T19:51:00Z</updated>
       <author><name>Grzegorz Adam Hankiewicz</name></author>
       <content type="html">
         &lt;h1&gt;Nimrod for cross platform software&lt;/h1&gt;&lt;p&gt;On the 21st of February of 2014, Sarah Con… er… &lt;a href=&quot;http://www.elhaso.es/seohtracker/ios.en.html&quot;&gt;Seohtracker v4 was released for iOS&lt;/a&gt;. A puny little iOS app. And now the app has crossed the bridge and made it to the Mac App Store as &lt;a href=&quot;http://www.elhaso.es/seohtracker/osx.en.html&quot;&gt;Seohtracker for OSX&lt;/a&gt;. Why would this be of any relevance? Because both programs are partially implemented in the &lt;a href=&quot;http://nimrod-lang.org&quot;&gt;Nimrod programming language&lt;/a&gt;.&lt;/p&gt;
@@ -341,6 +344,7 @@ internet US centric post&lt;/a&gt;.
       <title>Invoking Dash from the command line Vim</title>
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2014/02/invoking-dash-from-the-command-line-vim.html"/>
       <id>http://gradha.github.io/articles/2014/02/invoking-dash-from-the-command-line-vim.html</id>
+      <published>2014-02-15T09:06:00Z</published>
       <updated>2014-02-15T09:06:00Z</updated>
       <author><name>Grzegorz Adam Hankiewicz</name></author>
       <content type="html">
@@ -365,7 +369,8 @@ Pulse INTRO o escriba una orden para continuar&lt;/pre&gt;
       <title>Master can't die</title>
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2014/02/master-cant-die.html"/>
       <id>http://gradha.github.io/articles/2014/02/master-cant-die.html</id>
-      <updated>2014-02-06T09:34:00Z</updated>
+      <published>2014-02-06T09:34:00Z</published>
+      <updated>2014-03-05T22:23:00Z</updated>
       <author><name>Grzegorz Adam Hankiewicz</name></author>
       <content type="html">
         &lt;h1&gt;Master can't die&lt;/h1&gt;&lt;p&gt;In a &lt;a href=&quot;http://gradha.github.io/articles/2014/01/the-tyranny-of-gitflow-defaults.html&quot;&gt;previous article&lt;/a&gt; I suggested renaming repository branch &lt;code&gt;master&lt;/code&gt; to &lt;code&gt;stable&lt;/code&gt; and leave &lt;code&gt;develop&lt;/code&gt; as the development hub. Part was to inform users, and part to detect which software is unable to work with git repositories without a master branch. Well, that did not take long: no git clients on earth work properly if you remove master.&lt;/p&gt;
@@ -381,7 +386,8 @@ warning: remote HEAD refers to nonexistent ref, unable to checkout&lt;/pre&gt;
       <title>The tyranny of git-flow defaults</title>
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2014/01/the-tyranny-of-gitflow-defaults.html"/>
       <id>http://gradha.github.io/articles/2014/01/the-tyranny-of-gitflow-defaults.html</id>
-      <updated>2014-01-17T23:39:00Z</updated>
+      <published>2014-01-17T23:39:00Z</published>
+      <updated>2014-02-15T08:26:00Z</updated>
       <author><name>Grzegorz Adam Hankiewicz</name></author>
       <content type="html">
         &lt;h1&gt;The tyranny of git-flow defaults&lt;/h1&gt;&lt;p&gt;&lt;span style=&quot;font-weight: bold;&quot;&gt;UPDATE:&lt;/span&gt; The suggestion to remove the git &lt;code&gt;master&lt;/code&gt; branch is very bad. &lt;a href=&quot;http://gradha.github.io/articles/2014/02/master-cant-die.html&quot;&gt;It is better to keep it&lt;/a&gt; and change git-flow's &lt;code&gt;develop&lt;/code&gt; for a &lt;code&gt;stable&lt;/code&gt; branch.&lt;/p&gt;
@@ -484,7 +490,8 @@ URL: git@github.com:remoteuser/healthyspam.git
       <title>Small big mistakes</title>
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2014/01/small-big-mistakes.html"/>
       <id>http://gradha.github.io/articles/2014/01/small-big-mistakes.html</id>
-      <updated>2014-01-14T08:02:00Z</updated>
+      <published>2014-01-14T08:02:00Z</published>
+      <updated>2014-02-23T20:12:00Z</updated>
       <author><name>Grzegorz Adam Hankiewicz</name></author>
       <content type="html">
         &lt;h1&gt;Small big mistakes&lt;/h1&gt;&lt;p&gt;Open software is cool. Everybody can join in and tinker with the code. But sometimes the entrance threshold is too high and projects are kept &lt;span style=&quot;font-style: italic;&quot;&gt;under the radar&lt;/span&gt; for most people. I believe the &lt;a href=&quot;http://nimrod-lang.org&quot;&gt;Nimrod programming language&lt;/a&gt; by Andreas Rumpf &amp;amp; Contributors slightly tiptoes into the &lt;span style=&quot;font-style: italic;&quot;&gt;could-be-much-better-with-a-little-more-care&lt;/span&gt;. The disadvantage of Nimrod is that it is a programming language, and a really full fledged one which beats most commonly used ones in terms of flexibility and amazing features. Most potential contributors are intimidated by the initial complexity of such software (not everybody writes compilers for breakfast).&lt;/p&gt;
@@ -516,6 +523,7 @@ $&lt;/pre&gt;&lt;/p&gt;
       <title>Worse than global variables</title>
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2013/12/worse-than-global-variables.html"/>
       <id>http://gradha.github.io/articles/2013/12/worse-than-global-variables.html</id>
+      <published>2013-12-09T10:54:00Z</published>
       <updated>2013-12-09T10:54:00Z</updated>
       <author><name>Grzegorz Adam Hankiewicz</name></author>
       <content type="html">
@@ -573,7 +581,8 @@ $&lt;/pre&gt;&lt;/p&gt;
       <title>40 years later we still can't be friends</title>
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2013/10/40-years-later-we-still-cant-be-friends.html"/>
       <id>http://gradha.github.io/articles/2013/10/40-years-later-we-still-cant-be-friends.html</id>
-      <updated>2013-10-07T23:29:00Z</updated>
+      <published>2013-10-07T23:29:00Z</published>
+      <updated>2013-10-19T23:39:00Z</updated>
       <author><name>Grzegorz Adam Hankiewicz</name></author>
       <content type="html">
         &lt;h1&gt;40 years later we still can't be friends&lt;/h1&gt;&lt;h2&gt;Context&lt;/h2&gt;&lt;p&gt;The computer (or electronic device) you are likely using to read this article is also very likely to be doing some form of &lt;a href=&quot;https://en.wikipedia.org/wiki/Computer_multitasking&quot;&gt;multitasking&lt;/a&gt;, where the machine gives the illusion of performing different tasks simultaneously. At the low level a single processor is only able to perform a single task, operation, action, whatever you want to call it. However, processors are so fast that switching from one task to another looks to us, humans, like they are doing multiple things.&lt;/p&gt;
@@ -602,7 +611,8 @@ $&lt;/pre&gt;&lt;/p&gt;
       <title>You have to realise that someday you will die…</title>
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2013/10/you-have-to-realise-that-someday-you-will-die….html"/>
       <id>http://gradha.github.io/articles/2013/10/you-have-to-realise-that-someday-you-will-die….html</id>
-      <updated>2013-10-01T14:45:00Z</updated>
+      <published>2013-10-01T14:45:00Z</published>
+      <updated>2013-11-28T11:36:00Z</updated>
       <author><name>Grzegorz Adam Hankiewicz</name></author>
       <content type="html">
         &lt;h1&gt;You have to realise that someday you will die…&lt;/h1&gt;&lt;p&gt;…until you know that, you are useless. That's part of the lyrics of &lt;a href=&quot;http://www.leoslyrics.com/tyler-durden/this-is-your-life-lyrics/&quot;&gt;This is your life&lt;/a&gt;, part of the soundtrack to the &lt;a href=&quot;http://www.imdb.com/title/tt0137523/&quot;&gt;Fight club film&lt;/a&gt;, based on &lt;a href=&quot;http://chuckpalahniuk.net/books/fight-club&quot;&gt;a book by Chuck Palahniuk&lt;/a&gt;. It's a sentence I like to remember during the times when everything goes wrong: broken hardware, service providers going out of business, breaking relationships, etc. Focusing on whatever &lt;span style=&quot;font-style: italic;&quot;&gt;is gone&lt;/span&gt; is the result of getting too attached, and that can interfere with new things in life. It simply means change, and people who are unable to change will have a harder time than those who can adapt.&lt;/p&gt;
@@ -619,7 +629,8 @@ $&lt;/pre&gt;&lt;/p&gt;
       <title>Users prefer static linking</title>
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2013/08/users-prefer-static-linking.html"/>
       <id>http://gradha.github.io/articles/2013/08/users-prefer-static-linking.html</id>
-      <updated>2013-08-03T12:31:00Z</updated>
+      <published>2013-08-03T12:31:00Z</published>
+      <updated>2013-11-28T11:36:00Z</updated>
       <author><name>Grzegorz Adam Hankiewicz</name></author>
       <content type="html">
         &lt;h1&gt;What is static linking&lt;/h1&gt;&lt;p&gt;Users prefer static linking. That is, if software users would actually know what static linking is. Most users don't know anything about software, how it is built, or how much time you pour into it, but they know one thing: if it works, they expect it to keep working.&lt;/p&gt;
@@ -654,6 +665,7 @@ $&lt;/pre&gt;&lt;/p&gt;
       <title>First post!</title>
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2013/06/first-post.html"/>
       <id>http://gradha.github.io/articles/2013/06/first-post.html</id>
+      <published>2013-06-19T12:31:00Z</published>
       <updated>2013-06-19T12:31:00Z</updated>
       <author><name>Grzegorz Adam Hankiewicz</name></author>
       <content type="html">
