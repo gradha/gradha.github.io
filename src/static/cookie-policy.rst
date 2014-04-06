@@ -1,6 +1,7 @@
 ---
 title: Cookie policy
-date: 2014-03-09 20:46
+pubdate: 2014-03-09 20:46
+moddate: 2014-03-13 16:16
 ---
 
 This website uses `Google Analytics <http://www.google.es/analytics/>`_. That
