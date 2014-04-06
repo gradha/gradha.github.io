@@ -1,6 +1,7 @@
 ---
 title: The sweet trap of dynamic languages and development time
-date: 2014-03-24 22:57
+pubdate: 2014-03-24 22:57
+moddate: 2014-04-04 19:00
 tags: programming,languages,python,nimrod
 ---
 

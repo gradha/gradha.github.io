@@ -1,6 +1,7 @@
 ---
 title: You have to realise that someday you will die…
-date: 2013-10-01 15:45
+pubdate: 2013-10-01 15:45
+moddate: 2013-11-28 12:36
 tags: misc, elhaso
 ---
 

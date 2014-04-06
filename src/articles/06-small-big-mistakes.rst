@@ -1,6 +1,7 @@
 ---
 title: Small big mistakes
-date: 2014-01-14 09:02
+pubdate: 2014-01-14 09:02
+moddate: 2014-02-23 21:12
 tags: programming,nimrod,bureaucracy
 ---
 

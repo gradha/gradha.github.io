@@ -1,6 +1,7 @@
 ---
 title: First post!
-date: 2013-06-19 13:31
+pubdate: 2013-06-19 13:31
+moddate: 2013-06-19 13:31
 tags: misc
 ---
 

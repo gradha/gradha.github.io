@@ -1,6 +1,7 @@
 ---
 title: Invoking Dash from the command line Vim
-date: 2014-02-15 10:06
+pubdate: 2014-02-15 10:06
+moddate: 2014-02-15 10:06
 tags: programming,tools,nimrod,dash
 ---
 
