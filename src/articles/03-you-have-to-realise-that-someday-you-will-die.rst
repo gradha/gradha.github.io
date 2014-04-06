@@ -1,7 +1,7 @@
 ---
 title: You have to realise that someday you will die…
 pubdate: 2013-10-01 15:45
-moddate: 2013-11-28 12:36
+moddate: 2014-04-06 13:24
 tags: misc, elhaso
 ---
 
@@ -24,7 +24,7 @@ of ``http://elhaso.com/`` not being available any more is that it has been
 claimed by automatic spambots, turning it into a casino. With black jack. And
 hopefully, whores:
 
-.. image:: /i/the_definition_of_crap.png
+.. image:: ${prefix}i/the_definition_of_crap.png
 
 It is clearly a sign of irrelevance when automatic software cares more about
 your out of business ideas than human people, I don't think that website
