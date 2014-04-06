@@ -9,9 +9,6 @@
 *.swp
 .DS_Store
 
-/pelican/output/
-/pelican/pelican.pid
-/pelican/pelicanconf.pyc
-/pelican/publishconf.pyc
-/pelican/srv.pid
+/license.html
+/readme.html
 /src/output/
