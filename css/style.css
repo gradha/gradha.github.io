@@ -44,7 +44,7 @@ div#header span, #nimbtn span {
 
 div#header a.right, #nimbtn a {
   float: right;
-  
+
   color: #ffffff;
   margin-right: 6pt;
 }
@@ -53,7 +53,7 @@ div#header a {
   color: #ffffff;
 }
 
-div#header a:visited, #nimbtn a:visited {  
+div#header a:visited, #nimbtn a:visited {
   color: #ffffff;
 }
 
@@ -202,7 +202,7 @@ img.rssfeed {
 }
 
 #topbar {
-  margin: 5pt;  
+  margin: 5pt;
 }
 
 div#topbar span#rss {
@@ -391,7 +391,7 @@ span.RawData {color: blue}
 span.Assembler  {color: blue}
 span.Preprocessor {color: DarkViolet}
 span.Directive  {color: DarkViolet}
-span.Command, span.Rule, span.Hyperlink, span.Label, span.Reference, 
+span.Command, span.Rule, span.Hyperlink, span.Label, span.Reference,
 span.Other  {color: black}
 
 /* Buttons */
