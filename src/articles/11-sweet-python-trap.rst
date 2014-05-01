@@ -56,7 +56,6 @@ The trap
         src="../../../i/python_trap.jpg"
         alt="Admiral Ackbar knows where this is going"
         style="width:100%;max-width:600px" align="right"
-        width="600" height="750"
         hspace="8pt" vspace="8pt">
 
 Using a dynamic language is like `the dark side of the force
