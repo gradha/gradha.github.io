@@ -1,7 +1,7 @@
 ---
 title: Testing installation instructions
 pubDate: 2014-05-01 18:00
-modDate: 2014-05-01 18:00
+modDate: 2014-05-01 18:34
 tags: nimrod, testing, programming, user experience
 ---
 
@@ -63,13 +63,13 @@ between versions, so we will have to expand the source code tests to cover one
 using the stable compiler release and another using the unstable one. If my
 math is not wrong, that's more than a single test, enough to impress your mom.
 
-The platforms to test are macosx and linux. You can test Windows too, you can
+The platforms to test are MacOSX and Linux. You can test Windows too, you can
 do nice things with `VirtualBox alone
 <https://oracleexamples.wordpress.com/2011/08/12/virtualbox-script-to-control-virtual-machines/>`_
 or `with additional tools like Vagrant
 <http://www.vagrantup.com/blog/feature-preview-vagrant-1-6-windows.html>`_, but
 I don't own any Windows licenses and have little interest in getting one.
-Since both target platforms are unix-like, we will be able to reuse the
+Since both target platforms are Unix-like, we will be able to reuse the
 scripting for both using `bash <https://www.gnu.org/software/bash/>`_ or
 whatever shell used by the systems used to run the test cases (if you don't
 control the environment, like on virtual host). We won't go the full virtual
@@ -103,7 +103,7 @@ script to the user through a `secure shell
 
 The secure shell abstraction forces us to make a script which works remotely,
 can be run at any time, and we can run one instance in our development machine
-(macosx) and another one on a virtual box or hosted server (linux). Secure
+(MacOSX) and another one on a virtual box or hosted server (Linux). Secure
 shells are also easier to set up with public/private keys to avoid interactive
 prompts during testing. Of course you can set up passwords into the test
 scripts, but you have to be careful about `private secrets not leaking to
@@ -255,7 +255,7 @@ of github projects which don't even compile without tweaking is sad (or maybe
 I'm just unlucky?).
 
 As a bonus you know when things go wrong without others having to tell you.
-Since these integration tests also test external software software, you are
+Since these integration tests also test external software, you are
 sort of contributing to the `Nimrod community <http://forum.nimrod-lang.org>`_
 by testing the compiler (both the last stable and last development versions)
 and the approved package manager used by many others.
