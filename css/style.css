@@ -3,7 +3,7 @@ html, body {
   padding: 12pt;
 }
 
-a,h1,h2,h3,h4 {
+.content a,h1,h2,h3,h4 {
   /* Taken from http://stackoverflow.com/a/5241448/172690 to word wrap */
   white-space: pre-wrap; /* css-3 */
   white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
@@ -73,68 +73,6 @@ div#header a:hover, #nimbtn a:hover {
   padding-bottom: 3pt;
 }
 
-#content {
-  margin: 5pt;
-}
-
-#content table#threads {
-  width: 100%;
-  border-collapse: separate;
-  text-align: center;
-  border: #ffffff solid 1px;
-  font-size: 10pt;
-}
-
-#content table#threads th {
-  background-color: #5D5D5D;
-  background: -moz-linear-gradient(top, #5D5D5D, #4D4D4D);
-  background: -webkit-linear-gradient(top, #5D5D5D, #4d4d4d);
-  background: -o-linear-gradient(top, #5D5D5D, #4d4d4d);
-  color: #ffffff;
-  border-bottom: #2d2d2d solid 2px;
-  border-right: #2d2d2d solid 1px;
-}
-
-#content table#threads tr:nth-child(even) {
-  background-color: #eee;
-}
-
-#content table#threads td {
-  vertical-align: middle;
-  border-right: #9d9d9d solid 1px;
-  border-bottom: #9d9d9d solid 1px;
-}
-
-#content table#threads>tbody>tr>td:first-child {
-  border-left: #9d9d9d solid 1px;
-
-}
-
-#content table#threads>tbody>tr>td:last-child {
-  border-right: #9d9d9d solid 1px;
-}
-
-#content table#threads td:hover {
-  border-right-color: #9d9d9d;
-}
-
-#content table#threads td.topic {
-  text-align: left;
-  padding: 5pt;
-}
-#content table#threads td.author {
-  width: 10%;
-}
-#content table#threads td.posts {
-  width: 10%;
-}
-#content table#threads td.views {
-  width: 10%;
-}
-#content table#threads td.lastreply {
-  width: 15%;
-}
-
 span#rss {
   margin: 5pt;
   font-size: 9pt;
@@ -146,33 +84,6 @@ img.rssfeed {
   padding-right:3pt;
   margin-top:-1pt;
 
-}
-
-#whoisonline {
-  margin: 5pt;
-  font-size: 9pt;
-}
-
-#whoisonline .wioHeader {
-  background-color: #5D5D5D;
-  background: -moz-linear-gradient(top, #5D5D5D, #4D4D4D);
-  background: -webkit-linear-gradient(top, #5D5D5D, #4d4d4d);
-  background: -o-linear-gradient(top, #5D5D5D, #4d4d4d);
-  color: #ffffff;
-  border-bottom: #2d2d2d solid 1px;
-  padding: 3px;
-  padding-left: 5pt;
-}
-
-#whoisonline .content {
-  border: #9d9d9d solid 1px;
-  border-top: #2D2D2D solid 1px;
-  padding: 5pt;
-}
-
-#whoisonline .content hr {
-  margin-top: 5pt;
-  margin-bottom: 5pt;
 }
 
 #footerPush {
@@ -209,44 +120,6 @@ div#topbar span#rss {
   float: right;
   padding: 0;
   padding-right: 7pt;
-}
-
-#content .post {
-  border: #4d4d4d solid 2px;
-  width: 100%;
-  margin-bottom: 5pt;
-}
-
-#content .post th {
-  background-color: #5D5D5D;
-  background: -moz-linear-gradient(top, #5D5D5D, #4D4D4D);
-  background: -webkit-linear-gradient(top, #5D5D5D, #4d4d4d);
-  background: -o-linear-gradient(top, #5D5D5D, #4d4d4d);
-  color: #ffffff;
-  padding-left: 5pt;
-  padding-right: 5pt;
-  padding-top: 3pt;
-  padding-bottom: 3pt;
-  text-align: left;
-  font-size: 9pt;
-}
-
-#content .post .left {
-  border-left: #4d4d4d solid 2px;
-  background-color: #eee;
-  padding: 7pt;
-  width: 15%;
-  height: auto;
-}
-
-#content .post .left hr {
-  margin: 0;
-  margin-bottom: 5pt;
-  margin-top: 2pt;
-}
-
-#content .post .content {
-  padding: 6pt;
 }
 
 div#replywrapper {
@@ -318,53 +191,6 @@ div#pagenumbers div.right span, div#pagenumbers div.right a {
 
 div#pagenumbers div.right {
   float: right;
-}
-
-#content #threads .localnums {
-  display: inline;
-  float: right;
-  border-top: 1px solid #9d9d9d;
-  border-bottom: 1px solid #9d9d9d;
-  padding-left: 4pt;
-  padding-right: 4pt;
-}
-
-#content #threads .localnums a:first-child {
-  padding-left: 0;
-}
-
-#content #threads .localnums a {
-  padding-left: 6pt;
-  text-decoration: none;
-}
-
-#content #threads .localnums span {
-  padding-left: 3pt;
-  margin-right: -3pt;
-}
-
-#profile {
-  margin-left: 1.30em;
-}
-
-#profile #left {
-  width: 250px;
-}
-
-#profile #left #info table th {
-  text-align: left;
-  padding-right: 0.5em;
-}
-
-#profile #left #info table {
-  font-size: 10.5pt;
-}
-
-
-#profile #left #avatar {
-  border-bottom: 2px solid #6d6d6d;
-  padding-bottom: 0.75em;
-  margin-bottom: 0.50em;
 }
 
 /* For RST nimrod syntax highlighter */
