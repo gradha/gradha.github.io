@@ -15,11 +15,11 @@ language
 rather than a longish useless rant, this is more like an appendix to that
 article. The interesting things announced were:
 
- * `Microsoft announces .NET Native
-   <http://blogs.msdn.com/b/dotnet/archive/2014/04/02/announcing-net-native-preview.aspx>`_,
-   which essentially compiles C# with their C++ backend.
- * `Dropbox announces Pyston, a JIT-based Python implementation
-   <https://tech.dropbox.com/2014/04/introducing-pyston-an-upcoming-jit-based-python-implementation/>`_. 
+* `Microsoft announces .NET Native
+  <http://blogs.msdn.com/b/dotnet/archive/2014/04/02/announcing-net-native-preview.aspx>`_,
+  which essentially compiles C# with their C++ backend.
+* `Dropbox announces Pyston, a JIT-based Python implementation
+  <https://tech.dropbox.com/2014/04/introducing-pyston-an-upcoming-jit-based-python-implementation/>`_. 
 
 Both of these announces highlight that anything dynamic has trouble in the
 *real world* out there. Scaling servers is cool, but not having to throw

@@ -110,8 +110,8 @@ which is also a nice read), so I thought to myself, hey, why not try and write
 something absurd while being semi serious about the issue? So here goes my
 paper in pedantic PDF form:
 
- * `How to release software periodically
-   <how_to_release_software_periodically.pdf>`_.
+* `How to release software periodically
+  <how_to_release_software_periodically.pdf>`_.
 
 Hmm… maybe that wasn't such a good idea after all.
 
