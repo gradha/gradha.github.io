@@ -5,7 +5,45 @@
   <link href="http://gradha.github.io/feed.xml" rel="self" />
   <id>http://gradha.github.io/</id>
   <generator>ipsumgenera</generator>
-  <updated>2014-05-14T15:16:45Z</updated>
+  <updated>2014-05-15T21:07:56Z</updated>
+    <entry>
+      <title>Songs for the NSA</title>
+      <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2014/05/songs-for-the-nsa.html"/>
+      <id>http://gradha.github.io/articles/2014/05/songs-for-the-nsa.html</id>
+      <published>2014-05-15T21:45:00Z</published>
+      <updated>2014-05-15T21:45:00Z</updated>
+      <author><name>Grzegorz Adam Hankiewicz</name></author>
+      <content type="html">
+        &lt;h1&gt;Songs for the NSA&lt;/h1&gt;&lt;p&gt;In some firms there is silence at work. In others the firm pays to have music played globally, maybe because the decision people who want this are incapable of thoughts and the silence of their head scares them. At one of such firms I was lobotomized to love musical hits like &lt;a href=&quot;http://www.youtube.com/watch?v=WsYg48vuOTo&quot;&gt;Christina Aguilera's (aka P2P girl) Genio Atrapado (yes, in Spanish)&lt;/a&gt;, or &lt;a href=&quot;http://www.youtube.com/watch?v=ujuyt65WY0M&quot;&gt;Dame dame sung by Chayanne and Jennifer López&lt;/a&gt;.  It's a shame those two didn't release a promotional video. Or is it just I can't find it? Otherwise it would have looked really hot.&lt;/p&gt;
+&lt;p&gt;Anyway, thanks to the revelations made by &lt;a href=&quot;https://en.wikipedia.org/wiki/Edward_Snowden&quot;&gt;Edward Snowden&lt;/a&gt; everybody knows about the &lt;a href=&quot;https://en.wikipedia.org/wiki/Nsa&quot;&gt;Not Such Agency&lt;/a&gt; and their orwellian acts. If they have music played at work, I'm sure their playlist will have hits like &lt;a href=&quot;https://www.youtube.com/watch?v=OMOGaugKpzs&quot;&gt;Every breath you take, by The police&lt;/a&gt;. Let's see some of the lyrics:&lt;/p&gt;
+
+&lt;center&gt;&lt;em&gt;
+Every breath you take&lt;br&gt;
+And every move you make&lt;br&gt;
+Every bond you break, every step you take&lt;br&gt;
+I'll be watching you&lt;p&gt;
+
+Every single day&lt;br&gt;
+And every word you say&lt;br&gt;
+Every game you play, every night you stay&lt;br&gt;
+I'll be watching you&lt;p&gt;
+
+Oh can't you see&lt;br&gt;
+You belong to me&lt;br&gt;
+How my poor heart aches&lt;br&gt;
+With every step you take&lt;p&gt;
+
+Every move you make&lt;br&gt;
+And every vow you break&lt;br&gt;
+Every smile you fake, every claim you stake&lt;br&gt;
+I'll be watching you
+&lt;/em&gt;&lt;/center&gt;&lt;p&gt;Don't you &lt;span style=&quot;font-weight: bold;&quot;&gt;love&lt;/span&gt; such classics?&lt;/p&gt;
+&lt;pre class='literal'&gt;[~]$ cd work
+[~/work]$ cd ethics
+-bash: cd: ethics: No such file or directory
+&lt;/pre&gt;
+      </content>
+    </entry>
     <entry>
       <title>Testing installation instructions</title>
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2014/05/testing-installation-instructions.html"/>
@@ -419,23 +457,6 @@ No manual entry for nmap
 El intérprete de órdenes devolvió 1
 
 Pulse INTRO o escriba una orden para continuar&lt;/pre&gt;
-      </content>
-    </entry>
-    <entry>
-      <title>Master can't die</title>
-      <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2014/02/master-cant-die.html"/>
-      <id>http://gradha.github.io/articles/2014/02/master-cant-die.html</id>
-      <published>2014-02-06T09:34:00Z</published>
-      <updated>2014-03-05T22:23:00Z</updated>
-      <author><name>Grzegorz Adam Hankiewicz</name></author>
-      <content type="html">
-        &lt;h1&gt;Master can't die&lt;/h1&gt;&lt;p&gt;In a &lt;a href=&quot;http://gradha.github.io/articles/2014/01/the-tyranny-of-gitflow-defaults.html&quot;&gt;previous article&lt;/a&gt; I suggested renaming repository branch &lt;code&gt;master&lt;/code&gt; to &lt;code&gt;stable&lt;/code&gt; and leave &lt;code&gt;develop&lt;/code&gt; as the development hub. Part was to inform users, and part to detect which software is unable to work with git repositories without a master branch. Well, that did not take long: no git clients on earth work properly if you remove master.&lt;/p&gt;
-&lt;p&gt;The official git client comes closest: it &lt;span style=&quot;font-style: italic;&quot;&gt;works&lt;/span&gt;, where &lt;span style=&quot;font-style: italic;&quot;&gt;works&lt;/span&gt; means it gets the source code, but lacking a &lt;code&gt;master&lt;/code&gt; branch prevents it from populating &lt;span style=&quot;font-style: italic;&quot;&gt;by default&lt;/span&gt; the files in the directory and you are left with the hidden &lt;code&gt;.git&lt;/code&gt; thinking something is not working. So you either have to specify the branch name to checkout during the cloning operation, or check out, get a weird warning, then manually checkout one of the available branches. Other clients like SourceTree seem to refuse to work with the empty repo, or don't know what to do next. I guess checking any branch if &lt;code&gt;master&lt;/code&gt; is not available is too hard for developers to figure out. Or maybe it is part of the git spec?&lt;/p&gt;
-&lt;p&gt;Anyway, you can't get rid off of &lt;code&gt;master&lt;/code&gt; unless you want to deal with user support nightmares. So the alternative I'm settling for is to leave &lt;code&gt;master&lt;/code&gt; as the unstable development branch (goes well with github and most people's expectations), and make git-flow use a &lt;code&gt;stable&lt;/code&gt; branch for software releases. This is essentially the &lt;span style=&quot;font-style: italic;&quot;&gt;inverse&lt;/span&gt; of git-flow defaults: where it creates an extra &lt;code&gt;develop&lt;/code&gt; branch, I create a &lt;code&gt;stable&lt;/code&gt; branch with reversed meaning.&lt;/p&gt;
-&lt;pre class='literal'&gt;
-$ git clone https://github.com/gradha/seohtracker-ios.git
-...
-warning: remote HEAD refers to nonexistent ref, unable to checkout&lt;/pre&gt;
       </content>
     </entry>
 </feed>
