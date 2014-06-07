@@ -2,7 +2,7 @@
 title: Worse than global variables
 pubdate: 2013-12-09 11:54
 moddate: 2013-12-09 11:54
-tags: programming,languages,design
+tags: programming, languages, design, objc
 ---
 
 Worse than global variables

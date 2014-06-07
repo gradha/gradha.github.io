@@ -2,7 +2,7 @@
 title: Nimrod for cross platform software
 pubdate: 2014-03-10 22:17
 moddate: 2014-03-11 20:51
-tags: programming,nimrod,seohtracker,elhaso
+tags: programming, nimrod, seohtracker, elhaso, objc
 ---
 
 Nimrod for cross platform software
