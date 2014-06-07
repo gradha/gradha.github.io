@@ -230,7 +230,7 @@ Objective-C style properties. Let that sink in. Nimrod doesn't provide
 properties, but instead it is flexible enough that it allows you, the end user
 programmer, to define your own language constructs. And you know what happens
 if you program in a language not flexible enough to stand the test of time?
-Yes, you are `forced to create new incompatible languages
+Yes, you are `forced to switch to new incompatible languages
 <https://developer.apple.com/swift/>`_. Otherwise you are stuck in the past.
 
 Could advanced Nimrod meta programming improve this example further?  Could we
