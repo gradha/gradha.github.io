@@ -212,6 +212,14 @@ can surely expect the result by now::
 
     Is Christina dirrty? true
 
+.. raw:: html
+
+    <center><img
+        src="../../../i/christina_punch.jpg"
+        alt="Hitting adversaries one macro at a time"
+        style="width:100%;max-width:750px"
+        hspace="8pt" vspace="8pt"></center><br>
+
 
 Conclusion
 ==========
@@ -219,17 +227,16 @@ Conclusion
 In these few lines of code we have not just solved the hypothetical problem of
 marking automatically a flag in setter procs: we have actually implemented
 Objective-C style properties. Let that sink in. Nimrod doesn't provide
-properties, but instead is flexible enough that it allows you, the end user
+properties, but instead it is flexible enough that it allows you, the end user
 programmer, to define your own language constructs. And you know what happens
 if you program in a language not flexible enough to stand the test of time?
 Yes, you are `forced to create new incompatible languages
-<https://developer.apple.com/swift/>`_ because otherwise you are stuck in the
-past.
+<https://developer.apple.com/swift/>`_. Otherwise you are stuck in the past.
 
 Could advanced Nimrod meta programming improve this example further?  Could we
 get rid of having to repeat the type of the field when creating the setters and
-getters? Could we avoid having to separate the definition of the object from
-the definition of the procs?
+getters and let the compiler figure it out? Could we avoid having to separate
+the definition of the object from the definition of the procs?
 
 Who knows…
 
