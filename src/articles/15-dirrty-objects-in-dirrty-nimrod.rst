@@ -34,8 +34,8 @@ Sparta <https://en.wikipedia.org/wiki/300_(comics)>`_, respekt man), so why was
 it all slow suddenly?  Fortunately there were two things I could quickly do to
 alleviate the problem and not look back:
 
-* SQL transactions.
-* Marking objects as `dirrty <https://en.wikipedia.org/wiki/Dirrty>`_.
+1. SQL transactions.
+2. Marking objects as `dirrty <https://en.wikipedia.org/wiki/Dirrty>`_.
 
 Experienced Objective-C programmers with knowledge of `Core Data
 <https://en.wikipedia.org/wiki/Core_Data>`_ will surely roll their eyes at this
