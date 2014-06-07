@@ -43,8 +43,8 @@ point as both of these problems are handled automatically by the framework. The
 SQL transactions is the obvious facepalm: using a database without taking care
 of transactions is like pushing a bicycle instead of riding it. You have this
 shiny thingy beside you which helps you and you are ignoring it. But after
-placing a few BEGIN/END here and there the saving wasn't instant yet (remember,
-you have to aim for perfect, always).
+placing a few BEGIN/COMMIT here and there the saving wasn't instant yet
+(remember, you have to aim for perfect, always).
 
 The 600+ item requirement didn't actually come from increased network traffic.
 The server would still serve data in chunks of about 50 items. However, the
