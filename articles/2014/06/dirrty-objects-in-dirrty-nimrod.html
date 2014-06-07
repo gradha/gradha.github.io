@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<title>Dirrty objects, in dirrty Nimrod - Rants from the Ballmer Peak</title>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="../../../css/normalize.css">
+		<link rel="stylesheet" href="../../../css/style.css">
+		<link href="../../../feed.xml" title="Articles" type="application/atom+xml" rel="alternate">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	</head>
+	<body>
+	<div class="content">
+		<h3><a href="../../../index.html">Rants from the Ballmer Peak</a> <a
+				href="../../../feed.xml"><img
+			alt="rss feed" src="../../../i/Feed-icon.svg"
+			width="18pt" height="18pt"></a></h3>
+		<h1>Dirrty objects, in dirrty Nimrod</h1><p>This article has been optimized for search engines by using the misspelled word <span style="font-weight: bold;">dirrty</span>. If you came here looking for some hot girls, please go instead to Youtube to watch <a href="https://www.youtube.com/watch?v=4Rg3sAb8Id8">Christina Aguilera's Dirrty video</a> where she works it out. At the moment of writing this article the video records 7.226.476 views, some more won't hurt. For all the other boring people, welcome again to another technical article only worth reading while you wait for the compiler to do its job (or for your browser to render some JavaScript, if you are one of those hipster types).</p>
+<p>In what looks like a distant past, I used to write Objective-C code for the iPhone. In one of the projects, a little client consuming JSON would fetch news from a web server and cache them locally using SQLite. The code I initially wrote worked fine for about 50 to 100 items, which was the expected workload. Years later this code was moved to another project where the item requirement jumped to over 600+ items and suddenly the user interface was all jerky. As if you were using a cheap Android device instead of the silky smooth luxury car the iPhone feels like (platform fanboys will be glad to know I replicated the silky smooth experience on Android 2.1 devices with less computing power than a cereal box).</p>
+<p>Certainly 600 didn't seem an incredibly big number (though it was <a href="https://en.wikipedia.org/wiki/300_(comics)">twice as Sparta</a>, respekt man), so why was it all slow suddenly?  Fortunately there were two things I could quickly do to alleviate the problem and not look back:</p>
+<ul><li>SQL transactions.</li><li>Marking objects as <a href="https://en.wikipedia.org/wiki/Dirrty">dirrty</a>.</li></ul><p>Experienced Objective-C programmers with knowledge of <a href="https://en.wikipedia.org/wiki/Core_Data">Core Data</a> will surely roll their eyes at this point as both of these problems are handled automatically by the framework. The SQL transactions is the obvious facepalm: using a database without taking care of transactions is like pushing a bicycle instead of riding it. You have this shiny thingy beside you which helps you and you are ignoring it. But after placing a few BEGIN/END here and there the saving wasn't instant yet (remember, you have to aim for perfect, always).</p>
+<p>The 600+ item requirement didn't actually come from increased network traffic. The server would still serve data in chunks of about 50 items. However, the items would be cached locally until a certain expiration date and thus when new items arrived the older ones were still there. That was the problem: the code was blindly saving all the objects even when they had not changed at all. That's where the <span style="font-weight: bold;">dirrty</span> flag comes, the code would mark any new or modified object as <span style="font-weight: bold;">dirrty</span> and the SQLite saving code would skip the items without this flag.  With these two new measures in place the client performed again seemingly instantly and scrolling was fast again even on first generation devices.</p>
+<h1>The reference Objective-C implementation</h1>
+<a href="https://en.wikipedia.org/wiki/File:Dirrty_Slutdrop.jpg"><img
+    src="../../../i/wikipedia_slutdrop.jpg"
+    alt="Christina doing the slutdrop"
+    style="width:100%;max-width:750px" align="right"
+    hspace="8pt" vspace="8pt"></a><p>The implementation of the <span style="font-weight: bold;">dirrty</span> flag is not really hard at all, just tedious. In Objective-C you tend to build your serialized objects around an inheritance tree where the base class provides the basic serialization methods. Subclasses can then call <code>super</code> and extend the serialization (in my case, JSON dictionaries) with whatever new properties the parent class was not aware of.</p>
+<p>The first step is to create a data model super class which already contains the <span style="font-weight: bold;">dirrty</span> flag. Then you provide setter/getters for properties. In Objective-C setters/getters can be implemented by the compiler automatically through <code>@property</code> and <code>@synthethize</code>. But you can also implement them yourself. In my case I created the following C macros which would expand to setters marking the <span style="font-weight: bold;">dirrty</span> flag:</p>
+
+<br clear="right"><pre class='literal'>
+#define SS_DIRRTY_ASSIGN_SETTER(NAME,TYPE,VAR) \
+    - (void)NAME:(TYPE)VAR { \
+            VAR ## _ = VAR; \
+            dirrty_ = YES; \
+    }
+
+#define SS_DIRRTY_RETAIN_SETTER(NAME,TYPE,VAR) \
+    - (void)NAME:(TYPE)VAR { \
+            [VAR retain]; \
+            [VAR ## _ release]; \
+            VAR ## _ = VAR; \
+            dirrty_ = YES; \
+    }
+
+// Actual later usage:
+SS_DIRRTY_RETAIN_SETTER(setBody, NSString*, body)
+SS_DIRRTY_RETAIN_SETTER(setFooter, NSString*, footer)</pre><p>Not the prettiest code in the world, but works fine. There are two versions of the macro, one for scalar values and another for objects which requires the <code>retain/release</code> dance. The last two lines would be seen in a subclass implementation file where they would expand to a setter updating the <code>dirrty_</code> flag. In recent Objective-C versions the getter is generated by the compiler, but we could add the getter generation to these macros as well for ancient compiler compatibility.</p>
+<h1>Dirrtying Nimrod</h1><p>In the <a href="http://nimrod-lang.org">Nimrod programming language</a> we can replicate the C macros with some improvements. Here is the code of a <code>utils.nim</code> file:</p>
+<p><pre class='code'><span class="Keyword">import</span> <span class="Identifier">macros</span>
+
+<span class="Comment"># Create a superclass with the dirrty flag.</span>
+<span class="Keyword">type</span>
+  <span class="Identifier">Dirrty</span><span class="Operator">*</span> <span class="Operator">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">TObject</span>
+    <span class="Identifier">dirrty</span><span class="Operator">*:</span> <span class="Identifier">bool</span>
+
+<span class="Keyword">macro</span> <span class="Identifier">generateProperties</span><span class="Operator">*</span><span class="Punctuation">(</span><span class="Identifier">objType</span><span class="Punctuation">,</span>
+    <span class="Identifier">varName</span><span class="Punctuation">,</span> <span class="Identifier">varType</span><span class="Punctuation">:</span> <span class="Identifier">expr</span><span class="Punctuation">)</span><span class="Punctuation">:</span> <span class="Identifier">stmt</span> <span class="Operator">=</span>
+  <span class="Comment"># Create identifiers from the parameters.</span>
+  <span class="Keyword">let</span>
+    <span class="Identifier">setter</span> <span class="Operator">=</span> <span class="Operator">!</span><span class="Punctuation">(</span><span class="Operator">$</span><span class="Identifier">varName</span> <span class="Operator">&amp;</span> <span class="StringLit">&quot;=&quot;</span><span class="Punctuation">)</span>
+    <span class="Identifier">iVar</span> <span class="Operator">=</span> <span class="Operator">!</span><span class="Punctuation">(</span><span class="StringLit">&quot;F&quot;</span> <span class="Operator">&amp;</span> <span class="Operator">$</span><span class="Identifier">varName</span><span class="Punctuation">)</span>
+    <span class="Identifier">getter</span> <span class="Operator">=</span> <span class="Operator">!</span><span class="Punctuation">(</span><span class="Operator">$</span><span class="Identifier">varName</span><span class="Punctuation">)</span>
+  
+  <span class="Comment"># Generate the code using quasiquoting.</span>
+  <span class="Identifier">result</span> <span class="Operator">=</span> <span class="Identifier">quote</span> <span class="Keyword">do</span><span class="Punctuation">:</span>
+    <span class="Keyword">proc</span> <span class="Punctuation">`</span><span class="Identifier">setter</span><span class="Punctuation">`</span><span class="Operator">*</span><span class="Punctuation">(</span><span class="Identifier">x</span><span class="Punctuation">:</span> <span class="Keyword">var</span> <span class="Punctuation">`</span><span class="Identifier">objType</span><span class="Punctuation">`</span><span class="Punctuation">,</span>
+        <span class="Identifier">value</span><span class="Punctuation">:</span> <span class="Punctuation">`</span><span class="Identifier">varType</span><span class="Punctuation">`</span><span class="Punctuation">)</span> <span class="Punctuation">{</span><span class="Operator">.</span><span class="Identifier">inline</span><span class="Operator">.</span><span class="Punctuation">}</span> <span class="Operator">=</span>
+      <span class="Identifier">x</span><span class="Operator">.</span><span class="Punctuation">`</span><span class="Identifier">iVar</span><span class="Punctuation">`</span> <span class="Operator">=</span> <span class="Identifier">value</span>
+      <span class="Identifier">x</span><span class="Operator">.</span><span class="Identifier">dirrty</span> <span class="Operator">=</span> <span class="Identifier">true</span>
+    
+    <span class="Keyword">proc</span> <span class="Punctuation">`</span><span class="Identifier">getter</span><span class="Punctuation">`</span><span class="Operator">*</span><span class="Punctuation">(</span><span class="Identifier">x</span><span class="Punctuation">:</span> <span class="Keyword">var</span> <span class="Punctuation">`</span><span class="Identifier">objType</span><span class="Punctuation">`</span><span class="Punctuation">)</span><span class="Punctuation">:</span>
+        <span class="Punctuation">`</span><span class="Identifier">varType</span><span class="Punctuation">`</span> <span class="Punctuation">{</span><span class="Operator">.</span><span class="Identifier">inline</span><span class="Operator">.</span><span class="Punctuation">}</span> <span class="Operator">=</span>
+      <span class="Identifier">x</span><span class="Operator">.</span><span class="Punctuation">`</span><span class="Identifier">iVar</span><span class="Punctuation">`</span>
+</pre></p>
+<p>As scary as this code may look to any beginner in the language, the nice thing is that you can put it aside in a separate file and not look at it ever again. It is not very difficult to understand either. The first thing it does is import the <a href="http://nimrod-lang.org/macros.html">macros module</a> which contains many meta programming helpers. Then it defines a <code>Dirrty</code> base class which includes the <code>dirrty: bool</code> field. User defined objects will inherit from the class.</p>
+<p>The second (scary) thing this code does is define the <code>generateProperties</code> macro. This macro accepts a user defined type, a variable name, and the type of this variable. Then proceeds to create in the <code>let</code> block the names of the setter, getter and instance variable that will be used to access the object. This is done <a href="http://nimrod-lang.org/macros.html#$,PNimrodSymbol">converting the parameter Nimrod symbol to a string</a>, mangling the string, then <a href="http://nimrod-lang.org/macros.html#!,string">constructing again an identifier from this new string</a>. Note how you can apply crazy logic here depending on names of the variables, something which is hard or impossible to do in C macros.</p>
+<p>Once the identifiers are generated, using <a href="http://nimrod-lang.org/macros.html#quote">quasi-quoting</a> we define a setter and getter proc with the generated identifiers. The backticks are what will be replaced in the final code, and all of this is assigned to the result of the macro, thus generating the wanted code. Whenever this call is found, the Nimrod compiler will generate the setter and getter for us. Now let's see a typical usage of this macro:</p>
+<p><pre class='code'><span class="Keyword">import</span> <span class="Identifier">utils</span>
+
+<span class="Keyword">type</span>
+  <span class="Identifier">Person</span> <span class="Operator">=</span> <span class="Keyword">object</span> <span class="Keyword">of</span> <span class="Identifier">Dirrty</span>
+    <span class="Identifier">Fname</span><span class="Punctuation">,</span> <span class="Identifier">Fsurname</span><span class="Punctuation">:</span> <span class="Identifier">string</span>
+    <span class="Identifier">Fage</span><span class="Punctuation">:</span> <span class="Identifier">int</span>
+
+<span class="Identifier">generateProperties</span><span class="Punctuation">(</span><span class="Identifier">Person</span><span class="Punctuation">,</span> <span class="Identifier">name</span><span class="Punctuation">,</span> <span class="Identifier">string</span><span class="Punctuation">)</span>
+<span class="Identifier">generateProperties</span><span class="Punctuation">(</span><span class="Identifier">Person</span><span class="Punctuation">,</span> <span class="Identifier">surname</span><span class="Punctuation">,</span> <span class="Identifier">string</span><span class="Punctuation">)</span>
+<span class="Identifier">generateProperties</span><span class="Punctuation">(</span><span class="Identifier">Person</span><span class="Punctuation">,</span> <span class="Identifier">age</span><span class="Punctuation">,</span> <span class="Identifier">int</span><span class="Punctuation">)</span>
+
+<span class="Keyword">proc</span> <span class="Identifier">test</span><span class="Punctuation">(</span><span class="Punctuation">)</span> <span class="Operator">=</span>
+  <span class="Comment">## Exercise the setters and getters.</span>
+  <span class="Keyword">var</span> <span class="Identifier">a</span><span class="Punctuation">:</span> <span class="Identifier">Person</span>
+  <span class="Identifier">a</span><span class="Operator">.</span><span class="Identifier">name</span> <span class="Operator">=</span> <span class="StringLit">&quot;Christina&quot;</span>
+  <span class="Identifier">echo</span> <span class="StringLit">&quot;Is &quot;</span><span class="Punctuation">,</span> <span class="Identifier">a</span><span class="Operator">.</span><span class="Identifier">name</span><span class="Punctuation">,</span> <span class="StringLit">&quot; dirrty? &quot;</span><span class="Punctuation">,</span> <span class="Identifier">a</span><span class="Operator">.</span><span class="Identifier">dirrty</span>
+
+<span class="Keyword">when</span> <span class="Identifier">isMainModule</span><span class="Punctuation">:</span> <span class="Identifier">test</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
+</pre> The <code>Person</code> object defined here inherits from our <code>Dirrty</code> base class and uses the <a href="http://nimrod-lang.org/tut2.html#properties">getter and setter convention</a> of creating a <span style="font-style: italic;">private</span> variable with the <span style="font-weight: bold;">F</span> prefix. This variable can be accessed only from the current unit. After the type declaration we invoke the <code>generateProperties</code> macro to <span style="font-style: italic;">produce</span> at compilation time the setter and getter for each of the fields.</p>
+<p>What follows is a basic <code>test</code> proc which verifies our assumptions by creating a <code>Person</code> object, then echoing to screen the state of the <span style="font-weight: bold;">dirrty</span> flag after using the generated setter to name it <span style="font-weight: bold;">Christina</span>. You can surely expect the result by now:<pre class='literal'>
+Is Christina dirrty? true</pre></p>
+
+<center><img
+    src="../../../i/christina_punch.jpg"
+    alt="Hitting adversaries one macro at a time"
+    style="width:100%;max-width:750px"
+    hspace="8pt" vspace="8pt"></center><br><h1>Conclusion</h1><p>In these few lines of code we have not just solved the hypothetical problem of marking automatically a flag in setter procs: we have actually implemented Objective-C style properties. Let that sink in. Nimrod doesn't provide properties, but instead it is flexible enough that it allows you, the end user programmer, to define your own language constructs. And you know what happens if you program in a language not flexible enough to stand the test of time? Yes, you are <a href="https://developer.apple.com/swift/">forced to switch to new incompatible languages</a>. Otherwise you are stuck in the past.</p>
+<p>Could advanced Nimrod meta programming improve this example further?  Could we get rid of having to repeat the type of the field when creating the setters and getters and let the compiler figure it out? Could we avoid having to separate the definition of the object from the definition of the procs?</p>
+<p>Who knows…</p>
+<pre class='literal'>$ playback slutdrop.m4a
+Permission denied
+Kernel DRM module not found</pre>
+	</div>
+		<hr>
+		<p>Published on: 07/06/2014 19:23. Last update: 07/06/2014 19:23. <a
+			href="../../../feed.xml"><img
+			alt="rss feed" src="../../../i/Feed-icon.svg"
+			width="18pt" height="18pt"></a><br>
+		Copyright 2014 by <a href="../../../about.html">Grzegorz Adam Hankiewicz</a>.<br>
+		Generated with <a href="https://github.com/dom96/ipsumgenera">ipsum
+			genera</a>. Look at <a
+		href="https://github.com/gradha/gradha.github.io">the
+		source code</a>. Or look at <a href="../../../cookie-policy.html">my
+	cookie policy which you implicitly accept</a>.</p>
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48814780-1', 'gradha.github.io');
+  ga('send', 'pageview');
+
+</script>
+	</body>
+</html>
