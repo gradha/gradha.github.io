@@ -5,22 +5,23 @@
   <link href="http://gradha.github.io/feed.xml" rel="self" />
   <id>http://gradha.github.io/</id>
   <generator>ipsumgenera</generator>
-  <updated>2014-07-10T20:39:40Z</updated>
+  <updated>2014-07-12T12:19:50Z</updated>
     <entry>
       <title>Why I will never use an iWatch</title>
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2014/07/why-i-will-never-use-an-iwatch.html"/>
       <id>http://gradha.github.io/articles/2014/07/why-i-will-never-use-an-iwatch.html</id>
       <published>2014-07-09T19:05:00Z</published>
-      <updated>2014-07-10T21:39:00Z</updated>
+      <updated>2014-07-12T13:19:00Z</updated>
       <author><name>Grzegorz Adam Hankiewicz</name></author>
       <content type="html">
         &lt;h1&gt;Why I will never use an iWatch&lt;/h1&gt;&lt;p&gt;Because I've always hated things on my arms. I don't wear any and don't plan to.&lt;/p&gt;
-&lt;p&gt;Wow, that was short and sweet for a change!&lt;/p&gt;
 
-&lt;center&gt;&lt;img src=&quot;../../../i/do_not_want.jpg&quot;
+&lt;center&gt;&lt;a href=&quot;http://www.idol-grapher.com/1235&quot;&gt;&lt;img
+    src=&quot;../../../i/do_not_want.jpg&quot;
     alt=&quot;AOA doesn't want either&quot;
     style=&quot;width:100%;max-width:600px&quot;
-    hspace=&quot;8pt&quot; vspace=&quot;8pt&quot;&gt;&lt;/center&gt;&lt;pre class='literal'&gt;$ date -u
+    hspace=&quot;8pt&quot; vspace=&quot;8pt&quot;&gt;&lt;/a&gt;&lt;/center&gt;&lt;p&gt;Wow, that was short and sweet for a change!&lt;/p&gt;
+&lt;pre class='literal'&gt;$ date -u
 miércoles,  9 de julio de 2014, 18:05:42 UTC&lt;/pre&gt;
       </content>
     </entry>
