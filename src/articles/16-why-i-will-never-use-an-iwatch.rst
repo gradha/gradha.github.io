@@ -2,7 +2,7 @@
 title: Why I will never use an iWatch
 pubDate: 2014-07-09 20:05
 modDate: 2014-07-12 14:19
-tags: design, misc, user experience
+tags: design, misc, user experience, apple
 ---
 
 Why I will never use an iWatch

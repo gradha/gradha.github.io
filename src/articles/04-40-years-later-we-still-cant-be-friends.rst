@@ -2,7 +2,7 @@
 title: 40 years later we still can't be friends
 pubdate: 2013-10-08 00:29
 moddate: 2013-10-20 00:39
-tags: multitasking, user-experience, objc
+tags: multitasking, user-experience, objc, apple
 ---
 
 40 years later we still can't be friends
