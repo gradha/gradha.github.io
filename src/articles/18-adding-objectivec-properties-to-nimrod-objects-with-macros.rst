@@ -1,7 +1,7 @@
 ---
 title: Adding Objective-C properties to Nimrod objects with macros
 pubDate: 2014-10-12 22:46
-modDate: 2014-10-12 22:46
+modDate: 2014-10-12 23:55
 tags: nimrod, programming, languages, objc
 ---
 
@@ -155,9 +155,9 @@ numbered markers have been placed to point out the interesting parts::
 
     type
       Person = object of Dirrty
-        dirty ⓵, name* ⓶, surname* ⓶: string
-        clean ⓵, age* ⓶: int
-        internalValue ⓷: float
+        dirty ①, name* ②, surname* ②: string
+        clean ①, age* ②: int
+        internalValue ③: float
     ----
     StmtList                   StmtList
       TypeSection                TypeSection
@@ -170,23 +170,23 @@ numbered markers have been placed to point out the interesting parts::
               Ident !"Dirrty"            Ident !"Dirrty"
             RecList                    RecList
               IdentDefs                  IdentDefs
-                Ident !"dirty"             ⓵
+                Ident !"dirty"             ①
                 Postfix                    Postfix
                   Ident !"*"                 Ident !"*"
-                  Ident !"name"              Ident !"Fname" ⓶
+                  Ident !"name"              Ident !"Fname" ②
                 Postfix                    Postfix
                   Ident !"*"                 Ident !"*"
-                  Ident !"surname"           Ident !"Fsurname" ⓶
+                  Ident !"surname"           Ident !"Fsurname" ②
                 Ident !"string"            Ident !"string"
                 Empty                      Empty
               IdentDefs                  IdentDefs
-                Ident !"clean"             ⓵
+                Ident !"clean"             ①
                 Postfix                    Postfix
                   Ident !"*"                 Ident !"*"
-                  Ident !"age"               Ident !"Fage" ⓶
+                  Ident !"age"               Ident !"Fage" ②
                 Ident !"int"               Ident !"int"
                 Empty                      Empty
-              IdentDefs                  IdentDefs ⓷
+              IdentDefs                  IdentDefs ③
                 Ident !"internalValue"     Ident !"internalValue"
                 Ident !"float"             Ident !"float"
                 Empty                      Empty
