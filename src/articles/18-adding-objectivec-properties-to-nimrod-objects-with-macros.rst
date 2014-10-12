@@ -467,7 +467,7 @@ with, or annoying stuff which hopefully will be improved in future versions of
 Nimrod. From our user perspective, to the left you can see the code we now can
 write. To the right you can see what could be written if the language provided
 native property support (which is impossible, or do you know of any language
-providing built-in object dirty field setting?)::
+providing built-in object dirty field tracking?)::
 
     makeDirtyWithStyle:                  dirtyType:
       type                                 Person = object of Dirrty
@@ -590,3 +590,44 @@ you to become a compiler developer and extend the language just that little bit
 in the direction you need to make your life easier. Only without the pain and
 embarrassment of pull requests being reviewed and rejected. And let's face it,
 figuring out how macros work and how to write them is in itself a fun exercise.
+
+`I'd <http://www.youtube.com/watch?v=thabOb8WX34>`_
+`also <http://www.youtube.com/watch?v=6KRb4buwa3A>`_
+`like <http://www.youtube.com/watch?v=85kgIuq3HY4>`_
+`to <http://www.youtube.com/watch?v=8NFXElCZY4I>`_
+`thank <http://www.youtube.com/watch?v=8NFXElCZY4I>`_
+`the <http://www.youtube.com/watch?v=Dgwth72XZCQ>`_
+`wonderful <http://www.youtube.com/watch?v=Hpp4mXPihZg>`_
+`Ace <http://www.youtube.com/watch?v=Htjh6Vyxkws>`_
+`of <http://www.youtube.com/watch?v=Hxxoyc05hWQ>`_
+`Angels <http://www.youtube.com/watch?v=IJDckhfF0Z4>`_
+`for <http://www.youtube.com/watch?v=Qwr_aRE-PRw>`_
+`their <http://www.youtube.com/watch?v=RCybFtD9ROg>`_
+`performances <http://www.youtube.com/watch?v=Rie4knPIKPw>`_
+`and <http://www.youtube.com/watch?v=Vdd-z87h0Ek>`_
+`the <http://www.youtube.com/watch?v=XSxbmpBMz0E>`_
+`dozens <http://www.youtube.com/watch?v=YvnlMaYUe24>`_
+`of <http://www.youtube.com/watch?v=ZpgTevBUStE>`_
+`Korean <http://www.youtube.com/watch?v=_2oVTghzm5I>`_
+`camera <http://www.youtube.com/watch?v=_39a5TJC47E>`_
+`men <http://www.youtube.com/watch?v=bQ3XlIQyPEI>`_
+`offering <http://www.youtube.com/watch?v=chkdylyKgJE>`_
+`high <http://www.youtube.com/watch?v=f0uY0zFG0y8>`_
+`quality <http://www.youtube.com/watch?v=fLZG31_AKsQ>`_
+`captures <http://www.youtube.com/watch?v=ljwkRDdhjVM>`_
+`of <http://www.youtube.com/watch?v=mG_UY_SCKqg>`_
+`them <http://www.youtube.com/watch?v=n3cZIdMd5QM>`_.
+`They <http://www.youtube.com/watch?v=nflUbvqSgMU>`_
+`were <http://www.youtube.com/watch?v=ooJiMFG-Uuo>`_
+`crucial <http://www.youtube.com/watch?v=ozDnGDxh7ZA>`_
+`to <http://www.youtube.com/watch?v=r-4_j1V6frE>`_
+`overcome <http://www.youtube.com/watch?v=x9O26UkN9AA>`_
+`the <http://www.youtube.com/watch?v=yku6QKz6Drc>`_
+`hurdles <http://www.youtube.com/watch?v=6Zl5M-7tORI>`_
+`mentioned <http://www.youtube.com/watch?v=xryLWlBfXa0>`_
+`above <http://www.youtube.com/watch?v=39B3AeTD0lY>`_.
+
+::
+    $ nimrod c -r miniskirt
+    miniskirt.nim(3, 0) Info: instantiation from here
+    ???(???, ???) Error: youtube video expected
