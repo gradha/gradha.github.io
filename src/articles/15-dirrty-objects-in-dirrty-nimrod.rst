@@ -1,7 +1,7 @@
 ---
 title: Dirrty objects, in dirrty Nimrod
 pubDate: 2014-06-07 20:23
-modDate: 2014-06-07 20:23
+modDate: 2014-10-12 22:55
 tags: nimrod, programming, objc
 ---
 
@@ -238,7 +238,8 @@ get rid of having to repeat the type of the field when creating the setters and
 getters and let the compiler figure it out? Could we avoid having to separate
 the definition of the object from the definition of the procs?
 
-Who knows…
+`Who knows…
+<../10/adding-objectivec-properties-to-nimrod-objects-with-macros.html>`_
 
 ::
     $ playback slutdrop.m4a
