@@ -543,7 +543,7 @@ This error happens because the ``objType`` is a string literal, but instead of
 a string literal the ``quasi-quoting`` macro needs a ``TNimrodIdent``, which is
 obtained through the `!() operator
 <http://nimrod-lang.org/macros.html#!,string>`_. That's why removing this
-re-assignment breaks everything and you are left wondering with **where to
+re-assignment breaks everything and you are left wondering **where to
 start looking for problems because there is no starting point at all**. And
 unfortunately it can't be fixed easily. By the time the compiler goes through
 the quasi-quoting it doesn't know better if what it is generating is right or
@@ -563,20 +563,21 @@ at least know where to start looking at, even if by the mere AST I still might
 have trouble finding out why a string literal is not expected. But you would at
 least have a starting point. The ASTs can get quite big, so it would help if
 the compiler could dump the problematic AST to a temporary file for inspection
-with an editor rather than scrolling through pages of output.
+with an editor rather than scrolling through pages of terminal output.
 
 Talking about cavemen debugging, the only sources of information you have now
-for development of macros are the ``dumpTree`` and ``treeRepr`` helpers. It
-would be really nice if the `official Nimrod IDE Aporia
-<https://github.com/nimrod-code/Aporia>`_ had a mode where you could open a bit
-of code in a separate window and it would refresh the AST as you write,
-pointing at problematic places, or maybe offering links to the documentation as
-you write code. Or maybe a mode where you directly write the AST, and the IDE
-generates the source code for you? Maybe this could work off with proper auto
-completion. Right now the amount of different AST nodes is quite scary but many
-of them don't interact with each other unless specific conditions are met.  Who
-knows, it could be easier to follow than looking through the documentation. Or
-maybe it would be useless anyway because programming in Java is all the rage.
+for development of macros are the ``dumpTree`` and ``treeRepr`` helpers and
+repeated trips to the command line to compile stuff. It would be really nice if
+the `official Nimrod IDE Aporia <https://github.com/nimrod-code/Aporia>`_ had a
+mode where you could open a bit of code in a separate window and it would
+refresh the AST as you write, pointing at problematic places, or maybe offering
+links to the documentation as you write code. Or maybe a mode where you
+directly write the AST, and the IDE generates the source code for you? Maybe
+this could work off with proper auto completion. Right now the amount of
+different AST nodes is quite scary but many of them don't interact with each
+other unless specific conditions are met.  Who knows, it could be easier to
+follow than looking through the documentation. Or maybe it would be useless
+anyway because programming in Java is all the rage.
 
 
 Conclusion
