@@ -129,11 +129,12 @@ compiler developer at the same time!).
 Don't get scared now of the length of this blog post, it is all due to the
 example code lines being repeated several times to make the text more
 contextual. In any case I recommend you to either download the source code
-(utils.nim and miniskirt.nim) or view them through GitHub, which I will use to
-quickly point to the appropriate lines (see utils.nim and miniskirt.nim on
-GitHub). The truth is that most of the macro is pretty simple, it has already
-been explained and what is left as an exercise for the writer is to transform
-words into code.
+(`utils.nim <../../../code/18/utils.nim>`_ and `miniskirt.nim
+<../../../code/18/miniskirt.nim>`_) or view them through GitHub, which I will
+use to quickly point to the appropriate lines (see utils.nim and miniskirt.nim
+on GitHub). The truth is that most of the macro is pretty simple, it has
+already been explained and what is left as an exercise for the writer is to
+transform words into code.
 
 While the original and destination source code files help to get an idea of
 what the user will end up writing, the compiler only cares about ASTs. Just
