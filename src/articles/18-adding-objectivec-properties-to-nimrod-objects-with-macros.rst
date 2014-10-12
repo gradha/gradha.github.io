@@ -94,11 +94,11 @@ How? As an `abstract syntax tree
 
 .. raw:: html
 
-    <center><img
+    <center><a href="http://knowyourmeme.com/memes/x-x-everywhere"><img
         src="../../../i/asts-asts-everywhere.jpg"
         alt="If you close your eyes hard you can sometimes see the ASTs"
         style="width:100%;max-width:600px"
-        hspace="8pt" vspace="8pt"></center><br>
+        hspace="8pt" vspace="8pt"></a></center><br>
 
 Our new version of the macro will still use the same `quasi-quoting
 <http://nimrod-lang.org/macros.html#quote>`_ to generate the setter and getter
@@ -117,14 +117,14 @@ first macro <http://nimrod-lang.org/tut2.html#building-your-first-macro>`_
 section. You are meant to have at least skimmed through that because I won't be
 explaining all the basics, only the ones I'm interested in. Also, much of the
 typical error handling code you find in macros won't be present for brevity.
-What error handling code would be this? In the ``generateProperties`` version
-the user of this macro can pass only three very specific parameters, but in the
-statement version you can now pass any random Nimrod code to our macro, and it
-has to figure out how to treat it.  If the user makes any mistakes in the
-construct, rather than simply quitting or aborting a helpful error message
-should be provided. That makes the code a lot more verbose checking for all
-possible inputs (and you are sort of becoming a Nimrod compiler developer at
-the same time!).
+What error handling code would be this? In the previous ``generateProperties``
+version the user of this macro can pass only three very specific parameters,
+but in the statement version you can now pass any random Nimrod code to our
+macro, and it has to figure out how to treat it.  If the user makes any
+mistakes in the construct, rather than simply quitting or aborting a helpful
+error message should be provided. That makes the code a lot more verbose
+checking for all possible inputs (and you are sort of becoming a Nimrod
+compiler developer at the same time!).
 
 Don't get scared now of the length of this blog post, it is all due to the
 example code lines being repeated several times to make the text more
@@ -145,15 +145,14 @@ what the compiler is processing. For convenience, here you have the result
 ``dumpTree`` along the final result of `treeRepr()
 <http://nimrod-lang.org/macros.html#treeRepr>`_ called inside the macro to show
 how the final AST will look **after** to the compiler. The input AST is on the
-left, the final AST is on the right. Additional numbered markers have been
-placed to explain the interesting parts::
+left, the final AST is on the right. Additional unicode numbered markers have
+been placed to point out the interesting parts::
 
-    dumpTree:
-      type
-        Person = object of Dirrty
-          dirty (1), name* (2), surname* (2): string
-          clean (1), age* (2): int
-          internalValue (3): float
+    type
+      Person = object of Dirrty
+        dirty ⓵, name* ⓶, surname* ⓶: string
+        clean ⓵, age* ⓶: int
+        internalValue ⓷: float
     ----
     StmtList                   StmtList
       TypeSection                TypeSection
@@ -166,23 +165,23 @@ placed to explain the interesting parts::
               Ident !"Dirrty"            Ident !"Dirrty"
             RecList                    RecList
               IdentDefs                  IdentDefs
-                Ident !"dirty"             (1)
+                Ident !"dirty"             ⓵
                 Postfix                    Postfix
                   Ident !"*"                 Ident !"*"
-                  Ident !"name"              Ident !"Fname" (2)
+                  Ident !"name"              Ident !"Fname" ⓶
                 Postfix                    Postfix
                   Ident !"*"                 Ident !"*"
-                  Ident !"surname"           Ident !"Fsurname" (2)
+                  Ident !"surname"           Ident !"Fsurname" ⓶
                 Ident !"string"            Ident !"string"
                 Empty                      Empty
               IdentDefs                  IdentDefs
-                Ident !"clean"             (1)
+                Ident !"clean"             ⓵
                 Postfix                    Postfix
                   Ident !"*"                 Ident !"*"
-                  Ident !"age"               Ident !"Fage" (2)
+                  Ident !"age"               Ident !"Fage" ⓶
                 Ident !"int"               Ident !"int"
                 Empty                      Empty
-              IdentDefs                  IdentDefs (3)
+              IdentDefs                  IdentDefs ⓷
                 Ident !"internalValue"     Ident !"internalValue"
                 Ident !"float"             Ident !"float"
                 Empty                      Empty
@@ -198,20 +197,22 @@ placed to explain the interesting parts::
    ``dirty`` or ``clean``  will be mangled into a property. The
    ``internalValue`` is there precisely to test that we don't generate a
    property for it. As you can see it is identical to the left AST.
-4. For the purpose of making our macro traversing code more resilient (and
-   fun!) this version of the example includes the ``*`` postfix operator, which
-   is used in Nimrod to *export* symbols out of the module's scope. Not
-   required for the small example to work, it is something very common our
-   macro would find in the real world. Our version will deal with it correctly
-   when traversing the AST but we won't be using it to change the visibility of
-   the procs generated for each property for brevity (it's quite easy to add
-   but increases the verbosity of the example, and its already quite long as it
-   is).
+
+For the purpose of making our macro traversing code more resilient (and fun!)
+this version of the example includes the ``*`` postfix operator, which is used
+in Nimrod to *export* symbols out of the module's scope. Not required for the
+small example to work, it is something very common our macro would find in the
+real world. Our version will deal with it correctly when traversing the AST but
+we won't be using it to change the visibility of the procs generated for each
+property for brevity (it's quite easy to add but increases the verbosity of the
+example, and its already quite long as it is).
 
 What is missing in this AST is that the right version will be followed with a
 lot of proc definitions which are generated to emulate the Objective-C like
-properties. This will be the output from the initial ``generateProperties``
-macro but is not particularly interesting in itself and only adds line noise.
+properties. This would be the output from our previous ``generateProperties``
+macro but is not particularly interesting in itself and only adds line noise so
+it has not been included in this AST representation.
+
 
 Row, row, row your AST…
 =======================
@@ -515,11 +516,11 @@ to keep going. I present you the most useless stack trace **from hell**::
 
 .. raw:: html
 
-    <center><img
+    <center><a href="http://www.idol-grapher.com/1239"><img
         src="../../../i/error-type-expected.jpg"
         alt="Error: type expected"
         style="width:100%;max-width:600px"
-        hspace="8pt" vspace="8pt"></center><br>
+        hspace="8pt" vspace="8pt"></a></center><br>
 
 That's it. Nothing more. It's actually pretty awesome, can't do better short of
 pulling out a gun and shooting you right in the face. Let me tell you how to
