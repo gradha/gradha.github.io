@@ -131,7 +131,10 @@ example code lines being repeated several times to make the text more
 contextual. In any case I recommend you to either download the source code
 (`utils.nim <../../../code/18/utils.nim>`_ and `miniskirt.nim
 <../../../code/18/miniskirt.nim>`_) or view them through GitHub, which I will
-use to quickly point to the appropriate lines (see utils.nim and miniskirt.nim
+use to quickly point to the appropriate lines (see `utils.nim
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim>`_
+and `miniskirt.nim
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/miniskirt.nim>`_
 on GitHub). The truth is that most of the macro is pretty simple, it has
 already been explained and what is left as an exercise for the writer is to
 transform words into code.
@@ -143,11 +146,11 @@ like the `Building your first macro
 recommends, we can use the `dumpTree() macro
 <http://nimrod-lang.org/macros.html#dumpTree>`_ to dump the input AST and see
 what the compiler is processing. For convenience, here you have the result
-``dumpTree`` along the final result of `treeRepr()
-<http://nimrod-lang.org/macros.html#treeRepr>`_ called inside the macro to show
-how the final AST will look **after** to the compiler. The input AST is on the
-left, the final AST is on the right. Additional unicode numbered markers have
-been placed to point out the interesting parts::
+`dumpTree() <http://nimrod-lang.org/macros.html#dumpTree>`_ along the final
+result of `treeRepr() <http://nimrod-lang.org/macros.html#treeRepr>`_ called
+inside the macro to show how the final AST will look **after** to the compiler.
+The input AST is on the left, the final AST is on the right. Additional unicode
+numbered markers have been placed to point out the interesting parts::
 
     type
       Person = object of Dirrty
@@ -218,7 +221,9 @@ it has not been included in this AST representation.
 Row, row, row your AST…
 =======================
 
-Let's start then with the ``makeDirtyWithStyle`` macro:
+Let's start then with the `makeDirtyWithStyle()
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L115>`_
+macro:
 
 ```nimrod
 macro makeDirtyWithStyle*(body: stmt): stmt {.immediate.} =
@@ -245,31 +250,39 @@ macro makeDirtyWithStyle*(body: stmt): stmt {.immediate.} =
       result.add(generateProperties(dirty,
         objectName, name, typ))
 ```
+
 The macro has two clear parts: iterating through the AST looking for
 ``foundObjects``, and then looping over the found results to call the
-``generateProperties`` helper. During the search we also modify the ``body`` to
-remove some identifiers and prefix others with the letter ``F``. This is fine
-with the compiler. If the macro doesn't find any object to mangle, the ``result
-= body`` line will essentially pass the user input raw to the compiler, plus
-the following loop won't do anything. The ``generateProperties`` is nearly
-intact from the previous article, the only modification has been to add the
-``dirty`` parameter. With this parameter we specify if we want the generated
-setter to set the ``dirrty`` field to ``true``, which allows us to generate
-setters which don't modify the ``dirrty`` state of the object.
+`generateProperties()
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L84>`_
+helper. During the search we also modify the ``body`` to remove some
+identifiers and prefix others with the letter ``F``. This is fine with the
+compiler. If the macro doesn't find any object to mangle, the ``result = body``
+line will essentially pass the user input raw to the compiler, plus the
+following loop won't do anything. The `generateProperties()
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L84>`_
+helper is nearly intact from the previous article, the only modification has
+been to add the ``dirty`` parameter. With this parameter we specify if we want
+the generated setter to set the ``dirrty`` field to ``true``, which allows us
+to generate setters which don't modify the ``dirrty`` state of the object.
 
 Traversing the AST is quite easy, first we check that we are inside a
 ``nnkTypeSection``. Inside this node, we continue to go deeper until we find a
 ``nnkTypeDef`` node, which is what we wanted in first place. The user could be
 defining types **other** than objects. For instance, they could be defining a
 ``tuple`` along their object. So we are only interested in ``nnkObjectTy``
-nodes. Finally, we call the ``rewriteObject`` helper proc which returns the
-mangled AST node plus a sequence of ``procTuple`` elements which contain what
-fields need to be mangled. Maybe the object had none, so we check for the
-length of the ``mangledObject.found`` list before doing anything. Still, we can
-happily replace the AST node with the returned value (``n[2] =
-mangledObject.node``) because it won't have changed at all.
+nodes. Finally, we call the `rewriteObject()
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L51>`_
+helper proc which returns the mangled AST node plus a sequence of `procTuple
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L14>`_
+elements which contain what fields need to be mangled. Maybe the object had
+none, so we check for the length of the ``mangledObject.found`` list before
+doing anything. Still, we can happily replace the AST node with the returned
+value (``n[2] = mangledObject.node``) because it won't have changed at all.
 
-So what does the ``rewriteObject`` helper do?
+So what does the `rewriteObject()
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L51>`_
+helper do?
 
 ```nimrod
 proc rewriteObject(parentNode: PNimrodNode): rewriteTuple =
@@ -305,17 +318,19 @@ proc rewriteObject(parentNode: PNimrodNode): rewriteTuple =
       # Mangle the remaining identifiers
       idList.prefixIdentifiersWithF
 ```
+
 The first line which calls `copyNimTree()
 <http://nimrod-lang.org/macros.html#copyNimTree>`_ is not strictly needed, but
 can be useful in case we would need to do multiple passes on the AST and have
 to compare our working version with the original one. Then we make sure the
 object type definition we are dealing with actually inherits from our custom
-``Dirrty`` class. This means we won't get automatic properties on objects which
-inherit from other classes. Alternatively, we could detect this case and
-prevent the generated setter from attempting to modify the field ``dirrty``
-which won't be present. I've decided to only add properties to dirrty objects
-for clarity (otherwise it's just a matter of more ``ifs`` in the following
-lines).
+`Dirrty
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L11>`_
+object. This means we won't get automatic properties on objects which inherit
+from other classes. Alternatively, we could detect this case and prevent the
+generated setter from attempting to modify the field ``dirrty`` which won't be
+present. I've decided to only add properties to dirrty objects for clarity
+(otherwise it's just a matter of more ``ifs`` in the following lines).
 
 When we deal with the identifier record list what we do is detect if the first
 identifier is ``clean`` or ``dirty``. These are our *fake* DSL keywords which
@@ -324,9 +339,10 @@ keyword is ``dirty``, the generated setter will modify the ``dirrty`` field,
 but otherwise the rest of the code is quite similar. In any case we remove the
 first fake identifier, then we loop over the remaining identifiers modifying
 our ``var found: procTuple`` with the name and adding a copy to the
-``result.found`` sequence. For this loop the ``stripTypeIdentifier`` helper is
-used which simply iterates through the list of identifiers (except the last
-one, which is the type definition!) and returns them as strings:
+``result.found`` sequence. For this loop the `stripTypeIdentifier()
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L21>`_
+helper is used which simply iterates through the list of identifiers (except
+the last one, which is the type definition!) and returns them as strings:
 
 ```nimrod
 proc stripTypeIdentifier(identDefsNode: PNimrodNode):
@@ -344,8 +360,9 @@ proc stripTypeIdentifier(identDefsNode: PNimrodNode):
 ```
 
 Once the identifiers without mangling have been added to the list of found
-fields we pass control to the ``prefixIdentifiersWithF`` helper proc to
-actually mangle them with the ``F`` prefix:
+fields we pass control to the `prefixIdentifiersWithF()
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L44>`_
+helper proc to actually mangle them with the ``F`` prefix:
 
 ```nimrod
 proc prefixNode(n: PNimrodNode): PNimrodNode =
@@ -366,14 +383,19 @@ proc prefixIdentifiersWithF(identDefsNode: PNimrodNode) =
     identDefsNode[i] = n.prefixNode
 ```
 
-As you can see ``prefixIdentifiersWithF`` is pretty similar to
-``stripTypeIdentifier``, but instead of adding the identifier to a result list
-it calls the ``prefixNode`` helper which mangles the node identifier. Here you
-can see us dealing with ``nnkPostfix`` nodes, which are fields marked with
-``*``. Again, as mentioned above, we could detect which of the fields are
-marked with ``*`` to propagate the appropriate symbol visibility to the
-generated property procs.  This is left as an exercise to the reader (hint: add
-a visibility field to ``procTuple`` which already contains other field info).
+As you can see `prefixIdentifiersWithF()
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L44>`_
+is pretty similar to `stripTypeIdentifier()
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L21>`_,
+but instead of adding the identifier to a result list it calls the
+`prefixNode()
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L34>`_
+helper which mangles the node identifier. Here you can see us dealing with
+``nnkPostfix`` nodes, which are fields marked with ``*``. Again, as mentioned
+above, we could detect which of the fields are marked with ``*`` to propagate
+the appropriate symbol visibility to the generated property procs.  This is
+left as an exercise to the reader (hint: add a visibility field to
+``procTuple`` which already contains other field info).
 
 For completeness, the snippets of code shown so far use two types which haven't
 been defined, ``rewriteTuple`` and ``procTuple``:
@@ -389,8 +411,9 @@ type
 
 Nothing too fancy, they are just the internal structures used to group and
 communicate results between the procs. And… that's all folks! To verify
-everything is working as expected, here is an extended version of our original
-property usage test case:
+everything is working as expected, here is an `extended version of our original
+property usage test case
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/miniskirt.nim#L15>`_:
 
 ```nimrod
 proc extraTest() =
@@ -420,7 +443,7 @@ We could modify our macro to dump the final AST after the generated procs are
 added. We can also inspect our ``nimcache`` folder which `should contain the
 generated C files
 <http://build.nimrod-lang.org/docs/backends.html#nimcache-naming-logic>`_. In
-my case this is part of the generated code for the ``extraTest`` proc:
+my case this is part of the generated code for the ``extraTest()`` proc:
 
 ```c
 ...
@@ -528,8 +551,11 @@ to keep going. I present you the most useless stack trace **from hell**::
 
 That's it. Nothing more. It's actually pretty awesome, can't do better short of
 pulling out a gun and shooting you right in the face. Let me tell you how to
-reproduce this, just comment the ``objType`` assignment in the
-``generateProperties`` static proc, like this:
+reproduce this, just comment the `objType assignment
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L88>`_
+in the `generateProperties()
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L84>`_
+static proc, like this:
 
 ```nimrod
   proc generateProperties(dirrty: bool, objType,
@@ -552,33 +578,36 @@ wrong, and by the time it reaches a further phase of the compiler, since it was
 all generated code, there are no actual line numbers to keep track of what was
 generated where.
 
-How could this be improved? Maybe the ``macros`` module could grow an
-``annotateNode`` helper which when used would annotate the specified node with
-the current line/column where the ``annotateNode`` helper actually is in the
-source file. Kind of like ``printf`` cavemen debugging. Or maybe instead of
-trying to preserve stack traces which are typical of runtime environments the
-compiler could actually dump the AST it is processing with a little arrow
-pointing at the node that is giving problems? Honestly, if instead of this
-error I had gotten the AST with an arrow pointing at the string literal I would
-at least know where to start looking at, even if by the mere AST I still might
-have trouble finding out why a string literal is not expected. But you would at
+How could this be improved? Maybe the `macros
+<http://nimrod-lang.org/macros.html>`_ module could grow an ``annotateNode``
+helper which when used would annotate the specified node with the current
+line/column where the ``annotateNode`` helper actually is in the source file.
+Kind of like ``printf`` cavemen debugging. Or maybe instead of trying to
+preserve stack traces which are typical of runtime environments the compiler
+could actually dump the AST it is processing with a little arrow pointing at
+the node that is giving problems? Honestly, if instead of this error I had
+gotten the AST with an arrow pointing at the string literal I would at least
+know where to start looking at, even if by the mere AST I still might have
+trouble finding out why a string literal is not expected. But you would at
 least have a starting point. The ASTs can get quite big, so it would help if
 the compiler could dump the problematic AST to a temporary file for inspection
 with an editor rather than scrolling through pages of terminal output.
 
 Talking about cavemen debugging, the only sources of information you have now
-for development of macros are the ``dumpTree`` and ``treeRepr`` helpers and
-repeated trips to the command line to compile stuff. It would be really nice if
-the `official Nimrod IDE Aporia <https://github.com/nimrod-code/Aporia>`_ had a
-mode where you could open a bit of code in a separate window and it would
-refresh the AST as you write, pointing at problematic places, or maybe offering
-links to the documentation as you write code. Or maybe a mode where you
-directly write the AST, and the IDE generates the source code for you? Maybe
-this could work off with proper auto completion. Right now the amount of
-different AST nodes is quite scary but many of them don't interact with each
-other unless specific conditions are met.  Who knows, it could be easier to
-follow than looking through the documentation. Or maybe it would be useless
-anyway because programming in Java is all the rage.
+for development of macros are the `dumpTree()
+<http://nimrod-lang.org/macros.html#dumpTree>`_ and `treeRepr()
+<http://nimrod-lang.org/macros.html#treeRepr>`_ helpers and repeated trips to
+the command line to compile stuff. It would be really nice if the `official
+Nimrod IDE Aporia <https://github.com/nimrod-code/Aporia>`_ had a mode where
+you could open a bit of code in a separate window and it would refresh the AST
+as you write, pointing at problematic places, or maybe offering links to the
+documentation as you write code. Or maybe a mode where you directly write the
+AST, and the IDE generates the source code for you? Maybe this could work off
+with proper auto completion. Right now the amount of different AST nodes is
+quite scary but many of them don't interact with each other unless specific
+conditions are met.  Who knows, it could be easier to follow than looking
+through the documentation. Or maybe it would be useless anyway because
+programming in Java is all the rage.
 
 
 Conclusion
@@ -631,4 +660,4 @@ figuring out how macros work and how to write them is in itself a fun exercise.
 ::
     $ nimrod c -r miniskirt
     miniskirt.nim(3, 0) Info: instantiation from here
-    ???(???, ???) Error: youtube video expected
+    ???(???, ???) Error: 4k youtube video expected
