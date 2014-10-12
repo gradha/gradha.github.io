@@ -35,7 +35,7 @@
 <span class="Keyword">when</span> <span class="Identifier">isMainModule</span><span class="Punctuation">:</span> <span class="Identifier">test</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
 </pre></p>
 <p>This code has several issues on the long run:</p>
-<ol><li>The <code>type</code> definition is separate from the <code>generateProperties</code> calls. This means it is easy to <span style="font-style: italic;">lose sync</span> between both.</li><li>There is much repeating of simple identifiers. Worse, because the type and the property generating macro is separate, the type definition has to use the <span style="font-style: italic;">implied</span> <code>F</code> prefix for instance variables being used as properties, and the non-F version for the property (or vice versa, should you write your macro the other way round). It is easy to get distracted and mess up one or the other and later get shocked by the compiler.</li><li>Just like with the identifiers, the type for each field is repeated too. This is just nonsense. It is all you can do with C like macros though, so to the experienced C/C++ programmer it may not look <span style="font-style: italic;">that horrible</span>.</li></ol><p>With Nimrod you can do better. And better than the obviousness of Christina's slutdrop, I find <a href="https://en.wikipedia.org/wiki/AOA_(band)">Ace of Angels'</a> <a href="http://www.youtube.com/watch?v=q6f-LLM1H6U">miniskirt unzipping and ass shaking</a> more tasteful and pleasant to the eye (after all, at the moment I'm writing this Christina loses with 9.986.070 views to the 11.394.880 views of Ace of Angels, yet AOA's video has existed for far less time). Following the steps of these Queens Of Teasing, here is a quick peek at how the code will end up after we drive ourselves crazy with some serious macro writing:</p>
+<ol><li>The <code>type</code> definition is separate from the <code>generateProperties()</code> calls. This means it is easy to <span style="font-style: italic;">lose sync</span> between both.</li><li>There is much repeating of simple identifiers. Worse, because the type and the property generating macro is separate, the type definition has to use the <span style="font-style: italic;">implied</span> <code>F</code> prefix for instance variables being used as properties, and the non-F version for the property (or vice versa, should you write your macro the other way round). It is easy to get distracted and mess up one or the other and later get shocked by the compiler.</li><li>Just like with the identifiers, the type for each field is repeated too. This is just nonsense. It is all you can do with C like macros though, so to the experienced C/C++ programmer it may not look <span style="font-style: italic;">that horrible</span>.</li></ol><p>With Nimrod you can do better. And better than the obviousness of Christina's slutdrop, I find <a href="https://en.wikipedia.org/wiki/AOA_(band)">Ace of Angels'</a> <a href="http://www.youtube.com/watch?v=q6f-LLM1H6U">miniskirt unzipping and ass shaking</a> more tasteful and pleasant to the eye (after all, at the moment I'm writing this Christina loses with 9.986.070 views to the 11.394.880 views of Ace of Angels, yet AOA's video has existed for far less time). Following the steps of these Queens Of Teasing, here is a quick peek at how the code will end up after we drive ourselves crazy with some serious macro writing:</p>
 <p><pre class='code'><span class="Keyword">import</span> <span class="Identifier">utils</span>
 
 <span class="Identifier">makeDirtyWithStyle</span><span class="Punctuation">:</span>
@@ -52,7 +52,7 @@
 
 <span class="Keyword">when</span> <span class="Identifier">isMainModule</span><span class="Punctuation">:</span> <span class="Identifier">test</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
 </pre></p>
-<h1>The roadmap ahead</h1><p>We can see by the previous teaser that we got rid of the <code>generateProperties</code> macro completely. Yay! That code has been moved into the <code>makeDirtyWithStyle</code> macro. Instead of a call, what we are doing here is <a href="http://nimrod-lang.org/tut2.html#statement-macros">invoking our macro as a statement</a>. Everything indented after the colon will be passed in to the macro as its last parameter. How? As an <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">abstract syntax tree</a> or AST for short.</p>
+<h1>The roadmap ahead</h1><p>We can see by the previous teaser that we got rid of the <code>generateProperties()</code> macro completely. Yay! That code has been moved into the <code>makeDirtyWithStyle()</code> macro. Instead of a call, what we are doing here is <a href="http://nimrod-lang.org/tut2.html#statement-macros">invoking our macro as a statement</a>. Everything indented after the colon will be passed in to the macro as its last parameter.  How? As an <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">abstract syntax tree</a> or AST for short.</p>
 
 <center><a href="http://knowyourmeme.com/memes/x-x-everywhere"><img
     src="../../../i/asts-asts-everywhere.jpg"
@@ -64,9 +64,9 @@
 <p>While the original and destination source code files help to get an idea of what the user will end up writing, the compiler only cares about ASTs. Just like the <a href="http://nimrod-lang.org/tut2.html#building-your-first-macro">Building your first macro</a> tutorial recommends, we can use the <a href="http://nimrod-lang.org/macros.html#dumpTree">dumpTree() macro</a> to dump the input AST and see what the compiler is processing. For convenience, here you have the result <a href="http://nimrod-lang.org/macros.html#dumpTree">dumpTree()</a> along the final result of <a href="http://nimrod-lang.org/macros.html#treeRepr">treeRepr()</a> called inside the macro to show how the final AST will look <span style="font-weight: bold;">after</span> to the compiler. The input AST is on the left, the final AST is on the right. Additional unicode numbered markers have been placed to point out the interesting parts:<pre class='literal'>
 type
   Person = object of Dirrty
-    dirty ⓵, name* ⓶, surname* ⓶: string
-    clean ⓵, age* ⓶: int
-    internalValue ⓷: float
+    dirty ①, name* ②, surname* ②: string
+    clean ①, age* ②: int
+    internalValue ③: float
 ----
 StmtList                   StmtList
   TypeSection                TypeSection
@@ -79,28 +79,28 @@ StmtList                   StmtList
           Ident !&quot;Dirrty&quot;            Ident !&quot;Dirrty&quot;
         RecList                    RecList
           IdentDefs                  IdentDefs
-            Ident !&quot;dirty&quot;             ⓵
+            Ident !&quot;dirty&quot;             ①
             Postfix                    Postfix
               Ident !&quot;*&quot;                 Ident !&quot;*&quot;
-              Ident !&quot;name&quot;              Ident !&quot;Fname&quot; ⓶
+              Ident !&quot;name&quot;              Ident !&quot;Fname&quot; ②
             Postfix                    Postfix
               Ident !&quot;*&quot;                 Ident !&quot;*&quot;
-              Ident !&quot;surname&quot;           Ident !&quot;Fsurname&quot; ⓶
+              Ident !&quot;surname&quot;           Ident !&quot;Fsurname&quot; ②
             Ident !&quot;string&quot;            Ident !&quot;string&quot;
             Empty                      Empty
           IdentDefs                  IdentDefs
-            Ident !&quot;clean&quot;             ⓵
+            Ident !&quot;clean&quot;             ①
             Postfix                    Postfix
               Ident !&quot;*&quot;                 Ident !&quot;*&quot;
-              Ident !&quot;age&quot;               Ident !&quot;Fage&quot; ⓶
+              Ident !&quot;age&quot;               Ident !&quot;Fage&quot; ②
             Ident !&quot;int&quot;               Ident !&quot;int&quot;
             Empty                      Empty
-          IdentDefs                  IdentDefs ⓷
+          IdentDefs                  IdentDefs ③
             Ident !&quot;internalValue&quot;     Ident !&quot;internalValue&quot;
             Ident !&quot;float&quot;             Ident !&quot;float&quot;
             Empty                      Empty</pre></p>
 <ol><li>The <code>dirty</code> and <code>clean</code> identifiers are removed from the right AST. They are not used by the compiler, they are markers our macro uses to modify the behaviour of the proc generating code.</li><li>The fields marked as properties will be mangled in the final tree to contain the prefix <code>F</code> letter. Note how all the identifiers on each line get mangled, we have to control this too. And remember that the last identifier is the type which we should not touch!</li><li>In this example, any list of identifiers starting with the identifier <code>dirty</code> or <code>clean</code>  will be mangled into a property. The <code>internalValue</code> is there precisely to test that we don't generate a property for it. As you can see it is identical to the left AST.</li></ol><p>For the purpose of making our macro traversing code more resilient (and fun!) this version of the example includes the <code>*</code> postfix operator, which is used in Nimrod to <span style="font-style: italic;">export</span> symbols out of the module's scope. Not required for the small example to work, it is something very common our macro would find in the real world. Our version will deal with it correctly when traversing the AST but we won't be using it to change the visibility of the procs generated for each property for brevity (it's quite easy to add but increases the verbosity of the example, and its already quite long as it is).</p>
-<p>What is missing in this AST is that the right version will be followed with a lot of proc definitions which are generated to emulate the Objective-C like properties. This would be the output from our previous <code>generateProperties</code> macro but is not particularly interesting in itself and only adds line noise so it has not been included in this AST representation.</p>
+<p>What is missing in this AST is that the right version will be followed with a lot of proc definitions which are generated to emulate the Objective-C like properties. This would be the output from our previous <code>generateProperties()</code> macro but is not particularly interesting in itself and only adds line noise so it has not been included in this AST representation.</p>
 <h1>Row, row, row your AST…</h1><p>Let's start then with the <a href="https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L115">makeDirtyWithStyle()</a> macro:</p>
 <p><pre class='code'><span class="Keyword">macro</span> <span class="Identifier">makeDirtyWithStyle</span><span class="Operator">*</span><span class="Punctuation">(</span><span class="Identifier">body</span><span class="Punctuation">:</span> <span class="Identifier">stmt</span><span class="Punctuation">)</span><span class="Punctuation">:</span> <span class="Identifier">stmt</span> <span class="Punctuation">{</span><span class="Operator">.</span><span class="Identifier">immediate</span><span class="Operator">.</span><span class="Punctuation">}</span> <span class="Operator">=</span>
   <span class="Keyword">var</span> <span class="Identifier">foundObjects</span> <span class="Operator">=</span> <span class="Identifier">initTable</span><span class="Punctuation">[</span><span class="Identifier">string</span><span class="Punctuation">,</span> <span class="Identifier">seq</span><span class="Punctuation">[</span><span class="Identifier">procTuple</span><span class="Punctuation">]</span><span class="Punctuation">]</span><span class="Punctuation">(</span><span class="Punctuation">)</span>
@@ -220,7 +220,7 @@ StmtList                   StmtList
   <span class="Comment">#     Is Christina with 18 years dirrty? false</span>
   <span class="Comment">#     And after changing the internal value? false</span>
 </pre></p>
-<p>In this version of the test we repeat the original dirtying of the <code>Person</code> object through the generated <code>name=</code> setter, which modifies the <code>dirrty</code> field. Then, we reset the <code>dirrty</code>  field and modify the age. The modification of the <code>age</code> property uses also a setter, but since this one was marked as <code>clean</code> the <code>dirrty</code> field won't change its value. Finally, we modify the <code>internalValue</code>. This value was not marked with our fake keywords, so the macro won't be generating any setter or getter. How can we verify this? We could modify our macro to dump the final AST after the generated procs are added. We can also inspect our <code>nimcache</code> folder which <a href="http://build.nimrod-lang.org/docs/backends.html#nimcache-naming-logic">should contain the generated C files</a>. In my case this is part of the generated code for the <code>extraTest()</code> proc:</p>
+<p>In this version of the test we repeat the original dirtying of the <code>Person</code> object through the generated <code>name=()</code> setter, which modifies the <code>dirrty</code> field. Then, we reset the <code>dirrty</code>  field and modify the age. The modification of the <code>age</code> property uses also a setter, but since this one was marked as <code>clean</code> the <code>dirrty</code> field won't change its value. Finally, we modify the <code>internalValue</code>. This value was not marked with our fake keywords, so the macro won't be generating any setter or getter. How can we verify this? We could modify our macro to dump the final AST after the generated procs are added. We can also inspect our <code>nimcache</code> folder which <a href="http://build.nimrod-lang.org/docs/backends.html#nimcache-naming-logic">should contain the generated C files</a>. In my case this is part of the generated code for the <code>extraTest()</code> proc:</p>
 <p><pre class='code'><span class="Punctuation">.</span><span class="Punctuation">.</span><span class="Punctuation">.</span>
     <span class="Identifier">nimln</span><span class="Punctuation">(</span><span class="DecNumber">22</span><span class="Punctuation">,</span> <span class="StringLit">&quot;miniskirt.nim&quot;</span><span class="Punctuation">)</span><span class="Punctuation">;</span>
     <span class="Identifier">nimln</span><span class="Punctuation">(</span><span class="DecNumber">22</span><span class="Punctuation">,</span> <span class="StringLit">&quot;miniskirt.nim&quot;</span><span class="Punctuation">)</span><span class="Punctuation">;</span>
@@ -293,7 +293,7 @@ miniskirt.nim(3, 0) Info: instantiation from here
     ,
     <a href="../../../tags/objc.html">objc</a>
     
-.<br>Published on: 12/10/2014 21:46. Last update: 12/10/2014 21:46. <a
+.<br>Published on: 12/10/2014 21:46. Last update: 12/10/2014 22:55. <a
 			href="../../../feed.xml"><img
 			alt="rss feed" src="../../../i/Feed-icon.svg"
 			width="18pt" height="18pt"></a><br>
