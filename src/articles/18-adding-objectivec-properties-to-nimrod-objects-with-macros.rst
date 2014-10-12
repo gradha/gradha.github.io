@@ -41,7 +41,7 @@ when isMainModule: test()
 
 This code has several issues on the long run:
 
-1. The ``type`` definition is separate from the ``generateProperties`` calls.
+1. The ``type`` definition is separate from the ``generateProperties()`` calls.
    This means it is easy to *lose sync* between both.
 2. There is much repeating of simple identifiers. Worse, because the type and
    the property generating macro is separate, the type definition has to use
@@ -84,13 +84,14 @@ when isMainModule: test()
 The roadmap ahead
 =================
 
-We can see by the previous teaser that we got rid of the ``generateProperties``
-macro completely. Yay! That code has been moved into the ``makeDirtyWithStyle``
-macro. Instead of a call, what we are doing here is `invoking our macro as a
-statement <http://nimrod-lang.org/tut2.html#statement-macros>`_. Everything
-indented after the colon will be passed in to the macro as its last parameter.
-How? As an `abstract syntax tree
-<https://en.wikipedia.org/wiki/Abstract_syntax_tree>`_ or AST for short.
+We can see by the previous teaser that we got rid of the
+``generateProperties()`` macro completely. Yay! That code has been moved into
+the ``makeDirtyWithStyle()`` macro. Instead of a call, what we are doing here
+is `invoking our macro as a statement
+<http://nimrod-lang.org/tut2.html#statement-macros>`_. Everything indented
+after the colon will be passed in to the macro as its last parameter.  How? As
+an `abstract syntax tree <https://en.wikipedia.org/wiki/Abstract_syntax_tree>`_
+or AST for short.
 
 .. raw:: html
 
@@ -213,7 +214,7 @@ example, and its already quite long as it is).
 
 What is missing in this AST is that the right version will be followed with a
 lot of proc definitions which are generated to emulate the Objective-C like
-properties. This would be the output from our previous ``generateProperties``
+properties. This would be the output from our previous ``generateProperties()``
 macro but is not particularly interesting in itself and only adds line noise so
 it has not been included in this AST representation.
 
@@ -433,7 +434,7 @@ proc extraTest() =
 ```
 
 In this version of the test we repeat the original dirtying of the ``Person``
-object through the generated ``name=`` setter, which modifies the ``dirrty``
+object through the generated ``name=()`` setter, which modifies the ``dirrty``
 field. Then, we reset the ``dirrty``  field and modify the age. The
 modification of the ``age`` property uses also a setter, but since this one was
 marked as ``clean`` the ``dirrty`` field won't change its value. Finally, we
