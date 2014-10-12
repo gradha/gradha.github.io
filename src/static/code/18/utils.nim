@@ -85,7 +85,7 @@ static:
       varName, varType: string): PNimrodNode =
     # Create identifiers from the parameters.
     let
-      #objType = !(objType)
+      objType = !(objType)
       varType = !(varType)
       setter = !($varName & "=")
       iVar = !("F" & $varName)
