@@ -100,8 +100,6 @@ How? As an `abstract syntax tree
         style="width:100%;max-width:600px"
         hspace="8pt" vspace="8pt"></center><br>
 
-
-
 Our new version of the macro will still use the same `quasi-quoting
 <http://nimrod-lang.org/macros.html#quote>`_ to generate the setter and getter
 procs. However, before generating any code the macro will be able to traverse
@@ -515,6 +513,14 @@ to keep going. I present you the most useless stack trace **from hell**::
 
     ???(???, ???) Error: type expected
 
+.. raw:: html
+
+    <center><img
+        src="../../../i/error-type-expected.jpg"
+        alt="Error: type expected"
+        style="width:100%;max-width:600px"
+        hspace="8pt" vspace="8pt"></center><br>
+
 That's it. Nothing more. It's actually pretty awesome, can't do better short of
 pulling out a gun and shooting you right in the face. Let me tell you how to
 reproduce this, just comment the ``objType`` assignment in the
@@ -565,7 +571,8 @@ you write code. Or maybe a mode where you directly write the AST, and the IDE
 generates the source code for you? Maybe this could work off with proper auto
 completion. Right now the amount of different AST nodes is quite scary but many
 of them don't interact with each other unless specific conditions are met.  Who
-knows, it could be easier to follow than looking through the documentation.
+knows, it could be easier to follow than looking through the documentation. Or
+maybe it would be useless anyway because programming in Java is all the rage.
 
 
 Conclusion
