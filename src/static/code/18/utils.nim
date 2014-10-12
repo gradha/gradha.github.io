@@ -4,7 +4,8 @@ import macros, tables
 ##
 ## For more information see
 ## http://gradha.github.io/articles/2014/06/dirrty-objects-in-dirrty-nimrod.html
-## and its follow up at http://gradha.github.io/:
+## and its follow up at
+## http://gradha.github.io/articles/2014/10/adding-objectivec-properties-to-nimrod-objects-with-macros.html.
 
 type
   Dirrty* = object of TObject
