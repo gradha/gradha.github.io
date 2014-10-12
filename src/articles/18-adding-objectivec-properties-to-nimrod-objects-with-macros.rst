@@ -482,16 +482,18 @@ If we had our way and our hypothetical language would implement this feature
 directly, we could mark our objects directly with ``dirtyProperties``,
 ``cleanProperties`` and ``privateFields`` sections. These would be recognised
 as keywords by IDEs and editors. We have to settle for fake identifiers. It's
-not bad, but could be desirable. What is more annoying is that we can't get rid
-of the explicit ``type`` keyword. Why? Because the Nimrod compiler still has to
-parse that code into **VALID AST**. And it is the ``type`` keyword which tells
-the parser that what follows should be treated as a ``TypeSection`` with
-``TypeDef`` and other stuff instead of say, a ``proc`` definition. Here you can
-hear lisp programmers laughing at our puny syntax limitations. Still, Nimrod
-achieves the power of true macros with little limitations. Would it be possible
-for Nimrod (or just any other language) to allow user code extend the compiler
-parser with custom DSL rules? I think that would be neat. And madness. Madness
-is neat.
+not bad, but could be worse. What is more annoying is that we can't get rid of
+the explicit ``type`` keyword. Why? Because the Nimrod compiler still has to
+parse that code into **VALID AST** before it can pass it to our macro. And it
+is the ``type`` keyword which tells the parser that what follows should be
+treated as a ``TypeSection`` with ``TypeDef`` and other stuff instead of say, a
+``proc`` definition. Here you can hear lisp programmers laughing at our puny
+syntax limitations. Still, Nimrod achieves the power of true macros with little
+limitations. Would it be possible for Nimrod (or just any other language) to
+allow user code extend the compiler parser with custom DSL rules? I think that
+would be neat. And madness. Madness is neat, I'm still patiently waiting for
+macros which modify the AST of the caller to the shock and horror of anybody
+reading my code…
 
 Possibly the most frustrating issue with writing Nimrod macros now is the lack
 of proper documentation. While there is that `introductory tutorial
@@ -512,6 +514,7 @@ normal code, you get runtime stack traces which show where the execution of the
 program was and hopefully by going to the mentioned lines you can fix something
 to keep going. I present you the most useless stack trace **from hell**::
 
+    miniskirt.nim(3, 0) Info: instantiation from here
     ???(???, ???) Error: type expected
 
 .. raw:: html
@@ -583,6 +586,6 @@ Even with the rough edges, expected in a programming language which hasn't yet
 reached version 1.0 and is already running circles around established
 programming languages, macros are a complete win for programming. They allow
 you to become a compiler developer and extend the language just that little bit
-in the direction you need to make your life easier. Only without the pain of
-pull requests being reviewed and rejected. And let's face it, figuring out how
-macros work and how to write them is in itself a fun exercise.
+in the direction you need to make your life easier. Only without the pain and
+embarrassment of pull requests being reviewed and rejected. And let's face it,
+figuring out how macros work and how to write them is in itself a fun exercise.
