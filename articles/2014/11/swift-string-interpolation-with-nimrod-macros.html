@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang='en'>
+	<head>
+		<title>Swift string interpolation with Nimrod macros - Rants from the Ballmer Peak</title>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="../../../css/normalize.css">
+		<link rel="stylesheet" href="../../../css/style.css">
+		<link href="../../../feed.xml" title="Articles" type="application/atom+xml" rel="alternate">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	</head>
+	<body>
+	<div class="content">
+		<h3><a href="../../../index.html">Rants from the Ballmer Peak</a> <a
+				href="../../../feed.xml"><img
+			alt="rss feed" src="../../../i/Feed-icon.svg"
+			width="18pt" height="18pt"></a></h3>
+		<h1>Swift string interpolation with Nimrod macros</h1><p>Just like <a href="http://golang.org">the Go programming language</a> had initially a lot of marketing pull due to the fame of the authors and company behind the language, growing in popularity you can hear about <a href="https://developer.apple.com/swift/">Swift</a>, Apple's new programming language for iOS and OSX, which probably makes it the financially most backed up hipster language. It is <span style="font-style: italic;">sort of</span> hipster because nobody outside of iOS and OSX will want to touch it, and Apple has demonstrated to put serious money behind it (hiring <a href="https://en.wikipedia.org/wiki/Chris_Lattner">Chris Lattner</a>) and will likely continue to do so. Not even Apple wants to keep programming in a crap language like Objective-C forever. And Google, I'm still waiting for you to ditch the abomination known as Java. Please (<span style="font-style: italic;">crosses fingers</span>).</p>
+<p>Swift source code looks seriously close to <a href="http://nimrod-lang.org">Nimrod</a>, just like its feature set.  Most notably the syntax keeps braces for those still clinging to them, and retains Objective-C's named parameter madness for interoperability. But other than that it is remarkable how sometimes I actually forget I'm reading Swift code and think &quot;<span style="font-style: italic;">oh, that Nimrod code is weird, how can it compile</span>?&quot;. One of the things I noticed after reading some tutorials was that Swift provides an <a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/StringsAndCharacters.html">interesting string interpolation feature</a>:</p>
+<pre class='code'><span class="Identifier">let</span> <span class="Identifier">multiplier</span> <span class="Operator">=</span> <span class="DecNumber">3</span>
+<span class="Identifier">let</span> <span class="Identifier">message</span> <span class="Operator">=</span> <span class="StringLit">&quot;</span><span class="EscapeSequence">\(</span><span class="EscapeSequence">multiplier) times 2.5 is \(</span><span class="StringLit">Double(multiplier) * 2.5)&quot;</span>
+<span class="Comment">// message is &quot;3 times 2.5 is 7.5&quot;</span></pre><p>The equivalent code in Nimrod could be:</p>
+<pre class='code'><span class="Keyword">const</span>
+  <span class="Identifier">multiplier</span> <span class="Operator">=</span> <span class="DecNumber">3</span>
+  <span class="Identifier">message</span> <span class="Operator">=</span> <span class="Operator">$</span><span class="Identifier">multiplier</span> <span class="Operator">&amp;</span> <span class="StringLit">&quot; times 2.5 is &quot;</span> <span class="Operator">&amp;</span> <span class="Operator">$</span><span class="Punctuation">(</span><span class="Identifier">multiplier</span> <span class="Operator">*</span> <span class="FloatNumber">2.5</span><span class="Punctuation">)</span>
+  <span class="Comment"># message is &quot;3 times 2.5 is 7.5&quot;</span></pre><p>It is not that much different but it certainly reduces some sigil clutter. I think the syntax to embed a single variable is awkward because you need to add the closing parenthesis, but then, just like Python mantra goes, <a href="http://legacy.python.org/dev/peps/pep-0020/">explicit is better than implicit</a>. Maybe.</p>
+<p>Nimrod has one serious advantage over Swift, it has <a href="http://nimrod-lang.org/tut2.html#macros">macros</a>. The question is, can we <span style="font-style: italic;">steal</span> Swift's string static interpolation feature ourselves? Of course, it's actually fairly easy. Just like when <a href="../06/dirrty-objects-in-dirrty-nimrod.html">I stole Objective-C properties</a> and later <a href="../10/adding-objectivec-properties-to-nimrod-objects-with-macros.html">made them really sexy</a>, we will again stomp on the dead bodies of our enemies. Ra ra ra!</p>
+<h1>The heist</h1><p>As for any other macro we want to write in Nimrod, it is best to first figure out what AST is Nimrod producing for perfectly valid code, then try to generate it as closely as possible. We want to create a compilation time proc which will replace a single string literal into a series of concatenations which can be coalesced by the compiler not wasting a single CPU cycle at runtime. Let's dump the AST of the previous Nimrod snippet:</p>
+<pre class='code'><span class="Keyword">import</span> <span class="Identifier">macros</span>
+
+<span class="Identifier">dumpTree</span><span class="Punctuation">:</span>
+  <span class="Operator">$</span><span class="Identifier">multiplier</span> <span class="Operator">&amp;</span> <span class="StringLit">&quot; times 2.5 is &quot;</span> <span class="Operator">&amp;</span> <span class="Operator">$</span><span class="Punctuation">(</span><span class="Identifier">multiplier</span> <span class="Operator">*</span> <span class="FloatNumber">2.5</span><span class="Punctuation">)</span></pre><p>If we compile this we will get this output:<pre class='literal'>
+StmtList
+  Infix
+    Ident !&quot;&amp;&quot;
+    Infix
+      Ident !&quot;&amp;&quot;
+      Prefix
+        Ident !&quot;$&quot;
+        Ident !&quot;multiplier&quot;
+      StrLit  times 2.5 is
+    Prefix
+      Ident !&quot;$&quot;
+      Par
+        Infix
+          Ident !&quot;*&quot;
+          Ident !&quot;multiplier&quot;
+          FloatLit 2.5</pre></p>
+<p>Fairly easy, when the <code>$</code> operator is applied, we only need to wrap the identifier inside a <code>Prefix</code> node. For the concatenations we have a recursive tree of <code>Infix</code> nodes. The multiplication expression is wrapped inside a <code>Par</code> node.</p>
+<p>Now the only thing left for us is to parse the string literal and figure out which parts are text and which parts are variables or expressions. We can't use Swift's escape parenthesis notation because we are not modifying Nimrod's <a href="http://nimrod-lang.org/manual.html#string-literals">string literals</a>, they come with the language. What else can we do? In Nimrod there is runtime string interpolation using <a href="http://nimrod-lang.org/strutils.html#%,string,openArray[string]">strutils.%() operator</a>. The <code>strutils</code> module uses internally the <a href="http://nimrod-lang.org/parseutils.html">parseutils module</a>, and luckily we can use directly the <a href="http://nimrod-lang.org/parseutils.html#interpolatedFragments.i,string">interpolatedFragments()</a> iterator for our macro. Isn't it nice when most of the code we have to write is already provided?</p>
+
+<center><a href="http://darkablaxx.tistory.com/69"><img
+    src="../../../i/lime-knows-about-macros.jpg"
+    alt="Some kpop idols know things you wouldn't believe"
+    style="width:100%;max-width:600px"
+    hspace="8pt" vspace="8pt"></a></center><br><h1>The code</h1><p>I did warn you, here are the complete 20 lines of code to implement this feature <span style="font-weight: bold;">and</span> test it too:</p>
+<pre class='code'><span class="Keyword">import</span> <span class="Identifier">macros</span><span class="Punctuation">,</span> <span class="Identifier">parseutils</span><span class="Punctuation">,</span> <span class="Identifier">sequtils</span>
+
+<span class="Keyword">macro</span> <span class="Identifier">i</span><span class="Punctuation">(</span><span class="Identifier">text</span><span class="Punctuation">:</span> <span class="Identifier">string</span><span class="Punctuation">{</span><span class="Identifier">lit</span><span class="Punctuation">}</span><span class="Punctuation">)</span><span class="Punctuation">:</span> <span class="Identifier">expr</span> <span class="Operator">=</span>
+  <span class="Keyword">var</span> <span class="Identifier">nodes</span><span class="Punctuation">:</span> <span class="Identifier">seq</span><span class="Punctuation">[</span><span class="Identifier">PNimrodNode</span><span class="Punctuation">]</span> <span class="Operator">=</span> <span class="Operator">@</span><span class="Punctuation">[</span><span class="Punctuation">]</span>
+  <span class="Comment"># Parse string literal into &quot;stuff&quot;.</span>
+  <span class="Keyword">for</span> <span class="Identifier">k</span><span class="Punctuation">,</span> <span class="Identifier">v</span> <span class="Keyword">in</span> <span class="Identifier">text</span><span class="Operator">.</span><span class="Identifier">strVal</span><span class="Operator">.</span><span class="Identifier">interpolatedFragments</span><span class="Punctuation">:</span>
+    <span class="Keyword">if</span> <span class="Identifier">k</span> <span class="Operator">==</span> <span class="Identifier">ikStr</span> <span class="Keyword">or</span> <span class="Identifier">k</span> <span class="Operator">==</span> <span class="Identifier">ikDollar</span><span class="Punctuation">:</span>
+      <span class="Identifier">nodes</span><span class="Operator">.</span><span class="Identifier">add</span><span class="Punctuation">(</span><span class="Identifier">newLit</span><span class="Punctuation">(</span><span class="Identifier">v</span><span class="Punctuation">)</span><span class="Punctuation">)</span>
+    <span class="Keyword">else</span><span class="Punctuation">:</span>
+      <span class="Identifier">nodes</span><span class="Operator">.</span><span class="Identifier">add</span><span class="Punctuation">(</span><span class="Identifier">parseExpr</span><span class="Punctuation">(</span><span class="StringLit">&quot;$(&quot;</span> <span class="Operator">&amp;</span> <span class="Identifier">v</span> <span class="Operator">&amp;</span> <span class="StringLit">&quot;)&quot;</span><span class="Punctuation">)</span><span class="Punctuation">)</span>
+  <span class="Comment"># Fold individual nodes into a statement list.</span>
+  <span class="Identifier">result</span> <span class="Operator">=</span> <span class="Identifier">newNimNode</span><span class="Punctuation">(</span><span class="Identifier">nnkStmtList</span><span class="Punctuation">)</span><span class="Operator">.</span><span class="Identifier">add</span><span class="Punctuation">(</span>
+    <span class="Identifier">foldr</span><span class="Punctuation">(</span><span class="Identifier">nodes</span><span class="Punctuation">,</span> <span class="Identifier">a</span><span class="Operator">.</span><span class="Identifier">infix</span><span class="Punctuation">(</span><span class="StringLit">&quot;&amp;&quot;</span><span class="Punctuation">,</span> <span class="Identifier">b</span><span class="Punctuation">)</span><span class="Punctuation">)</span><span class="Punctuation">)</span>
+
+<span class="Keyword">const</span>
+  <span class="Identifier">multiplier</span> <span class="Operator">=</span> <span class="DecNumber">3</span>
+  <span class="Identifier">message</span> <span class="Operator">=</span> <span class="RawData">i&quot;$multiplier times 2.5 is ${multiplier * 2.5}&quot;</span>
+
+<span class="Identifier">echo</span> <span class="Identifier">message</span>
+<span class="Comment"># --&gt; 3 times 2.5 is 7.5</span></pre><p>Just like <a href="http://nimrod-lang.org/db_sqlite.html#sql,string">db_sqlite's raw string literal modifier</a> we have implemented here the <code>i</code> macro and use it to prefix the string literals we want to <span style="font-style: italic;">upgrade</span> with string interpolation. Also, since we are withing Nimrod's string parsing rules, the interpolation is done with the <code>$</code> character which allows both braced and standalone versions, less backslash typing.</p>
+<p>The macro is divided in two parts, parsing the string literal and generating the tree of infix/prefix nodes representing string concatenation. For the string parsing we simply add all strings (<code>ikStr</code>) and dollars (<code>ikDollar</code>) as string literals (<a href="http://nimrod-lang.org/macros.html#newLit">newLit()</a>). For everything else we simply wrap the expressions inside a call to the <code>$</code> string conversion operator (just in case) and let <a href="http://nimrod-lang.org/macros.html#parseExpr,string">parseExpr()</a> do its job.</p>
+<p>The result of this conversion is stored as a sequence of <code>PNimrodNode</code> objects, which is a flat list. To convert it into the AST tree Nimrod expects we use the <a href="http://nimrod-lang.org/sequtils.html#foldr.t,expr,expr">foldr()</a> template from the <a href="http://nimrod-lang.org/sequtils.html">sequtils</a> module. <code>foldr</code> accepts as first parameter the sequence of items we want to fold, and as <code>operation</code> we apply the <a href="http://nimrod-lang.org/macros.html#infix,PNimrodNode,string,PNimrodNode">infix()</a> helper from the <a href="http://nimrod-lang.org/macros.html#infix,PNimrodNode,string,PNimrodNode">macros</a> module.</p>
+<p>How can be sure this is all working and there is no runtime trickery behind our backs? The most simple way is to check <a href="http://nimrod-lang.org/nimrodc.html#generated-c-code-directory">Nimrod's nimcache directory</a> where it places the C code that later is compiled into a binary. In this case we have the following line:</p>
+<pre class='code'><span class="Identifier">…</span>
+<span class="Identifier">N_NOINLINE</span><span class="Punctuation">(</span><span class="Keyword">void</span><span class="Punctuation">,</span> <span class="Identifier">HEX00_sequtilsDatInit</span><span class="Punctuation">)</span><span class="Punctuation">(</span><span class="Keyword">void</span><span class="Punctuation">)</span><span class="Punctuation">;</span>
+<span class="Identifier">N_NOINLINE</span><span class="Punctuation">(</span><span class="Keyword">void</span><span class="Punctuation">,</span> <span class="Identifier">exInit</span><span class="Punctuation">)</span><span class="Punctuation">(</span><span class="Keyword">void</span><span class="Punctuation">)</span><span class="Punctuation">;</span>
+<span class="Identifier">N_NOINLINE</span><span class="Punctuation">(</span><span class="Keyword">void</span><span class="Punctuation">,</span> <span class="Identifier">exDatInit</span><span class="Punctuation">)</span><span class="Punctuation">(</span><span class="Keyword">void</span><span class="Punctuation">)</span><span class="Punctuation">;</span>
+<span class="Identifier">STRING_LITERAL</span><span class="Punctuation">(</span><span class="Identifier">TMP144</span><span class="Punctuation">,</span> <span class="StringLit">&quot;3 times 2.5 is 7.5&quot;</span><span class="Punctuation">,</span> <span class="DecNumber">18</span><span class="Punctuation">)</span><span class="Punctuation">;</span>
+<span class="Keyword">extern</span> <span class="Identifier">TFrame</span><span class="Operator">*</span> <span class="Identifier">frameptr_15442</span><span class="Punctuation">;</span>
+<span class="Identifier">…</span></pre><p>There you have it, our macro has expanded the string literal into expressions, and since the expression can be calculated at compile time it already appears embedded in the C string literal. No runtime calculation of any type. Success!</p>
+<h1>Conclusion</h1><p>Stealing language features with macros is <a href="https://www.youtube.com/watch?v=qEYOyZVWlzs">very cool and gratifying</a>. But you need to look at other languages too to see which features they have. Hopefully Swift programmers gain interest in Nimrod, it would allow them to continue writing proper static code for other platforms like Windows or Linux (<a href="https://ind.ie/phoenix/">unlike the Swift trap</a>) and open their minds to some fresh air. But it is understandable that Swift still has to deal with a lot of old-timers clinging to old practices. Maybe Swift 2.0 will also have macros, they are really neat and allow you to extend whatever language you have with cool features not part of the original spec.</p>
+<pre class='literal'>$ nimrod c -r swift.nim
+Hello future!</pre>
+	</div>
+		<hr>
+		<p>Tags:     <a href="../../../tags/nimrod.html">nimrod</a>
+    ,
+    <a href="../../../tags/programming.html">programming</a>
+    ,
+    <a href="../../../tags/languages.html">languages</a>
+    ,
+    <a href="../../../tags/swift.html">swift</a>
+    
+.<br>Published on: 11/11/2014 23:30. Last update: 11/11/2014 23:30. <a
+			href="../../../feed.xml"><img
+			alt="rss feed" src="../../../i/Feed-icon.svg"
+			width="18pt" height="18pt"></a><br>
+		Copyright 2014 by <a href="../../../about.html">Grzegorz Adam Hankiewicz</a>.<br>
+		Generated with <a href="https://github.com/dom96/ipsumgenera">ipsum
+			genera</a>. Look at <a
+		href="https://github.com/gradha/gradha.github.io">the
+		source code</a>. Or look at <a href="../../../cookie-policy.html">my
+	cookie policy which you implicitly accept</a>.</p>
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48814780-1', 'gradha.github.io');
+  ga('send', 'pageview');
+
+</script>
+	</body>
+</html>
