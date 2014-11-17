@@ -155,7 +155,7 @@ feature **and** test it too:
 Just like `db_sqlite's raw string literal modifier
 <http://nimrod-lang.org/db_sqlite.html#sql,string>`_ we have implemented here
 the ``i`` macro and use it to prefix the string literals we want to *upgrade*
-with string interpolation. Also, since we are withing Nimrod's string parsing
+with string interpolation. Also, since we are within Nimrod's string parsing
 rules, the interpolation is done with the ``$`` character which allows both
 braced and standalone versions, less backslash typing.
 
@@ -178,7 +178,11 @@ helper from the `macros
 <http://nimrod-lang.org/macros.html#infix,PNimrodNode,string,PNimrodNode>`_
 module.
 
-How can be sure this is all working and there is no runtime trickery behind our backs? The most simple way is to check `Nimrod's nimcache directory <http://nimrod-lang.org/nimrodc.html#generated-c-code-directory>`_ where it places the C code that later is compiled into a binary. In this case we have the following line:
+How can be sure this is all working and there is no runtime trickery behind our
+backs? The most simple way is to check `Nimrod's nimcache directory
+<http://nimrod-lang.org/nimrodc.html#generated-c-code-directory>`_ where it
+places the C code that later is compiled into a binary. In this case we have
+the following line:
 
 .. code-block:: c
 
