@@ -72,7 +72,7 @@ StmtList
   <span class="Identifier">message</span> <span class="Operator">=</span> <span class="RawData">i&quot;$multiplier times 2.5 is ${multiplier * 2.5}&quot;</span>
 
 <span class="Identifier">echo</span> <span class="Identifier">message</span>
-<span class="Comment"># --&gt; 3 times 2.5 is 7.5</span></pre><p>Just like <a href="http://nimrod-lang.org/db_sqlite.html#sql,string">db_sqlite's raw string literal modifier</a> we have implemented here the <code>i</code> macro and use it to prefix the string literals we want to <span style="font-style: italic;">upgrade</span> with string interpolation. Also, since we are withing Nimrod's string parsing rules, the interpolation is done with the <code>$</code> character which allows both braced and standalone versions, less backslash typing.</p>
+<span class="Comment"># --&gt; 3 times 2.5 is 7.5</span></pre><p>Just like <a href="http://nimrod-lang.org/db_sqlite.html#sql,string">db_sqlite's raw string literal modifier</a> we have implemented here the <code>i</code> macro and use it to prefix the string literals we want to <span style="font-style: italic;">upgrade</span> with string interpolation. Also, since we are within Nimrod's string parsing rules, the interpolation is done with the <code>$</code> character which allows both braced and standalone versions, less backslash typing.</p>
 <p>The macro is divided in two parts, parsing the string literal and generating the tree of infix/prefix nodes representing string concatenation. For the string parsing we simply add all strings (<code>ikStr</code>) and dollars (<code>ikDollar</code>) as string literals (<a href="http://nimrod-lang.org/macros.html#newLit">newLit()</a>). For everything else we simply wrap the expressions inside a call to the <code>$</code> string conversion operator (just in case) and let <a href="http://nimrod-lang.org/macros.html#parseExpr,string">parseExpr()</a> do its job.</p>
 <p>The result of this conversion is stored as a sequence of <code>PNimrodNode</code> objects, which is a flat list. To convert it into the AST tree Nimrod expects we use the <a href="http://nimrod-lang.org/sequtils.html#foldr.t,expr,expr">foldr()</a> template from the <a href="http://nimrod-lang.org/sequtils.html">sequtils</a> module. <code>foldr</code> accepts as first parameter the sequence of items we want to fold, and as <code>operation</code> we apply the <a href="http://nimrod-lang.org/macros.html#infix,PNimrodNode,string,PNimrodNode">infix()</a> helper from the <a href="http://nimrod-lang.org/macros.html#infix,PNimrodNode,string,PNimrodNode">macros</a> module.</p>
 <p>How can be sure this is all working and there is no runtime trickery behind our backs? The most simple way is to check <a href="http://nimrod-lang.org/nimrodc.html#generated-c-code-directory">Nimrod's nimcache directory</a> where it places the C code that later is compiled into a binary. In this case we have the following line:</p>
@@ -96,7 +96,7 @@ Hello future!</pre>
     ,
     <a href="../../../tags/swift.html">swift</a>
     
-.<br>Published on: 11/11/2014 23:30. Last update: 11/11/2014 23:30. <a
+.<br>Published on: 11/11/2014 23:40. Last update: 11/11/2014 23:40. <a
 			href="../../../feed.xml"><img
 			alt="rss feed" src="../../../i/Feed-icon.svg"
 			width="18pt" height="18pt"></a><br>
