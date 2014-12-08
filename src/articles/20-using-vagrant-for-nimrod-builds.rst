@@ -1,0 +1,138 @@
+---
+title: Using Vagrant for Nimrod builds
+pubDate: 2014-12-08 18:10
+modDate: 2014-12-08 18:10
+tags: nimrod, programming, languages, testing, tools
+---
+
+Using Vagrant for Nimrod builds
+===============================
+
+I have written many small Nimrod programs so far. As trivial as they look, each
+of them pushes me to improve some aspect of the documentation, development,
+testing, or binary distribution. They actually serve that purpose, you can't
+improve releasing software if you do it once every several years. So for each
+of my projects I've been refining a `release steps document
+<https://github.com/gradha/lazy_rest/blob/master/docs/release_steps.rst>`_
+which helps me to provide the same consistent quality (good or bad) for each
+software release.
+
+For software which is not just a library for other developers, a good goal to
+aim for is to provide binaries for end users. Compiling software is nowadays
+not that difficult, since most of the tools are actually free, but they are
+obscure to users. And usually compilation steps depend on a lot of 3rd party
+software which is not under your control (Apple seems particularly keen on
+changing the command line tools distribution for each major Xcode version)
+which will throw off a potential users because they end up with an obscure
+command line error rather than the software they were expecting. And if those
+users are persistent, you will end up having to deal with end user support.
+Yuck!
+
+I have provided binaries in the past (e.g. `dropbox_filename_sanitizer releases
+<https://github.com/gradha/dropbox_filename_sanitizer/releases>`_) and one of
+the most inconvenient aspects is to leave your development environment. I have
+made myself `tools to test builds in sandboxed environments
+<../05/testing-installation-instructions.html>`_ from the convenience of a
+`nake <https://github.com/fowlmouth/nake>`_ task, but they depend on other
+machines. For instance, if I'm offline I can't log in remotely to them. I've
+seen such environments fail due to network issues the **day of the release
+build** (hi there Murphy!) and there is much frustration and stress especially
+when you can't do much about it. Also, as much as I would like to keep these
+clean, stuff always creeps in which may disturb your *clean environment*
+builds.
+
+That's where software like `Vagrant <https://www.vagrantup.com>`_ helps.
+Vagrant automatizes the creation and provisioning of development environments
+through virtual machines. With Vagrant you only need two files to create a
+headless virtual machine: a `Vagrantfile
+<https://github.com/gradha/lazy_rest/blob/7c87153c48205b903811a6e95c37b56ab17683fe/vagrant_linux/32bit/Vagrantfile>`_
+which describes the virtual hardware (in my case I didn't change anything from
+the default template) and a `bootstrap.sh
+<https://github.com/gradha/lazy_rest/blob/7c87153c48205b903811a6e95c37b56ab17683fe/vagrant_linux/bootstrap.sh>`_
+provisioning script, which simply downloads and prepares the software you want
+to run.
+
+So now I'm writing a new `lazy_rest Nimrod module
+<https://github.com/gradha/lazy_rest>`_ for myself (and maybe others too) and
+tried to use Vagrant to improve my distribution process. Instead of having a
+remote machine I have now two virtual machines I can automatically launch and
+destroy in the span of a few minutes to collect the goodies. Why two?
+Previously I had a real physical box to build Linux binaries. The problem is
+that this box had it's own architecture bit width (say 64bits). So the binaries
+you produce are by default for this architecture.
+
+.. raw:: html
+
+    <a href="http://www.idol-grapher.com/1413"><img
+        src="../../../i/32bits_sad.jpg"
+        alt="Life is sometimes hard"
+        style="width:100%;max-width:600px" align="right"
+        hspace="8pt" vspace="8pt"></a></center>
+
+With Vagrant it is very easy to have multiple environments, so I created a
+32bit and 64bit environments. Interestingly, after running them a few times to
+produce binaries without issues, I had the thought to run the test suite before
+actually producing binaries. You know, maybe those tests I'm writing should get
+some use? And when I ran the tests in the 32bit environment, five tests didn't
+pass.
+
+Shock.
+
+That really caught my interest because I had produced binaries and they
+*seemed* to work fine, so what was happening? After logging to the Vagrant
+instance and running the tests manually (I haven't made yet any cool reporting)
+I got an overflow. For one of the subexe replacement variables I take the
+current time and multiply it by thousand because the generated JavaScript
+expects milliseconds instead of seconds. Unfortunately this overflows the
+``int`` type I was casting too.  In Nimrod the default ``int`` type has the
+width of the machine, if you want to use explicitly 32 or 64 bits you need to
+use ``int32`` or ``int64``.
+
+The `change to fix this
+<https://github.com/gradha/lazy_rest/commit/2098a3caab7627e08e466f55aa5238eb4db0073f>`_
+wasn't very hard, I only had to cast the result explicitly to 64 bits so that
+when run on a 32 bit system the Nimrod code would not overflow. However, it
+highlights that stuff like this can easily creep in, and maybe your typical
+development environment doesn't suffer from such issues. Also, in this
+particular case the error would have gone unnoticed for a long time, maybe
+forever, since the time calculation I'm doing there is for a non critical part
+(a timestamp in the generated footer) which end users might avoid altogether
+replacing it with their own branding.
+
+Conclusion
+==========
+
+My life is much more easier now, after typing ``nake dist`` and waiting some
+minutes I get three binaries (OSX plus 32bit/64bit Linux) and pre generated
+source code for them built and packaged neatly for upload to GitHub along with
+an md5 report to copy/paste as description (hmm, nake GitHub upload integration
+in the future?). No more dependencies on a remote box, the network, or a
+specific architecture (when you can have any). In fact, maybe in the future
+I'll end up buying a copy of Windows 7 to produce win32 binaries because
+`Windows as a guest is supported since Vagrant 1.6
+<https://www.vagrantup.com/blog/feature-preview-vagrant-1-6-windows.html>`_.
+
+I find these Vagrant environments very useful, so I'm sharing the scripts with
+you. They create and prepare a Linux box, so you can run them from Windows or
+OSX and forget about this platform. In case you missed the hyperlink earlier,
+you can get them from:
+
+  https://github.com/gradha/lazy_rest/tree/7c87153c48205b903811a6e95c37b56ab17683fe/vagrant_linux
+
+This is a specific commit version snapshot of the directory where I have the
+``bootstrap.sh``, but you can also browse the `current live version
+<https://github.com/gradha/lazy_rest/tree/master/vagrant_linux>`_.
+
+::
+    $ nake dist
+    …some time later…
+    $ ls -1 dist/
+    lazy_rest-0.1.0-binary-linux-amd64.zip
+    lazy_rest-0.1.0-binary-linux-i386.zip
+    lazy_rest-0.1.0-binary-macosx-amd64.zip
+    lazy_rest-0.1.0-generated-C-sources
+    lazy_rest-0.1.0-generated-C-sources.zip
+
+.. raw:: html
+
+    <br clear="right">
