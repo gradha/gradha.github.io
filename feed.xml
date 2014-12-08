@@ -5,7 +5,43 @@
   <link href="http://gradha.github.io/feed.xml" rel="self" />
   <id>http://gradha.github.io/</id>
   <generator>ipsumgenera</generator>
-  <updated>2014-11-22T20:38:28Z</updated>
+  <updated>2014-12-08T17:15:55Z</updated>
+    <entry>
+      <title>Using Vagrant for Nimrod builds</title>
+      <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2014/12/using-vagrant-for-nimrod-builds.html"/>
+      <id>http://gradha.github.io/articles/2014/12/using-vagrant-for-nimrod-builds.html</id>
+      <published>2014-12-08T17:10:00Z</published>
+      <updated>2014-12-08T17:10:00Z</updated>
+      <author><name>Grzegorz Adam Hankiewicz</name></author>
+      <content type="html">
+        &lt;h1&gt;Using Vagrant for Nimrod builds&lt;/h1&gt;&lt;p&gt;I have written many small Nimrod programs so far. As trivial as they look, each of them pushes me to improve some aspect of the documentation, development, testing, or binary distribution. They actually serve that purpose, you can't improve releasing software if you do it once every several years. So for each of my projects I've been refining a &lt;a href=&quot;https://github.com/gradha/lazy_rest/blob/master/docs/release_steps.rst&quot;&gt;release steps document&lt;/a&gt; which helps me to provide the same consistent quality (good or bad) for each software release.&lt;/p&gt;
+&lt;p&gt;For software which is not just a library for other developers, a good goal to aim for is to provide binaries for end users. Compiling software is nowadays not that difficult, since most of the tools are actually free, but they are obscure to users. And usually compilation steps depend on a lot of 3rd party software which is not under your control (Apple seems particularly keen on changing the command line tools distribution for each major Xcode version) which will throw off a potential users because they end up with an obscure command line error rather than the software they were expecting. And if those users are persistent, you will end up having to deal with end user support. Yuck!&lt;/p&gt;
+&lt;p&gt;I have provided binaries in the past (e.g. &lt;a href=&quot;https://github.com/gradha/dropbox_filename_sanitizer/releases&quot;&gt;dropbox_filename_sanitizer releases&lt;/a&gt;) and one of the most inconvenient aspects is to leave your development environment. I have made myself &lt;a href=&quot;http://gradha.github.io/articles/2014/12/../05/testing-installation-instructions.html&quot;&gt;tools to test builds in sandboxed environments&lt;/a&gt; from the convenience of a &lt;a href=&quot;https://github.com/fowlmouth/nake&quot;&gt;nake&lt;/a&gt; task, but they depend on other machines. For instance, if I'm offline I can't log in remotely to them. I've seen such environments fail due to network issues the &lt;span style=&quot;font-weight: bold;&quot;&gt;day of the release build&lt;/span&gt; (hi there Murphy!) and there is much frustration and stress especially when you can't do much about it. Also, as much as I would like to keep these clean, stuff always creeps in which may disturb your &lt;span style=&quot;font-style: italic;&quot;&gt;clean environment&lt;/span&gt; builds.&lt;/p&gt;
+&lt;p&gt;That's where software like &lt;a href=&quot;https://www.vagrantup.com&quot;&gt;Vagrant&lt;/a&gt; helps. Vagrant automatizes the creation and provisioning of development environments through virtual machines. With Vagrant you only need two files to create a headless virtual machine: a &lt;a href=&quot;https://github.com/gradha/lazy_rest/blob/7c87153c48205b903811a6e95c37b56ab17683fe/vagrant_linux/32bit/Vagrantfile&quot;&gt;Vagrantfile&lt;/a&gt; which describes the virtual hardware (in my case I didn't change anything from the default template) and a &lt;a href=&quot;https://github.com/gradha/lazy_rest/blob/7c87153c48205b903811a6e95c37b56ab17683fe/vagrant_linux/bootstrap.sh&quot;&gt;bootstrap.sh&lt;/a&gt; provisioning script, which simply downloads and prepares the software you want to run.&lt;/p&gt;
+&lt;p&gt;So now I'm writing a new &lt;a href=&quot;https://github.com/gradha/lazy_rest&quot;&gt;lazy_rest Nimrod module&lt;/a&gt; for myself (and maybe others too) and tried to use Vagrant to improve my distribution process. Instead of having a remote machine I have now two virtual machines I can automatically launch and destroy in the span of a few minutes to collect the goodies. Why two? Previously I had a real physical box to build Linux binaries. The problem is that this box had it's own architecture bit width (say 64bits). So the binaries you produce are by default for this architecture.&lt;/p&gt;
+
+&lt;a href=&quot;http://www.idol-grapher.com/1413&quot;&gt;&lt;img
+    src=&quot;../../../i/32bits_sad.jpg&quot;
+    alt=&quot;Life is sometimes hard&quot;
+    style=&quot;width:100%;max-width:600px&quot; align=&quot;right&quot;
+    hspace=&quot;8pt&quot; vspace=&quot;8pt&quot;&gt;&lt;/a&gt;&lt;/center&gt;&lt;p&gt;With Vagrant it is very easy to have multiple environments, so I created a 32bit and 64bit environments. Interestingly, after running them a few times to produce binaries without issues, I had the thought to run the test suite before actually producing binaries. You know, maybe those tests I'm writing should get some use? And when I ran the tests in the 32bit environment, five tests didn't pass.&lt;/p&gt;
+&lt;p&gt;Shock.&lt;/p&gt;
+&lt;p&gt;That really caught my interest because I had produced binaries and they &lt;span style=&quot;font-style: italic;&quot;&gt;seemed&lt;/span&gt; to work fine, so what was happening? After logging to the Vagrant instance and running the tests manually (I haven't made yet any cool reporting) I got an overflow. For one of the subexe replacement variables I take the current time and multiply it by thousand because the generated JavaScript expects milliseconds instead of seconds. Unfortunately this overflows the &lt;code&gt;int&lt;/code&gt; type I was casting too.  In Nimrod the default &lt;code&gt;int&lt;/code&gt; type has the width of the machine, if you want to use explicitly 32 or 64 bits you need to use &lt;code&gt;int32&lt;/code&gt; or &lt;code&gt;int64&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&quot;https://github.com/gradha/lazy_rest/commit/2098a3caab7627e08e466f55aa5238eb4db0073f&quot;&gt;change to fix this&lt;/a&gt; wasn't very hard, I only had to cast the result explicitly to 64 bits so that when run on a 32 bit system the Nimrod code would not overflow. However, it highlights that stuff like this can easily creep in, and maybe your typical development environment doesn't suffer from such issues. Also, in this particular case the error would have gone unnoticed for a long time, maybe forever, since the time calculation I'm doing there is for a non critical part (a timestamp in the generated footer) which end users might avoid altogether replacing it with their own branding.&lt;/p&gt;
+&lt;h1&gt;Conclusion&lt;/h1&gt;&lt;p&gt;My life is much more easier now, after typing &lt;code&gt;nake dist&lt;/code&gt; and waiting some minutes I get three binaries (OSX plus 32bit/64bit Linux) and pre generated source code for them built and packaged neatly for upload to GitHub along with an md5 report to copy/paste as description (hmm, nake GitHub upload integration in the future?). No more dependencies on a remote box, the network, or a specific architecture (when you can have any). In fact, maybe in the future I'll end up buying a copy of Windows 7 to produce win32 binaries because &lt;a href=&quot;https://www.vagrantup.com/blog/feature-preview-vagrant-1-6-windows.html&quot;&gt;Windows as a guest is supported since Vagrant 1.6&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I find these Vagrant environments very useful, so I'm sharing the scripts with you. They create and prepare a Linux box, so you can run them from Windows or OSX and forget about this platform. In case you missed the hyperlink earlier, you can get them from:&lt;/p&gt;
+&lt;blockquote&gt;&lt;a href=&quot;https://github.com/gradha/lazy_rest/tree/7c87153c48205b903811a6e95c37b56ab17683fe/vagrant_linux&quot;&gt;https://github.com/gradha/lazy_rest/tree/7c87153c48205b903811a6e95c37b56ab17683fe/vagrant_linux&lt;/a&gt;&lt;/blockquote&gt;&lt;p&gt;This is a specific commit version snapshot of the directory where I have the &lt;code&gt;bootstrap.sh&lt;/code&gt;, but you can also browse the &lt;a href=&quot;https://github.com/gradha/lazy_rest/tree/master/vagrant_linux&quot;&gt;current live version&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class='literal'&gt;$ nake dist
+…some time later…
+$ ls -1 dist/
+lazy_rest-0.1.0-binary-linux-amd64.zip
+lazy_rest-0.1.0-binary-linux-i386.zip
+lazy_rest-0.1.0-binary-macosx-amd64.zip
+lazy_rest-0.1.0-generated-C-sources
+lazy_rest-0.1.0-generated-C-sources.zip&lt;/pre&gt;
+&lt;br clear=&quot;right&quot;&gt;
+      </content>
+    </entry>
     <entry>
       <title>Swift string interpolation with Nimrod macros</title>
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2014/11/swift-string-interpolation-with-nimrod-macros.html"/>
@@ -525,44 +561,6 @@ Is Christina dirrty? true&lt;/pre&gt;&lt;/p&gt;
 &lt;pre class='literal'&gt;$ playback slutdrop.m4a
 Permission denied
 Kernel DRM module not found&lt;/pre&gt;
-      </content>
-    </entry>
-    <entry>
-      <title>Songs for the NSA</title>
-      <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2014/05/songs-for-the-nsa.html"/>
-      <id>http://gradha.github.io/articles/2014/05/songs-for-the-nsa.html</id>
-      <published>2014-05-15T21:45:00Z</published>
-      <updated>2014-05-15T21:45:00Z</updated>
-      <author><name>Grzegorz Adam Hankiewicz</name></author>
-      <content type="html">
-        &lt;h1&gt;Songs for the NSA&lt;/h1&gt;&lt;p&gt;In some firms there is silence at work. In others the firm pays to have music played globally, maybe because the decision people who want this are incapable of thoughts and the silence of their head scares them. At one of such firms I was lobotomized to love musical hits like &lt;a href=&quot;http://www.youtube.com/watch?v=WsYg48vuOTo&quot;&gt;Christina Aguilera's (aka P2P girl) Genio Atrapado (yes, in Spanish)&lt;/a&gt;, or &lt;a href=&quot;http://www.youtube.com/watch?v=ujuyt65WY0M&quot;&gt;Dame dame sung by Chayanne and Jennifer López&lt;/a&gt;.  It's a shame those two didn't release a promotional video. Or is it just I can't find it? Otherwise it would have looked really hot.&lt;/p&gt;
-&lt;p&gt;Anyway, thanks to the revelations made by &lt;a href=&quot;https://en.wikipedia.org/wiki/Edward_Snowden&quot;&gt;Edward Snowden&lt;/a&gt; everybody knows about the &lt;a href=&quot;https://en.wikipedia.org/wiki/Nsa&quot;&gt;Not Such Agency&lt;/a&gt; and their orwellian acts. If they have music played at work, I'm sure their playlist will have hits like &lt;a href=&quot;https://www.youtube.com/watch?v=OMOGaugKpzs&quot;&gt;Every breath you take, by The police&lt;/a&gt;. Let's see some of the lyrics:&lt;/p&gt;
-
-&lt;center&gt;&lt;em&gt;
-Every breath you take&lt;br&gt;
-And every move you make&lt;br&gt;
-Every bond you break, every step you take&lt;br&gt;
-I'll be watching you&lt;p&gt;
-
-Every single day&lt;br&gt;
-And every word you say&lt;br&gt;
-Every game you play, every night you stay&lt;br&gt;
-I'll be watching you&lt;p&gt;
-
-Oh can't you see&lt;br&gt;
-You belong to me&lt;br&gt;
-How my poor heart aches&lt;br&gt;
-With every step you take&lt;p&gt;
-
-Every move you make&lt;br&gt;
-And every vow you break&lt;br&gt;
-Every smile you fake, every claim you stake&lt;br&gt;
-I'll be watching you
-&lt;/em&gt;&lt;/center&gt;&lt;p&gt;Don't you &lt;span style=&quot;font-weight: bold;&quot;&gt;love&lt;/span&gt; such classics?&lt;/p&gt;
-&lt;pre class='literal'&gt;[~]$ cd work
-[~/work]$ cd ethics
--bash: cd: ethics: No such file or directory
-&lt;/pre&gt;
       </content>
     </entry>
 </feed>
