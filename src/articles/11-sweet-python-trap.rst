@@ -359,7 +359,7 @@ something quick and easy, but you are risking a lot by doing so. Success can't
 be killed, yet it may kill you.
 
 ::
-$ nimrod c -r conclusion.nim
+$ nim c -r conclusion.nim
 conclusion.nim(27, 33) Info: instantiation from here
 conclusion.nim(23, 6) Error: can raise an unlisted exception:
     ref SilentNinjaBreakerOfProductionCode

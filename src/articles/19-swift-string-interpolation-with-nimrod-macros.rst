@@ -214,5 +214,5 @@ and allow you to extend whatever language you have with cool features not part
 of the original spec.
 
 ::
-    $ nimrod c -r swift.nim
+    $ nim c -r swift.nim
     Hello future!

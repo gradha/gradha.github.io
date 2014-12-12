@@ -691,6 +691,6 @@ figuring out how macros work and how to write them is in itself a fun exercise.
 `fighting   <http://www.youtube.com/watch?v=xpbs6SRQsTI>`_!
 
 ::
-    $ nimrod c -r miniskirt
+    $ nim c -r miniskirt
     miniskirt.nim(3, 0) Info: instantiation from here
     ???(???, ???) Error: 4k youtube video expected

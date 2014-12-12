@@ -183,14 +183,14 @@ by the `C game programming library Allegro
 However, USB level portability is hard to find for most programming
 languages compilers and interpreters. The closest may be the `Nim
 programming language <http://nim-lang.org>`_, since it compiles
-everything into a single nimrod binary, which can be run everywhere.
+everything into a single Nim binary, which can be run everywhere.
 
 The problem is, will it work? Compiling most source code will require
 using modules from the standard library. But where are these?
 Scattered somewhere else. So while it is true that Nim produces
 a statically linked contained binary, it is effectively not portable
 if for 99% of its usage it depends on external files. Another
-example, you could be using different nimrod compiler versions for
+example, you could be using different Nim compiler versions for
 testing, and one works with a specific version of the standard
 library, but a previous compiled binary won't work due to changes
 in the language. This requires you to maintain different versions
@@ -208,7 +208,7 @@ too? Why do we provide portability to end users yet again and again
 we torture ourselves with DLL Hell? Do we enjoy it so much?
 
 ```nimrod
-$ nimrod c forum.nim
+$ nim c forum.nim
 $ ./forum
 could not load: libcairo.dylib
 ```

@@ -219,7 +219,7 @@ software. These lines are obtained through the previously mentioned
 ``chunk_number`` parameter in the json file.  The crude `gen_chunk_script
 <https://github.com/gradha/dropbox_filename_sanitizer/blob/329d5e7a52e5b4a705f89a68a751ce698e941501/nakefile.nim#L252>`_
 proc in the nakefile will parse the readme and extract all the lines for
-whatever block was specified. One could go hi-tech and use the `rst nimrod
+whatever block was specified. One could go hi-tech and use the `rst nim
 module <http://nim-lang.org/rst_module.html>`_ to parse the readme, but
 simple line stripping serves well.
 
@@ -266,7 +266,7 @@ That seems to be a lot of work but possible through `GitHub webhooks
 webhooks don't work for watching external repositories you don't have control
 over. Since installation instructions are not going to change from day to day,
 it would be also possible to write a polling script which every night checks
-the current nimrod compiler version, and if changed, runs the tests.  Changing
+the current Nim compiler version, and if changed, runs the tests.  Changing
 from continuous integration to nightly builds is not that bad either and still
 provides a reasonably fast response to external changes if something goes
 wrong.

@@ -115,6 +115,6 @@ paper in pedantic PDF form:
 Hmm… maybe that wasn't such a good idea after all.
 
 ```nimrod
-$ nimrod rst2html paper.rst
+$ nim rst2html paper.rst
 paper.rst(5, 1) Error: invalid directive: 'humour'
 ```

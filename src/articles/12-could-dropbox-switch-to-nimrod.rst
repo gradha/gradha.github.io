@@ -79,7 +79,7 @@ burn, which offsets nearly any worries a normal programmer has about decision
 failures.
 
 ::
-$ nimrod c -r bank_savings.nim
+$ nim c -r bank_savings.nim
 Traceback (most recent call last)
 bank_savings.nim(135)    bank_savings
 bank_savings.nim(107)    end_of_month

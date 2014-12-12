@@ -36,10 +36,10 @@ went wrong and why, there's no point in repeating mistakes.
 Instead, it will live on as a hobby. And since my new hobby is `the Nim
 programming language <http://nim-lang.org>`_, maybe I should take the crusty
 C source code of `Submarine Hunt <http://www.elhaso.es/subhunt/index.en.html>`_
-and rewrite it opensource in nimrod?  Ah, if only these feelings of inebriation
-lasted a little bit longer…
+and rewrite it open source in Nimrod?  Ah, if only these feelings of
+inebriation lasted a little bit longer…
 
 ```nimrod
-$ nimrod c -r life.nim
+$ nim c -r life.nim
 SIGSEGV: Illegal storage access. (Attempt to read from nil?)
 ```

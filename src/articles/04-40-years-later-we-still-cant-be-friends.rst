@@ -204,6 +204,6 @@ If only I had the memory to remember what it was all about…
 
 
 ```nimrod
-$ nimrod c work_faster.nim
+$ nim c work_faster.nim
 work_faster.nim(1, 7) Error: cannot open 'threads'
 ```
