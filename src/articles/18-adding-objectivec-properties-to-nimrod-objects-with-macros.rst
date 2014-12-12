@@ -442,9 +442,8 @@ modify the ``internalValue``. This value was not marked with our fake keywords,
 so the macro won't be generating any setter or getter. How can we verify this?
 We could modify our macro to dump the final AST after the generated procs are
 added. We can also inspect our ``nimcache`` folder which `should contain the
-generated C files
-<http://build.nim-lang.org/docs/backends.html#nimcache-naming-logic>`_. In
-my case this is part of the generated code for the ``extraTest()`` proc:
+generated C files <http://nim-lang.org/backends.html#nimcache-naming-logic>`_.
+In my case this is part of the generated code for the ``extraTest()`` proc:
 
 ```c
 ...

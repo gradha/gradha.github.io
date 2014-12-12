@@ -21,12 +21,11 @@ of such software (not everybody writes compilers for breakfast).
 But even more pitiful is what I consider basic administration mistakes which
 discourage potential users. It is not fun when `users have to report that the
 build instructions fail <https://github.com/Araq/Nimrod/issues/750>`_ (wait a
-second, why are build instructions not part of the `continuous integration farm
-<http://build.nim-lang.org/>`_?) and the issue is neglected for weeks or
-months. It is even less funny that this is neglected because somebody has to
-manually upload files to the website, and starts to look like a bad joke when
-*after* updating the website, some pages are still missing due to human error,
-so another manual interaction is needed.
+second, why are build instructions not part of the continuous integration tests
+and the issue is neglected for weeks or months. It is even less funny that this
+is neglected because somebody has to manually upload files to the website, and
+starts to look like a bad joke when *after* updating the website, some pages
+are still missing due to human error, so another manual interaction is needed.
 
 For a group of people capable of creating a programming language the only
 possible answer is lack of attention to releases. When `programmers who don't
