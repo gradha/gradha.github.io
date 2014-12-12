@@ -11,7 +11,7 @@ Small big mistakes
 Open software is cool. Everybody can join in and tinker with the code. But
 sometimes the entrance threshold is too high and projects are kept *under the
 radar* for most people. I believe the `Nimrod programming language
-<http://nimrod-lang.org>`_ by Andreas Rumpf & Contributors slightly tiptoes
+<http://nim-lang.org>`_ by Andreas Rumpf & Contributors slightly tiptoes
 into the *could-be-much-better-with-a-little-more-care*. The disadvantage of
 Nimrod is that it is a programming language, and a really full fledged one
 which beats most commonly used ones in terms of flexibility and amazing
@@ -22,7 +22,7 @@ But even more pitiful is what I consider basic administration mistakes which
 discourage potential users. It is not fun when `users have to report that the
 build instructions fail <https://github.com/Araq/Nimrod/issues/750>`_ (wait a
 second, why are build instructions not part of the `continuous integration farm
-<http://build.nimrod-lang.org/>`_?) and the issue is neglected for weeks or
+<http://build.nim-lang.org/>`_?) and the issue is neglected for weeks or
 months. It is even less funny that this is neglected because somebody has to
 manually upload files to the website, and starts to look like a bad joke when
 *after* updating the website, some pages are still missing due to human error,
@@ -50,7 +50,7 @@ what is so hard about keeping the repository *master* branch compilable. Maybe
 I'm weird. But it get's better!  Here's something to `facepalm
 <http://knowyourmeme.com/memes/facepalm>`_ if you want to use Babel to install
 `Aporia <https://github.com/nimrod-code/Aporia>`_, the *official* Nimrod
-editor, linked from the `Nimrod webpage <http://nimrod-lang.org>`_::
+editor, linked from the `Nimrod webpage <http://nim-lang.org>`_::
 
     $ babel install aporia
     Downloading aporia into /tmp/babel/aporia using git...

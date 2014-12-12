@@ -11,8 +11,8 @@ Invoking Dash from the command line Vim
 `Dash is a documentation browser and snippet manager for macosx
 <http://kapeli.com/dash>`_ which is much better than Xcode's documentation
 tool, and also allows one to browse other documentations. You can for instance
-download `a Dash docset for Nimrod <http://forum.nimrod-lang.org/t/330>`_ and
-you will be able to instantly search `Nimrod's <http://nimrod-lang.org>`_
+download `a Dash docset for Nimrod <http://forum.nim-lang.org/t/330>`_ and
+you will be able to instantly search `Nimrod's <http://nim-lang.org>`_
 documentation. A global keyboard shortcut displays Dash on top of whatever you
 are doing, you type stuff, then can hide it and continue.
 

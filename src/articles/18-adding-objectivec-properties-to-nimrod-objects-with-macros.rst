@@ -8,8 +8,8 @@ tags: nimrod, programming, languages, objc
 Adding Objective-C properties to Nimrod objects with macros
 ===========================================================
 
-The `Nimrod programming language <http://nimrod-lang.org>`_ allows one to use
-`macros <http://nimrod-lang.org/manual.html#macros>`_ to extend the language.
+The `Nimrod programming language <http://nim-lang.org>`_ allows one to use
+`macros <http://nim-lang.org/manual.html#macros>`_ to extend the language.
 In a `previous article <../06/dirrty-objects-in-dirrty-nimrod.html>`_ we were
 guided by `Christina Aguilera
 <https://en.wikipedia.org/wiki/Christina_Aguilera>`_ into adding Objective-C
@@ -88,7 +88,7 @@ We can see by the previous teaser that we got rid of the
 ``generateProperties()`` macro completely. Yay! That code has been moved into
 the ``makeDirtyWithStyle()`` macro. Instead of a call, what we are doing here
 is `invoking our macro as a statement
-<http://nimrod-lang.org/tut2.html#statement-macros>`_. Everything indented
+<http://nim-lang.org/tut2.html#statement-macros>`_. Everything indented
 after the colon will be passed in to the macro as its last parameter.  How? As
 an `abstract syntax tree <https://en.wikipedia.org/wiki/Abstract_syntax_tree>`_
 or AST for short.
@@ -102,7 +102,7 @@ or AST for short.
         hspace="8pt" vspace="8pt"></a></center><br>
 
 Our new version of the macro will still use the same `quasi-quoting
-<http://nimrod-lang.org/macros.html#quote>`_ to generate the setter and getter
+<http://nim-lang.org/macros.html#quote>`_ to generate the setter and getter
 procs. However, before generating any code the macro will be able to traverse
 the input AST and figure out itself what fields of the object are meant to be
 used for the setter and getter. On top of that, it will automatically mangle
@@ -113,8 +113,8 @@ specify which property setters need to mark the object's dirty flag as dirty or
 not. You can see that in the example code through the words ``dirty`` and
 ``clean``.
 
-The `Nimrod Tutorial <http://nimrod-lang.org/tut1.html>`_ has a `Building your
-first macro <http://nimrod-lang.org/tut2.html#building-your-first-macro>`_
+The `Nimrod Tutorial <http://nim-lang.org/tut1.html>`_ has a `Building your
+first macro <http://nim-lang.org/tut2.html#building-your-first-macro>`_
 section. You are meant to have at least skimmed through that because I won't be
 explaining all the basics, only the ones I'm interested in. Also, much of the
 typical error handling code you find in macros won't be present for brevity.
@@ -143,12 +143,12 @@ transform words into code.
 While the original and destination source code files help to get an idea of
 what the user will end up writing, the compiler only cares about ASTs. Just
 like the `Building your first macro
-<http://nimrod-lang.org/tut2.html#building-your-first-macro>`_ tutorial
+<http://nim-lang.org/tut2.html#building-your-first-macro>`_ tutorial
 recommends, we can use the `dumpTree() macro
-<http://nimrod-lang.org/macros.html#dumpTree>`_ to dump the input AST and see
+<http://nim-lang.org/macros.html#dumpTree>`_ to dump the input AST and see
 what the compiler is processing. For convenience, here you have the result
-`dumpTree() <http://nimrod-lang.org/macros.html#dumpTree>`_ along the final
-result of `treeRepr() <http://nimrod-lang.org/macros.html#treeRepr>`_ called
+`dumpTree() <http://nim-lang.org/macros.html#dumpTree>`_ along the final
+result of `treeRepr() <http://nim-lang.org/macros.html#treeRepr>`_ called
 inside the macro to show how the final AST will look **after** to the compiler.
 The input AST is on the left, the final AST is on the right. Additional unicode
 numbered markers have been placed to point out the interesting parts::
@@ -321,7 +321,7 @@ proc rewriteObject(parentNode: PNimrodNode): rewriteTuple =
 ```
 
 The first line which calls `copyNimTree()
-<http://nimrod-lang.org/macros.html#copyNimTree>`_ is not strictly needed, but
+<http://nim-lang.org/macros.html#copyNimTree>`_ is not strictly needed, but
 can be useful in case we would need to do multiple passes on the AST and have
 to compare our working version with the original one. Then we make sure the
 object type definition we are dealing with actually inherits from our custom
@@ -443,7 +443,7 @@ so the macro won't be generating any setter or getter. How can we verify this?
 We could modify our macro to dump the final AST after the generated procs are
 added. We can also inspect our ``nimcache`` folder which `should contain the
 generated C files
-<http://build.nimrod-lang.org/docs/backends.html#nimcache-naming-logic>`_. In
+<http://build.nim-lang.org/docs/backends.html#nimcache-naming-logic>`_. In
 my case this is part of the generated code for the ``extraTest()`` proc:
 
 ```c
@@ -522,11 +522,11 @@ reading my code…
 
 Possibly the most frustrating issue with writing Nimrod macros now is the lack
 of proper documentation. While there is that `introductory tutorial
-<http://nimrod-lang.org/tut2.html#building-your-first-macro>`_, the `macros
-module API <http://nimrod-lang.org/macros.html>`_ seems to have more sections
+<http://nim-lang.org/tut2.html#building-your-first-macro>`_, the `macros
+module API <http://nim-lang.org/macros.html>`_ seems to have more sections
 filled with ``To be written`` than actual text, and many of the actual
 descriptions are rather useless to newcomers (don't tell me `newEmptyNode()
-<http://nimrod-lang.org/macros.html#newEmptyNode>`_ creates an empty node, tell
+<http://nim-lang.org/macros.html#newEmptyNode>`_ creates an empty node, tell
 me in what situations I would like that, or how do I use the result with other
 procs!). It's not a surprise that one of the past enhancements to the
 documentation generator was to add the ``See source`` link, it's nearly the
@@ -570,7 +570,7 @@ static proc, like this:
 This error happens because the ``objType`` is a string literal, but instead of
 a string literal the ``quasi-quoting`` macro needs a ``TNimrodIdent``, which is
 obtained through the `!() operator
-<http://nimrod-lang.org/macros.html#!,string>`_. That's why removing this
+<http://nim-lang.org/macros.html#!,string>`_. That's why removing this
 re-assignment breaks everything and you are left wondering **where to
 start looking for problems because there is no starting point at all**. And
 unfortunately it can't be fixed easily. By the time the compiler goes through
@@ -580,7 +580,7 @@ all generated code, there are no actual line numbers to keep track of what was
 generated where.
 
 How could this be improved? Maybe the `macros
-<http://nimrod-lang.org/macros.html>`_ module could grow an ``annotateNode``
+<http://nim-lang.org/macros.html>`_ module could grow an ``annotateNode``
 helper which when used would annotate the specified node with the current
 line/column where the ``annotateNode`` helper actually is in the source file.
 Kind of like ``printf`` cavemen debugging. Or maybe instead of trying to
@@ -596,8 +596,8 @@ with an editor rather than scrolling through pages of terminal output.
 
 Talking about cavemen debugging, the only sources of information you have now
 for development of macros are the `dumpTree()
-<http://nimrod-lang.org/macros.html#dumpTree>`_ and `treeRepr()
-<http://nimrod-lang.org/macros.html#treeRepr>`_ helpers and repeated trips to
+<http://nim-lang.org/macros.html#dumpTree>`_ and `treeRepr()
+<http://nim-lang.org/macros.html#treeRepr>`_ helpers and repeated trips to
 the command line to compile stuff. It would be really nice if the `official
 Nimrod IDE Aporia <https://github.com/nimrod-code/Aporia>`_ had a mode where
 you could open a bit of code in a separate window and it would refresh the AST

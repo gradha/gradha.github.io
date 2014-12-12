@@ -59,7 +59,7 @@ also watch `Fast and Dynamic
 Chevalier-Boisvert <https://pointersgonewild.wordpress.com>`_.
 
 Of course I would propose using the `Nimrod programming language
-<http://nimrod-lang.org>`_ to any Python programmer looking for a more
+<http://nim-lang.org>`_ to any Python programmer looking for a more
 performant, saner language. But Dropbox didn't start yesterday to write code,
 and surely they have tons of code. They must have considered that keeping with
 Python and implementing a faster interpreter is more cost effective than

@@ -55,9 +55,9 @@ errors in other people's software is too easy and doesn't enrich me. This
 project also offers a nice range of things to test: there is a stable source
 code installation, a development source code installation, and a pre built
 binary installation. In addition the program is implemented with the `Nimrod
-programming language <http://nimrod-lang.org>`_ which `recently released
+programming language <http://nim-lang.org>`_ which `recently released
 version 0.9.4
-<http://nimrod-lang.org/news.html#Z2014-04-21-version-0-9-4-released>`_. A
+<http://nim-lang.org/news.html#Z2014-04-21-version-0-9-4-released>`_. A
 programming language in development may well render the source code useless
 between versions, so we will have to expand the source code tests to cover one
 using the stable compiler release and another using the unstable one. If my
@@ -220,7 +220,7 @@ software. These lines are obtained through the previously mentioned
 <https://github.com/gradha/dropbox_filename_sanitizer/blob/329d5e7a52e5b4a705f89a68a751ce698e941501/nakefile.nim#L252>`_
 proc in the nakefile will parse the readme and extract all the lines for
 whatever block was specified. One could go hi-tech and use the `rst nimrod
-module <http://nimrod-lang.org/rst_module.html>`_ to parse the readme, but
+module <http://nim-lang.org/rst_module.html>`_ to parse the readme, but
 simple line stripping serves well.
 
 
@@ -256,7 +256,7 @@ I'm just unlucky?).
 
 As a bonus you know when things go wrong without others having to tell you.
 Since these integration tests also test external software, you are
-sort of contributing to the `Nimrod community <http://forum.nimrod-lang.org>`_
+sort of contributing to the `Nimrod community <http://forum.nim-lang.org>`_
 by testing the compiler (both the last stable and last development versions)
 and the approved package manager used by many others.
 

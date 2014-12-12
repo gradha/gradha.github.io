@@ -182,7 +182,7 @@ by the `C game programming library Allegro
 
 However, USB level portability is hard to find for most programming
 languages compilers and interpreters. The closest may be the `Nimrod
-programming language <http://nimrod-lang.org>`_, since it compiles
+programming language <http://nim-lang.org>`_, since it compiles
 everything into a single nimrod binary, which can be run everywhere.
 
 The problem is, will it work? Compiling most source code will require

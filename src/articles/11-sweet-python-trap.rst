@@ -238,7 +238,7 @@ Languages like C++ `are not the solution
 disappointing when you grow past single programmer code. Isn't there a middle
 ground? There is: instead of patching and old decrepit corpse, start from zero
 using what you have learned. Start using the `Nimrod programming language
-<http://nimrod-lang.org>`_, which would look like this for the previous
+<http://nim-lang.org>`_, which would look like this for the previous
 examples:
 
 ```
@@ -271,7 +271,7 @@ proc testShortestURL() =
 
 This version in Nimrod is not very idiomatic (e.g. it does not use the
 `implicit result variable
-<http://nimrod-lang.org/tut1.html#result-variable>`_), but on top of offering a
+<http://nim-lang.org/tut1.html#result-variable>`_), but on top of offering a
 much cleaner syntax, this version has the advantage of the compiler doing its
 work: you can't pass an array of strings instead of an array of TUrl objects.
 If you try you get::
@@ -333,7 +333,7 @@ That looks very close to Python, doesn't it? The differences are:
   anything until you fix all the places trying to use it. Same thing with
   exceptions, in Nimrod you declare a proc raises none or a number of
   exceptions through the `raises pragma
-  <http://nimrod-lang.org/manual.html#exception-tracking>`_ and don't worry if
+  <http://nim-lang.org/manual.html#exception-tracking>`_ and don't worry if
   a 3rd party library changes the exceptions it raises.
 * Writing Nimrod code is not that much different from the Python version. Note
   how the ``var rick`` line does not specify the type. This reduces source code

@@ -529,7 +529,7 @@ REFERENCES
 .. [#youtube] `Nine Muses Youtube channel
     <https://www.youtube.com/user/NineMusesCh/videos>`_.
 
-.. [#nimrod] `Nimrod programming language <http://nimrod-lang.org>`_.
+.. [#nimrod] `Nimrod programming language <http://nim-lang.org>`_.
 
 .. [#9muses] `131214 9muses - Glue performance
     <http://www.youtube.com/watch?v=dEf4PJZXBxA>`_.

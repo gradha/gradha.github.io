@@ -13,7 +13,7 @@ for iOS <http://www.elhaso.es/seohtracker/ios.en.html>`_. A puny little iOS
 app. And now the app has crossed the bridge and made it to the Mac App Store as
 `Seohtracker for OSX <http://www.elhaso.es/seohtracker/osx.en.html>`_. Why
 would this be of any relevance? Because both programs are partially implemented
-in the `Nimrod programming language <http://nimrod-lang.org>`_.
+in the `Nimrod programming language <http://nim-lang.org>`_.
 
 .. raw:: html
 
@@ -22,7 +22,7 @@ in the `Nimrod programming language <http://nimrod-lang.org>`_.
         style="width:100%;max-width:680px" align="right"
         hspace="8pt" vspace="8pt"></a>
 
-The `Nimrod programming language <http://nimrod-lang.org>`_ compiles
+The `Nimrod programming language <http://nim-lang.org>`_ compiles
 pythonesque style code into portable C. Might be more portable than Java. And
 more machine performant at the low level. And more developer performant at the
 high level!  And more lisp macros. And… whatever man.  It's just cool, and I
@@ -290,7 +290,7 @@ The good about using Nimrod
 * Awesome programming language, free of clutter, easy to write integrated
   custom builders, compiles and runs at the speed of c (light).
 * Features like `exception tracking
-  <http://nimrod-lang.org/manual.html#exception-tracking>`_ in the language
+  <http://nim-lang.org/manual.html#exception-tracking>`_ in the language
   allow one to `decorate the Nimrod API exported to C
   <https://github.com/gradha/seohtracker-ios/commit/64252e473bb944f396a66c7bf27ea0fed8f7ea07>`_
   and prevent uncaught Nimrod exceptions from crashing your pretty program.
@@ -330,7 +330,7 @@ Unfortunately, Nimrod `is not a girl, not yet a woman
   code to work around them (if they can be worked around!). And this means less
   time working on creating code, more debugging Nimrod.
 * Nimrod is underdeveloped. Sometimes `you report a bug and get a fix some
-  hours later <http://forum.nimrod-lang.org/t/391>`_. But it's more likely that
+  hours later <http://forum.nim-lang.org/t/391>`_. But it's more likely that
   you will hear nothing for days and maybe weeks. Don't plan on using Nimrod
   (yet) for software you have to deliver on a schedule. You will just end up
   hating Nimrod.
@@ -354,7 +354,7 @@ Unfortunately, Nimrod `is not a girl, not yet a woman
   cool, now I *think* I have a work around around that bug to work around the
   class inheritance limitation. If you like solving problems, Nimrod is great!
 * Cross-language threading `sucks big time
-  <http://forum.nimrod-lang.org/t/365>`_. You can thread in Nimrod. And you can
+  <http://forum.nim-lang.org/t/365>`_. You can thread in Nimrod. And you can
   thread in Objective-C. But if you try to `cross the streams… total protonic
   reversal <https://www.youtube.com/watch?v=jyaLZHiJJnE>`_, meaning your
   software crashes.  This is a **really big** problem with mobile, because
