@@ -1,7 +1,7 @@
 ---
 title: Adding Objective-C properties to Nimrod objects with macros
 pubDate: 2014-10-12 22:46
-modDate: 2014-10-12 23:55
+modDate: 2014-12-12 17:23
 tags: nimrod, programming, languages, objc
 ---
 
