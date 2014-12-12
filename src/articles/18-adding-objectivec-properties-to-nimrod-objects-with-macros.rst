@@ -623,7 +623,7 @@ embarrassment of pull requests being reviewed and rejected. And let's face it,
 figuring out how macros work and how to write them is in itself a fun exercise.
 
 `I'd <http://www.youtube.com/watch?v=thabOb8WX34>`_
-`also <http://www.youtube.com/watch?v=6KRb4buwa3A>`_
+`also <http://www.youtube.com/watch?v=oG48HRGe5LA>`_
 `like <http://www.youtube.com/watch?v=85kgIuq3HY4>`_
 `to <http://www.youtube.com/watch?v=8NFXElCZY4I>`_
 `thank <http://www.youtube.com/watch?v=8NFXElCZY4I>`_
@@ -657,6 +657,39 @@ figuring out how macros work and how to write them is in itself a fun exercise.
 `hurdles <http://www.youtube.com/watch?v=6Zl5M-7tORI>`_
 `mentioned <http://www.youtube.com/watch?v=xryLWlBfXa0>`_
 `above <http://www.youtube.com/watch?v=39B3AeTD0lY>`_.
+`At         <http://www.youtube.com/watch?v=MX4JXqOCcTs>`_
+`times      <http://www.youtube.com/watch?v=6JhZhMYx780>`_
+`of         <http://www.youtube.com/watch?v=dC2iOh831Jg>`_
+`difficulty <http://www.youtube.com/watch?v=WHTqrECQZyw>`_,
+`clearing   <http://www.youtube.com/watch?v=_xSixaY-KKE>`_
+`your       <http://www.youtube.com/watch?v=lBbC5L2p5gM>`_
+`mind       <http://www.youtube.com/watch?v=A_MCEHd6now>`_
+`of         <http://www.youtube.com/watch?v=RjwjFmfLfps>`_
+`thoughts   <http://www.youtube.com/watch?v=4oL9XLCktOQ>`_
+`by         <http://www.youtube.com/watch?v=arx-pq-7Z1o>`_
+`looking    <http://www.youtube.com/watch?v=DO8SJ2uxV4s>`_
+`at         <http://www.youtube.com/watch?v=o2Rx2TeErho>`_
+`something  <http://www.youtube.com/watch?v=Y6JVsIiMLyU>`_
+`else       <http://www.youtube.com/watch?v=L-I0o5bB0D0>`_
+`can        <http://www.youtube.com/watch?v=haOvfeui2K0>`_
+`help       <http://www.youtube.com/watch?v=mCFIWB_gIBQ>`_.
+`More       <http://www.youtube.com/watch?v=uwhZgR2Wuew>`_
+`so         <http://www.youtube.com/watch?v=tQZlwr1JQ1Q>`_
+`if         <http://www.youtube.com/watch?v=_R1W21n5f74>`_
+`what       <http://www.youtube.com/watch?v=_sBtnpRE4r0>`_
+`you        <http://www.youtube.com/watch?v=aJ0cBPTZugo>`_
+`are        <http://www.youtube.com/watch?v=9g2YPmzDfkI>`_
+`looking    <http://www.youtube.com/watch?v=-uZj3EVuSiM>`_
+`at         <http://www.youtube.com/watch?v=4ZBDWpneAgw>`_
+`inspires   <http://www.youtube.com/watch?v=91FleKcgKbE>`_
+`you        <http://www.youtube.com/watch?v=v7cpVcnrPu4>`_
+`to         <http://www.youtube.com/watch?v=5XHEgyNZPQA>`_
+`keep       <http://www.youtube.com/watch?v=V_lvh4HuOKA>`_
+`working    <http://www.youtube.com/watch?v=2x_4Odo8BzI>`_.
+`Ace        <http://www.youtube.com/watch?v=ojvES51dOUY>`_
+`of         <http://www.youtube.com/watch?v=5P7QGBIFAgo>`_
+`Angels     <http://www.youtube.com/watch?v=CTAAn5vbVPs>`_,
+`fighting   <http://www.youtube.com/watch?v=xpbs6SRQsTI>`_!
 
 ::
     $ nimrod c -r miniskirt
