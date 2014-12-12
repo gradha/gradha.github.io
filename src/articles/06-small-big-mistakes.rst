@@ -10,10 +10,10 @@ Small big mistakes
 
 Open software is cool. Everybody can join in and tinker with the code. But
 sometimes the entrance threshold is too high and projects are kept *under the
-radar* for most people. I believe the `Nimrod programming language
+radar* for most people. I believe the `Nim programming language
 <http://nim-lang.org>`_ by Andreas Rumpf & Contributors slightly tiptoes
 into the *could-be-much-better-with-a-little-more-care*. The disadvantage of
-Nimrod is that it is a programming language, and a really full fledged one
+Nim is that it is a programming language, and a really full fledged one
 which beats most commonly used ones in terms of flexibility and amazing
 features. Most potential contributors are intimidated by the initial complexity
 of such software (not everybody writes compilers for breakfast).
@@ -34,7 +34,7 @@ like repeating themselves
 `lazy <http://weblogs.asp.net/erobillard/pages/3801.aspx>`_ but `in a positive
 way <http://blogoscoped.com/archive/2005-08-24-n14.html>`_) are confronted with
 a manual task, there are two possible paths: avoid the task or automate the
-hell out of it. In this case, Nimrod's visibility is hurt, as new users come
+hell out of it. In this case, Nim's visibility is hurt, as new users come
 and find something which doesn't work at first glance. Why should they keep
 bothering when there's a constant torrent of new shiny programming languages
 out there competing for everybody's attention? In more technical terms, it
@@ -42,14 +42,14 @@ doesn't matter how many users have write access to the repository if updating
 the website still has a `bus factor
 <http://www.crummy.com/writing/segfault.org/Bus.html>`_ bottleneck.
 
-Some time ago `Babel, the official package manager for Nimrod
+Some time ago `Babel, the official package manager for Nim
 <https://github.com/nimrod-code/babel>`_ was in a state of flux where some
 stuff did not work correctly, or required some prodding. I don't understand
 what is so hard about keeping the repository *master* branch compilable. Maybe
 I'm weird. But it get's better!  Here's something to `facepalm
 <http://knowyourmeme.com/memes/facepalm>`_ if you want to use Babel to install
-`Aporia <https://github.com/nimrod-code/Aporia>`_, the *official* Nimrod
-editor, linked from the `Nimrod webpage <http://nim-lang.org>`_::
+`Aporia <https://github.com/nimrod-code/Aporia>`_, the *official* Nim
+editor, linked from the `Nim webpage <http://nim-lang.org>`_::
 
     $ babel install aporia
     Downloading aporia into /tmp/babel/aporia using git...
@@ -75,8 +75,8 @@ But it all makes you wonder: how many people did find Aporia listed in Babel's
 ``list`` command output and tried to install it? Hint: IRC logs show a few. How
 many didn't bother asking on IRC? We will never know… How many users did tried
 to compile Babel during the time it was *unstable*? Hopefully few. How many
-users did Nimrod lose to outdated github build instructions, since pretty much
-every other Nimrod software in active development requires the git version?
+users did Nim lose to outdated github build instructions, since pretty much
+every other Nim software in active development requires the git version?
 These are all trivial things to solve really.
 
 Oh, and how much do I hate `people graciously giving commit access to github

@@ -5,15 +5,15 @@ moddate: 2014-03-11 20:51
 tags: programming, nimrod, seohtracker, elhaso, objc
 ---
 
-Nimrod for cross platform software
-==================================
+Nim for cross platform software
+===============================
 
 On the 21st of February of 2014, Sarah Con… er… `Seohtracker v4 was released
 for iOS <http://www.elhaso.es/seohtracker/ios.en.html>`_. A puny little iOS
 app. And now the app has crossed the bridge and made it to the Mac App Store as
 `Seohtracker for OSX <http://www.elhaso.es/seohtracker/osx.en.html>`_. Why
 would this be of any relevance? Because both programs are partially implemented
-in the `Nimrod programming language <http://nim-lang.org>`_.
+in the `Nim programming language <http://nim-lang.org>`_.
 
 .. raw:: html
 
@@ -22,28 +22,28 @@ in the `Nimrod programming language <http://nim-lang.org>`_.
         style="width:100%;max-width:680px" align="right"
         hspace="8pt" vspace="8pt"></a>
 
-The `Nimrod programming language <http://nim-lang.org>`_ compiles
+The `Nim programming language <http://nim-lang.org>`_ compiles
 pythonesque style code into portable C. Might be more portable than Java. And
 more machine performant at the low level. And more developer performant at the
 high level!  And more lisp macros. And… whatever man.  It's just cool, and I
 believe it is going to allow me to produce real life programs for more
 platforms with less effort (still working on the *less effort* part, though).
 
-But Nimrod is relatively new and unpopular. Despite the website stating *"The
-Nimrod Compiler can also generate C++ or Objective C for easier interfacing"*,
+But Nim is relatively new and unpopular. Despite the website stating *"The
+Nim Compiler can also generate C++ or Objective C for easier interfacing"*,
 there's not much *proof* out there you can take as reference. So I decided to
 start my own, and that's what Seohtracker is. The internal architecture of
 Seohtracker splits the interface from the logic. Hence, you have a `cross
 platform logic code <https://github.com/gradha/seohtracker-logic>`_ which is
-implemented in pure Nimrod. Then, somewhere in the middle is floating a `thin
-Nimrod to Obj-C convenience layer
+implemented in pure Nim. Then, somewhere in the middle is floating a `thin
+Nim to Obj-C convenience layer
 <https://github.com/gradha/seohtracker-ios/blob/c512307ea505dc7c2262b88ddc8599e94f5f4a74/src/nim/n_global.nim>`_
-which exposes the Nimrod logic, and finally you have the `iOS
+which exposes the Nim logic, and finally you have the `iOS
 <https://github.com/gradha/seohtracker-ios>`_ and `OSX
 <https://github.com/gradha/seohtracker-mac>`_ clients which are consumers of
 this API.
 
-Why not write **everything** in Nimrod? That's something I've heard a lot. The
+Why not write **everything** in Nim? That's something I've heard a lot. The
 most important practical reason is I'm a simple guy doing this on his own, and
 I can't compare to `well paid and full of people firms <http://xamarin.com>`_
 doing the wrapping of all the little details. But also because each platform
@@ -64,7 +64,7 @@ piss off people on each platform, as the result won't be a 100% full citizen
 compared to the rest of the operating system, just that strange bloke with the
 weird hair, who hopefully gets the job done, or else… And if you don't use the
 same graphical toolkit for every platform, well, your bang for the buck for
-using Nimrod is very reduced, especially because there are only a few low level
+using Nim is very reduced, especially because there are only a few low level
 bindings.
 
 
@@ -86,7 +86,7 @@ on the iOS, OSX, and logic modules as tagged for the v4 release:
         <td align="right">1107 (73.85%)</td>
         <td align="right"></td>
     </tr><tr>
-        <td>Lines of code in Nimrod</td>
+        <td>Lines of code in Nim</td>
         <td align="right">792 (29.85%)</td>
         <td align="right">324 (21.61%)</td>
         <td align="right">832 (100%)</td>
@@ -138,12 +138,12 @@ on the iOS, OSX, and logic modules as tagged for the v4 release:
     'SLOCCount'."
     </td></tr></table>
 
-* SLOCCount actually doesn't support Nimrod, but since the source code and
+* SLOCCount actually doesn't support Nim, but since the source code and
   syntax is very similar with regards to line counting, I modified my copy of
   SLOCCount to treat ``.nim`` files as Python to get immediate results.
-* The number of lines for Nimrod is really small compared to Objective-C
+* The number of lines for Nim is really small compared to Objective-C
   because the logic is small as well, this kind of app is mostly user
-  interface, plus Nimrod is a higher level language than Objective-C. Just
+  interface, plus Nim is a higher level language than Objective-C. Just
   starting an Objective-C file from the Xcode template tends to give you a full
   page chunk of code doing nothing at all. It's not as bad as Java, but still
   very verbose.
@@ -152,22 +152,22 @@ on the iOS, OSX, and logic modules as tagged for the v4 release:
   comparison the OSX version feels like `a global variable with less code
   overhead <../../2013/12/worse-than-global-variables.html>`_.
 * Even though both the iOS and OSX clients are just interface, instead of shell
-  scripts I used Nimrod through `nakefiles
+  scripts I used Nim through `nakefiles
   <https://github.com/fowlmouth/nake>`_ to drive compilation, generate and
   package the different resources. Think of nakefiles as `GNU makefiles on
   steroids
   <https://github.com/gradha/seohtracker-mac/blob/0163927a5e8294c0dc2923f3f3612e36a9b6e389/nakefile.nim>`_.
-  That's the reason you see Nimrod lines of code dedicated to them. Nearly none
+  That's the reason you see Nim lines of code dedicated to them. Nearly none
   of them do any *logic* code in the app the user sees, they are for support.
   Also, both iOS and OSX nakefiles share some code I haven't yet come to
   factor, since I was more interested in releasing the OSX version first.
 * Unfortunately for this comparison I took the repositories as they were tagged
-  for the v4 release. The splitting of Nimrod code from the iOS repository into
+  for the v4 release. The splitting of Nim code from the iOS repository into
   a separate module **happened later**. Which means that the iOS lines of codes
-  for Nimrod are bogus, the current development branch shows just 204 lines of
-  Nimrod code, which goes more in line with the 324 lines of Nimrod code for OS
+  for Nim are bogus, the current development branch shows just 204 lines of
+  Nim code, which goes more in line with the 324 lines of Nim code for OS
   X (the OSX nakefile does more to transform and generate native OSX help
-  files). Anyway, the point here is that reducing the Nimrod lines of code
+  files). Anyway, the point here is that reducing the Nim lines of code
   attributed to the iOS client would increase the percentage of native
   Objective-C code and put it more in line with the OSX version.
 * Thanks to the separation of logic vs interface, the `test suite of the logic
@@ -221,7 +221,7 @@ It's 16:27 past deadline
 
 How about if we measure time? Fortunately I did track all the hours I put into
 this project so far. Unfortunately, until v4 all the previous iPhone releases
-had both Objective-C and Nimrod hours lumped, while after v4 most Nimrod hours
+had both Objective-C and Nim hours lumped, while after v4 most Nim hours
 will go to the logic module. At least we can get more realistic cost estimates.
 Let's consider a full US work year in neoliberal hours, which clocks at 2088
 hours per year.  Using this metric we get that the default average software
@@ -252,11 +252,11 @@ Thoughts:
 * No kidding, under 4 hours to implement the full logic of the code, split in a
   nice documented module, all with unit tests? Nah, that was essentially the
   time it took me to *extirpate* the code from the iOS repository into the
-  logic repository.  The actual time I have probably spent on the Nimrod code
+  logic repository.  The actual time I have probably spent on the Nim code
   is more in line with 40 hours, which is roughly the total iOS minus the OSX
   time. This would mean that nearly half of development time was shaved off
-  thanks to Nimrod. Even though `you don't care
-  <http://www.youtube.com/watch?v=4r7wHMg5Yjg>`_, thank you, Nimrod!
+  thanks to Nim. Even though `you don't care
+  <http://www.youtube.com/watch?v=4r7wHMg5Yjg>`_, thank you, Nim!
 * Seriously, 226,570$ vs 6,676.63$? I know that SLOCCount has `a whole lot of
   documentation which I haven't even tried to read
   <http://www.dwheeler.com/sloccount/sloccount.html#cocomo>`_ explaining how to
@@ -284,23 +284,23 @@ Thoughts:
   is good to make fun of the world for being such a shitty place.
 
 
-The good about using Nimrod
----------------------------
+The good about using Nim
+------------------------
 
 * Awesome programming language, free of clutter, easy to write integrated
   custom builders, compiles and runs at the speed of c (light).
 * Features like `exception tracking
   <http://nim-lang.org/manual.html#exception-tracking>`_ in the language
-  allow one to `decorate the Nimrod API exported to C
+  allow one to `decorate the Nim API exported to C
   <https://github.com/gradha/seohtracker-ios/commit/64252e473bb944f396a66c7bf27ea0fed8f7ea07>`_
-  and prevent uncaught Nimrod exceptions from crashing your pretty program.
+  and prevent uncaught Nim exceptions from crashing your pretty program.
   Languages like Ruby or Python require you to write unit tests instead, and
   depend on your skill to cover all cases.
 * Write once your logic, or test it once. Works on every platform the same. In
   fact, I would not write or test in iOS at all! You simply run and debug on
   your desktop machine, faster, easier, and when everything is all right it
   just worked on the target platform.
-* Not specific of Nimrod but of the approach I took, by writing logic
+* Not specific of Nim but of the approach I took, by writing logic
   separately you force yourself to write better code. I had much satisfaction
   in ending the OSX client without having to modify a single line of code in
   the logic module. Writing a logic module like this is more similar to
@@ -312,8 +312,8 @@ The good about using Nimrod
   looking at you).
 
 
-The bad about using Nimrod
---------------------------
+The bad about using Nim
+-----------------------
 
 .. raw:: html
 
@@ -322,18 +322,18 @@ The bad about using Nimrod
         style="width:100%;max-width:600px" align="right"
         hspace="8pt" vspace="8pt"></a>
 
-Unfortunately, Nimrod `is not a girl, not yet a woman
+Unfortunately, Nim `is not a girl, not yet a woman
 <https://www.youtube.com/watch?v=IlV7RhT6zHs>`_:
 
 * Bugs. Prepare to find them and report them. I remember having a week where
   I'd find one every day.  Which means, you are sometimes forced to write ugly
   code to work around them (if they can be worked around!). And this means less
-  time working on creating code, more debugging Nimrod.
-* Nimrod is underdeveloped. Sometimes `you report a bug and get a fix some
+  time working on creating code, more debugging Nim.
+* Nim is underdeveloped. Sometimes `you report a bug and get a fix some
   hours later <http://forum.nim-lang.org/t/391>`_. But it's more likely that
-  you will hear nothing for days and maybe weeks. Don't plan on using Nimrod
+  you will hear nothing for days and maybe weeks. Don't plan on using Nim
   (yet) for software you have to deliver on a schedule. You will just end up
-  hating Nimrod.
+  hating Nim.
 * Speaking of which, using a *stable* **and** *recent* compiler version can be
   tricky. The last official stable version doesn't support all the awesome
   features in development of the language. The git versions of the compiler may
@@ -352,14 +352,14 @@ Unfortunately, Nimrod `is not a girl, not yet a woman
 * I have an idea of how to overcome this limitation, but when I tried, `I found
   more bugs <https://github.com/Araq/Nimrod/issues/903>`_. Which is sort of
   cool, now I *think* I have a work around around that bug to work around the
-  class inheritance limitation. If you like solving problems, Nimrod is great!
+  class inheritance limitation. If you like solving problems, Nim is great!
 * Cross-language threading `sucks big time
-  <http://forum.nim-lang.org/t/365>`_. You can thread in Nimrod. And you can
+  <http://forum.nim-lang.org/t/365>`_. You can thread in Nim. And you can
   thread in Objective-C. But if you try to `cross the streams… total protonic
   reversal <https://www.youtube.com/watch?v=jyaLZHiJJnE>`_, meaning your
   software crashes.  This is a **really big** problem with mobile, because
   essentially everything has to be asynchronous or the user will close your app
-  because it took too long to do something. And you can't call Nimrod code at
+  because it took too long to do something. And you can't call Nim code at
   all from a background thread, so you have to contort your logic/code to
   funnel on the main thread… somehow. I still haven't figured this out, so all
   the long operations in Seohtracker are user interface blocking. Fuck users.
@@ -368,14 +368,14 @@ Unfortunately, Nimrod `is not a girl, not yet a woman
 Maybe you have noticed a pattern here? Lack of developer power, since all of
 these issues are fixable. A one man language has little to do against projects
 sponsored by multimillion companies.  And multimillion companies lack the taste
-to fund a language like Nimrod, so this looks troubling. If you are working on
-a tight schedule I don't recommend using Nimrod (unless you overestimate like
+to fund a language like Nim, so this looks troubling. If you are working on
+a tight schedule I don't recommend using Nim (unless you overestimate like
 SLOCCount, hah!). If you like tinkering with cool stuff and don't mind getting
 dirty, go ahead.
 
 
-You don't need Nimrod to write software for iOS and OSX
--------------------------------------------------------
+You don't need Nim to write software for iOS and OSX
+----------------------------------------------------
 
 True. The astute reader will realize that both platforms use `Objective-C
 <https://en.wikipedia.org/wiki/Objective-C>`_, a quite ancient crap language
@@ -388,14 +388,14 @@ from other platforms willing to start writing software for Apple devices manage
 to get past the `yuck factor <https://en.wikipedia.org/wiki/Yuck_factor>`_.
 
 But in the previous paragraphs I've already outlined the possibilities: the
-Nimrod logic code is already cross platform, you can grab the compiler and run
+Nim logic code is already cross platform, you can grab the compiler and run
 the test suite on Windows, Mac, Linux and whatever else you are able to run
-Nimrod. Don't worry, the clients for other platforms will come.  Just no
+Nim. Don't worry, the clients for other platforms will come.  Just no
 guarantees on a delivery date, being a programmer means you have to master
 weaseling out of committing to a deadline. So whenever it's done.
 
 This is my first little step. Hopefully it will turn into a long walk and you
-will be able to witness **true** cross *platform-ness*. Who knows, maybe Nimrod
+will be able to witness **true** cross *platform-ness*. Who knows, maybe Nim
 will even start to be relevant to Wikipedia? In your dreams…
 
 .. raw:: html

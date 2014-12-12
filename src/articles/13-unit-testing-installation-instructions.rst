@@ -54,7 +54,7 @@ For this article I'll be using my own `dropbox_filename_sanitizer project
 errors in other people's software is too easy and doesn't enrich me. This
 project also offers a nice range of things to test: there is a stable source
 code installation, a development source code installation, and a pre built
-binary installation. In addition the program is implemented with the `Nimrod
+binary installation. In addition the program is implemented with the `Nim
 programming language <http://nim-lang.org>`_ which `recently released
 version 0.9.4
 <http://nim-lang.org/news.html#Z2014-04-21-version-0-9-4-released>`_. A
@@ -148,7 +148,7 @@ json files first
   ``localhost`` and a different user on your own machine to simulate a clean
   install.
 - ``nimrod_branch``:
-  Specifies which branch to check out for the Nimrod compiler. You can specify
+  Specifies which branch to check out for the Nim compiler. You can specify
   tags as well for previous releases. In this case, we use the development
   branch.
 - ``nimrod_version_str``:
@@ -177,7 +177,7 @@ https://gist.github.com/gradha/aff3c6d53657a27e4cae an example of generated
 shell script. This is the shell script that is copied to the remote user and
 run as is. The only dependency required is a working compiler. The script first
 sets up some variables to reuse, removes previous temporary files which could
-have been left from failure runs, and starts to install both the Nimrod
+have been left from failure runs, and starts to install both the Nim
 compiler and babel. Quite boring, but necessary.
 
 By the very end of the script, `on line 58
@@ -256,7 +256,7 @@ I'm just unlucky?).
 
 As a bonus you know when things go wrong without others having to tell you.
 Since these integration tests also test external software, you are
-sort of contributing to the `Nimrod community <http://forum.nim-lang.org>`_
+sort of contributing to the `Nim community <http://forum.nim-lang.org>`_
 by testing the compiler (both the last stable and last development versions)
 and the approved package manager used by many others.
 
@@ -271,7 +271,7 @@ from continuous integration to nightly builds is not that bad either and still
 provides a reasonably fast response to external changes if something goes
 wrong.
 
-If you develop a Nimrod based pseudo continuous software tester, let me know!
+If you develop a Nim based pseudo continuous software tester, let me know!
 
 .. raw:: html
 

@@ -5,8 +5,8 @@ modDate: 2014-11-12 00:40
 tags: nimrod, programming, languages, swift
 ---
 
-Swift string interpolation with Nimrod macros
-=============================================
+Swift string interpolation with Nim macros
+==========================================
 
 Just like `the Go programming language <http://golang.org>`_ had initially a
 lot of marketing pull due to the fame of the authors and company behind the
@@ -20,11 +20,11 @@ will likely continue to do so. Not even Apple wants to keep programming in a
 crap language like Objective-C forever. And Google, I'm still waiting for you
 to ditch the abomination known as Java. Please (*crosses fingers*).
 
-Swift source code looks seriously close to `Nimrod <http://nim-lang.org>`_,
+Swift source code looks seriously close to `Nim <http://nim-lang.org>`_,
 just like its feature set.  Most notably the syntax keeps braces for those
 still clinging to them, and retains Objective-C's named parameter madness for
 interoperability. But other than that it is remarkable how sometimes I actually
-forget I'm reading Swift code and think "*oh, that Nimrod code is weird, how
+forget I'm reading Swift code and think "*oh, that Nim code is weird, how
 can it compile*?". One of the things I noticed after reading some tutorials was
 that Swift provides an `interesting string interpolation feature
 <https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/StringsAndCharacters.html>`_:
@@ -36,7 +36,7 @@ that Swift provides an `interesting string interpolation feature
     let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
     // message is "3 times 2.5 is 7.5"
 
-The equivalent code in Nimrod could be:
+The equivalent code in Nim could be:
 
 .. code-block:: Nimrod
 
@@ -50,7 +50,7 @@ think the syntax to embed a single variable is awkward because you need to add
 the closing parenthesis, but then, just like Python mantra goes, `explicit is
 better than implicit <http://legacy.python.org/dev/peps/pep-0020/>`_. Maybe.
 
-Nimrod has one serious advantage over Swift, it has `macros
+Nim has one serious advantage over Swift, it has `macros
 <http://nim-lang.org/tut2.html#macros>`_. The question is, can we *steal*
 Swift's string static interpolation feature ourselves? Of course, it's actually
 fairly easy. Just like when `I stole Objective-C properties
@@ -62,12 +62,12 @@ will again stomp on the dead bodies of our enemies. Ra ra ra!
 The heist
 =========
 
-As for any other macro we want to write in Nimrod, it is best to first figure
-out what AST is Nimrod producing for perfectly valid code, then try to generate
+As for any other macro we want to write in Nim, it is best to first figure
+out what AST is Nim producing for perfectly valid code, then try to generate
 it as closely as possible. We want to create a compilation time proc which will
 replace a single string literal into a series of concatenations which can be
 coalesced by the compiler not wasting a single CPU cycle at runtime. Let's dump
-the AST of the previous Nimrod snippet:
+the AST of the previous Nim snippet:
 
 .. code-block:: nimrod
 
@@ -102,9 +102,9 @@ tree of ``Infix`` nodes. The multiplication expression is wrapped inside a
 
 Now the only thing left for us is to parse the string literal and figure out
 which parts are text and which parts are variables or expressions. We can't use
-Swift's escape parenthesis notation because we are not modifying Nimrod's
+Swift's escape parenthesis notation because we are not modifying Nim's
 `string literals <http://nim-lang.org/manual.html#string-literals>`_, they
-come with the language. What else can we do? In Nimrod there is runtime string
+come with the language. What else can we do? In Nim there is runtime string
 interpolation using `strutils.%() operator
 <http://nim-lang.org/strutils.html#%,string,openArray[string]>`_. The
 ``strutils`` module uses internally the `parseutils module
@@ -155,7 +155,7 @@ feature **and** test it too:
 Just like `db_sqlite's raw string literal modifier
 <http://nim-lang.org/db_sqlite.html#sql,string>`_ we have implemented here
 the ``i`` macro and use it to prefix the string literals we want to *upgrade*
-with string interpolation. Also, since we are within Nimrod's string parsing
+with string interpolation. Also, since we are within Nim's string parsing
 rules, the interpolation is done with the ``$`` character which allows both
 braced and standalone versions, less backslash typing.
 
@@ -168,7 +168,7 @@ string conversion operator (just in case) and let `parseExpr()
 <http://nim-lang.org/macros.html#parseExpr,string>`_ do its job.
 
 The result of this conversion is stored as a sequence of ``PNimrodNode``
-objects, which is a flat list. To convert it into the AST tree Nimrod expects
+objects, which is a flat list. To convert it into the AST tree Nim expects
 we use the `foldr() <http://nim-lang.org/sequtils.html#foldr.t,expr,expr>`_
 template from the `sequtils <http://nim-lang.org/sequtils.html>`_ module.
 ``foldr`` accepts as first parameter the sequence of items we want to fold, and
@@ -179,7 +179,7 @@ helper from the `macros
 module.
 
 How can be sure this is all working and there is no runtime trickery behind our
-backs? The most simple way is to check `Nimrod's nimcache directory
+backs? The most simple way is to check `Nim's nimcache directory
 <http://nim-lang.org/nimrodc.html#generated-c-code-directory>`_ where it
 places the C code that later is compiled into a binary. In this case we have
 the following line:
@@ -205,7 +205,7 @@ Conclusion
 Stealing language features with macros is `very cool and gratifying
 <https://www.youtube.com/watch?v=qEYOyZVWlzs>`_. But you need to look at other
 languages too to see which features they have. Hopefully Swift programmers gain
-interest in Nimrod, it would allow them to continue writing proper static code
+interest in Nim, it would allow them to continue writing proper static code
 for other platforms like Windows or Linux (`unlike the Swift trap
 <https://ind.ie/phoenix/>`_) and open their minds to some fresh air. But it is
 understandable that Swift still has to deal with a lot of old-timers clinging

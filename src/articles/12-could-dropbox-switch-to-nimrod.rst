@@ -5,8 +5,8 @@ modDate: 2014-04-04 20:19
 tags: programming,languages,python,nimrod,dropbox
 ---
 
-Could Dropbox switch to Nimrod?
-===============================
+Could Dropbox switch to Nim?
+============================
 
 More interesting changes have been announced in the language arena `just a few
 days after I wrote my opinion on Facebook announcing the Hack programming
@@ -58,7 +58,7 @@ also watch `Fast and Dynamic
 <http://www.infoq.com/presentations/dynamic-performance>`_ by `Maxime
 Chevalier-Boisvert <https://pointersgonewild.wordpress.com>`_.
 
-Of course I would propose using the `Nimrod programming language
+Of course I would propose using the `Nim programming language
 <http://nim-lang.org>`_ to any Python programmer looking for a more
 performant, saner language. But Dropbox didn't start yesterday to write code,
 and surely they have tons of code. They must have considered that keeping with
@@ -67,8 +67,8 @@ switching to a different language. Don't think just in terms of rewriting code
 but also in retraining their workforce or hiring people with practical previous
 experience.
 
-So unfortunately Nimrod is not a viable option for companies like Dropbox. Not
-Nimrod, not any other language. Just like I concluded in `my previous blog post
+So unfortunately Nim is not a viable option for companies like Dropbox. Not
+Nim, not any other language. Just like I concluded in `my previous blog post
 <../03/the-sweet-trap-of-dynamic-languages-and-development-time.html>`_, the
 Dropbox team has *succeeded* with Python, and now their success is *killing*
 them.  Developing a faster interpreter for Python is not a trivial matter, or

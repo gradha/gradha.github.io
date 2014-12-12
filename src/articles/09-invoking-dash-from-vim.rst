@@ -11,8 +11,8 @@ Invoking Dash from the command line Vim
 `Dash is a documentation browser and snippet manager for macosx
 <http://kapeli.com/dash>`_ which is much better than Xcode's documentation
 tool, and also allows one to browse other documentations. You can for instance
-download `a Dash docset for Nimrod <http://forum.nim-lang.org/t/330>`_ and
-you will be able to instantly search `Nimrod's <http://nim-lang.org>`_
+download `a Dash docset for Nim <http://forum.nim-lang.org/t/330>`_ and
+you will be able to instantly search `Nim's <http://nim-lang.org>`_
 documentation. A global keyboard shortcut displays Dash on top of whatever you
 are doing, you type stuff, then can hide it and continue.
 
@@ -33,7 +33,7 @@ it be nice to have this integration with Dash too? Here's what I added to my
 What I define in these four lines of Vim configuration are two commands,
 ``DashNim`` and ``DashDef``. The latter is bound to the upper case ``K`` letter
 by default. The former is bound to the same letter but only if the file type of
-your current Vim buffer is of Nimrod type, which allows for more specific
+your current Vim buffer is of Nim type, which allows for more specific
 keyword matches.  In Dash I have set up the default docs I search with the
 ``def:`` shortcut (see Dash's preferences).
 

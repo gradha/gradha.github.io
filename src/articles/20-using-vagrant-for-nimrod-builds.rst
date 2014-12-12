@@ -5,10 +5,10 @@ modDate: 2014-12-08 18:10
 tags: nimrod, programming, languages, testing, tools
 ---
 
-Using Vagrant for Nimrod builds
-===============================
+Using Vagrant for Nim builds
+============================
 
-I have written many small Nimrod programs so far. As trivial as they look, each
+I have written many small Nim programs so far. As trivial as they look, each
 of them pushes me to improve some aspect of the documentation, development,
 testing, or binary distribution. They actually serve that purpose, you can't
 improve releasing software if you do it once every several years. So for each
@@ -52,7 +52,7 @@ the default template) and a `bootstrap.sh
 provisioning script, which simply downloads and prepares the software you want
 to run.
 
-So now I'm writing a new `lazy_rest Nimrod module
+So now I'm writing a new `lazy_rest Nim module
 <https://github.com/gradha/lazy_rest>`_ for myself (and maybe others too) and
 tried to use Vagrant to improve my distribution process. Instead of having a
 remote machine I have now two virtual machines I can automatically launch and
@@ -84,14 +84,14 @@ instance and running the tests manually (I haven't made yet any cool reporting)
 I got an overflow. For one of the subexe replacement variables I take the
 current time and multiply it by thousand because the generated JavaScript
 expects milliseconds instead of seconds. Unfortunately this overflows the
-``int`` type I was casting too.  In Nimrod the default ``int`` type has the
+``int`` type I was casting too.  In Nim the default ``int`` type has the
 width of the machine, if you want to use explicitly 32 or 64 bits you need to
 use ``int32`` or ``int64``.
 
 The `change to fix this
 <https://github.com/gradha/lazy_rest/commit/2098a3caab7627e08e466f55aa5238eb4db0073f>`_
 wasn't very hard, I only had to cast the result explicitly to 64 bits so that
-when run on a 32 bit system the Nimrod code would not overflow. However, it
+when run on a 32 bit system the Nim code would not overflow. However, it
 highlights that stuff like this can easily creep in, and maybe your typical
 development environment doesn't suffer from such issues. Also, in this
 particular case the error would have gone unnoticed for a long time, maybe

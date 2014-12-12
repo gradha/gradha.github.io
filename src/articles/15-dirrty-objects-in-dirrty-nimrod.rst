@@ -5,8 +5,8 @@ modDate: 2014-10-12 22:55
 tags: nimrod, programming, objc
 ---
 
-Dirrty objects, in dirrty Nimrod
-================================
+Dirrty objects, in dirrty Nim
+=============================
 
 This article has been optimized for search engines by using the misspelled word
 **dirrty**. If you came here looking for some hot girls, please go instead to
@@ -116,10 +116,10 @@ compiler, but we could add the getter generation to these macros as well for
 ancient compiler compatibility.
 
 
-Dirrtying Nimrod
-================
+Dirrtying Nim
+=============
 
-In the `Nimrod programming language <http://nim-lang.org>`_ we can replicate
+In the `Nim programming language <http://nim-lang.org>`_ we can replicate
 the C macros with some improvements. Here is the code of a ``utils.nim`` file:
 
 ```nimrod
@@ -162,7 +162,7 @@ The second (scary) thing this code does is define the ``generateProperties``
 macro. This macro accepts a user defined type, a variable name, and the type of
 this variable. Then proceeds to create in the ``let`` block the names of the
 setter, getter and instance variable that will be used to access the object.
-This is done `converting the parameter Nimrod symbol to a string
+This is done `converting the parameter Nim symbol to a string
 <http://nim-lang.org/macros.html#$,PNimrodSymbol>`_, mangling the string,
 then `constructing again an identifier from this new string
 <http://nim-lang.org/macros.html#!,string>`_. Note how you can apply crazy
@@ -173,7 +173,7 @@ Once the identifiers are generated, using `quasi-quoting
 <http://nim-lang.org/macros.html#quote>`_ we define a setter and getter proc
 with the generated identifiers. The backticks are what will be replaced in the
 final code, and all of this is assigned to the result of the macro, thus
-generating the wanted code. Whenever this call is found, the Nimrod compiler
+generating the wanted code. Whenever this call is found, the Nim compiler
 will generate the setter and getter for us. Now let's see a typical usage of
 this macro:
 
@@ -226,14 +226,14 @@ Conclusion
 
 In these few lines of code we have not just solved the hypothetical problem of
 marking automatically a flag in setter procs: we have actually implemented
-Objective-C style properties. Let that sink in. Nimrod doesn't provide
+Objective-C style properties. Let that sink in. Nim doesn't provide
 properties, but instead it is flexible enough that it allows you, the end user
 programmer, to define your own language constructs. And you know what happens
 if you program in a language not flexible enough to stand the test of time?
 Yes, you are `forced to switch to new incompatible languages
 <https://developer.apple.com/swift/>`_. Otherwise you are stuck in the past.
 
-Could advanced Nimrod meta programming improve this example further?  Could we
+Could advanced Nim meta programming improve this example further?  Could we
 get rid of having to repeat the type of the field when creating the setters and
 getters and let the compiler figure it out? Could we avoid having to separate
 the definition of the object from the definition of the procs?

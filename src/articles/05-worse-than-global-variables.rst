@@ -131,7 +131,7 @@ would do.
 Global state is rarely a matter of a single variable, and one typical solution
 is to group the global state into a single structure. Then create an global
 variable of that structure and use it. Here's a snippet from one of my programs
-implemented in `Nimrod <http://nim-lang.org>`_:
+implemented in `Nim <http://nim-lang.org>`_:
 
 ```nimrod
 type

@@ -181,13 +181,13 @@ by the `C game programming library Allegro
 <http://alleg.sourceforge.net>`_.
 
 However, USB level portability is hard to find for most programming
-languages compilers and interpreters. The closest may be the `Nimrod
+languages compilers and interpreters. The closest may be the `Nim
 programming language <http://nim-lang.org>`_, since it compiles
 everything into a single nimrod binary, which can be run everywhere.
 
 The problem is, will it work? Compiling most source code will require
 using modules from the standard library. But where are these?
-Scattered somewhere else. So while it is true that Nimrod produces
+Scattered somewhere else. So while it is true that Nim produces
 a statically linked contained binary, it is effectively not portable
 if for 99% of its usage it depends on external files. Another
 example, you could be using different nimrod compiler versions for

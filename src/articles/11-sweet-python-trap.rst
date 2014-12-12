@@ -237,7 +237,7 @@ Languages like C++ `are not the solution
 <http://yosefk.com/c++fqa/defective.html>`_, and dynamic languages end up
 disappointing when you grow past single programmer code. Isn't there a middle
 ground? There is: instead of patching and old decrepit corpse, start from zero
-using what you have learned. Start using the `Nimrod programming language
+using what you have learned. Start using the `Nim programming language
 <http://nim-lang.org>`_, which would look like this for the previous
 examples:
 
@@ -269,7 +269,7 @@ proc testShortestURL() =
     TUrl("http://google.es")])
 ```
 
-This version in Nimrod is not very idiomatic (e.g. it does not use the
+This version in Nim is not very idiomatic (e.g. it does not use the
 `implicit result variable
 <http://nim-lang.org/tut1.html#result-variable>`_), but on top of offering a
 much cleaner syntax, this version has the advantage of the compiler doing its
@@ -281,7 +281,7 @@ If you try you get::
     urls.shortestURL(urls: seq[TUrl]): TUrl
 
 The other derived problems from the lack of types of the Objective-C version
-also disappear in Nimrod. Let's compare to the python snippet:
+also disappear in Nim. Let's compare to the python snippet:
 
 ```
 import strutils
@@ -308,7 +308,7 @@ rick.sayHello()
 That looks very close to Python, doesn't it? The differences are:
 
 * You define the class in a separate ``type`` section. The methods (called
-  procs in Nimrod) are defined outside.
+  procs in Nim) are defined outside.
 * Like in the previous example, passing the wrong types as parameter won't
   compile::
 
@@ -316,7 +316,7 @@ That looks very close to Python, doesn't it? The differences are:
     but expected one of:
     failure.initMyFailure(age: int, name: string, language: string): MyFailure
 
-* In Nimrod there is no string formatting which also converts types on the fly.
+* In Nim there is no string formatting which also converts types on the fly.
   This is a source of bugs, so you are forced to convert all the parameters to
   strings, hence the usage of the ``$`` operator to convert the integer to a
   string. If you forget about this, the compiler will remind you::
@@ -331,11 +331,11 @@ That looks very close to Python, doesn't it? The differences are:
 
 * If you rename the field to something else, the compiler won't compile
   anything until you fix all the places trying to use it. Same thing with
-  exceptions, in Nimrod you declare a proc raises none or a number of
+  exceptions, in Nim you declare a proc raises none or a number of
   exceptions through the `raises pragma
   <http://nim-lang.org/manual.html#exception-tracking>`_ and don't worry if
   a 3rd party library changes the exceptions it raises.
-* Writing Nimrod code is not that much different from the Python version. Note
+* Writing Nim code is not that much different from the Python version. Note
   how the ``var rick`` line does not specify the type. This reduces source code
   noise. You can also use ``let`` instead of ``var`` to declare a variable
   which can't change. There is no concept of ``let`` or *const* in Python.
@@ -343,10 +343,10 @@ That looks very close to Python, doesn't it? The differences are:
 Conclusion
 ==========
 
-Nimrod is very close to a friction free dynamic language in terms of source
+Nim is very close to a friction free dynamic language in terms of source
 code writing ease, but it is very performant and sane at the same time.  The
-advantage of using Nimrod is obvious: you invest only a little bit more of time
-starting a program with Nimrod due to type declarations and making sure the
+advantage of using Nim is obvious: you invest only a little bit more of time
+starting a program with Nim due to type declarations and making sure the
 compiler likes them. But as time goes by you start to reap the rewards compared
 to dynamic languages. On the other hand, if you start with a dynamic language
 you are very productive in your first days but on the long run you are plagued

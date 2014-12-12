@@ -5,15 +5,15 @@ modDate: 2014-12-12 17:23
 tags: nimrod, programming, languages, objc
 ---
 
-Adding Objective-C properties to Nimrod objects with macros
-===========================================================
+Adding Objective-C properties to Nim objects with macros
+========================================================
 
-The `Nimrod programming language <http://nim-lang.org>`_ allows one to use
+The `Nim programming language <http://nim-lang.org>`_ allows one to use
 `macros <http://nim-lang.org/manual.html#macros>`_ to extend the language.
 In a `previous article <../06/dirrty-objects-in-dirrty-nimrod.html>`_ we were
 guided by `Christina Aguilera
 <https://en.wikipedia.org/wiki/Christina_Aguilera>`_ into adding Objective-C
-like object properties to the Nimrod programming language. However, the result,
+like object properties to the Nim programming language. However, the result,
 while effective, looked quite spartan and low class, like `Christina's slutdrop
 <https://en.wikipedia.org/wiki/File:Dirrty_Slutdrop.jpg>`_. Here is the code I
 ended up with:
@@ -53,7 +53,7 @@ This code has several issues on the long run:
    This is just nonsense. It is all you can do with C like macros though, so to
    the experienced C/C++ programmer it may not look *that horrible*.
 
-With Nimrod you can do better. And better than the obviousness of Christina's
+With Nim you can do better. And better than the obviousness of Christina's
 slutdrop, I find `Ace of Angels' <https://en.wikipedia.org/wiki/AOA_(band)>`_
 `miniskirt unzipping and ass shaking
 <http://www.youtube.com/watch?v=q6f-LLM1H6U>`_ more tasteful and pleasant to
@@ -113,18 +113,18 @@ specify which property setters need to mark the object's dirty flag as dirty or
 not. You can see that in the example code through the words ``dirty`` and
 ``clean``.
 
-The `Nimrod Tutorial <http://nim-lang.org/tut1.html>`_ has a `Building your
+The `Nim Tutorial <http://nim-lang.org/tut1.html>`_ has a `Building your
 first macro <http://nim-lang.org/tut2.html#building-your-first-macro>`_
 section. You are meant to have at least skimmed through that because I won't be
 explaining all the basics, only the ones I'm interested in. Also, much of the
 typical error handling code you find in macros won't be present for brevity.
 What error handling code would be this? In the previous ``generateProperties``
 version the user of this macro can pass only three very specific parameters,
-but in the statement version you can now pass any random Nimrod code to our
+but in the statement version you can now pass any random Nim code to our
 macro, and it has to figure out how to treat it.  If the user makes any
 mistakes in the construct, rather than simply quitting or aborting a helpful
 error message should be provided. That makes the code a lot more verbose
-checking for all possible inputs (and you are sort of becoming a Nimrod
+checking for all possible inputs (and you are sort of becoming a Nim
 compiler developer at the same time!).
 
 Don't get scared now of the length of this blog post, it is all due to the
@@ -205,7 +205,7 @@ numbered markers have been placed to point out the interesting parts::
 
 For the purpose of making our macro traversing code more resilient (and fun!)
 this version of the example includes the ``*`` postfix operator, which is used
-in Nimrod to *export* symbols out of the module's scope. Not required for the
+in Nim to *export* symbols out of the module's scope. Not required for the
 small example to work, it is something very common our macro would find in the
 real world. Our version will deal with it correctly when traversing the AST but
 we won't be using it to change the visibility of the procs generated for each
@@ -486,9 +486,9 @@ Looking under the rug
 =====================
 
 While we have accomplished what we wanted (cooler Objective-C property like
-generation code in Nimrod), there are still some rough edges we can't deal
+generation code in Nim), there are still some rough edges we can't deal
 with, or annoying stuff which hopefully will be improved in future versions of
-Nimrod. From our user perspective, to the left you can see the code we now can
+Nim. From our user perspective, to the left you can see the code we now can
 write. To the right you can see what could be written if the language provided
 native property support (which is impossible, or do you know of any language
 providing built-in object dirty field tracking?)::
@@ -507,19 +507,19 @@ directly, we could mark our objects directly with ``dirtyProperties``,
 ``cleanProperties`` and ``privateFields`` sections. These would be recognised
 as keywords by IDEs and editors. We have to settle for fake identifiers. It's
 not bad, but could be worse. What is more annoying is that we can't get rid of
-the explicit ``type`` keyword. Why? Because the Nimrod compiler still has to
+the explicit ``type`` keyword. Why? Because the Nim compiler still has to
 parse that code into **VALID AST** before it can pass it to our macro. And it
 is the ``type`` keyword which tells the parser that what follows should be
 treated as a ``TypeSection`` with ``TypeDef`` and other stuff instead of say, a
 ``proc`` definition. Here you can hear lisp programmers laughing at our puny
-syntax limitations. Still, Nimrod achieves the power of true macros with little
-limitations. Would it be possible for Nimrod (or just any other language) to
+syntax limitations. Still, Nim achieves the power of true macros with little
+limitations. Would it be possible for Nim (or just any other language) to
 allow user code extend the compiler parser with custom DSL rules? I think that
 would be neat. And madness. Madness is neat, I'm still patiently waiting for
 macros which modify the AST of the caller to the shock and horror of anybody
 reading my code…
 
-Possibly the most frustrating issue with writing Nimrod macros now is the lack
+Possibly the most frustrating issue with writing Nim macros now is the lack
 of proper documentation. While there is that `introductory tutorial
 <http://nim-lang.org/tut2.html#building-your-first-macro>`_, the `macros
 module API <http://nim-lang.org/macros.html>`_ seems to have more sections
@@ -598,7 +598,7 @@ for development of macros are the `dumpTree()
 <http://nim-lang.org/macros.html#dumpTree>`_ and `treeRepr()
 <http://nim-lang.org/macros.html#treeRepr>`_ helpers and repeated trips to
 the command line to compile stuff. It would be really nice if the `official
-Nimrod IDE Aporia <https://github.com/nimrod-code/Aporia>`_ had a mode where
+Nim IDE Aporia <https://github.com/nimrod-code/Aporia>`_ had a mode where
 you could open a bit of code in a separate window and it would refresh the AST
 as you write, pointing at problematic places, or maybe offering links to the
 documentation as you write code. Or maybe a mode where you directly write the
