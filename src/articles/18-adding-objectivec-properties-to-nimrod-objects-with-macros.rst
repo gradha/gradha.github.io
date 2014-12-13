@@ -1,7 +1,7 @@
 ---
 title: Adding Objective-C properties to Nimrod objects with macros
 pubDate: 2014-10-12 22:46
-modDate: 2014-12-12 17:23
+modDate: 2014-12-13 19:04
 tags: nimrod, programming, languages, objc
 ---
 
@@ -223,7 +223,7 @@ Row, row, row your AST…
 =======================
 
 Let's start then with the `makeDirtyWithStyle()
-<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L115>`_
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L118>`_
 macro:
 
 ```nimrod
@@ -255,13 +255,13 @@ macro makeDirtyWithStyle*(body: stmt): stmt {.immediate.} =
 The macro has two clear parts: iterating through the AST looking for
 ``foundObjects``, and then looping over the found results to call the
 `generateProperties()
-<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L84>`_
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L87>`_
 helper. During the search we also modify the ``body`` to remove some
 identifiers and prefix others with the letter ``F``. This is fine with the
 compiler. If the macro doesn't find any object to mangle, the ``result = body``
 line will essentially pass the user input raw to the compiler, plus the
 following loop won't do anything. The `generateProperties()
-<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L84>`_
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L87>`_
 helper is nearly intact from the previous article, the only modification has
 been to add the ``dirty`` parameter. With this parameter we specify if we want
 the generated setter to set the ``dirrty`` field to ``true``, which allows us
@@ -273,16 +273,16 @@ Traversing the AST is quite easy, first we check that we are inside a
 defining types **other** than objects. For instance, they could be defining a
 ``tuple`` along their object. So we are only interested in ``nnkObjectTy``
 nodes. Finally, we call the `rewriteObject()
-<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L51>`_
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L54>`_
 helper proc which returns the mangled AST node plus a sequence of `procTuple
-<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L14>`_
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L17>`_
 elements which contain what fields need to be mangled. Maybe the object had
 none, so we check for the length of the ``mangledObject.found`` list before
 doing anything. Still, we can happily replace the AST node with the returned
 value (``n[2] = mangledObject.node``) because it won't have changed at all.
 
 So what does the `rewriteObject()
-<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L51>`_
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L54>`_
 helper do?
 
 ```nimrod
@@ -326,7 +326,7 @@ can be useful in case we would need to do multiple passes on the AST and have
 to compare our working version with the original one. Then we make sure the
 object type definition we are dealing with actually inherits from our custom
 `Dirrty
-<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L11>`_
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L14>`_
 object. This means we won't get automatic properties on objects which inherit
 from other classes. Alternatively, we could detect this case and prevent the
 generated setter from attempting to modify the field ``dirrty`` which won't be
@@ -341,7 +341,7 @@ but otherwise the rest of the code is quite similar. In any case we remove the
 first fake identifier, then we loop over the remaining identifiers modifying
 our ``var found: procTuple`` with the name and adding a copy to the
 ``result.found`` sequence. For this loop the `stripTypeIdentifier()
-<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L21>`_
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L24>`_
 helper is used which simply iterates through the list of identifiers (except
 the last one, which is the type definition!) and returns them as strings:
 
@@ -362,7 +362,7 @@ proc stripTypeIdentifier(identDefsNode: PNimrodNode):
 
 Once the identifiers without mangling have been added to the list of found
 fields we pass control to the `prefixIdentifiersWithF()
-<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L44>`_
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L47>`_
 helper proc to actually mangle them with the ``F`` prefix:
 
 ```nimrod
@@ -385,12 +385,12 @@ proc prefixIdentifiersWithF(identDefsNode: PNimrodNode) =
 ```
 
 As you can see `prefixIdentifiersWithF()
-<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L44>`_
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L47>`_
 is pretty similar to `stripTypeIdentifier()
-<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L21>`_,
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L24>`_,
 but instead of adding the identifier to a result list it calls the
 `prefixNode()
-<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L34>`_
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L37>`_
 helper which mangles the node identifier. Here you can see us dealing with
 ``nnkPostfix`` nodes, which are fields marked with ``*``. Again, as mentioned
 above, we could detect which of the fields are marked with ``*`` to propagate
@@ -552,9 +552,9 @@ to keep going. I present you the most useless stack trace **from hell**::
 That's it. Nothing more. It's actually pretty awesome, can't do better short of
 pulling out a gun and shooting you right in the face. Let me tell you how to
 reproduce this, just comment the `objType assignment
-<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L88>`_
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L91>`_
 in the `generateProperties()
-<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L84>`_
+<https://github.com/gradha/gradha.github.io/blob/master/code/18/utils.nim#L87>`_
 static proc, like this:
 
 ```nimrod
