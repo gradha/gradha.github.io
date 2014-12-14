@@ -117,7 +117,7 @@ already provided?
 .. raw:: html
 
     <center><a href="http://darkablaxx.tistory.com/69"><img
-        src="../../../i/lime-knows-about-macros.jpg"
+        src="../../../i/alice-knows-about-macros.jpg"
         alt="Some kpop idols know things you wouldn't believe"
         style="width:100%;max-width:600px"
         hspace="8pt" vspace="8pt"></a></center><br>
