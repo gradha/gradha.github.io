@@ -5,7 +5,29 @@
   <link href="http://gradha.github.io/feed.xml" rel="self" />
   <id>http://gradha.github.io/</id>
   <generator>ipsumgenera</generator>
-  <updated>2014-12-13T18:04:37Z</updated>
+  <updated>2014-12-14T17:18:08Z</updated>
+    <entry>
+      <title>The problem with Linux packages</title>
+      <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2014/12/the-problem-with-linux-packages.html"/>
+      <id>http://gradha.github.io/articles/2014/12/the-problem-with-linux-packages.html</id>
+      <published>2014-12-14T17:15:00Z</published>
+      <updated>2014-12-14T17:15:00Z</updated>
+      <author><name>Grzegorz Adam Hankiewicz</name></author>
+      <content type="html">
+        &lt;h1&gt;The problem with Linux packages&lt;/h1&gt;&lt;p&gt;$ apt-get install &lt;a href=&quot;http://asciidoc.org&quot;&gt;asciidoc&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;…&lt;/p&gt;
+&lt;p&gt;Recommended packages:&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;sbcl lisp-compiler&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;The following NEW packages will be installed:&lt;/p&gt;
+&lt;ul&gt;&lt;li&gt;asciidoc cl-asdf clisp common-lisp-controller dblatex dbus defoma doc-base docbook docbook-dsssl docbook-utils docbook-xml docbook-xsl docbook-xsl-doc-html ed feynmf fontconfig-config ghostscript gsfonts gsfonts-x11 jadetex lacheck latex-beamer latex-xcolor lesstif2 libavahi-client3 libavahi-common-data libavahi-common3 libboost-regex1.42.0 libcups2 libcupsimage2 libdbus-1-3 libffcall1 libfont-freetype-perl libfontconfig1 libfreezethaw-perl libgs8 libicu44 libjasper1 libjbig2dec0 libjpeg62 libkpathsea5 liblcms1 liblqr-1-0 libltdl7 libmagick++3 libmagickcore3 libmagickwand3 libmldbm-perl libopenjpeg2 libosp5 libostyle1c2 libpaper-utils libpaper1 libplot2c2 libpng12-0 libpoppler5 libpstoedit0c2a libruby1.8 libsgmls-perl libsigsegv0 libsource-highlight-common libsource-highlight3 libsp1c2 libtiff4 libxml2-utils libxp6 libxslt1.1 lmodern luatex openjade pgf poppler-data poppler-utils preview-latex-style prosper ps2eps pstoedit purifyeps realpath ruby ruby1.8 sgml-data sgmlspl source-highlight sp tex-common texlive texlive-base texlive-bibtex-extra texlive-binaries texlive-common texlive-doc-base texlive-extra-utils texlive-font-utils texlive-fonts-recommended texlive-fonts-recommended-doc texlive-generic-recommended texlive-latex-base texlive-latex-base-doc texlive-latex-extra texlive-latex-extra-doc texlive-latex-recommended texlive-latex-recommended-doc texlive-luatex texlive-math-extra texlive-metapost texlive-metapost-doc texlive-pictures texlive-pictures-doc texlive-pstricks texlive-pstricks-doc texpower texpower-manual tipa ttf-dejavu-core vim-addon-manager xindy xindy-rules xmlto xpdf xsltproc&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;0 upgraded, 122 newly installed, 0 to remove and 0 not upgraded.&lt;/p&gt;
+&lt;p&gt;Need to get 510 MB of archives.&lt;/p&gt;
+&lt;p&gt;After this operation, 924 MB of additional disk space will be used.&lt;/p&gt;
+&lt;p&gt;Do you want to continue [Y/n]? n&lt;/p&gt;
+&lt;p&gt;Abort.&lt;/p&gt;
+&lt;hr /&gt;&lt;p&gt;And people still think I'm a lunatic when I tell them to &lt;a href=&quot;http://gradha.github.io/articles/2014/12/../../2013/08/users-prefer-static-linking.html&quot;&gt;build statically linked binaries&lt;/a&gt; for their programs… yet somehow I feel sorry for the &lt;code&gt;lisp-compiler&lt;/code&gt; package to not have hopped on the bloat bandwagon.&lt;/p&gt;
+&lt;pre class='literal'&gt;$ nuke sprawling bloat --from-orbit
+-bash: nuke: command not found&lt;/pre&gt;
+      </content>
+    </entry>
     <entry>
       <title>Using Vagrant for Nimrod builds</title>
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2014/12/using-vagrant-for-nimrod-builds.html"/>
@@ -458,109 +480,6 @@ miniskirt.nim(3, 0) Info: instantiation from here
     hspace=&quot;8pt&quot; vspace=&quot;8pt&quot;&gt;&lt;/a&gt;&lt;/center&gt;&lt;p&gt;Wow, that was short and sweet for a change!&lt;/p&gt;
 &lt;pre class='literal'&gt;$ date -u
 miércoles,  9 de julio de 2014, 18:05:42 UTC&lt;/pre&gt;
-      </content>
-    </entry>
-    <entry>
-      <title>Dirrty objects, in dirrty Nimrod</title>
-      <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2014/06/dirrty-objects-in-dirrty-nimrod.html"/>
-      <id>http://gradha.github.io/articles/2014/06/dirrty-objects-in-dirrty-nimrod.html</id>
-      <published>2014-06-07T19:23:00Z</published>
-      <updated>2014-10-12T21:55:00Z</updated>
-      <author><name>Grzegorz Adam Hankiewicz</name></author>
-      <content type="html">
-        &lt;h1&gt;Dirrty objects, in dirrty Nim&lt;/h1&gt;&lt;p&gt;This article has been optimized for search engines by using the misspelled word &lt;span style=&quot;font-weight: bold;&quot;&gt;dirrty&lt;/span&gt;. If you came here looking for some hot girls, please go instead to Youtube to watch &lt;a href=&quot;https://www.youtube.com/watch?v=4Rg3sAb8Id8&quot;&gt;Christina Aguilera's Dirrty video&lt;/a&gt; where she works it out. At the moment of writing this article the video records 7.226.476 views, some more won't hurt. For all the other boring people, welcome again to another technical article only worth reading while you wait for the compiler to do its job (or for your browser to render some JavaScript, if you are one of those hipster types).&lt;/p&gt;
-&lt;p&gt;In what looks like a distant past, I used to write Objective-C code for the iPhone. In one of the projects, a little client consuming JSON would fetch news from a web server and cache them locally using SQLite. The code I initially wrote worked fine for about 50 to 100 items, which was the expected workload. Years later this code was moved to another project where the item requirement jumped to over 600+ items and suddenly the user interface was all jerky. As if you were using a cheap Android device instead of the silky smooth luxury car the iPhone feels like (platform fanboys will be glad to know I replicated the silky smooth experience on Android 2.1 devices with less computing power than a cereal box).&lt;/p&gt;
-&lt;p&gt;Certainly 600 didn't seem an incredibly big number (though it was &lt;a href=&quot;https://en.wikipedia.org/wiki/300_(comics)&quot;&gt;twice as Sparta&lt;/a&gt;, respekt man), so why was it all slow suddenly?  Fortunately there were two things I could quickly do to alleviate the problem and not look back:&lt;/p&gt;
-&lt;ol&gt;&lt;li&gt;SQL transactions.&lt;/li&gt;&lt;li&gt;Marking objects as &lt;a href=&quot;https://en.wikipedia.org/wiki/Dirrty&quot;&gt;dirrty&lt;/a&gt;.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;Experienced Objective-C programmers with knowledge of &lt;a href=&quot;https://en.wikipedia.org/wiki/Core_Data&quot;&gt;Core Data&lt;/a&gt; will surely roll their eyes at this point as both of these problems are handled automatically by the framework. The SQL transactions is the obvious facepalm: using a database without taking care of transactions is like pushing a bicycle instead of riding it. You have this shiny thingy beside you which helps you and you are ignoring it. But after placing a few BEGIN/COMMIT here and there the saving wasn't instant yet (remember, you have to aim for perfect, always).&lt;/p&gt;
-&lt;p&gt;The 600+ item requirement didn't actually come from increased network traffic. The server would still serve data in chunks of about 50 items. However, the items would be cached locally until a certain expiration date and thus when new items arrived the older ones were still there. That was the problem: the code was blindly saving all the objects even when they had not changed at all. That's where the &lt;span style=&quot;font-weight: bold;&quot;&gt;dirrty&lt;/span&gt; flag comes, the code would mark any new or modified object as &lt;span style=&quot;font-weight: bold;&quot;&gt;dirrty&lt;/span&gt; and the SQLite saving code would skip the items without this flag.  With these two new measures in place the client performed again seemingly instantly and scrolling was fast again even on first generation devices.&lt;/p&gt;
-&lt;h1&gt;The reference Objective-C implementation&lt;/h1&gt;
-&lt;a href=&quot;https://en.wikipedia.org/wiki/File:Dirrty_Slutdrop.jpg&quot;&gt;&lt;img
-    src=&quot;../../../i/wikipedia_slutdrop.jpg&quot;
-    alt=&quot;Christina doing the slutdrop&quot;
-    style=&quot;width:100%;max-width:750px&quot; align=&quot;right&quot;
-    hspace=&quot;8pt&quot; vspace=&quot;8pt&quot;&gt;&lt;/a&gt;&lt;p&gt;The implementation of the &lt;span style=&quot;font-weight: bold;&quot;&gt;dirrty&lt;/span&gt; flag is not really hard at all, just tedious. In Objective-C you tend to build your serialized objects around an inheritance tree where the base class provides the basic serialization methods. Subclasses can then call &lt;code&gt;super&lt;/code&gt; and extend the serialization (in my case, JSON dictionaries) with whatever new properties the parent class was not aware of.&lt;/p&gt;
-&lt;p&gt;The first step is to create a data model super class which already contains the &lt;span style=&quot;font-weight: bold;&quot;&gt;dirrty&lt;/span&gt; flag. Then you provide setter/getters for properties. In Objective-C setters/getters can be implemented by the compiler automatically through &lt;code&gt;@property&lt;/code&gt; and &lt;code&gt;@synthethize&lt;/code&gt;. But you can also implement them yourself. In my case I created the following C macros which would expand to setters marking the &lt;span style=&quot;font-weight: bold;&quot;&gt;dirrty&lt;/span&gt; flag:&lt;/p&gt;
-
-&lt;br clear=&quot;right&quot;&gt;&lt;pre class='literal'&gt;
-#define SS_DIRRTY_ASSIGN_SETTER(NAME,TYPE,VAR) \
-    - (void)NAME:(TYPE)VAR { \
-            VAR ## _ = VAR; \
-            dirrty_ = YES; \
-    }
-
-#define SS_DIRRTY_RETAIN_SETTER(NAME,TYPE,VAR) \
-    - (void)NAME:(TYPE)VAR { \
-            [VAR retain]; \
-            [VAR ## _ release]; \
-            VAR ## _ = VAR; \
-            dirrty_ = YES; \
-    }
-
-// Actual later usage:
-SS_DIRRTY_RETAIN_SETTER(setBody, NSString*, body)
-SS_DIRRTY_RETAIN_SETTER(setFooter, NSString*, footer)&lt;/pre&gt;&lt;p&gt;Not the prettiest code in the world, but works fine. There are two versions of the macro, one for scalar values and another for objects which requires the &lt;code&gt;retain/release&lt;/code&gt; dance. The last two lines would be seen in a subclass implementation file where they would expand to a setter updating the &lt;code&gt;dirrty_&lt;/code&gt; flag. In recent Objective-C versions the getter is generated by the compiler, but we could add the getter generation to these macros as well for ancient compiler compatibility.&lt;/p&gt;
-&lt;h1&gt;Dirrtying Nim&lt;/h1&gt;&lt;p&gt;In the &lt;a href=&quot;http://nim-lang.org&quot;&gt;Nim programming language&lt;/a&gt; we can replicate the C macros with some improvements. Here is the code of a &lt;code&gt;utils.nim&lt;/code&gt; file:&lt;/p&gt;
-&lt;p&gt;&lt;pre class='code'&gt;&lt;span class=&quot;Keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;macros&lt;/span&gt;
-
-&lt;span class=&quot;Comment&quot;&gt;# Create a superclass with the dirrty flag.&lt;/span&gt;
-&lt;span class=&quot;Keyword&quot;&gt;type&lt;/span&gt;
-  &lt;span class=&quot;Identifier&quot;&gt;Dirrty&lt;/span&gt;&lt;span class=&quot;Operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;Operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;Keyword&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;Keyword&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;TObject&lt;/span&gt;
-    &lt;span class=&quot;Identifier&quot;&gt;dirrty&lt;/span&gt;&lt;span class=&quot;Operator&quot;&gt;*:&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;bool&lt;/span&gt;
-
-&lt;span class=&quot;Keyword&quot;&gt;macro&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;generateProperties&lt;/span&gt;&lt;span class=&quot;Operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;objType&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;Identifier&quot;&gt;varName&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;varType&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;stmt&lt;/span&gt; &lt;span class=&quot;Operator&quot;&gt;=&lt;/span&gt;
-  &lt;span class=&quot;Comment&quot;&gt;# Create identifiers from the parameters.&lt;/span&gt;
-  &lt;span class=&quot;Keyword&quot;&gt;let&lt;/span&gt;
-    &lt;span class=&quot;Identifier&quot;&gt;setter&lt;/span&gt; &lt;span class=&quot;Operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;Operator&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;Operator&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;varName&lt;/span&gt; &lt;span class=&quot;Operator&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;StringLit&quot;&gt;&amp;quot;=&amp;quot;&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;Identifier&quot;&gt;iVar&lt;/span&gt; &lt;span class=&quot;Operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;Operator&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;StringLit&quot;&gt;&amp;quot;F&amp;quot;&lt;/span&gt; &lt;span class=&quot;Operator&quot;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&quot;Operator&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;varName&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;Identifier&quot;&gt;getter&lt;/span&gt; &lt;span class=&quot;Operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;Operator&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;Operator&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;varName&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;)&lt;/span&gt;
-  
-  &lt;span class=&quot;Comment&quot;&gt;# Generate the code using quasiquoting.&lt;/span&gt;
-  &lt;span class=&quot;Identifier&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;Operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;quote&lt;/span&gt; &lt;span class=&quot;Keyword&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;Keyword&quot;&gt;proc&lt;/span&gt; &lt;span class=&quot;Punctuation&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;setter&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;Operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;Keyword&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;Punctuation&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;objType&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;Identifier&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;Punctuation&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;varType&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;Punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;Operator&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;inline&lt;/span&gt;&lt;span class=&quot;Operator&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;Operator&quot;&gt;=&lt;/span&gt;
-      &lt;span class=&quot;Identifier&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;Operator&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;iVar&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;Operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;value&lt;/span&gt;
-      &lt;span class=&quot;Identifier&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;Operator&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;dirrty&lt;/span&gt; &lt;span class=&quot;Operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;true&lt;/span&gt;
-    
-    &lt;span class=&quot;Keyword&quot;&gt;proc&lt;/span&gt; &lt;span class=&quot;Punctuation&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;getter&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;Operator&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;Keyword&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;Punctuation&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;objType&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;Punctuation&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;varType&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;`&lt;/span&gt; &lt;span class=&quot;Punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;Operator&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;inline&lt;/span&gt;&lt;span class=&quot;Operator&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;Operator&quot;&gt;=&lt;/span&gt;
-      &lt;span class=&quot;Identifier&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;Operator&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;iVar&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;`&lt;/span&gt;
-&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;As scary as this code may look to any beginner in the language, the nice thing is that you can put it aside in a separate file and not look at it ever again. It is not very difficult to understand either. The first thing it does is import the &lt;a href=&quot;http://nim-lang.org/macros.html&quot;&gt;macros module&lt;/a&gt; which contains many meta programming helpers. Then it defines a &lt;code&gt;Dirrty&lt;/code&gt; base class which includes the &lt;code&gt;dirrty: bool&lt;/code&gt; field. User defined objects will inherit from the class.&lt;/p&gt;
-&lt;p&gt;The second (scary) thing this code does is define the &lt;code&gt;generateProperties&lt;/code&gt; macro. This macro accepts a user defined type, a variable name, and the type of this variable. Then proceeds to create in the &lt;code&gt;let&lt;/code&gt; block the names of the setter, getter and instance variable that will be used to access the object. This is done &lt;a href=&quot;http://nim-lang.org/macros.html#$,PNimrodSymbol&quot;&gt;converting the parameter Nim symbol to a string&lt;/a&gt;, mangling the string, then &lt;a href=&quot;http://nim-lang.org/macros.html#!,string&quot;&gt;constructing again an identifier from this new string&lt;/a&gt;. Note how you can apply crazy logic here depending on names of the variables, something which is hard or impossible to do in C macros.&lt;/p&gt;
-&lt;p&gt;Once the identifiers are generated, using &lt;a href=&quot;http://nim-lang.org/macros.html#quote&quot;&gt;quasi-quoting&lt;/a&gt; we define a setter and getter proc with the generated identifiers. The backticks are what will be replaced in the final code, and all of this is assigned to the result of the macro, thus generating the wanted code. Whenever this call is found, the Nim compiler will generate the setter and getter for us. Now let's see a typical usage of this macro:&lt;/p&gt;
-&lt;p&gt;&lt;pre class='code'&gt;&lt;span class=&quot;Keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;utils&lt;/span&gt;
-
-&lt;span class=&quot;Keyword&quot;&gt;type&lt;/span&gt;
-  &lt;span class=&quot;Identifier&quot;&gt;Person&lt;/span&gt; &lt;span class=&quot;Operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;Keyword&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;Keyword&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;Dirrty&lt;/span&gt;
-    &lt;span class=&quot;Identifier&quot;&gt;Fname&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;Fsurname&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;string&lt;/span&gt;
-    &lt;span class=&quot;Identifier&quot;&gt;Fage&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;int&lt;/span&gt;
-
-&lt;span class=&quot;Identifier&quot;&gt;generateProperties&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;Identifier&quot;&gt;generateProperties&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;surname&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;Identifier&quot;&gt;generateProperties&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;Keyword&quot;&gt;proc&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;Operator&quot;&gt;=&lt;/span&gt;
-  &lt;span class=&quot;Comment&quot;&gt;## Exercise the setters and getters.&lt;/span&gt;
-  &lt;span class=&quot;Keyword&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;Person&lt;/span&gt;
-  &lt;span class=&quot;Identifier&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;Operator&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;Operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;StringLit&quot;&gt;&amp;quot;Christina&amp;quot;&lt;/span&gt;
-  &lt;span class=&quot;Identifier&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;StringLit&quot;&gt;&amp;quot;Is &amp;quot;&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;Operator&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;StringLit&quot;&gt;&amp;quot; dirrty? &amp;quot;&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;Operator&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;dirrty&lt;/span&gt;
-
-&lt;span class=&quot;Keyword&quot;&gt;when&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;isMainModule&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;)&lt;/span&gt;
-&lt;/pre&gt; The &lt;code&gt;Person&lt;/code&gt; object defined here inherits from our &lt;code&gt;Dirrty&lt;/code&gt; base class and uses the &lt;a href=&quot;http://nim-lang.org/tut2.html#properties&quot;&gt;getter and setter convention&lt;/a&gt; of creating a &lt;span style=&quot;font-style: italic;&quot;&gt;private&lt;/span&gt; variable with the &lt;span style=&quot;font-weight: bold;&quot;&gt;F&lt;/span&gt; prefix. This variable can be accessed only from the current unit. After the type declaration we invoke the &lt;code&gt;generateProperties&lt;/code&gt; macro to &lt;span style=&quot;font-style: italic;&quot;&gt;produce&lt;/span&gt; at compilation time the setter and getter for each of the fields.&lt;/p&gt;
-&lt;p&gt;What follows is a basic &lt;code&gt;test&lt;/code&gt; proc which verifies our assumptions by creating a &lt;code&gt;Person&lt;/code&gt; object, then echoing to screen the state of the &lt;span style=&quot;font-weight: bold;&quot;&gt;dirrty&lt;/span&gt; flag after using the generated setter to name it &lt;span style=&quot;font-weight: bold;&quot;&gt;Christina&lt;/span&gt;. You can surely expect the result by now:&lt;pre class='literal'&gt;
-Is Christina dirrty? true&lt;/pre&gt;&lt;/p&gt;
-
-&lt;center&gt;&lt;img
-    src=&quot;../../../i/christina_punch.jpg&quot;
-    alt=&quot;Hitting adversaries one macro at a time&quot;
-    style=&quot;width:100%;max-width:750px&quot;
-    hspace=&quot;8pt&quot; vspace=&quot;8pt&quot;&gt;&lt;/center&gt;&lt;br&gt;&lt;h1&gt;Conclusion&lt;/h1&gt;&lt;p&gt;In these few lines of code we have not just solved the hypothetical problem of marking automatically a flag in setter procs: we have actually implemented Objective-C style properties. Let that sink in. Nim doesn't provide properties, but instead it is flexible enough that it allows you, the end user programmer, to define your own language constructs. And you know what happens if you program in a language not flexible enough to stand the test of time? Yes, you are &lt;a href=&quot;https://developer.apple.com/swift/&quot;&gt;forced to switch to new incompatible languages&lt;/a&gt;. Otherwise you are stuck in the past.&lt;/p&gt;
-&lt;p&gt;Could advanced Nim meta programming improve this example further?  Could we get rid of having to repeat the type of the field when creating the setters and getters and let the compiler figure it out? Could we avoid having to separate the definition of the object from the definition of the procs?&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://gradha.github.io/articles/2014/06/../10/adding-objectivec-properties-to-nimrod-objects-with-macros.html&quot;&gt;Who knows…&lt;/a&gt;&lt;/p&gt;
-&lt;pre class='literal'&gt;$ playback slutdrop.m4a
-Permission denied
-Kernel DRM module not found&lt;/pre&gt;
       </content>
     </entry>
 </feed>
