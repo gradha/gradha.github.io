@@ -49,7 +49,7 @@ StmtList
 <p>Now the only thing left for us is to parse the string literal and figure out which parts are text and which parts are variables or expressions. We can't use Swift's escape parenthesis notation because we are not modifying Nim's <a href="http://nim-lang.org/manual.html#string-literals">string literals</a>, they come with the language. What else can we do? In Nim there is runtime string interpolation using <a href="http://nim-lang.org/strutils.html#%,string,openArray[string]">strutils.%() operator</a>. The <code>strutils</code> module uses internally the <a href="http://nim-lang.org/parseutils.html">parseutils module</a>, and luckily we can use directly the <a href="http://nim-lang.org/parseutils.html#interpolatedFragments.i,string">interpolatedFragments()</a> iterator for our macro. Isn't it nice when most of the code we have to write is already provided?</p>
 
 <center><a href="http://darkablaxx.tistory.com/69"><img
-    src="../../../i/lime-knows-about-macros.jpg"
+    src="../../../i/alice-knows-about-macros.jpg"
     alt="Some kpop idols know things you wouldn't believe"
     style="width:100%;max-width:600px"
     hspace="8pt" vspace="8pt"></a></center><br><h1>The code</h1><p>I did warn you, here are the complete 20 lines of code to implement this feature <span style="font-weight: bold;">and</span> test it too:</p>

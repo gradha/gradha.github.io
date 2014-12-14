@@ -5,7 +5,7 @@
   <link href="http://gradha.github.io/feed.xml" rel="self" />
   <id>http://gradha.github.io/</id>
   <generator>ipsumgenera</generator>
-  <updated>2014-12-14T17:18:08Z</updated>
+  <updated>2014-12-14T20:08:38Z</updated>
     <entry>
       <title>The problem with Linux packages</title>
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2014/12/the-problem-with-linux-packages.html"/>
@@ -19,12 +19,17 @@
 &lt;p&gt;Recommended packages:&lt;/p&gt;
 &lt;ul&gt;&lt;li&gt;sbcl lisp-compiler&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;The following NEW packages will be installed:&lt;/p&gt;
 &lt;ul&gt;&lt;li&gt;asciidoc cl-asdf clisp common-lisp-controller dblatex dbus defoma doc-base docbook docbook-dsssl docbook-utils docbook-xml docbook-xsl docbook-xsl-doc-html ed feynmf fontconfig-config ghostscript gsfonts gsfonts-x11 jadetex lacheck latex-beamer latex-xcolor lesstif2 libavahi-client3 libavahi-common-data libavahi-common3 libboost-regex1.42.0 libcups2 libcupsimage2 libdbus-1-3 libffcall1 libfont-freetype-perl libfontconfig1 libfreezethaw-perl libgs8 libicu44 libjasper1 libjbig2dec0 libjpeg62 libkpathsea5 liblcms1 liblqr-1-0 libltdl7 libmagick++3 libmagickcore3 libmagickwand3 libmldbm-perl libopenjpeg2 libosp5 libostyle1c2 libpaper-utils libpaper1 libplot2c2 libpng12-0 libpoppler5 libpstoedit0c2a libruby1.8 libsgmls-perl libsigsegv0 libsource-highlight-common libsource-highlight3 libsp1c2 libtiff4 libxml2-utils libxp6 libxslt1.1 lmodern luatex openjade pgf poppler-data poppler-utils preview-latex-style prosper ps2eps pstoedit purifyeps realpath ruby ruby1.8 sgml-data sgmlspl source-highlight sp tex-common texlive texlive-base texlive-bibtex-extra texlive-binaries texlive-common texlive-doc-base texlive-extra-utils texlive-font-utils texlive-fonts-recommended texlive-fonts-recommended-doc texlive-generic-recommended texlive-latex-base texlive-latex-base-doc texlive-latex-extra texlive-latex-extra-doc texlive-latex-recommended texlive-latex-recommended-doc texlive-luatex texlive-math-extra texlive-metapost texlive-metapost-doc texlive-pictures texlive-pictures-doc texlive-pstricks texlive-pstricks-doc texpower texpower-manual tipa ttf-dejavu-core vim-addon-manager xindy xindy-rules xmlto xpdf xsltproc&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;0 upgraded, 122 newly installed, 0 to remove and 0 not upgraded.&lt;/p&gt;
-&lt;p&gt;Need to get 510 MB of archives.&lt;/p&gt;
-&lt;p&gt;After this operation, 924 MB of additional disk space will be used.&lt;/p&gt;
+&lt;p&gt;Need to get &lt;span style=&quot;font-weight: bold;&quot;&gt;510 MB&lt;/span&gt; of archives.&lt;/p&gt;
+&lt;p&gt;After this operation, &lt;span style=&quot;font-weight: bold;&quot;&gt;924 MB&lt;/span&gt; of additional disk space will be used.&lt;/p&gt;
 &lt;p&gt;Do you want to continue [Y/n]? n&lt;/p&gt;
 &lt;p&gt;Abort.&lt;/p&gt;
 &lt;hr /&gt;&lt;p&gt;And people still think I'm a lunatic when I tell them to &lt;a href=&quot;http://gradha.github.io/articles/2014/12/../../2013/08/users-prefer-static-linking.html&quot;&gt;build statically linked binaries&lt;/a&gt; for their programs… yet somehow I feel sorry for the &lt;code&gt;lisp-compiler&lt;/code&gt; package to not have hopped on the bloat bandwagon.&lt;/p&gt;
-&lt;pre class='literal'&gt;$ nuke sprawling bloat --from-orbit
+
+&lt;center&gt;&lt;a href=&quot;http://darkablaxx.tistory.com/69&quot;&gt;&lt;img
+    src=&quot;../../../i/asciidoc_debian.jpg&quot;
+    alt=&quot;Some kpop idols know things you wouldn't believe&quot;
+    style=&quot;width:100%;max-width:600px&quot;
+    hspace=&quot;8pt&quot; vspace=&quot;8pt&quot;&gt;&lt;/a&gt;&lt;/center&gt;&lt;br&gt;&lt;pre class='literal'&gt;$ nuke sprawling-bloat --from-orbit
 -bash: nuke: command not found&lt;/pre&gt;
       </content>
     </entry>
@@ -107,7 +112,7 @@ StmtList
 &lt;p&gt;Now the only thing left for us is to parse the string literal and figure out which parts are text and which parts are variables or expressions. We can't use Swift's escape parenthesis notation because we are not modifying Nim's &lt;a href=&quot;http://nim-lang.org/manual.html#string-literals&quot;&gt;string literals&lt;/a&gt;, they come with the language. What else can we do? In Nim there is runtime string interpolation using &lt;a href=&quot;http://nim-lang.org/strutils.html#%,string,openArray[string]&quot;&gt;strutils.%() operator&lt;/a&gt;. The &lt;code&gt;strutils&lt;/code&gt; module uses internally the &lt;a href=&quot;http://nim-lang.org/parseutils.html&quot;&gt;parseutils module&lt;/a&gt;, and luckily we can use directly the &lt;a href=&quot;http://nim-lang.org/parseutils.html#interpolatedFragments.i,string&quot;&gt;interpolatedFragments()&lt;/a&gt; iterator for our macro. Isn't it nice when most of the code we have to write is already provided?&lt;/p&gt;
 
 &lt;center&gt;&lt;a href=&quot;http://darkablaxx.tistory.com/69&quot;&gt;&lt;img
-    src=&quot;../../../i/lime-knows-about-macros.jpg&quot;
+    src=&quot;../../../i/alice-knows-about-macros.jpg&quot;
     alt=&quot;Some kpop idols know things you wouldn't believe&quot;
     style=&quot;width:100%;max-width:600px&quot;
     hspace=&quot;8pt&quot; vspace=&quot;8pt&quot;&gt;&lt;/a&gt;&lt;/center&gt;&lt;br&gt;&lt;h1&gt;The code&lt;/h1&gt;&lt;p&gt;I did warn you, here are the complete 20 lines of code to implement this feature &lt;span style=&quot;font-weight: bold;&quot;&gt;and&lt;/span&gt; test it too:&lt;/p&gt;
