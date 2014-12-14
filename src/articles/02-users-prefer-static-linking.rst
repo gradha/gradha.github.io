@@ -5,9 +5,11 @@ moddate: 2013-11-28 12:36
 tags: nimrod, static linking, user experience
 ---
 
+Users prefer static linking
+===========================
 
 What is static linking
-======================
+----------------------
 
 Users prefer static linking. That is, if software users would
 actually know what static linking is. Most users don't know anything
@@ -70,7 +72,7 @@ programmers.
 
 
 Levels of portability
-=====================
+---------------------
 
 The situations explained above don't actually relate all to static
 linking, or can't be applied at all, since there is no concept of
@@ -117,7 +119,7 @@ people care.
 
 
 The solution
-============
+------------
 
 The solution for portability is simple: you copy, bundle, or embed
 whatever your program needs into your binary. For instance, Windows
@@ -155,7 +157,7 @@ OS X desktop users already have an equivalent app store with
 
 
 Software proud to be portable
-=============================
+-----------------------------
 
 There are not many developer oriented tools which are written with
 portability in mind. The authors of `Sqlite <https://sqlite.org>`_
