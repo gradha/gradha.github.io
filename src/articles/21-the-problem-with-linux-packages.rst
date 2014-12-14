@@ -19,9 +19,9 @@ The following NEW packages will be installed:
 
 0 upgraded, 122 newly installed, 0 to remove and 0 not upgraded.
 
-Need to get 510 MB of archives.
+Need to get **510 MB** of archives.
 
-After this operation, 924 MB of additional disk space will be used.
+After this operation, **924 MB** of additional disk space will be used.
 
 Do you want to continue [Y/n]? n
 
@@ -34,6 +34,14 @@ linked binaries <../../2013/08/users-prefer-static-linking.html>`_ for their
 programs… yet somehow I feel sorry for the ``lisp-compiler`` package to not
 have hopped on the bloat bandwagon.
 
+.. raw:: html
+
+    <center><a href="http://darkablaxx.tistory.com/69"><img
+        src="../../../i/asciidoc_debian.jpg"
+        alt="Some kpop idols know things you wouldn't believe"
+        style="width:100%;max-width:600px"
+        hspace="8pt" vspace="8pt"></a></center><br>
+
 ::
-    $ nuke sprawling bloat --from-orbit
+    $ nuke sprawling-bloat --from-orbit
     -bash: nuke: command not found
