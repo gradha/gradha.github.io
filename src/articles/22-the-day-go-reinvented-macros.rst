@@ -286,13 +286,12 @@ Let's recap:
   facilities themselves. Not very DRY.
 * And they have to produce source code too, which has to be stored because
   *normal* users are not meant to run these tools.
-* At least users can look at the generated source code. One of the pains of
-  C/C++ is figuring out what the macro expansion does, since by default this
-  goes straight to the compiler. Much of the readability problems arise from
-  programmers thinking the macro does something else.
 
-I think Go authors could have provided something better, but at least they are
-advancing their language.
+At least users can look at the generated source code. One of the pains of C/C++
+is figuring out what the macro expansion does, since by default this goes
+straight to the compiler. Much of the readability problems arise from
+programmers thinking the macro does something else.  I think Go authors could
+have provided something better, but at least they are advancing their language.
 
 
 Conclusion
