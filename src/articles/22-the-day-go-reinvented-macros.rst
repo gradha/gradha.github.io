@@ -16,6 +16,12 @@ One of the big selling points of the `Nim programming language
 <https://en.wikipedia.org/wiki/Macro_(computer_science)#Syntactic_macros>`_.
 When you go to its website, on the front page you can read these sentences:
 
+.. raw:: html
+
+    <a href="http://this-plt-life.tumblr.com/post/66298485729/when-im-being-propagandized-by-an-fp-weenie"><img
+        src="../../../i/go_fpweenie.gif" width='155px' height='100px'
+        align="right"></a>
+
 * […] Beneath a nice infix/indentation based syntax with a powerful (AST based,
   hygienic) macro system lies a semantic model that supports a soft realtime GC
   on thread local heaps. […]
@@ -35,6 +41,12 @@ logic, macros are not an advantage, but a huge disadvantage, I'm stupid and I
 suck (later edited to *soften* the language a bit), and macros in general are
 offensive.
 
+.. raw:: html
+
+    <a href="http://this-plt-life.tumblr.com/post/36425244621/when-i-hear-your-new-pl-doesnt-have-exceptions"><img
+        src="../../../i/go_dexter.gif" width='150px' height='85px'
+        align="right"></a>
+
 I'm not a stranger to `John Gabriel's Greater Internet Fuckwad Theory
 <http://www.penny-arcade.com/comic/2004/03/19/>`_, being insulted on the
 internet is just the norm. But I didn't cross post this anywhere else, it was
@@ -47,6 +59,12 @@ stress? Pain?!
 
 What are macros anyway?
 -----------------------
+
+.. raw:: html
+
+    <a href="http://this-plt-life.tumblr.com/post/37285848921/when-i-heard-of-gos-error-handling"><img
+        src="../../../i/go_go.gif" width='210px' height='142px'
+        align="right"></a>
 
 If you don't have the time to `read Wikipedia's full article
 <https://en.wikipedia.org/wiki/Macro_(computer_science)#Syntactic_macros>`_,
@@ -72,6 +90,13 @@ int main(void)
 	printf("Macros rule %d\n", SIX * NINE);
 }
 ```
+
+.. raw:: html
+
+    <a href="http://this-plt-life.tumblr.com/post/44079123074/when-im-working-on-a-new-pl-most-of-the-time"><img
+        src="../../../i/go_new.gif" width='250px' height='122px'
+        align="right"></a>
+
 Running this program will produce the output 42, **not** 54 as one could
 naively *read*. Since C macros are textual replacements, you actually get the
 expression ``1 + 5 * 8 + 1``, where the multiplication has higher priority,
@@ -104,6 +129,13 @@ written like this:
 ```c
 @try {} @catch (...) {} more-macros-plus-self
 ```
+
+.. raw:: html
+
+    <a href="http://this-plt-life.tumblr.com/post/36425231672/when-a-code-base-uses-a-directory-structure-deeper"><img
+        src="../../../i/go_src.gif" width='160px' height='120px'
+        align="right"></a>
+
 Which is essentially the Objective-C equivalent of the `do while(false)
 <http://stackoverflow.com/questions/4674480/do-whilefalse-pattern>`_ pattern
 used exclusively to bring that at-sign (``@``) into your code so it *looks*
@@ -134,6 +166,12 @@ with textual macros. We know they are painful.
 Nim macros
 ----------
 
+.. raw:: html
+
+    <a href="http://this-plt-life.tumblr.com/post/43655942984/when-im-working-on-a-macro-system-with-phase"><img
+        src="../../../i/go_tower.gif" width='100px' height='100px'
+        align="right"></a>
+
 In the quest for improving meta programming, we reach `syntactic macros
 <https://en.wikipedia.org/wiki/Macro_(computer_science)#Syntactic_macros>`_,
 which work on abstract syntax trees (ASTs) instead of lines of text. Nim
@@ -145,6 +183,12 @@ main differences:
 * They run at compile time (in the case of Nim, other languages might do macro
   expansion at runtime)
 * They process ASTs, and generate ASTs.
+
+.. raw:: html
+
+    <a href="http://this-plt-life.tumblr.com/post/40016419394/when-somebody-asks-me-about-a-non-s-expression"><img
+        src="../../../i/go_huh_what.gif" width='125px' height='101px'
+        align="right"></a>
 
 Like the Wikipedia article mentions, macros are kind of natural of
 `S-expression <https://en.wikipedia.org/wiki/S-expression>`_ languages, since
@@ -165,15 +209,30 @@ language to evolve, you can evolve it yourself!
 So what does this have to do with Go, they don't have macros!
 -------------------------------------------------------------
 
+.. raw:: html
+
+    <a href="http://this-plt-life.tumblr.com/post/36425239482/when-i-hear-theyre-adding-features-to-c"><img
+        src="../../../i/go_cxx.gif" width='120px' height='114px'
+        align="right">
+
 Yes they do. The blog post `Generating code <http://blog.golang.org/generate>`_
 posted on the 22nd of December of 2014 should already hint with its title that
 Go version 1.4 includes some sort of mechanism to generate code. Oh… shiny…
 that sounds like meta programming… as if you could generate code for the
 compiler…
 
+.. raw:: html
+    <br clear="right">
+
 **ATTENTION:** If you are one of those Go acolytes who believes Go's most
 important feature is simplicity and readability, please stop reading! And never
 ever **go** to version 1.4 and beyond!
+
+.. raw:: html
+
+    <a href="http://this-plt-life.tumblr.com/post/39920361990/when-someone-is-enamored-with-a-languages-petty"><img
+        src="../../../i/go_irrelevant.gif" width='150px' height='150px'
+        align="right">
 
 The example given in Go's blog is to stringify enum constants into strings so
 you can print them or maybe compare them. The `Go generate design document
@@ -204,6 +263,12 @@ been playing with it. Let's see some comments from the `reddit discussion
   this `tool <https://github.com/jteeuwen/templates>`_ a few days ago as an
   experiment, to demonstrate just that[…]
 
+.. raw:: html
+
+    <a href="http://this-plt-life.tumblr.com/post/44373483122/when-somebody-tries-to-add-a-type-system-to-an"><img
+        src="../../../i/go_ts.gif" width='180px' height='101px'
+        align="right"></a>
+
 This is inevitable. Go programmers like the language and they want more, so
 they explore meta programming. Unfortunately, the language authors don't want
 to provide support in the language, so they have resorted to the worst kind of
@@ -232,6 +297,12 @@ advancing their language.
 
 Conclusion
 ----------
+
+.. raw:: html
+
+    <a href="http://this-plt-life.tumblr.com/post/36425240884/when-everybody-hypes-a-language-that-i-find-crap"><img
+        src="../../../i/go_hate.gif" width='147px' height='90px'
+        align="right"></a>
 
 Meta programming has come to stay. If you have been conditioned to think macros
 are bad because you have been spoon fed plenty of C/C++ horror stories, you
