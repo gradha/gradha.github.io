@@ -2,7 +2,7 @@
 title: Using Vagrant for Nimrod builds
 pubDate: 2014-12-08 18:10
 modDate: 2014-12-08 18:10
-tags: nimrod, programming, languages, testing, tools
+tags: nim, nimrod, programming, languages, testing, tools
 ---
 
 Using Vagrant for Nim builds

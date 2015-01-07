@@ -2,7 +2,7 @@
 title: The day Go reinvented macros
 pubDate: 2015-01-07 22:00
 modDate: 2015-01-07 22:00
-tags: design, tools, languages, programming, go, nimrod
+tags: design, tools, languages, programming, go, nim, nimrod
 ---
 
 The day Go reinvented macros

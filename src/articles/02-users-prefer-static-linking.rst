@@ -2,7 +2,7 @@
 title: Users prefer static linking
 pubdate: 2013-08-03 13:31
 moddate: 2013-11-28 12:36
-tags: nimrod, static linking, user experience
+tags: nim, nimrod, static linking, user experience
 ---
 
 Users prefer static linking

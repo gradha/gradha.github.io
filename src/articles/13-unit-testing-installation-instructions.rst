@@ -2,7 +2,7 @@
 title: Testing installation instructions
 pubDate: 2014-05-01 18:00
 modDate: 2014-05-01 18:34
-tags: nimrod, testing, programming, user experience
+tags: nim, nimrod, testing, programming, user experience
 ---
 
 Testing installation instructions
