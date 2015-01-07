@@ -1,7 +1,7 @@
 ---
 title: The day Go reinvented macros
-pubDate: 2015-01-07 22:00
-modDate: 2015-01-07 22:00
+pubDate: 2015-01-07 23:59
+modDate: 2015-01-07 23:59
 tags: design, tools, languages, programming, go, nim, nimrod
 ---
 
@@ -310,6 +310,14 @@ should think again. More and more languages implement macros. But do yourself a
 favour and use a language which provides the more saner syntactic macros.
 Unfortunately that means leaving Go, at least until they reach 2.0 (or later)
 and improve their meta programming capabilities.
+
+.. raw:: html
+
+    <center><a href="http://darkablaxx.tistory.com/69"><img
+        src="../../../i/go_gon.jpg"
+        alt="Trolling Gon"
+        style="width:100%;max-width:600px"
+        hspace="8pt" vspace="8pt"></a></center><br>
 
 ::
     $ nim c -r macros.nim
