@@ -51,8 +51,8 @@ What are macros anyway?
 If you don't have the time to `read Wikipedia's full article
 <https://en.wikipedia.org/wiki/Macro_(computer_science)#Syntactic_macros>`_,
 macros are just one of the many methods to reduce typing. With macros you can
-*generate* parametrized source code for the compiler. Unfortunately the most
-well known macros are those from C/C++, which are just `text macros
+*generate* source code for the compiler. Unfortunately the most well known
+macros are those from C/C++, which are just `text macros
 <https://en.wikipedia.org/wiki/Macro_(computer_science)#Text_substitution_macros>`_
 implemented by the language **preprocessor** (the **pre** should tell you
 already something about how they work).  While they are part of the standard
@@ -88,12 +88,14 @@ The reason text macros are still used is because they are very easy to
 implement, and with enough care they can help the programmer. For instance, the
 `@weakify(self) macro
 <http://aceontech.com/objc/ios/2014/01/10/weakify-a-more-elegant-solution-to-weakself.html>`_
-is quite popular in Objective-C circles because it hides tedious typing you
-would otherwise have to write correct code without going insane. The `weakify
+is quite popular in Objective-C circles because it hides away tedious typing
+you otherwise have to do to write correct code without going insane. The
+`weakify
 <https://github.com/jspahrsummers/libextobjc/blob/652c9903a84f44b93faed528882e0251542732b1/extobjc/EXTScope.h#L45>`_
 macro uses internally the `ext_keywordify
 <https://github.com/jspahrsummers/libextobjc/blob/master/extobjc/EXTScope.h#L115>`_
-macro. Just like with the ``SIX * NINE`` from the first example, something written like this:
+macro. Just like with the ``SIX * NINE`` from the first example, something
+written like this:
 
 ```c
 @weakify(self)
@@ -117,10 +119,10 @@ expressions I implemented what later was replaced by `Gradle's build variants
 <http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Build-Variants>`_.
 
 The Gradle version was better integrated with the build system, but effectively
-I reached the same conclusion: for a certain task, a macro was the best
-solution. And if it wasn't, Google engineers wouldn't have pushed this feature
-either.  One thing to note is that they didn't implement it as crude text
-replacement, but more like a `procedural macro
+I had reached before the same conclusion: for a certain task, a macro was the
+best solution. And if it wasn't, Google engineers wouldn't have pushed this
+feature either.  One thing to note is that they didn't implement it as crude
+text replacement, looks more like `procedural macros
 <https://en.wikipedia.org/wiki/Macro_(computer_science)#Procedural_macros>`_,
 since you use Gradle (a mini language) to define these things, and it can be
 analyzed statically (I believe, or maybe it does that at runtime, which would
@@ -128,7 +130,116 @@ explain why it is painfully slow whenever you change a setting). In any case,
 today new development tries to go away from the aberrations you can generate
 with textual macros. We know they are painful.
 
+
 Nim macros
 ----------
 
-Todo.
+In the quest for improving meta programming, we reach `syntactic macros
+<https://en.wikipedia.org/wiki/Macro_(computer_science)#Syntactic_macros>`_,
+which work on abstract syntax trees (ASTs) instead of lines of text. Nim
+macros, like other languages, features hygienic macros, meaning that unlike C
+macros where you can affect code posterior to the macro expansion, whatever you
+do in the macro stays there. Nim macros end up being like normal procs with two
+main differences:
+
+* They run at compile time (in the case of Nim, other languages might do macro
+  expansion at runtime)
+* They process ASTs, and generate ASTs.
+
+Like the Wikipedia article mentions, macros are kind of natural of
+`S-expression <https://en.wikipedia.org/wiki/S-expression>`_ languages, since
+S-expression allows easily to treat code and data equally. But many people feel
+uncomfortable with S-expressions. Nim has an imperative syntax, so it looks
+more familiar, at the cost of being more verbose. The availability of modifying
+the ASTs is also limited. In a text macro implementation you can change
+whatever you want. But here you are fed just a subtree of the user's AST, and
+that's the only thing you can modify.
+
+To simplify, the Nim compiler runs your macros, which produce more ASTs, and
+then compiles their output. This allows one to expand the language and provide
+new constructs. With macros you can `implement object oriented programming
+<http://nim-by-example.github.io/oop_macro/>`_, no need to wait for the
+language to evolve, you can evolve it yourself!
+
+
+So what does this have to do with Go, they don't have macros!
+-------------------------------------------------------------
+
+Yes they do. The blog post `Generating code <http://blog.golang.org/generate>`_
+posted on the 22nd of December of 2014 should already hint with its title that
+Go version 1.4 includes some sort of mechanism to generate code. Oh… shiny…
+that sounds like meta programming… as if you could generate code for the
+compiler…
+
+**ATTENTION:** If you are one of those Go acolytes who believes Go's most
+important feature is simplicity and readability, please stop reading! And never
+ever **go** to version 1.4 and beyond!
+
+The example given in Go's blog is to stringify enum constants into strings so
+you can print them or maybe compare them. The `Go generate design document
+<https://docs.google.com/a/golang.org/document/d/1V03LUfjSADDooDMhe-_K59EgpTEm3V8uvQRuNMAEnjg/edit?pli=1>`_
+provides additional examples like generating protocol buffers bindings (which
+you could do with a Nim macro based on a type definition), embedding binary
+data (which you could do with a Nim macro, but is so common that you can use
+Nim's `staticRead() <http://nim-lang.org/system.html#staticRead>`_), etc. Other
+quotes from that document:
+
+* One could imagine a variant sort implementation that allows one to specify
+  concrete types that have custom sorters, just by automatic rewriting of
+  **macro-like** sort definition[…]
+* There are many more possibilities, and it is a goal of this proposal to
+  encourage experimentation with pre-build-time code generation
+
+While the feature has just been released, people in the community have already
+been playing with it. Let's see some comments from the `reddit discussion
+<http://www.reddit.com/r/golang/comments/2q3yj4/generating_code>`_:
+
+* I've been working on a tool called `goast
+  <https://github.com/jamesgarfield/goast>`_ off and on since they announced
+  this proposal, that aims to to take advantage of the go generate tool.
+* Just want to link a tool I've been using for generics-like functionality
+  recently. It's still an early version, but I think it's promising
+  https://github.com/ncw/gotemplate.
+* this might be a way to implement data structure without interface […] I wrote
+  this `tool <https://github.com/jteeuwen/templates>`_ a few days ago as an
+  experiment, to demonstrate just that[…]
+
+This is inevitable. Go programmers like the language and they want more, so
+they explore meta programming. Unfortunately, the language authors don't want
+to provide support in the language, so they have resorted to the worst kind of
+macro implementation, which is text based. So much progress to reimplement C.
+Not only that, but since you can run arbitrary commands to pre generate code,
+users are not meant to run these custom preprocessors. Yay for littering our
+source control systems with pre generated crap no one will ever bother reading!
+Let's recap:
+
+* Go 1.4 officially defines a code generation mechanism.
+* The mechanism is external to the language.
+* Since it is external, you could see the day where a tool is for instance
+  Windows specific and won't run on Linux.
+* The tools, being external, need to reimplement parsing and other basic
+  facilities themselves. Not very DRY.
+* And they have to produce source code too, which has to be stored because
+  *normal* users are not meant to run these tools.
+* At least users can look at the generated source code. One of the pains of
+  C/C++ is figuring out what the macro expansion does, since by default this
+  goes straight to the compiler. Much of the readability problems arise from
+  programmers thinking the macro does something else.
+
+I think Go authors could have provided something better, but at least they are
+advancing their language.
+
+
+Conclusion
+----------
+
+Meta programming has come to stay. If you have been conditioned to think macros
+are bad because you have been spoon fed plenty of C/C++ horror stories, you
+should think again. More and more languages implement macros. But do yourself a
+favour and use a language which provides the more saner syntactic macros.
+Unfortunately that means leaving Go, at least until they reach 2.0 (or later)
+and improve their meta programming capabilities.
+
+::
+    $ nim c -r macros.nim
+    macros.nim(1, 7) Error: A module cannot import itself
