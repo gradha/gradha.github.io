@@ -625,7 +625,7 @@ figuring out how macros work and how to write them is in itself a fun exercise.
 `also <http://www.youtube.com/watch?v=oG48HRGe5LA>`_
 `like <http://www.youtube.com/watch?v=85kgIuq3HY4>`_
 `to <http://www.youtube.com/watch?v=8NFXElCZY4I>`_
-`thank <http://www.youtube.com/watch?v=8NFXElCZY4I>`_
+`thank <http://www.youtube.com/watch?v=PMgZ5gia64U>`_
 `the <http://www.youtube.com/watch?v=Dgwth72XZCQ>`_
 `wonderful <http://www.youtube.com/watch?v=Hpp4mXPihZg>`_
 `Ace <http://www.youtube.com/watch?v=Htjh6Vyxkws>`_
