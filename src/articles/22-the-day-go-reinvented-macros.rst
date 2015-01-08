@@ -213,7 +213,7 @@ So what does this have to do with Go, they don't have macros!
 
     <a href="http://this-plt-life.tumblr.com/post/36425239482/when-i-hear-theyre-adding-features-to-c"><img
         src="../../../i/go_cxx.gif" width='120px' height='114px'
-        align="right">
+        align="right"></a>
 
 Yes they do. The blog post `Generating code <http://blog.golang.org/generate>`_
 posted on the 22nd of December of 2014 should already hint with its title that
@@ -232,7 +232,7 @@ ever **go** to version 1.4 and beyond!
 
     <a href="http://this-plt-life.tumblr.com/post/39920361990/when-someone-is-enamored-with-a-languages-petty"><img
         src="../../../i/go_irrelevant.gif" width='150px' height='150px'
-        align="right">
+        align="right"></a>
 
 The example given in Go's blog is to stringify enum constants into strings so
 you can print them or maybe compare them. The `Go generate design document
