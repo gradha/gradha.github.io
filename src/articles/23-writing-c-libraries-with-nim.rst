@@ -17,7 +17,7 @@ you can notice that with the main reference implementation being written in
 Python, all other implementations are in languages *equal* or greater than
 Python: Java, Scala, Haskell, Perl, PHP, Nim. All these languages have in
 common that the programmer doesn't have to manage memory manually, and given
-the complexity of reStructuredText it is not a coincidence.
+the complexity of reStructuredText that doesn't seem to be a coincidence.
 
 Since I dislike Python due to its brittleness, I didn't want to use a Python
 solution for an `OS X Quick Look plugin
@@ -26,22 +26,22 @@ compared to Nim, so I wrote `quicklook-rest-with-nim
 <https://github.com/gradha/quicklook-rest-with-nim>`_ which just takes the work
 done by the Nim developers in the `rst <http://nim-lang.org/rst.html>`_,
 `rstast <http://nim-lang.org/rstast.html>`_ and `rstgen
-<http://nim-lang.org/rstgen.html>`_ modules and packages as a Quick Look
+<http://nim-lang.org/rstgen.html>`_ modules and packages it as a Quick Look
 renderer. Since everything is statically linked you can copy the plugin to any
-machine and it should run without any other runtime dependency.
+machine and it should run without any other runtime dependencies.
 
-The Quick Look renderer is implemented in Objective-C and calls the Nim code
-through C bindings. That's when I realised the Nim implementation could be
-distributed as a plain C library for other languages to use, to avoid their
-pain rewriting the wheel or running shell commands. For the Quick Look plugin I
-was simply using two entry points exported to C with hard coded values, not
-acceptable to other people. I started then to move the custom Nim code to a
-separate module named `lazy_rest <https://github.com/gradha/lazy_rest>`_.
-Exposing directly the Nim API didn't make sense for several reasons, so first I
-`implemented a slightly different Nim API
-<http://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest.html>`_ which I
-think is nicer than the original, then proceeded to wrap it in a separate `C
-API module
+The Quick Look renderer is implemented as the default Objective-C Xcode
+template and simply calls the Nim code through C bindings. That's when I
+realised the Nim implementation could be distributed as a plain C library for
+other languages to use, to avoid their pain rewriting the wheel or running
+shell commands. For the Quick Look plugin I was simply using two entry points
+exported to C with hard coded values, not acceptable to other people. I started
+then to move the custom Nim code to a separate module named `lazy_rest
+<https://github.com/gradha/lazy_rest>`_.  Exposing directly the Nim API didn't
+make sense for several reasons, so first I `implemented a slightly different
+Nim API <http://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest.html>`_
+which I think is nicer than the original, then proceeded to wrap it in a
+separate `C API module
 <http://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest_c_api.html>`_ which
 is really another Nim file wrapping all of its procs with the `exportc pragma
 <http://nim-lang.org/manual.html#exportc-pragma>`_.
@@ -77,9 +77,9 @@ The mangling is done to avoid having linker errors due to two symbols being
 named the same. Especially necessary for Nim where you can overload procs or
 have two procs named the same living in separate modules. When you use the
 `exportc pragma <http://nim-lang.org/manual.html#exportc-pragma>`_ the compiler
-won't mangle the name, so you have to pick a good one. The API of ``lazy_rest``
-is really small, but still I decided to use the typical Objective-C pattern of
-prefixing all symbols with two letters.
+won't mangle the name, so you have to pick a good unique one. The API of
+``lazy_rest`` is really small, but still I decided to use the typical
+Objective-C pattern of prefixing all symbols with two letters.
 
 
 Memory handling
@@ -103,9 +103,17 @@ data alive. That means that the C code calling this API would have to know
 about freeing the memory too. Instead I decided to store the result in a global
 variable. This forces the string to not be freed even when calling other Nim
 code which could trigger a garbage collection, and it is easier on the C
-programmer for the common use of one shot reStructuredText transformations. The
-potential memory copying for other cases could be reviewed in the future
-whenever ``lazy_rest`` gains a user base greater than one (me).
+programmer for the common use of one shot reStructuredText transformations.
+Improvements can be reviewed in the future whenever ``lazy_rest`` gains a user
+base greater than one (me).
+
+One thing worth mentioning here too is that conversions between ``string`` and
+``cstring`` are `not always correct
+<https://github.com/Araq/Nim/issues/1577>`_. A ``nil`` ``string`` won't convert
+to a ``nil`` ``cstring``. One way to deal with this is `wrapping the string to
+cstring conversion
+<https://github.com/gradha/badger_bits/blob/5dcc623d1fd5b8232a133370e068b1e3928f56bc/bb_system.nim#L135>`_
+to check explicitly for ``nil``.
 
 
 Exporting types from the Nim standard library
@@ -116,7 +124,7 @@ a `StringTableRef <http://nim-lang.org/strtabs.html>`_. These type was named
 ``PStringTable`` in Nimrod 0.9.6, and unfortunately `it is not possible to
 export such symbols <https://github.com/Araq/Nim/issues/1579>`_.  The typical
 usage of this type is to store configuration options from a file or memory
-string, so instead I provided `lr_set_global_rst_options
+string, so instead I provided `lr_set_global_rst_options()
 <http://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest_c_api.html#lr_set_global_rst_options>`_.
 C users can create an in memory string with the necessary configuration options
 and let the Nim code parse that.
@@ -154,11 +162,128 @@ Maybe in the future I'll try this.
 Errors and exception handling
 -----------------------------
 
+Exceptions are something else C doesn't have. Nim procs like
+`rst_string_to_html()
+<http://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest.html#rst_string_to_html>`_
+will throw exceptions on error, so how does the C binding deal with that? The C
+API module uses `Nim's effect system
+<http://nim-lang.org/manual.html#effect-system>`_ for exception tracking. All
+the procs are annotated with the ``{.raises: [].}`` pragma. This pragma tells
+the compiler that no exception should be raised out of the proc, if there is
+any potentially being raised the code won't compile, and you have to add the
+appropriate ``try/except`` combo somewhere to appease the compiler.
+
+Annotating procs with this pragma was very satisfying because after doing so
+you realize how much stuff could potentially break. In other languages you are
+left with the uncertainty that something could break and you have no catch for
+it, which leads to typical *catch-all* blocks in several points of the code,
+whether they are necessary or not. In Nim by default this could happen too, but
+the empty ``raises`` pragma helps you go through each possible error.
+
+Thanks to this pragma I am confident there won't be any exception leaving the
+Nim domain. Such exceptions are treated for the C API as functions returning
+``NULL`` instead of the expected value.  The errors are again stored in another
+Nim global variable, and you can retrieve them with helper functions ending in
+``_error`` like `lr_rst_string_to_html_error()
+<http://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest_c_api.html#lr_rst_string_to_html_error>`_.
+
+
 Callback exception tracking
 ---------------------------
 
+Things get trickier with exception tracking when you involve callbacks. The
+reStructuredText parser does have a callback to report warnings and errors to
+the user. This callback can just ``echo`` information to the user, but it can
+also raise an exception, aborting parsing. So you have a proc which uses a
+callback, and the proc itself has been protected with all sort of
+``try/except`` blocks to keep the callback from causing trouble. The Nim
+compiler however disagrees, see this little snippet of code extracted from `an
+issue I created <https://github.com/Araq/Nim/issues/1631>`_:
+
+```nimrod
+proc noRaise(x: proc()) {.raises: [].} =
+  try: x()
+  except: discard
+
+proc callbackWichRaisesHell() {.raises: [EIO].} =
+  raise newException(EIO, "IO")
+
+proc use() {.raises: [].} =
+  # doesn't compile even though nothign can be raised!
+  noRaise(callbackWichRaisesHell)
+```
+This code looks and reads perfectly fine to me. Despite passing
+``callbackWichRaisesHell`` around, the ``noRaise()`` proc won't ever raise
+anything, but the example won't compile.  It will compile if you add a wrapper
+layer around the callback, as Araq suggests in the GitHub issue, or if you
+remove the empty ``raises`` pragma from the ``use()`` declaration (but that was
+the point of using the pragma). The reported issue was closed, meaning it's OK
+to have to patch correct code. I don't know yet if patching good code being the
+correct answer to a problem is more sad than having a compiler unable to reason
+about a ten line program.
+
+In any case this wasn't a problem for the library, since I wanted the callbacks
+to be usable from C there wasn't any point in making them raise exceptions (how
+would you raise a Nim exception from C code?). I simply modified the
+`TMsgHandler
+<http://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest_pkg/lrst.html#TMsgHandler>`_
+callback type to raise nothing and instead return the possible error as a non
+nil string. This avoided the problem of callbacks raising any exceptions.
+
+`Pig and elephant DNA just won't splice
+<https://www.youtube.com/watch?v=RztfjHdM-pg>`_, so know also that callbacks
+and exception tracking have issues together.
+
+
 Threads
 -------
+
+Parsing and generating HTML from text is pretty much sequential, you can't
+start generating HTML for a random part of the document because the previous
+part could modify its meaning. But we have multi processor machines everywhere,
+so I thought it would be nice to provide a queue like API where you pass all
+the files or strings you need to process (e.g. results of scanning the file
+system) and let the module do its job, returning all the results.
+
+I started the `lqueues module
+<https://github.com/gradha/lazy_rest/blob/50738869005675b99b039516e8a6031ddf151972/lazy_rest_pkg/lqueues.nim>`_
+but couldn't get much done so I've left it disabled. I've done threading in C,
+Java, Objective-C, and after the initial problems grasping deadlocks and race
+conditions, nowadays I seem to be able to write at least non crashing code. But
+I couldn't get Nim to do the same. My biggest gripe was with the fact that
+threads can't touch other thread's variables, so they have to communicate
+through shared globals. Or use channels/actors which presumably are not the
+right solution (couldn't get the expected performance gains from them, but at
+least they didn't crash).
+
+Now that Nim 0.10.2 has been released there is hope in the new `parallel and
+spawn statements <http://nim-lang.org/manual.html#parallel-spawn>`_, so I
+should try that soon. Still, I don't understand what's the presumable benefit
+of having threads unable to mutate other variables. To me it seems more like
+it's easier to implement concurrency with immutable state, but then, all the
+other languages I've worked with have mutability and they work perfectly fine.
+
+I don't think it's coincidence that there is pretty much zero Nim threaded code
+out there being written outside of a few very specific cases. Again, not
+something I'm worried now, but raises some questions for future work. At the
+moment I can't see myself using Nim for GUI programming because all the
+asynchronous patterns I know work with explicit mutability in mind. Neither the
+new ``parallel`` and ``spawn`` statements nor ``async`` seem to be oriented for
+GUI programming where you require callbacks for progress indication (and this
+has to happen on the main thread, aka GUI thread) or cancellation.  Time to
+learn new tricks I guess, maybe Nim is just so superior in this area I'm unable
+to see the benefits yet.
+
+
+Conclusion
+----------
+
+For generic C API libraries only the exportation of enums and constants seems
+to be a glaring problem because mostly everybody will hit it. Fortunately it
+doesn't seem to be hard to fix. As more Nim users try to export their Nim code
+with a C API, there will be more interest in fixing or improving these issues.
+And maybe in the not so distant future it will make sense to use Nim as a
+perfect replacement for C when you want to write reusable libraries.
 
 
 ::
