@@ -19,16 +19,18 @@ Python: Java, Scala, Haskell, Perl, PHP, Nim. All these languages have in
 common that the programmer doesn't have to manage memory manually, and given
 the complexity of reStructuredText that doesn't seem to be a coincidence.
 
-Since I dislike Python due to its brittleness, I didn't want to use a Python
-solution for an `OS X Quick Look plugin
-<https://en.wikipedia.org/wiki/Quick_Look>`_. Also, Python is very slow
-compared to Nim, so I wrote `quicklook-rest-with-nim
+Since I dislike Python due to its brittleness and slow speed, I didn't want to
+use a Python solution for an `OS X Quick Look plugin
+<https://en.wikipedia.org/wiki/Quick_Look>`_. I wrote `quicklook-rest-with-nim
 <https://github.com/gradha/quicklook-rest-with-nim>`_ which just takes the work
 done by the Nim developers in the `rst <http://nim-lang.org/rst.html>`_,
 `rstast <http://nim-lang.org/rstast.html>`_ and `rstgen
 <http://nim-lang.org/rstgen.html>`_ modules and packages it as a Quick Look
 renderer. Since everything is statically linked you can copy the plugin to any
-machine and it should run without any other runtime dependencies.
+machine and it should run without any other runtime dependencies (note: `some
+unknown bug <https://github.com/gradha/quicklook-rest-with-nim/issues/48>`_
+prevents it from working on Yosemite when installed in a home directory, but
+works fine form a system folder).
 
 The Quick Look renderer is implemented as the default Objective-C Xcode
 template and simply calls the Nim code through C bindings. That's when I
@@ -127,10 +129,19 @@ usage of this type is to store configuration options from a file or memory
 string, so instead I provided `lr_set_global_rst_options()
 <http://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest_c_api.html#lr_set_global_rst_options>`_.
 C users can create an in memory string with the necessary configuration options
-and let the Nim code parse that.
+and let the Nim code parse that.  Not very optimal, but this is not performance
+critical. Typically you will call this once before any other reStructuredText
+generation.
 
-Not very optimal, but this is not performance critical. Typically you will call
-this once before any other reStructuredText generation.
+Something which could be a deal breaker for some people writing C libraries is
+the fact that `Nim doesn't export type fields
+<https://github.com/Araq/Nim/issues/1189>`_. To work around this limitation you
+can export setters and getters. If your fields are primitive types this
+involves an extra function call, which doesn't look very appealing. For Nim
+types like strings you would have to implement the setters and getters anyway.
+The ``lazy_rest`` API I export is mostly an opaque render-and-forget approach
+to the many internal types used for parsing and rendering, so it wasn't a
+problem.
 
 
 Export enums and constants
@@ -243,7 +254,8 @@ start generating HTML for a random part of the document because the previous
 part could modify its meaning. But we have multi processor machines everywhere,
 so I thought it would be nice to provide a queue like API where you pass all
 the files or strings you need to process (e.g. results of scanning the file
-system) and let the module do its job, returning all the results.
+system) and let the multiple processors do their job, returning all the
+results.
 
 I started the `lqueues module
 <https://github.com/gradha/lazy_rest/blob/50738869005675b99b039516e8a6031ddf151972/lazy_rest_pkg/lqueues.nim>`_
@@ -259,9 +271,10 @@ least they didn't crash).
 Now that Nim 0.10.2 has been released there is hope in the new `parallel and
 spawn statements <http://nim-lang.org/manual.html#parallel-spawn>`_, so I
 should try that soon. Still, I don't understand what's the presumable benefit
-of having threads unable to mutate other variables. To me it seems more like
-it's easier to implement concurrency with immutable state, but then, all the
-other languages I've worked with have mutability and they work perfectly fine.
+of having threads unable to mutate state from other threads. To me it seems
+more like it's easier to implement concurrency with immutable state, but then,
+all the other languages I've worked with have mutability and they work
+perfectly fine.
 
 I don't think it's coincidence that there is pretty much zero Nim threaded code
 out there being written outside of a few very specific cases. Again, not
@@ -272,18 +285,20 @@ new ``parallel`` and ``spawn`` statements nor ``async`` seem to be oriented for
 GUI programming where you require callbacks for progress indication (and this
 has to happen on the main thread, aka GUI thread) or cancellation.  Time to
 learn new tricks I guess, maybe Nim is just so superior in this area I'm unable
-to see the benefits yet.
+to see the benefits yet. <insert needs-enlightment-here>
 
 
 Conclusion
 ----------
 
-For generic C API libraries only the exportation of enums and constants seems
-to be a glaring problem because mostly everybody will hit it. Fortunately it
-doesn't seem to be hard to fix. As more Nim users try to export their Nim code
-with a C API, there will be more interest in fixing or improving these issues.
-And maybe in the not so distant future it will make sense to use Nim as a
-perfect replacement for C when you want to write reusable libraries.
+From the point of view of C library consumer, this project mostly works and is
+viable. For generic C API libraries only the exportation of enums, constants
+and type fields seems to be a glaring problem because mostly everybody will hit
+it.  Fortunately it doesn't seem to be hard to fix. As more Nim users try to
+export their Nim code with a C API there will be more interest in fixing or
+improving these issues.  And maybe in the not so distant future it will make
+sense to use Nim as a perfect replacement for C when you want to write reusable
+libraries for C users, or other languages using C bindings.
 
 
 ::
