@@ -11,3 +11,6 @@
 
 /license.html
 /readme.html
+
+# Don't remove this or GitHub pages fail building!
+/src/output 
