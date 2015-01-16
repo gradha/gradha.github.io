@@ -17,23 +17,31 @@ you can notice that with the main reference implementation being written in
 Python, all other implementations are in languages *equal* or greater than
 Python: Java, Scala, Haskell, Perl, PHP, Nim. All these languages have in
 common that the programmer doesn't have to manage memory manually, and given
-the complexity of reStructuredText that doesn't seem to be a coincidence.
+the complexity of reStructuredText that doesn't seem to be a coincidence. This
+may have slowed down adoption of reStructuredText compared to `Markdown
+<http://daringfireball.net/projects/markdown/>`_. Markdown started as a Perl
+script, but its simplicity led to `many C libraries
+<https://github.com/hoedown/hoedown>`_, and even a `standarization attempt
+<http://commonmark.org>`_, not without `typical drama
+<http://blog.codinghorror.com/standard-markdown-is-now-common-markdown/>`_.
+Wouldn't it be nice to have a C library for reStructuredText?
 
 Since I dislike Python due to its brittleness and slow speed, I didn't want to
 use a Python solution for an `OS X Quick Look plugin
 <https://en.wikipedia.org/wiki/Quick_Look>`_. I wrote `quicklook-rest-with-nim
 <https://github.com/gradha/quicklook-rest-with-nim>`_ which just takes the work
-done by the Nim developers in the `rst <http://nim-lang.org/rst.html>`_,
+done by the Nim developers in the `rst
+<https://github.com/Araq/Nim/blob/80b83611875383760da40d626a516e794e1245e7/lib/packages/docutils/rst.nim>`_,
 `rstast <http://nim-lang.org/rstast.html>`_ and `rstgen
 <http://nim-lang.org/rstgen.html>`_ modules and packages it as a Quick Look
-renderer. Since everything is statically linked you can copy the plugin to any
+renderer. Everything is statically linked, you can copy the plugin to any
 machine and it should run without any other runtime dependencies (note: `some
 unknown bug <https://github.com/gradha/quicklook-rest-with-nim/issues/48>`_
 prevents it from working on Yosemite when installed in a home directory, but
 works fine form a system folder).
 
-The Quick Look renderer is implemented as the default Objective-C Xcode
-template and simply calls the Nim code through C bindings. That's when I
+The Quick Look renderer is implemented using the default Objective-C Xcode
+template modifying it to call the Nim code through C bindings. That's when I
 realised the Nim implementation could be distributed as a plain C library for
 other languages to use, to avoid their pain rewriting the wheel or running
 shell commands. For the Quick Look plugin I was simply using two entry points
@@ -56,7 +64,7 @@ project. This was pleasantly easy. The refactoring of the original
 reStructuredText modules into `lazy_rest
 <https://github.com/gradha/lazy_rest>`_ wasn't that easy though, I did hit some
 problems or annoyances. This post is going to enumerate the issues I found, in
-case you would like to do the same with other Nim code.
+case you would like to make some other Nim module available to C users.
 
 
 Namespaces and identifiers
@@ -97,6 +105,15 @@ converted to a Nim ``string``. However, what do we do with a Nim proc which
 returns a ``string`` to C? Strings in Nim are implicitly convertible to
 ``cstring`` for convenience of C bindings, but what happens to their memory?
 Who handles that?
+
+.. raw:: html
+
+    <center>
+    <a href="http://arcturus127.tistory.com/831"><img
+        src="../../../i/memory_handling.jpg" alt="Stuff is hard"
+        style="width:100%;max-width:750px" align="center"
+        hspace="8pt" vspace="8pt"></a>
+    </center>
 
 The manual mentions the built in procs `GC_ref()
 <http://nim-lang.org/system.html#GC_ref>`_ and `GC_unref()
@@ -173,6 +190,15 @@ Maybe in the future I'll try this.
 Errors and exception handling
 -----------------------------
 
+.. raw:: html
+
+    <a href="http://www.idol-grapher.com/1399"><img
+        src="../../../i/nimc_exceptions.jpg"
+        alt="Plus there is no API"
+        style="width:100%;max-width:600px" align="right"
+        hspace="8pt" vspace="8pt"></a>
+    </center>
+
 Exceptions are something else C doesn't have. Nim procs like
 `rst_string_to_html()
 <http://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest.html#rst_string_to_html>`_
@@ -185,7 +211,7 @@ any potentially being raised the code won't compile, and you have to add the
 appropriate ``try/except`` combo somewhere to appease the compiler.
 
 Annotating procs with this pragma was very satisfying because after doing so
-you realize how much stuff could potentially break. In other languages you are
+you realise how much stuff could potentially break. In other languages you are
 left with the uncertainty that something could break and you have no catch for
 it, which leads to typical *catch-all* blocks in several points of the code,
 whether they are necessary or not. In Nim by default this could happen too, but
@@ -220,7 +246,7 @@ proc callbackWichRaisesHell() {.raises: [EIO].} =
   raise newException(EIO, "IO")
 
 proc use() {.raises: [].} =
-  # doesn't compile even though nothign can be raised!
+  # doesn't compile even though nothing can be raised!
   noRaise(callbackWichRaisesHell)
 ```
 This code looks and reads perfectly fine to me. Despite passing
@@ -246,8 +272,20 @@ nil string. This avoided the problem of callbacks raising any exceptions.
 and exception tracking have issues together.
 
 
+.. raw:: html
+
+    <br clear="right">
+
 Threads
 -------
+
+.. raw:: html
+
+    <a href="http://dijkcrayon.tistory.com/297"><img
+        src="../../../i/nimc_threads.jpg" alt="Threads are terrible"
+        style="width:100%;max-width:600px" align="right"
+        hspace="8pt" vspace="8pt"></a>
+    </center>
 
 Parsing and generating HTML from text is pretty much sequential, you can't
 start generating HTML for a random part of the document because the previous
@@ -287,20 +325,27 @@ has to happen on the main thread, aka GUI thread) or cancellation.  Time to
 learn new tricks I guess, maybe Nim is just so superior in this area I'm unable
 to see the benefits yet. <insert needs-enlightment-here>
 
+.. raw:: html
+
+    <br clear="right">
 
 Conclusion
 ----------
 
-From the point of view of C library consumer, this project mostly works and is
-viable. For generic C API libraries only the exportation of enums, constants
-and type fields seems to be a glaring problem because mostly everybody will hit
-it.  Fortunately it doesn't seem to be hard to fix. As more Nim users try to
-export their Nim code with a C API there will be more interest in fixing or
-improving these issues.  And maybe in the not so distant future it will make
-sense to use Nim as a perfect replacement for C when you want to write reusable
-libraries for C users, or other languages using C bindings.
+From the point of view of C library consumers, this project mostly works and is
+viable. Users can go to the `lazy_rest releases section
+<https://github.com/gradha/lazy_rest/releases>`_, download the pre generated C
+sources packages and use without having to install or even know about Nim. For
+generic C API libraries only the exportation of enums, constants and type
+fields seems to be a glaring problem because mostly everybody will hit it.
+Fortunately it doesn't seem to be hard to fix. As more Nim users try to export
+their Nim code with a C API there will be more interest in fixing or improving
+these issues.  And maybe in the not so distant future it will make sense to use
+Nim as a perfect replacement for C when you want to write reusable libraries
+for C users, or other languages using C bindings.
 
 
 ::
-    $ nim c -r macros.nim
-    macros.nim(1, 7) Error: A module cannot import itself
+    $ nim c -r complex_callbacks.nim
+    complex_callbacks.nim(9, 21) Info: instantiation from here
+    complex_callbacks.nim(6, 41) Error: can raise an unlisted exception: IOError
