@@ -35,10 +35,10 @@ people are using one or the other, either using GTK for things like `Aporia
 in performance <http://forum.nim-lang.org/t/167>`_. But they are mostly single
 threaded with one or two callbacks here, or they don't share any state. It's
 the intersection of both which is lacking. And this intersection seems to
-requires you to ignore all type and memory safety to make your own globals or
+require you to ignore all type and memory safety to make your own globals or
 shared memory for communicating. I'd love to be proved wrong, but all the
 questions I've found from other programmers attempting to do this are met with
-vague "maybe" answers or suggestions which read more like workarounds an
+vague *maybe* answers or suggestions which read more like workarounds for an
 invisible elephant.
 
 People are finding the GC is not really wanted for certain scenarios, and are
@@ -48,8 +48,8 @@ kind of project repeat history like D's Phobos vs Tango but with an even
 smaller community? I've toyed with this idea too, but there is no point in
 pushing something towards something it will never be. Of course I'll keep using
 Nim as I'm using now, to replace most of my toy Python code. But I can't see
-myself using Nim for anything serious in the future when so many alternatives
-are already delivering.
+myself using Nim for anything work related in the future when so many
+alternatives are already delivering.
 
 Since I started this blog with the purpose of writing articles about Nim and
 taking potshots at other programming languages from the safety of a random
