@@ -1,7 +1,7 @@
 ---
 title: Swift string interpolation with Nimrod macros
 pubDate: 2014-11-12 00:40
-modDate: 2014-11-12 00:40
+modDate: 2015-02-05 22:45
 tags: nim, nimrod, programming, languages, swift
 ---
 
@@ -205,13 +205,13 @@ Conclusion
 Stealing language features with macros is `very cool and gratifying
 <https://www.youtube.com/watch?v=qEYOyZVWlzs>`_. But you need to look at other
 languages too to see which features they have. Hopefully Swift programmers gain
-interest in Nim, it would allow them to continue writing proper static code
-for other platforms like Windows or Linux (`unlike the Swift trap
-<https://ind.ie/phoenix/>`_) and open their minds to some fresh air. But it is
-understandable that Swift still has to deal with a lot of old-timers clinging
-to old practices. Maybe Swift 2.0 will also have macros, they are really neat
-and allow you to extend whatever language you have with cool features not part
-of the original spec.
+interest in Nim, it would allow them to continue writing proper static code for
+other platforms like Windows or Linux (`unlike the Swift trap
+<https://source.ind.ie/project/phoenix/tree/master>`_) and open their minds to
+some fresh air. But it is understandable that Swift still has to deal with a
+lot of old-timers clinging to old practices. Maybe Swift 2.0 will also have
+macros, they are really neat and allow you to extend whatever language you have
+with cool features not part of the original spec.
 
 ::
     $ nim c -r swift.nim
