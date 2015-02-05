@@ -5,7 +5,7 @@
   <link href="http://gradha.github.io/feed.xml" rel="self" />
   <id>http://gradha.github.io/</id>
   <generator>ipsumgenera</generator>
-  <updated>2015-02-04T22:30:29Z</updated>
+  <updated>2015-02-05T21:46:08Z</updated>
     <entry>
       <title>Goodbye Nim, and good luck</title>
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2015/02/goodbye-nim-and-good-luck.html"/>
@@ -247,7 +247,7 @@ lazy_rest-0.1.0-generated-C-sources.zip&lt;/pre&gt;
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2014/11/swift-string-interpolation-with-nimrod-macros.html"/>
       <id>http://gradha.github.io/articles/2014/11/swift-string-interpolation-with-nimrod-macros.html</id>
       <published>2014-11-11T23:40:00Z</published>
-      <updated>2014-11-11T23:40:00Z</updated>
+      <updated>2015-02-05T21:45:00Z</updated>
       <author><name>Grzegorz Adam Hankiewicz</name></author>
       <content type="html">
         &lt;h1&gt;Swift string interpolation with Nim macros&lt;/h1&gt;&lt;p&gt;Just like &lt;a href=&quot;http://golang.org&quot;&gt;the Go programming language&lt;/a&gt; had initially a lot of marketing pull due to the fame of the authors and company behind the language, growing in popularity you can hear about &lt;a href=&quot;https://developer.apple.com/swift/&quot;&gt;Swift&lt;/a&gt;, Apple's new programming language for iOS and OSX, which probably makes it the financially most backed up hipster language. It is &lt;span style=&quot;font-style: italic;&quot;&gt;sort of&lt;/span&gt; hipster because nobody outside of iOS and OSX will want to touch it, and Apple has demonstrated to put serious money behind it (hiring &lt;a href=&quot;https://en.wikipedia.org/wiki/Chris_Lattner&quot;&gt;Chris Lattner&lt;/a&gt;) and will likely continue to do so. Not even Apple wants to keep programming in a crap language like Objective-C forever. And Google, I'm still waiting for you to ditch the abomination known as Java. Please (&lt;span style=&quot;font-style: italic;&quot;&gt;crosses fingers&lt;/span&gt;).&lt;/p&gt;
@@ -319,7 +319,7 @@ StmtList
 &lt;span class=&quot;Identifier&quot;&gt;STRING_LITERAL&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;TMP144&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;StringLit&quot;&gt;&amp;quot;3 times 2.5 is 7.5&amp;quot;&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;DecNumber&quot;&gt;18&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;Keyword&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;TFrame&lt;/span&gt;&lt;span class=&quot;Operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;frameptr_15442&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;Identifier&quot;&gt;…&lt;/span&gt;&lt;/pre&gt;&lt;p&gt;There you have it, our macro has expanded the string literal into expressions, and since the expression can be calculated at compile time it already appears embedded in the C string literal. No runtime calculation of any type. Success!&lt;/p&gt;
-&lt;h1&gt;Conclusion&lt;/h1&gt;&lt;p&gt;Stealing language features with macros is &lt;a href=&quot;https://www.youtube.com/watch?v=qEYOyZVWlzs&quot;&gt;very cool and gratifying&lt;/a&gt;. But you need to look at other languages too to see which features they have. Hopefully Swift programmers gain interest in Nim, it would allow them to continue writing proper static code for other platforms like Windows or Linux (&lt;a href=&quot;https://ind.ie/phoenix/&quot;&gt;unlike the Swift trap&lt;/a&gt;) and open their minds to some fresh air. But it is understandable that Swift still has to deal with a lot of old-timers clinging to old practices. Maybe Swift 2.0 will also have macros, they are really neat and allow you to extend whatever language you have with cool features not part of the original spec.&lt;/p&gt;
+&lt;h1&gt;Conclusion&lt;/h1&gt;&lt;p&gt;Stealing language features with macros is &lt;a href=&quot;https://www.youtube.com/watch?v=qEYOyZVWlzs&quot;&gt;very cool and gratifying&lt;/a&gt;. But you need to look at other languages too to see which features they have. Hopefully Swift programmers gain interest in Nim, it would allow them to continue writing proper static code for other platforms like Windows or Linux (&lt;a href=&quot;https://source.ind.ie/project/phoenix/tree/master&quot;&gt;unlike the Swift trap&lt;/a&gt;) and open their minds to some fresh air. But it is understandable that Swift still has to deal with a lot of old-timers clinging to old practices. Maybe Swift 2.0 will also have macros, they are really neat and allow you to extend whatever language you have with cool features not part of the original spec.&lt;/p&gt;
 &lt;pre class='literal'&gt;$ nim c -r swift.nim
 Hello future!&lt;/pre&gt;
       </content>

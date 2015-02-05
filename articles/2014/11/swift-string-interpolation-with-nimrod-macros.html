@@ -83,7 +83,7 @@ StmtList
 <span class="Identifier">STRING_LITERAL</span><span class="Punctuation">(</span><span class="Identifier">TMP144</span><span class="Punctuation">,</span> <span class="StringLit">&quot;3 times 2.5 is 7.5&quot;</span><span class="Punctuation">,</span> <span class="DecNumber">18</span><span class="Punctuation">)</span><span class="Punctuation">;</span>
 <span class="Keyword">extern</span> <span class="Identifier">TFrame</span><span class="Operator">*</span> <span class="Identifier">frameptr_15442</span><span class="Punctuation">;</span>
 <span class="Identifier">…</span></pre><p>There you have it, our macro has expanded the string literal into expressions, and since the expression can be calculated at compile time it already appears embedded in the C string literal. No runtime calculation of any type. Success!</p>
-<h1>Conclusion</h1><p>Stealing language features with macros is <a href="https://www.youtube.com/watch?v=qEYOyZVWlzs">very cool and gratifying</a>. But you need to look at other languages too to see which features they have. Hopefully Swift programmers gain interest in Nim, it would allow them to continue writing proper static code for other platforms like Windows or Linux (<a href="https://ind.ie/phoenix/">unlike the Swift trap</a>) and open their minds to some fresh air. But it is understandable that Swift still has to deal with a lot of old-timers clinging to old practices. Maybe Swift 2.0 will also have macros, they are really neat and allow you to extend whatever language you have with cool features not part of the original spec.</p>
+<h1>Conclusion</h1><p>Stealing language features with macros is <a href="https://www.youtube.com/watch?v=qEYOyZVWlzs">very cool and gratifying</a>. But you need to look at other languages too to see which features they have. Hopefully Swift programmers gain interest in Nim, it would allow them to continue writing proper static code for other platforms like Windows or Linux (<a href="https://source.ind.ie/project/phoenix/tree/master">unlike the Swift trap</a>) and open their minds to some fresh air. But it is understandable that Swift still has to deal with a lot of old-timers clinging to old practices. Maybe Swift 2.0 will also have macros, they are really neat and allow you to extend whatever language you have with cool features not part of the original spec.</p>
 <pre class='literal'>$ nim c -r swift.nim
 Hello future!</pre>
 	</div>
@@ -100,7 +100,7 @@ Hello future!</pre>
     <a href="../../../tags/swift.html">swift</a>
     
 .<br>Published on: 11/11/2014 23:40. Last update:
-			11/11/2014 23:40. <a
+			05/02/2015 21:45. <a
 			href="../../../feed.xml"><img
 			alt="rss feed" src="../../../i/Feed-icon.svg"
 			width="18pt" height="18pt"></a><br>
