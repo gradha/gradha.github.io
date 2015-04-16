@@ -28,7 +28,8 @@ polished.  Besides, who reads this anyway? All people who went there just
 gloated at my beautiful pictures.
 
 If you want to contact me about something, send your bytes to
-`rants@gradha.imap.cc <mailto:rants@gradha.imap.cc>`_.
+`rants@gradha.imap.cc <mailto:rants@gradha.imap.cc>`_. `Minilock
+<https://minilock.io>`_ ``JxCHWY97km5GXyvp5NACVWjVXtQJnAcAJAtqpfkbbyqTA``.
 
 ```nimrod
 proc love(name: string) =
