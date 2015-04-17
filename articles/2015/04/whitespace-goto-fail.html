@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang='en'>
+	<head>
+		<title>Whitespace goto fail - Rants from the Ballmer Peak</title>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="../../../css/normalize.css">
+		<link rel="stylesheet" href="../../../css/style.css">
+		<link href="../../../feed.xml" title="Articles" type="application/atom+xml" rel="alternate">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	</head>
+	<body>
+	<div class="content">
+		<h3><a href="../../../index.html">Rants from the Ballmer Peak</a> <a
+				href="../../../feed.xml"><img
+			alt="rss feed" src="../../../i/Feed-icon.svg"
+			width="18pt" height="18pt"></a></h3>
+		<h1>Whitespace goto fail</h1><p>Recently I fixed the following interesting code in an Android application I wrote. According to source control it had <span style="font-style: italic;">survived</span> undetected for about eight months until it manifested as a runtime crash:</p>
+<p><pre class='code'><span class="Identifier">…</span>
+<span class="Keyword">if</span> <span class="Punctuation">(</span><span class="Keyword">null</span> <span class="Operator">==</span> <span class="Identifier">savedInstanceState</span><span class="Punctuation">)</span> <span class="Punctuation">{</span>
+        <span class="Keyword">if</span> <span class="Punctuation">(</span><span class="Keyword">null</span> <span class="Operator">!=</span> <span class="Keyword">this</span><span class="Punctuation">.</span><span class="Identifier">item</span> <span class="Operator">&amp;&amp;</span> <span class="Keyword">null</span> <span class="Operator">!=</span> <span class="Keyword">this</span><span class="Punctuation">.</span><span class="Identifier">item</span><span class="Punctuation">.</span><span class="Identifier">url</span><span class="Punctuation">)</span>
+                <span class="Identifier">set_sparta_kook</span><span class="Punctuation">(</span><span class="Keyword">this</span><span class="Punctuation">.</span><span class="Identifier">item</span><span class="Punctuation">.</span><span class="Identifier">url</span><span class="Punctuation">)</span><span class="Punctuation">;</span>
+                <span class="Identifier">visible_web</span><span class="Punctuation">(</span><span class="Punctuation">)</span><span class="Punctuation">.</span><span class="Identifier">loadUrl</span><span class="Punctuation">(</span><span class="Keyword">this</span><span class="Punctuation">.</span><span class="Identifier">item</span><span class="Punctuation">.</span><span class="Identifier">url</span><span class="Punctuation">)</span><span class="Punctuation">;</span>
+<span class="Punctuation">}</span> <span class="Keyword">else</span> <span class="Punctuation">{</span>
+        <span class="Identifier">visible_web</span><span class="Punctuation">(</span><span class="Punctuation">)</span><span class="Punctuation">.</span><span class="Identifier">restoreState</span><span class="Punctuation">(</span><span class="Identifier">savedInstanceState</span><span class="Punctuation">)</span><span class="Punctuation">;</span>
+<span class="Identifier">…</span>
+</pre></p>
+<p>The culprit of the bug was of course the <span style="font-weight: bold;">addition</span> of the <a href="https://www.google.es/search?q=sparta+kook&amp;tbm=isch">set_sparta_kook()</a> call to the previously existing lines of perfectly working code. Can you see now what the problem was? Yes, lack of beloved braces. Here's the fixed code:</p>
+<p><pre class='code'><span class="Identifier">…</span>
+<span class="Keyword">if</span> <span class="Punctuation">(</span><span class="Keyword">null</span> <span class="Operator">==</span> <span class="Identifier">savedInstanceState</span><span class="Punctuation">)</span> <span class="Punctuation">{</span>
+        <span class="Keyword">if</span> <span class="Punctuation">(</span><span class="Keyword">null</span> <span class="Operator">!=</span> <span class="Keyword">this</span><span class="Punctuation">.</span><span class="Identifier">item</span> <span class="Operator">&amp;&amp;</span> <span class="Keyword">null</span> <span class="Operator">!=</span> <span class="Keyword">this</span><span class="Punctuation">.</span><span class="Identifier">item</span><span class="Punctuation">.</span><span class="Identifier">url</span><span class="Punctuation">)</span> <span class="Punctuation">{</span>
+                <span class="Identifier">set_sparta_kook</span><span class="Punctuation">(</span><span class="Keyword">this</span><span class="Punctuation">.</span><span class="Identifier">item</span><span class="Punctuation">.</span><span class="Identifier">url</span><span class="Punctuation">)</span><span class="Punctuation">;</span>
+                <span class="Identifier">visible_web</span><span class="Punctuation">(</span><span class="Punctuation">)</span><span class="Punctuation">.</span><span class="Identifier">loadUrl</span><span class="Punctuation">(</span><span class="Keyword">this</span><span class="Punctuation">.</span><span class="Identifier">item</span><span class="Punctuation">.</span><span class="Identifier">url</span><span class="Punctuation">)</span><span class="Punctuation">;</span>
+        <span class="Punctuation">}</span>
+<span class="Punctuation">}</span> <span class="Keyword">else</span> <span class="Punctuation">{</span>
+        <span class="Identifier">visible_web</span><span class="Punctuation">(</span><span class="Punctuation">)</span><span class="Punctuation">.</span><span class="Identifier">restoreState</span><span class="Punctuation">(</span><span class="Identifier">savedInstanceState</span><span class="Punctuation">)</span><span class="Punctuation">;</span>
+<span class="Identifier">…</span>
+</pre></p>
+<p>Welcome to a variant of <a href="http://arstechnica.com/security/2014/02/extremely-critical-crypto-flaw-in-ios-may-also-affect-fully-patched-macs/">goto fail</a>. It's not the first time I've written such bugs, but they don't come often. I don't think I've made more than five in my whole life. Still, far too many for my taste.</p>
+<p>What was particularly interesting is not how I could write this (distractions or tiredness can explain pretty much everything) but how I <span style="font-weight: bold;">could not fix</span> this immediately despite reviewing it carefully. Let me explain: it took me several minutes of looking at the source code, actually not figuring out what was happening and then using a debugger to step through the lines and think &quot;<span style="font-style: italic;">wait a second, why is the program execution running through</span> <code>visible_web().loadUrl(this.item.url);</code> <span style="font-style: italic;">in first place when the condition should be preventing that?</span>&quot;.</p>
+<p>I'm so used by now to reading properly indented code that no matter how many times I looked at this code I would not catch the missing braces. The typical <span style="font-style: italic;">patch</span> to such problems is of course a coding convention. You can see this reflected as one of the promoted comments in <a href="http://arstechnica.com/security/2014/02/extremely-critical-crypto-flaw-in-ios-may-also-affect-fully-patched-macs/">the article I linked to</a> earlier:</p>
+<blockquote><p><span style="font-weight: bold;">a_v_s</span> Ars Scholae Palatinae</p>
+<p>This is one of the reasons I always use {} even with single statement conditionals.</p>
+<p>…</p>
+</blockquote><p>True. But you know what else could have prevented this bug without requiring a horrendous coding convention difficult to validate/enforce? Having a language which doesn't use braces and instead uses whitespace indentation like <a href="http://eerolanguage.org">Eero</a> or <a href="http://nim-lang.org">Nim</a> do.</p>
+
+<center>
+<a href="http://dijkcrayon.tistory.com/363"><img
+    src="../../../i/whitespace_reactions.jpg"
+    alt="At first I was like…"
+    style="width:100%;max-width:750px" align="center"
+    hspace="8pt" vspace="8pt"></a>
+</center><h2>Syntax anachronisms</h2><p>Braces, or just about any other start/end block delimiter, are an anachronism and only add clutter and useless bike shedding. The key to understanding this is how I wasn't able to understand the actual meaning of the code which is pretty obvious to the compiler. After years developing, braces (or whatever you have in most of the programming languages designed without taste) are simply noise.  They don't add any value to the source code. They are just a tedious necessity for the compiler, because frankly, humans <span style="font-weight: bold;">won't use them</span>. If you remember the first time you drove a car vs how you drive it several years later the difference is the same: the first time you pay attention to everything. Not only everything is new (oh, a vertical sign! Hi!) but you actually paid extreme attention because a mistake could lead to a terrible error. Years later you can concentrate only on the important things and don't freak out at every little detail you can see behind the driving wheel.</p>
+<p>Unfortunately most people defending programming languages with braces don't get it and instead provide lame arguments. My favourite lame contra argument is that you can't easily copy/paste code between windows, web browsers, or Notepad, I guess, because the indentation will be messed up. It highly amuses me how often this argument comes up in religious battles because the people backing it must be using programming tools from the past, where automatic indentation is such an impossible technical feat. Or maybe programmers able to <span style="font-weight: bold;">only</span> copy/paste code really need these crutches, since they will leave the source code in a state which compiles but is unreadable to anybody who is not a compiler.</p>
+<p>This argument also forgets another simple fact: it's highly unlikely that copying and pasting code somewhere else won't require changes <span style="font-weight: bold;">anyway</span>. Maybe you will need to change variable names, or remove some lines you don't need. Or if you actually care about source code, you <span style="font-weight: bold;">will</span> indent the code to <span style="font-weight: bold;">your</span> coding convention, modify the symbols to be CamelCase or snake_case, change private/instance variables to have a different prefix (<code>m</code>, <code>_</code>, <code>m_</code>, <code>F</code>, …), etc. Whatever lines of code go into any of my source files, even those which come from my own projects, have to pass an initial visual style inspection. And in the inspection I performed I simply forgot about the braces. Why? Because they are useless to human eyes, completely discard able.</p>
+<p>You could really hear my facepalm in the whole building when I read somewhere that somebody preferred programming languages with braces because their blog system screws up formatting for literal blocks. Seriously, if you come up with such quality arguments you should be neutered to prevent lowering humanity's intelligence average with your offspring (and the developers of your blog tools too).</p>
+<h2>Conclusion</h2><p>Language designers should know better, but we can still see new languages enforcing braces (like <a href="http://kotlinlang.org">Kotlin</a> or <a href="https://developer.apple.com/swift/">Swift</a>) despite the detrimental value they provide. I suspect the real reason why these new languages keep them is to appease the hordes of users of the language they try to replace. It is such a shame we have so much trouble accepting change, even when it is for the better.</p>
+<p>Remember, the argument for <span style="font-style: italic;">having</span> braces is that you are <a href="https://www.youtube.com/watch?v=Yy3dIicSI_0">such a horrible person</a> that you will never indent or care about the style of your code and therefore prefer to have a crutch that frees you from having taste and lets you dump foreign code into your own to leave it however it falls.</p>
+
+<center>
+<a href="http://xkcd.com/1513/"><img
+    src="../../../i/xkcd_code_quality.png"
+    alt="At first I was like…"
+    style="width:100%;max-width:740px" align="center"
+    hspace="8pt" vspace="8pt"></a>
+</center>
+	</div>
+		<hr>
+		<p>See <a href="../../../index.html">the article index</a> or browse
+		articles by tags:     <a href="../../../tags/languages.html">languages</a>
+    ,
+    <a href="../../../tags/programming.html">programming</a>
+    ,
+    <a href="../../../tags/java.html">java</a>
+    ,
+    <a href="../../../tags/design.html">design</a>
+    
+.<br>Published on: 17/04/2015 23:19. Last update:
+			17/04/2015 23:19. <a
+			href="../../../feed.xml"><img
+			alt="rss feed" src="../../../i/Feed-icon.svg"
+			width="18pt" height="18pt"></a><br>
+		Copyright 2014 by <a href="../../../about.html">Grzegorz Adam Hankiewicz</a>.<br>
+		Generated with <a href="https://github.com/dom96/ipsumgenera">ipsum
+			genera</a>. Look at <a
+		href="https://github.com/gradha/gradha.github.io">the
+		source code</a>. Or look at <a href="../../../cookie-policy.html">my
+	cookie policy which you implicitly accept</a>.</p>
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48814780-1', 'gradha.github.io');
+  ga('send', 'pageview');
+
+</script>
+	</body>
+</html>
