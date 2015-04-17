@@ -197,7 +197,6 @@ Errors and exception handling
         alt="Plus there is no API"
         style="width:100%;max-width:600px" align="right"
         hspace="8pt" vspace="8pt"></a>
-    </center>
 
 Exceptions are something else C doesn't have. Nim procs like
 `rst_string_to_html()
@@ -285,7 +284,6 @@ Threads
         src="../../../i/nimc_threads.jpg" alt="Threads are terrible"
         style="width:100%;max-width:600px" align="right"
         hspace="8pt" vspace="8pt"></a>
-    </center>
 
 Parsing and generating HTML from text is pretty much sequential, you can't
 start generating HTML for a random part of the document because the previous
