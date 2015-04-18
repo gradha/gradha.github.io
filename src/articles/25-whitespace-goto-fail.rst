@@ -134,17 +134,19 @@ too).
 Conclusion
 ----------
 
-Language designers should know better, but we can still see new languages
-enforcing braces (like `Kotlin <http://kotlinlang.org>`_ or `Swift
-<https://developer.apple.com/swift/>`_) despite the detrimental value they
-provide. I suspect the real reason why these new languages keep them is to
-appease the hordes of users of the language they try to replace. It is such a
-shame we have so much trouble accepting change, even when it is for the better.
+Language designers should know better that adding braces for code blocks that
+are going to be indented anyway due to code conventions is detrimental because
+they distract programmers with a needless task, but we can still see new
+languages enforcing braces (like `Kotlin <http://kotlinlang.org>`_ or `Swift
+<https://developer.apple.com/swift/>`_). I suspect the real reason why these
+new languages keep them is to appease the hordes of users of the language they
+try to replace. It is such a shame we have so much trouble accepting change,
+even when it is for the better.
 
 Remember, the argument for *having* braces is that you are `such a horrible
 person <https://www.youtube.com/watch?v=Yy3dIicSI_0>`_ that you will never
 indent or care about the style of your code and therefore prefer to have a
-crutch that frees you from having taste and lets you dump foreign code into
+crutch that frees you from having taste, and lets you dump foreign code into
 your own to leave it however it falls.
 
 
