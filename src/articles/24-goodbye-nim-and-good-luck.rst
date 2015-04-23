@@ -1,7 +1,7 @@
 ---
 title: Goodbye Nim, and good luck
 pubDate: 2015-02-04 23:23
-modDate: 2015-02-04 23:23
+modDate: 2015-04-23 22:49
 tags: languages, programming, nim, nimrod
 ---
 
@@ -49,7 +49,11 @@ smaller community? I've toyed with this idea too, but there is no point in
 pushing something towards something it will never be. Of course I'll keep using
 Nim as I'm using now, to replace most of my toy Python code. But I can't see
 myself using Nim for anything work related in the future when so many
-alternatives are already delivering.
+alternatives are already delivering for mobile
+(`Xamarin <http://xamarin.com/platform>`_ for C#,
+`Silver <http://elementscompiler.com/elements/silver/>`_ for Swift,
+`RoboVM <http://robovm.com>`_ for Java, and plenty of interpreted/script
+languages too).
 
 Since I started this blog with the purpose of writing articles about Nim and
 taking potshots at other programming languages from the safety of a random
