@@ -123,12 +123,12 @@ even those which come from my own projects, have to pass an initial visual
 style inspection. And in the inspection I performed I simply forgot about the
 braces. Why? Because they are useless to human eyes, completely discard able.
 
-You could really hear my facepalm in the whole building when I read somewhere
-that somebody preferred programming languages with braces because their blog
-system screws up formatting for literal blocks. Seriously, if you come up with
-such quality arguments you should be neutered to prevent lowering humanity's
-intelligence average with your offspring (and the developers of your blog tools
-too).
+You could really hear my facepalm in the whole building when I read on a forum
+discussion that somebody preferred programming languages with braces because
+their blog system screws up formatting for literal blocks. Seriously, if you
+come up with such quality arguments you should be neutered to prevent lowering
+humanity's intelligence average with your offspring (and the developers of your
+blog tools too).
 
 
 Conclusion
