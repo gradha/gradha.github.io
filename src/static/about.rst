@@ -14,7 +14,7 @@ Hello stranger!
 
 This is Grzegorz Adam Hankiewicz, extraordinary programmer.
 
-.. image:: https://secure.gravatar.com/avatar/11bbe1aacddb0e5c5bb5bf45c5570be0?s=420
+.. image:: i/hello_kitty_avatar.jpg
 
 I like to write `open source software <https://github.com/gradha>`_ but have to
 make a living with `closed source software <http://www.elhaso.es>`_. My living
@@ -38,3 +38,11 @@ proc love(name: string) =
 
 love("gradha")
 ```
+
+.. raw:: html
+
+    <center>
+    <a href="https://xkcd.com/323/">
+    <img align="center" src="i/ballmer_peak.png" width="652" height="592" alt="Ballmer peak explained by xkcd">
+    </a></center>
+
