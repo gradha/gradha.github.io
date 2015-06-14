@@ -140,18 +140,6 @@ rarely if ever notice memory allocation, it is automatic. And there are two
 ways to write a binding for Python: you either make memory allocation explicit
 to the Python programmer, or you make it implicit.
 
-
-.. raw:: html
-
-    <br clear="right"><center>
-    <a href="https://instagram.com/p/ybmONSGosR/"><img
-        src="../../../i/kpop_interracial.jpg"
-        alt="Jake Pains"
-        style="width:100%;max-width:750px" align="center"
-        hspace="8pt" vspace="8pt"></a>
-    </center>
-
-
 An explicit interface would mean that the user creates some ``Bitmap``
 placeholder object in Python land, and before using it another initialization
 method has to be called on it to reserve the appropriate amount of memory
@@ -163,6 +151,16 @@ only usage of these objects would trigger allocations (and later deallocation
 when the Python object is deleted). The disadvantage of this method is that
 memory allocation/freeing is a potentially expensive operation you might want
 to control.
+
+.. raw:: html
+
+    <br clear="right"><center>
+    <a href="https://instagram.com/p/ybmONSGosR/"><img
+        src="../../../i/kpop_interracial.jpg"
+        alt="Jake Pains"
+        style="width:100%;max-width:750px" align="center"
+        hspace="8pt" vspace="8pt"></a>
+    </center>
 
 In any of these cases, it is possible that objects created at the Python level
 which are not necessary any more, but haven't been collected, may prevent newer
