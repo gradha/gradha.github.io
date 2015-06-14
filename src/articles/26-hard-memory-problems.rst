@@ -1,7 +1,7 @@
 ---
 title: Hard memory problems
-pubdate: 2015-05-16 00:36
-moddate: 2015-05-16 00:36
+pubdate: 2015-06-14 21:05
+moddate: 2015-06-14 21:05
 tags: multitasking, user-experience
 ---
 

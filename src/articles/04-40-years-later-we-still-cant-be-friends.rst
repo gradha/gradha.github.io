@@ -200,7 +200,8 @@ threaded code as the phone industry copied the iPhone, but I haven't seen yet
 any other mainstream programming language embedding such functionality in its
 core language and standard library. And if you think that's bad, we still
 haven't talked about another pressing issue related to inter process hostility.
-If only I had the memory to remember what it was all about…
+If only I had the `memory to remember what it was all about…
+<../../2015/06/hard-memory-problems.html>`_
 
 
 ```nimrod
