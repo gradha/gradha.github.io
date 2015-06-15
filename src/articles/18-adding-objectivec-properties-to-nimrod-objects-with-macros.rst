@@ -114,7 +114,7 @@ not. You can see that in the example code through the words ``dirty`` and
 ``clean``.
 
 The `Nim Tutorial <http://nim-lang.org/tut1.html>`_ has a `Building your
-first macro <http://nim-lang.org/tut2.html#building-your-first-macro>`_
+first macro <http://nim-lang.org/tut2.html#macros-building-your-first-macro>`_
 section. You are meant to have at least skimmed through that because I won't be
 explaining all the basics, only the ones I'm interested in. Also, much of the
 typical error handling code you find in macros won't be present for brevity.
