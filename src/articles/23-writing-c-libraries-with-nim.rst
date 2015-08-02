@@ -1,7 +1,7 @@
 ---
 title: Writing C libraries with Nim
 pubDate: 2015-01-14 23:59
-modDate: 2015-01-14 23:59
+moddate: 2015-08-02 16:01
 tags: languages, programming, nim, nimrod
 ---
 
@@ -32,9 +32,9 @@ use a Python solution for an `OS X Quick Look plugin
 <https://github.com/gradha/quicklook-rest-with-nim>`_ which just takes the work
 done by the Nim developers in the `rst
 <https://github.com/Araq/Nim/blob/80b83611875383760da40d626a516e794e1245e7/lib/packages/docutils/rst.nim>`_,
-`rstast <http://nim-lang.org/rstast.html>`_ and `rstgen
-<http://nim-lang.org/rstgen.html>`_ modules and packages it as a Quick Look
-renderer. Everything is statically linked, you can copy the plugin to any
+`rstast <http://nim-lang.org/docs/rstast.html>`_ and `rstgen
+<http://nim-lang.org/docs/rstgen.html>`_ modules and packages it as a Quick
+Look renderer. Everything is statically linked, you can copy the plugin to any
 machine and it should run without any other runtime dependencies (note: `some
 unknown bug <https://github.com/gradha/quicklook-rest-with-nim/issues/48>`_
 prevents it from working on Yosemite when installed in a home directory, but
@@ -54,7 +54,7 @@ which I think is nicer than the original, then proceeded to wrap it in a
 separate `C API module
 <http://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest_c_api.html>`_ which
 is really another Nim file wrapping all of its procs with the `exportc pragma
-<http://nim-lang.org/manual.html#exportc-pragma>`_.
+<http://nim-lang.org/docs/manual.html#foreign-function-interface-exportc-pragma>`_.
 
 The project was successful, when I `replaced the old rester module
 <https://github.com/gradha/quicklook-rest-with-nim/issues/42>`_ with
@@ -86,9 +86,10 @@ N_NIMCALL(NimStringDesc*, sourcestringtohtml_235723)(…
 The mangling is done to avoid having linker errors due to two symbols being
 named the same. Especially necessary for Nim where you can overload procs or
 have two procs named the same living in separate modules. When you use the
-`exportc pragma <http://nim-lang.org/manual.html#exportc-pragma>`_ the compiler
-won't mangle the name, so you have to pick a good unique one. The API of
-``lazy_rest`` is really small, but still I decided to use the typical
+`exportc pragma
+<http://nim-lang.org/docs/manual.html#foreign-function-interface-exportc-pragma>`_
+the compiler won't mangle the name, so you have to pick a good unique one. The
+API of ``lazy_rest`` is really small, but still I decided to use the typical
 Objective-C pattern of prefixing all symbols with two letters.
 
 
@@ -100,11 +101,11 @@ has a garbage collector. Language bindings for any programming language always
 have these issues when the memory management is different, especially since the
 languages communicating are usually not aware of each other. Memory passed in
 from C to Nim is just a `cstring
-<http://nim-lang.org/manual.html#cstring-type>`_, that's fine because it can be
-converted to a Nim ``string``. However, what do we do with a Nim proc which
-returns a ``string`` to C? Strings in Nim are implicitly convertible to
-``cstring`` for convenience of C bindings, but what happens to their memory?
-Who handles that?
+<http://nim-lang.org/docs/manual.html#types-cstring-type>`_, that's fine
+because it can be converted to a Nim ``string``. However, what do we do with a
+Nim proc which returns a ``string`` to C? Strings in Nim are implicitly
+convertible to ``cstring`` for convenience of C bindings, but what happens to
+their memory? Who handles that?
 
 .. raw:: html
 
@@ -116,8 +117,8 @@ Who handles that?
     </center>
 
 The manual mentions the built in procs `GC_ref()
-<http://nim-lang.org/system.html#GC_ref>`_ and `GC_unref()
-<http://nim-lang.org/system.html#GC_unref>`_ can be used to keep the string
+<http://nim-lang.org/docs/system.html#GC_ref>`_ and `GC_unref()
+<http://nim-lang.org/docs/system.html#GC_unref>`_ can be used to keep the string
 data alive. That means that the C code calling this API would have to know
 about freeing the memory too. Instead I decided to store the result in a global
 variable. This forces the string to not be freed even when calling other Nim
@@ -139,11 +140,11 @@ Exporting types from the Nim standard library
 ---------------------------------------------
 
 Part of the configuration/input options of ``lazy_rest`` are passed in through
-a `StringTableRef <http://nim-lang.org/strtabs.html>`_. These type was named
-``PStringTable`` in Nimrod 0.9.6, and unfortunately `it is not possible to
-export such symbols <https://github.com/Araq/Nim/issues/1579>`_.  The typical
-usage of this type is to store configuration options from a file or memory
-string, so instead I provided `lr_set_global_rst_options()
+a `StringTableRef <http://nim-lang.org/docs/strtabs.html>`_. These type was
+named ``PStringTable`` in Nimrod 0.9.6, and unfortunately `it is not possible
+to export such symbols <https://github.com/Araq/Nim/issues/1579>`_.  The
+typical usage of this type is to store configuration options from a file or
+memory string, so instead I provided `lr_set_global_rst_options()
 <http://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest_c_api.html#lr_set_global_rst_options>`_.
 C users can create an in memory string with the necessary configuration options
 and let the Nim code parse that.  Not very optimal, but this is not performance
@@ -174,7 +175,8 @@ their own hard coded strings.
 
 I suggested at some point `adding an emit header pragma
 <https://github.com/Araq/Nim/issues/905>`_. This pragma would work in a similar
-way to the `emit pragma <http://nim-lang.org/nimc.html#emit-pragma>`_ but
+way to the `emit pragma
+<http://nim-lang.org/docs/nimc.html#additional-features-emit-pragma>`_ but
 instead of generating C code it would allow you to add lines to the final
 header generated by the Nim compiler. With such pragma I could write a macro to
 wrap all those constants and let them pass through to the compiler while at the
@@ -203,10 +205,10 @@ Exceptions are something else C doesn't have. Nim procs like
 <http://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest.html#rst_string_to_html>`_
 will throw exceptions on error, so how does the C binding deal with that? The C
 API module uses `Nim's effect system
-<http://nim-lang.org/manual.html#effect-system>`_ for exception tracking. All
-the procs are annotated with the ``{.raises: [].}`` pragma. This pragma tells
-the compiler that no exception should be raised out of the proc, if there is
-any potentially being raised the code won't compile, and you have to add the
+<http://nim-lang.org/docs/manual.html#effect-system>`_ for exception tracking.
+All the procs are annotated with the ``{.raises: [].}`` pragma. This pragma
+tells the compiler that no exception should be raised out of the proc, if there
+is any potentially being raised the code won't compile, and you have to add the
 appropriate ``try/except`` combo somewhere to appease the compiler.
 
 Annotating procs with this pragma was very satisfying because after doing so
@@ -305,7 +307,7 @@ right solution (couldn't get the expected performance gains from them, but at
 least they didn't crash).
 
 Now that Nim 0.10.2 has been released there is hope in the new `parallel and
-spawn statements <http://nim-lang.org/manual.html#parallel-spawn>`_, so I
+spawn statements <http://nim-lang.org/docs/manual.html#parallel-spawn>`_, so I
 should try that soon. Still, I don't understand what's the presumable benefit
 of having threads unable to mutate state from other threads. To me it seems
 more like it's easier to implement concurrency with immutable state, but then,

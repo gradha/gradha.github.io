@@ -1,7 +1,7 @@
 ---
 title: Nimrod for cross platform software
 pubdate: 2014-03-10 22:17
-moddate: 2014-03-11 20:51
+moddate: 2015-08-02 16:01
 tags: programming, nim, nimrod, seohtracker, elhaso, objc
 ---
 
@@ -290,8 +290,8 @@ The good about using Nim
 * Awesome programming language, free of clutter, easy to write integrated
   custom builders, compiles and runs at the speed of c (light).
 * Features like `exception tracking
-  <http://nim-lang.org/manual.html#exception-tracking>`_ in the language
-  allow one to `decorate the Nim API exported to C
+  <http://nim-lang.org/docs/manual.html#effect-system-exception-tracking>`_ in
+  the language allow one to `decorate the Nim API exported to C
   <https://github.com/gradha/seohtracker-ios/commit/64252e473bb944f396a66c7bf27ea0fed8f7ea07>`_
   and prevent uncaught Nim exceptions from crashing your pretty program.
   Languages like Ruby or Python require you to write unit tests instead, and
@@ -401,8 +401,8 @@ will even start to be relevant to Wikipedia? In your dreams…
 .. raw:: html
     <small><table border="1" bgcolor="ffdbdb" cellpadding="8pt"><tr><td>
 
-`Nimrod (programming language). From Wikipedia, the free encyclopedia
-<https://en.wikipedia.org/wiki/Nimrod_(programming_language)>`_.
+`Nim (programming language). From Wikipedia, the free encyclopedia
+<https://en.wikipedia.org/wiki/Nim_(programming_language)>`_.
 
 This page has been deleted. The deletion and move log for the page are provided
 below for reference.

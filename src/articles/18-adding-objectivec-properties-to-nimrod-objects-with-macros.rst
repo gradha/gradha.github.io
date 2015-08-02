@@ -1,20 +1,20 @@
 ---
 title: Adding Objective-C properties to Nimrod objects with macros
 pubDate: 2014-10-12 22:46
-modDate: 2014-12-13 19:04
+moddate: 2015-08-02 16:01
 tags: nim, nimrod, programming, languages, objc
 ---
 
 Adding Objective-C properties to Nim objects with macros
 ========================================================
 
-The `Nim programming language <http://nim-lang.org>`_ allows one to use
-`macros <http://nim-lang.org/manual.html#macros>`_ to extend the language.
-In a `previous article <../06/dirrty-objects-in-dirrty-nimrod.html>`_ we were
-guided by `Christina Aguilera
-<https://en.wikipedia.org/wiki/Christina_Aguilera>`_ into adding Objective-C
-like object properties to the Nim programming language. However, the result,
-while effective, looked quite spartan and low class, like `Christina's slutdrop
+The `Nim programming language <http://nim-lang.org>`_ allows one to use `macros
+<http://nim-lang.org/docs/manual.html#macros>`_ to extend the language.  In a
+`previous article <../06/dirrty-objects-in-dirrty-nimrod.html>`_ we were guided
+by `Christina Aguilera <https://en.wikipedia.org/wiki/Christina_Aguilera>`_
+into adding Objective-C like object properties to the Nim programming language.
+However, the result, while effective, looked quite spartan and low class, like
+`Christina's slutdrop
 <https://en.wikipedia.org/wiki/File:Dirrty_Slutdrop.jpg>`_. Here is the code I
 ended up with:
 
@@ -88,10 +88,10 @@ We can see by the previous teaser that we got rid of the
 ``generateProperties()`` macro completely. Yay! That code has been moved into
 the ``makeDirtyWithStyle()`` macro. Instead of a call, what we are doing here
 is `invoking our macro as a statement
-<http://nim-lang.org/tut2.html#statement-macros>`_. Everything indented
-after the colon will be passed in to the macro as its last parameter.  How? As
-an `abstract syntax tree <https://en.wikipedia.org/wiki/Abstract_syntax_tree>`_
-or AST for short.
+<http://nim-lang.org/docs/tut2.html#macros-statement-macros>`_. Everything
+indented after the colon will be passed in to the macro as its last parameter.
+How? As an `abstract syntax tree
+<https://en.wikipedia.org/wiki/Abstract_syntax_tree>`_ or AST for short.
 
 .. raw:: html
 
@@ -102,7 +102,7 @@ or AST for short.
         hspace="8pt" vspace="8pt"></a></center><br>
 
 Our new version of the macro will still use the same `quasi-quoting
-<http://nim-lang.org/macros.html#quote>`_ to generate the setter and getter
+<http://nim-lang.org/docs/macros.html#quote>`_ to generate the setter and getter
 procs. However, before generating any code the macro will be able to traverse
 the input AST and figure out itself what fields of the object are meant to be
 used for the setter and getter. On top of that, it will automatically mangle
@@ -113,19 +113,20 @@ specify which property setters need to mark the object's dirty flag as dirty or
 not. You can see that in the example code through the words ``dirty`` and
 ``clean``.
 
-The `Nim Tutorial <http://nim-lang.org/tut1.html>`_ has a `Building your
-first macro <http://nim-lang.org/tut2.html#macros-building-your-first-macro>`_
+The `Nim Tutorial <http://nim-lang.org/docs/tut1.html>`_ has a `Building your
+first macro
+<http://nim-lang.org/docs/tut2.html#macros-building-your-first-macro>`_
 section. You are meant to have at least skimmed through that because I won't be
 explaining all the basics, only the ones I'm interested in. Also, much of the
 typical error handling code you find in macros won't be present for brevity.
 What error handling code would be this? In the previous ``generateProperties``
 version the user of this macro can pass only three very specific parameters,
-but in the statement version you can now pass any random Nim code to our
-macro, and it has to figure out how to treat it.  If the user makes any
-mistakes in the construct, rather than simply quitting or aborting a helpful
-error message should be provided. That makes the code a lot more verbose
-checking for all possible inputs (and you are sort of becoming a Nim
-compiler developer at the same time!).
+but in the statement version you can now pass any random Nim code to our macro,
+and it has to figure out how to treat it.  If the user makes any mistakes in
+the construct, rather than simply quitting or aborting a helpful error message
+should be provided. That makes the code a lot more verbose checking for all
+possible inputs (and you are sort of becoming a Nim compiler developer at the
+same time!).
 
 Don't get scared now of the length of this blog post, it is all due to the
 example code lines being repeated several times to make the text more
@@ -143,12 +144,12 @@ transform words into code.
 While the original and destination source code files help to get an idea of
 what the user will end up writing, the compiler only cares about ASTs. Just
 like the `Building your first macro
-<http://nim-lang.org/tut2.html#building-your-first-macro>`_ tutorial
-recommends, we can use the `dumpTree() macro
-<http://nim-lang.org/macros.html#dumpTree>`_ to dump the input AST and see
+<http://nim-lang.org/docs/tut2.html#macros-building-your-first-macro>`_
+tutorial recommends, we can use the `dumpTree() macro
+<http://nim-lang.org/docs/macros.html#dumpTree>`_ to dump the input AST and see
 what the compiler is processing. For convenience, here you have the result
-`dumpTree() <http://nim-lang.org/macros.html#dumpTree>`_ along the final
-result of `treeRepr() <http://nim-lang.org/macros.html#treeRepr>`_ called
+`dumpTree() <http://nim-lang.org/docs/macros.html#dumpTree>`_ along the final
+result of `treeRepr() <http://nim-lang.org/docs/macros.html#treeRepr>`_ called
 inside the macro to show how the final AST will look **after** to the compiler.
 The input AST is on the left, the final AST is on the right. Additional unicode
 numbered markers have been placed to point out the interesting parts::
@@ -321,7 +322,7 @@ proc rewriteObject(parentNode: PNimrodNode): rewriteTuple =
 ```
 
 The first line which calls `copyNimTree()
-<http://nim-lang.org/macros.html#copyNimTree>`_ is not strictly needed, but
+<http://nim-lang.org/docs/macros.html#copyNimTree>`_ is not strictly needed, but
 can be useful in case we would need to do multiple passes on the AST and have
 to compare our working version with the original one. Then we make sure the
 object type definition we are dealing with actually inherits from our custom
@@ -442,7 +443,8 @@ modify the ``internalValue``. This value was not marked with our fake keywords,
 so the macro won't be generating any setter or getter. How can we verify this?
 We could modify our macro to dump the final AST after the generated procs are
 added. We can also inspect our ``nimcache`` folder which `should contain the
-generated C files <http://nim-lang.org/backends.html#nimcache-naming-logic>`_.
+generated C files
+<http://nim-lang.org/docs/backends.html#interfacing-nimcache-naming-logic>`_.
 In my case this is part of the generated code for the ``extraTest()`` proc:
 
 ```c
@@ -519,15 +521,15 @@ would be neat. And madness. Madness is neat, I'm still patiently waiting for
 macros which modify the AST of the caller to the shock and horror of anybody
 reading my code…
 
-Possibly the most frustrating issue with writing Nim macros now is the lack
-of proper documentation. While there is that `introductory tutorial
-<http://nim-lang.org/tut2.html#building-your-first-macro>`_, the `macros
-module API <http://nim-lang.org/macros.html>`_ seems to have more sections
-filled with ``To be written`` than actual text, and many of the actual
+Possibly the most frustrating issue with writing Nim macros now is the lack of
+proper documentation. While there is that `introductory tutorial
+<http://nim-lang.org/docs/tut2.html#macros-building-your-first-macro>`_, the
+`macros module API <http://nim-lang.org/docs/macros.html>`_ seems to have more
+sections filled with ``To be written`` than actual text, and many of the actual
 descriptions are rather useless to newcomers (don't tell me `newEmptyNode()
-<http://nim-lang.org/macros.html#newEmptyNode>`_ creates an empty node, tell
-me in what situations I would like that, or how do I use the result with other
-procs!). It's not a surprise that one of the past enhancements to the
+<http://nim-lang.org/docs/macros.html#newEmptyNode>`_ creates an empty node,
+tell me in what situations I would like that, or how do I use the result with
+other procs!). It's not a surprise that one of the past enhancements to the
 documentation generator was to add the ``See source`` link, it's nearly the
 only crutch you have to figure out how to do stuff (and that's if you figure
 out what each proc does).
@@ -569,9 +571,9 @@ static proc, like this:
 This error happens because the ``objType`` is a string literal, but instead of
 a string literal the ``quasi-quoting`` macro needs a ``TNimrodIdent``, which is
 obtained through the `!() operator
-<http://nim-lang.org/macros.html#!,string>`_. That's why removing this
-re-assignment breaks everything and you are left wondering **where to
-start looking for problems because there is no starting point at all**. And
+<http://nim-lang.org/docs/macros.html#!,string>`_. That's why removing this
+re-assignment breaks everything and you are left wondering **where to start
+looking for problems because there is no starting point at all**. And
 unfortunately it can't be fixed easily. By the time the compiler goes through
 the quasi-quoting it doesn't know better if what it is generating is right or
 wrong, and by the time it reaches a further phase of the compiler, since it was
@@ -579,7 +581,7 @@ all generated code, there are no actual line numbers to keep track of what was
 generated where.
 
 How could this be improved? Maybe the `macros
-<http://nim-lang.org/macros.html>`_ module could grow an ``annotateNode``
+<http://nim-lang.org/docs/macros.html>`_ module could grow an ``annotateNode``
 helper which when used would annotate the specified node with the current
 line/column where the ``annotateNode`` helper actually is in the source file.
 Kind of like ``printf`` cavemen debugging. Or maybe instead of trying to
@@ -595,12 +597,12 @@ with an editor rather than scrolling through pages of terminal output.
 
 Talking about cavemen debugging, the only sources of information you have now
 for development of macros are the `dumpTree()
-<http://nim-lang.org/macros.html#dumpTree>`_ and `treeRepr()
-<http://nim-lang.org/macros.html#treeRepr>`_ helpers and repeated trips to
-the command line to compile stuff. It would be really nice if the `official
-Nim IDE Aporia <https://github.com/nimrod-code/Aporia>`_ had a mode where
-you could open a bit of code in a separate window and it would refresh the AST
-as you write, pointing at problematic places, or maybe offering links to the
+<http://nim-lang.org/docs/macros.html#dumpTree>`_ and `treeRepr()
+<http://nim-lang.org/docs/macros.html#treeRepr>`_ helpers and repeated trips to
+the command line to compile stuff. It would be really nice if the `official Nim
+IDE Aporia <https://github.com/nimrod-code/Aporia>`_ had a mode where you could
+open a bit of code in a separate window and it would refresh the AST as you
+write, pointing at problematic places, or maybe offering links to the
 documentation as you write code. Or maybe a mode where you directly write the
 AST, and the IDE generates the source code for you? Maybe this could work off
 with proper auto completion. Right now the amount of different AST nodes is

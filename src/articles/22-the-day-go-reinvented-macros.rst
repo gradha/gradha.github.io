@@ -1,7 +1,7 @@
 ---
 title: The day Go reinvented macros
 pubDate: 2015-01-07 23:59
-modDate: 2015-01-07 23:59
+moddate: 2015-08-02 16:01
 tags: design, tools, languages, programming, go, nim, nimrod
 ---
 
@@ -240,8 +240,8 @@ you can print them or maybe compare them. The `Go generate design document
 provides additional examples like generating protocol buffers bindings (which
 you could do with a Nim macro based on a type definition), embedding binary
 data (which you could do with a Nim macro, but is so common that you can use
-Nim's `staticRead() <http://nim-lang.org/system.html#staticRead>`_), etc. Other
-quotes from that document:
+Nim's `staticRead() <http://nim-lang.org/docs/system.html#staticRead>`_), etc.
+Other quotes from that document:
 
 * One could imagine a variant sort implementation that allows one to specify
   concrete types that have custom sorters, just by automatic rewriting of

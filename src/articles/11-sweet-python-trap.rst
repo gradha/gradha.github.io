@@ -1,7 +1,7 @@
 ---
 title: The sweet trap of dynamic languages and development time
 pubdate: 2014-03-24 22:57
-moddate: 2014-04-04 19:00
+moddate: 2015-08-02 16:01
 tags: programming, languages, python, nim, nimrod, objc
 ---
 
@@ -269,12 +269,12 @@ proc testShortestURL() =
     TUrl("http://google.es")])
 ```
 
-This version in Nim is not very idiomatic (e.g. it does not use the
-`implicit result variable
-<http://nim-lang.org/tut1.html#result-variable>`_), but on top of offering a
-much cleaner syntax, this version has the advantage of the compiler doing its
-work: you can't pass an array of strings instead of an array of TUrl objects.
-If you try you get::
+This version in Nim is not very idiomatic (e.g. it does not use the `implicit
+result variable
+<http://nim-lang.org/docs/tut1.html#procedures-result-variable>`_), but on top
+of offering a much cleaner syntax, this version has the advantage of the
+compiler doing its work: you can't pass an array of strings instead of an array
+of ``TUrl`` objects.  If you try you get::
 
     urls.nim(23, 32) Error: type mismatch: got (seq[string])
     but expected one of:
@@ -331,10 +331,10 @@ That looks very close to Python, doesn't it? The differences are:
 
 * If you rename the field to something else, the compiler won't compile
   anything until you fix all the places trying to use it. Same thing with
-  exceptions, in Nim you declare a proc raises none or a number of
-  exceptions through the `raises pragma
-  <http://nim-lang.org/manual.html#exception-tracking>`_ and don't worry if
-  a 3rd party library changes the exceptions it raises.
+  exceptions, in Nim you declare a proc raises none or a number of exceptions
+  through the `raises pragma
+  <http://nim-lang.org/docs/manual.html#effect-system-exception-tracking>`_ and
+  don't worry if a 3rd party library changes the exceptions it raises.
 * Writing Nim code is not that much different from the Python version. Note
   how the ``var rick`` line does not specify the type. This reduces source code
   noise. You can also use ``let`` instead of ``var`` to declare a variable

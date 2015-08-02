@@ -1,7 +1,7 @@
 ---
 title: Dirrty objects, in dirrty Nimrod
 pubDate: 2014-06-07 20:23
-modDate: 2014-10-12 22:55
+moddate: 2015-08-02 16:01
 tags: nim, nimrod, programming, objc
 ---
 
@@ -153,29 +153,29 @@ macro generateProperties*(objType,
 As scary as this code may look to any beginner in the language, the nice thing
 is that you can put it aside in a separate file and not look at it ever again.
 It is not very difficult to understand either. The first thing it does is
-import the `macros module <http://nim-lang.org/macros.html>`_ which contains
-many meta programming helpers. Then it defines a ``Dirrty`` base class which
-includes the ``dirrty: bool`` field. User defined objects will inherit from the
-class.
+import the `macros module <http://nim-lang.org/docs/macros.html>`_ which
+contains many meta programming helpers. Then it defines a ``Dirrty`` base class
+which includes the ``dirrty: bool`` field. User defined objects will inherit
+from the class.
 
 The second (scary) thing this code does is define the ``generateProperties``
 macro. This macro accepts a user defined type, a variable name, and the type of
 this variable. Then proceeds to create in the ``let`` block the names of the
 setter, getter and instance variable that will be used to access the object.
 This is done `converting the parameter Nim symbol to a string
-<http://nim-lang.org/macros.html#$,PNimrodSymbol>`_, mangling the string,
+<http://nim-lang.org/docs/macros.html#$,NimSym>`_, mangling the string,
 then `constructing again an identifier from this new string
-<http://nim-lang.org/macros.html#!,string>`_. Note how you can apply crazy
+<http://nim-lang.org/docs/macros.html#!,string>`_. Note how you can apply crazy
 logic here depending on names of the variables, something which is hard or
 impossible to do in C macros.
 
 Once the identifiers are generated, using `quasi-quoting
-<http://nim-lang.org/macros.html#quote>`_ we define a setter and getter proc
-with the generated identifiers. The backticks are what will be replaced in the
-final code, and all of this is assigned to the result of the macro, thus
-generating the wanted code. Whenever this call is found, the Nim compiler
-will generate the setter and getter for us. Now let's see a typical usage of
-this macro:
+<http://nim-lang.org/docs/macros.html#quote>`_ we define a setter and getter
+proc with the generated identifiers. The backticks are what will be replaced in
+the final code, and all of this is assigned to the result of the macro, thus
+generating the wanted code. Whenever this call is found, the Nim compiler will
+generate the setter and getter for us. Now let's see a typical usage of this
+macro:
 
 ```nimrod
 import utils
@@ -199,11 +199,11 @@ when isMainModule: test()
 ```
 The ``Person`` object defined here inherits from our ``Dirrty`` base class and
 uses the `getter and setter convention
-<http://nim-lang.org/tut2.html#properties>`_ of creating a *private*
-variable with the **F** prefix. This variable can be accessed only from the
-current unit. After the type declaration we invoke the ``generateProperties``
-macro to *produce* at compilation time the setter and getter for each of the
-fields.
+<http://nim-lang.org/docs/tut2.html#object-oriented-programming-properties>`_
+of creating a *private* variable with the **F** prefix. This variable can be
+accessed only from the current unit. After the type declaration we invoke the
+``generateProperties`` macro to *produce* at compilation time the setter and
+getter for each of the fields.
 
 What follows is a basic ``test`` proc which verifies our assumptions by
 creating a ``Person`` object, then echoing to screen the state of the

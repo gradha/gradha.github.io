@@ -1,7 +1,7 @@
 ---
 title: Swift string interpolation with Nimrod macros
 pubDate: 2014-11-12 00:40
-modDate: 2015-02-05 22:45
+moddate: 2015-08-02 16:01
 tags: nim, nimrod, programming, languages, swift
 ---
 
@@ -51,7 +51,7 @@ the closing parenthesis, but then, just like Python mantra goes, `explicit is
 better than implicit <http://legacy.python.org/dev/peps/pep-0020/>`_. Maybe.
 
 Nim has one serious advantage over Swift, it has `macros
-<http://nim-lang.org/tut2.html#macros>`_. The question is, can we *steal*
+<http://nim-lang.org/docs/tut2.html#macros>`_. The question is, can we *steal*
 Swift's string static interpolation feature ourselves? Of course, it's actually
 fairly easy. Just like when `I stole Objective-C properties
 <../06/dirrty-objects-in-dirrty-nimrod.html>`_ and later `made them really sexy
@@ -102,15 +102,16 @@ tree of ``Infix`` nodes. The multiplication expression is wrapped inside a
 
 Now the only thing left for us is to parse the string literal and figure out
 which parts are text and which parts are variables or expressions. We can't use
-Swift's escape parenthesis notation because we are not modifying Nim's
-`string literals <http://nim-lang.org/manual.html#string-literals>`_, they
+Swift's escape parenthesis notation because we are not modifying Nim's `string
+literals
+<http://nim-lang.org/docs/manual.html#lexical-analysis-string-literals>`_, they
 come with the language. What else can we do? In Nim there is runtime string
 interpolation using `strutils.%() operator
-<http://nim-lang.org/strutils.html#%,string,openArray[string]>`_. The
+<http://nim-lang.org/docs/strutils.html#%,string,openArray[string]>`_. The
 ``strutils`` module uses internally the `parseutils module
-<http://nim-lang.org/parseutils.html>`_, and luckily we can use directly the
-`interpolatedFragments()
-<http://nim-lang.org/parseutils.html#interpolatedFragments.i,string>`_
+<http://nim-lang.org/docs/parseutils.html>`_, and luckily we can use directly
+the `interpolatedFragments()
+<http://nim-lang.org/docs/parseutils.html#interpolatedFragments.i,string>`_
 iterator for our macro. Isn't it nice when most of the code we have to write is
 already provided?
 
@@ -153,7 +154,7 @@ feature **and** test it too:
     # --> 3 times 2.5 is 7.5
 
 Just like `db_sqlite's raw string literal modifier
-<http://nim-lang.org/db_sqlite.html#sql,string>`_ we have implemented here
+<http://nim-lang.org/docs/db_sqlite.html#sql,string>`_ we have implemented here
 the ``i`` macro and use it to prefix the string literals we want to *upgrade*
 with string interpolation. Also, since we are within Nim's string parsing
 rules, the interpolation is done with the ``$`` character which allows both
@@ -162,27 +163,25 @@ braced and standalone versions, less backslash typing.
 The macro is divided in two parts, parsing the string literal and generating
 the tree of infix/prefix nodes representing string concatenation. For the
 string parsing we simply add all strings (``ikStr``) and dollars (``ikDollar``)
-as string literals (`newLit() <http://nim-lang.org/macros.html#newLit>`_).
+as string literals (`newLit() <http://nim-lang.org/docs/macros.html#newLit>`_).
 For everything else we simply wrap the expressions inside a call to the ``$``
 string conversion operator (just in case) and let `parseExpr()
-<http://nim-lang.org/macros.html#parseExpr,string>`_ do its job.
+<http://nim-lang.org/docs/macros.html#parseExpr,string>`_ do its job.
 
 The result of this conversion is stored as a sequence of ``PNimrodNode``
-objects, which is a flat list. To convert it into the AST tree Nim expects
-we use the `foldr() <http://nim-lang.org/sequtils.html#foldr.t,expr,expr>`_
-template from the `sequtils <http://nim-lang.org/sequtils.html>`_ module.
+objects, which is a flat list. To convert it into the AST tree Nim expects we
+use the `foldr() <http://nim-lang.org/docs/sequtils.html#foldr.t,expr,expr>`_
+template from the `sequtils <http://nim-lang.org/docs/sequtils.html>`_ module.
 ``foldr`` accepts as first parameter the sequence of items we want to fold, and
 as ``operation`` we apply the `infix()
-<http://nim-lang.org/macros.html#infix,PNimrodNode,string,PNimrodNode>`_
-helper from the `macros
-<http://nim-lang.org/macros.html#infix,PNimrodNode,string,PNimrodNode>`_
-module.
+<http://nim-lang.org/docs/macros.html#infix>`_ helper from the `macros
+<http://nim-lang.org/docs/macros.html>`_ module.
 
 How can be sure this is all working and there is no runtime trickery behind our
 backs? The most simple way is to check `Nim's nimcache directory
-<http://nim-lang.org/nimrodc.html#generated-c-code-directory>`_ where it
-places the C code that later is compiled into a binary. In this case we have
-the following line:
+<http://nim-lang.org/docs/nimc.html#compiler-usage-generated-c-code-directory>`_
+where it places the C code that later is compiled into a binary. In this case
+we have the following line:
 
 .. code-block:: c
 

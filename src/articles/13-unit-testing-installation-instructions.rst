@@ -1,7 +1,7 @@
 ---
 title: Testing installation instructions
 pubDate: 2014-05-01 18:00
-modDate: 2014-05-01 18:34
+moddate: 2015-08-02 16:01
 tags: nim, nimrod, testing, programming, user experience
 ---
 
@@ -219,9 +219,9 @@ software. These lines are obtained through the previously mentioned
 ``chunk_number`` parameter in the json file.  The crude `gen_chunk_script
 <https://github.com/gradha/dropbox_filename_sanitizer/blob/329d5e7a52e5b4a705f89a68a751ce698e941501/nakefile.nim#L252>`_
 proc in the nakefile will parse the readme and extract all the lines for
-whatever block was specified. One could go hi-tech and use the `rst nim
-module <http://nim-lang.org/rst_module.html>`_ to parse the readme, but
-simple line stripping serves well.
+whatever block was specified. One could go hi-tech and use the `rst nim module
+<http://nim-lang.org/docs/rst.html>`_ to parse the readme, but simple line
+stripping serves well.
 
 
 Testing the pre built binaries
