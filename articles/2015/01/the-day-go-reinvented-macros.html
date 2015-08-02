@@ -68,7 +68,7 @@
 
 <a href="http://this-plt-life.tumblr.com/post/39920361990/when-someone-is-enamored-with-a-languages-petty"><img
     src="../../../i/go_irrelevant.gif" width='150px' height='150px'
-    align="right"></a><p>The example given in Go's blog is to stringify enum constants into strings so you can print them or maybe compare them. The <a href="https://docs.google.com/a/golang.org/document/d/1V03LUfjSADDooDMhe-_K59EgpTEm3V8uvQRuNMAEnjg/edit?pli=1">Go generate design document</a> provides additional examples like generating protocol buffers bindings (which you could do with a Nim macro based on a type definition), embedding binary data (which you could do with a Nim macro, but is so common that you can use Nim's <a href="http://nim-lang.org/system.html#staticRead">staticRead()</a>), etc. Other quotes from that document:</p>
+    align="right"></a><p>The example given in Go's blog is to stringify enum constants into strings so you can print them or maybe compare them. The <a href="https://docs.google.com/a/golang.org/document/d/1V03LUfjSADDooDMhe-_K59EgpTEm3V8uvQRuNMAEnjg/edit?pli=1">Go generate design document</a> provides additional examples like generating protocol buffers bindings (which you could do with a Nim macro based on a type definition), embedding binary data (which you could do with a Nim macro, but is so common that you can use Nim's <a href="http://nim-lang.org/docs/system.html#staticRead">staticRead()</a>), etc. Other quotes from that document:</p>
 <ul><li>One could imagine a variant sort implementation that allows one to specify concrete types that have custom sorters, just by automatic rewriting of <span style="font-weight: bold;">macro-like</span> sort definition[…]</li><li>There are many more possibilities, and it is a goal of this proposal to encourage experimentation with pre-build-time code generation</li></ul><p>While the feature has just been released, people in the community have already been playing with it. Let's see some comments from the <a href="http://www.reddit.com/r/golang/comments/2q3yj4/generating_code">reddit discussion</a>:</p>
 <ul><li>I've been working on a tool called <a href="https://github.com/jamesgarfield/goast">goast</a> off and on since they announced this proposal, that aims to to take advantage of the go generate tool.</li><li>Just want to link a tool I've been using for generics-like functionality recently. It's still an early version, but I think it's promising <a href="https://github.com/ncw/gotemplate">https://github.com/ncw/gotemplate</a>.</li><li>this might be a way to implement data structure without interface […] I wrote this <a href="https://github.com/jteeuwen/templates">tool</a> a few days ago as an experiment, to demonstrate just that[…]</li></ul>
 <a href="http://this-plt-life.tumblr.com/post/44373483122/when-somebody-tries-to-add-a-type-system-to-an"><img
@@ -104,7 +104,7 @@ macros.nim(1, 7) Error: A module cannot import itself</pre>
     <a href="../../../tags/nimrod.html">nimrod</a>
     
 .<br>Published on: 07/01/2015 22:59. Last update:
-			07/01/2015 22:59. <a
+			02/08/2015 15:01. <a
 			href="../../../feed.xml"><img
 			alt="rss feed" src="../../../i/Feed-icon.svg"
 			width="18pt" height="18pt"></a><br>

@@ -41,7 +41,7 @@ $ babel install argument_parser
 $ git clone https://github.com/gradha/dropbox_filename_sanitizer.git
 $ cd dropbox_filename_sanitizer
 $ babel install</pre></p>
-<p>The only difference is that instead of asking babel to fetch the package we clone the git repository and install it manually by omitting the parameter (and having a <a href="https://github.com/gradha/dropbox_filename_sanitizer/blob/master/dropbox_filename_sanitizer.babel">babel spec file available</a> in the working directory). The only difference between the stable and development versions of the test script will be the lines run to install the software. These lines are obtained through the previously mentioned <code>chunk_number</code> parameter in the json file.  The crude <a href="https://github.com/gradha/dropbox_filename_sanitizer/blob/329d5e7a52e5b4a705f89a68a751ce698e941501/nakefile.nim#L252">gen_chunk_script</a> proc in the nakefile will parse the readme and extract all the lines for whatever block was specified. One could go hi-tech and use the <a href="http://nim-lang.org/rst_module.html">rst nim module</a> to parse the readme, but simple line stripping serves well.</p>
+<p>The only difference is that instead of asking babel to fetch the package we clone the git repository and install it manually by omitting the parameter (and having a <a href="https://github.com/gradha/dropbox_filename_sanitizer/blob/master/dropbox_filename_sanitizer.babel">babel spec file available</a> in the working directory). The only difference between the stable and development versions of the test script will be the lines run to install the software. These lines are obtained through the previously mentioned <code>chunk_number</code> parameter in the json file.  The crude <a href="https://github.com/gradha/dropbox_filename_sanitizer/blob/329d5e7a52e5b4a705f89a68a751ce698e941501/nakefile.nim#L252">gen_chunk_script</a> proc in the nakefile will parse the readme and extract all the lines for whatever block was specified. One could go hi-tech and use the <a href="http://nim-lang.org/docs/rst.html">rst nim module</a> to parse the readme, but simple line stripping serves well.</p>
 <h2>Testing the pre built binaries</h2><p>I haven't bothered yet to do this for a very simple reason: you only need to test this once. The compiled binaries work without dependencies, so by the time you create them, you test them yourself once and… that's it! It's the source installation which depends on many more steps and packages which can go wrong. Certainly there is room to test for <a href="https://github.com/gradha/dropbox_filename_sanitizer/issues/11">failures in the packaging itself</a>, but the packaging itself is automated. Maybe if I get very bored I'll do it.</p>
 <h2>Conclusion</h2>
 <img
@@ -75,7 +75,7 @@ $ ./dropbox_filename_sanitizer
     <a href="../../../tags/user-experience.html">user experience</a>
     
 .<br>Published on: 01/05/2014 17:00. Last update:
-			01/05/2014 17:34. <a
+			02/08/2015 15:01. <a
 			href="../../../feed.xml"><img
 			alt="rss feed" src="../../../i/Feed-icon.svg"
 			width="18pt" height="18pt"></a><br>
