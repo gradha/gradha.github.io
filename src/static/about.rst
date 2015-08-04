@@ -17,19 +17,11 @@ This is Grzegorz Adam Hankiewicz, extraordinary programmer.
 .. image:: i/hello_kitty_avatar.jpg
 
 I like to write `open source software <https://github.com/gradha>`_ but have to
-make a living with `closed source software <http://www.elhaso.es>`_. My living
-sucks, please contract me! You can `take a look at my CV
-<http://gradha.sdf-eu.org/CV.en.pdf>`_ and decide to send me money. I even have
-a fancy `career page <http://careers.stackoverflow.com/gradha>`_.
-
-I used to have a `more polished personal page <http://gradha.sdf-eu.org>`_ but
-it takes too much work so I stopped updating it, and now this blog seems more
-polished.  Besides, who reads this anyway? All people who went there just
-gloated at my beautiful pictures.
-
-If you want to contact me about something, send your bytes to
-`rants@gradha.imap.cc <mailto:rants@gradha.imap.cc>`_. `Minilock
-<https://minilock.io>`_ ``JxCHWY97km5GXyvp5NACVWjVXtQJnAcAJAtqpfkbbyqTA``.
+make a living with `closed source software <http://www.elhaso.es>`_. You can
+`take a look at my CV <http://gradha.sdf-eu.org/CV.en.pdf>`_.  If you want to
+contact me about something, send your bytes to `rants@gradha.imap.cc
+<mailto:rants@gradha.imap.cc>`_. `Minilock <https://minilock.io>`_
+``JxCHWY97km5GXyvp5NACVWjVXtQJnAcAJAtqpfkbbyqTA``.
 
 ```nimrod
 proc love(name: string) =
@@ -43,6 +35,8 @@ love("gradha")
 
     <center>
     <a href="https://xkcd.com/323/">
-    <img align="center" src="i/ballmer_peak.png" width="652" height="592" alt="Ballmer peak explained by xkcd">
+    <img align="center" src="i/ballmer_peak.png" width="652"
+        height="592" alt="Ballmer peak explained by xkcd"
+        title="Apple uses automated schnapps IVs.">
     </a></center>
 
