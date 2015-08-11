@@ -8,6 +8,13 @@ tags: bureaucracy, user-experience, dash, design, tools, nim
 Sad ways documentation generation tools suck
 ============================================
 
+.. raw:: html
+
+    <a href="http://www.all-idol.com/1587"><img
+        src="../../../i/documenting.jpg"
+        style="width:100%;max-width:600px" align="right"
+        hspace="8pt" vspace="8pt"></a>
+
 My favourite thing to hack is documentation, it is easy to change, it gives the
 best bang for the buck, and it is hard to do. Any monkey with a typewriter can
 produce mountains of documentation (like this blog demonstrates), but writing
@@ -17,9 +24,10 @@ maintenance. Nobody wants to do maintenance, no matter how important it is.
 Still, creating, improving, and maintaining documentation is one of my secret
 little pleasures. Documentation is in fact the ultimate programming language:
 just like you program a CPU to perform some tasks, documentation programs the
-brains of the readers into achieving impressive things. Or if poorly written,
-crashes their expectations and dreams, *bricking* them forever, possibly making
-them go away from your technically perfect software… nobody knows how to use.
+brains of the readers to make them achieve impressive things. Or if poorly
+written, crashes their expectations and dreams, *bricking* them forever,
+possibly making them go away from your technically perfect software… nobody
+knows how to use.
 
 I don't think I've ever written the perfect documentation, but maybe I've come
 close, little by little, retouching here and there, kind of like a painter who
@@ -104,6 +112,13 @@ but who knows when that would happen. Or if the split `will
 <https://github.com/nim-lang/nimsuggest/issues/1>`_ `more
 <https://github.com/nim-lang/nimsuggest/issues/6>`_ `problems
 <https://github.com/nim-lang/nimsuggest/issues/3>`_.
+
+.. raw:: html
+
+    <a href="http://www.all-idol.com/1567"><img
+        src="../../../i/missing_docs.jpg"
+        style="width:100%;max-width:600px" align="right"
+        hspace="8pt" vspace="8pt"></a>
 
 From the improvements I made to ``docgen`` maybe the most important one was
 `predictable hyperlinks
@@ -319,6 +334,14 @@ the ``Lörick`` internal symbol and resolve it to a valid HTML anchor in the
 last generation step.
 
 
+.. raw:: html
+
+    <a href="http://mang2goon.tistory.com/379"><img
+        src="../../../i/hyeyeon_approval.jpg"
+        style="width:100%;max-width:600px" align="right"
+        hspace="8pt" vspace="8pt"></a>
+
+
 Feature: example code renderization and symbol detection
 --------------------------------------------------------
 
@@ -365,7 +388,6 @@ typical documentation generation run, or maybe add a ``test_examples`` command
 so that they can be invoked in a continuous integration server after each
 commit.
 
-
 Feature: forward declarations
 -----------------------------
 
@@ -398,7 +420,6 @@ no symbol collision you can write the reference like usual. If there are two
 symbols with the same name, the build tool will warn you and force you to write
 ``stdlib.symbol`` instead of just ``symbol`` in your hyperlinks. Just like
 normal source code! How amazingly original!
-
 
 Feature: documentation macros
 -----------------------------
