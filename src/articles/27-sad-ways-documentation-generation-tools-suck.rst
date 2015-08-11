@@ -1,7 +1,7 @@
 ---
 title: Sad ways documentation generation tools suck
-pubdate: 2015-08-10 23:06
-moddate: 2015-08-10 23:06
+pubdate: 2015-08-11 22:45
+moddate: 2015-08-11 22:45
 tags: bureaucracy, user-experience, dash, design, tools, nim
 ---
 
@@ -115,7 +115,7 @@ but who knows when that would happen. Or if the split `will
 
 .. raw:: html
 
-    <a href="http://www.all-idol.com/1567"><img
+    <a href="http://www.idol-grapher.com/1567"><img
         src="../../../i/missing_docs.jpg"
         style="width:100%;max-width:600px" align="right"
         hspace="8pt" vspace="8pt"></a>
