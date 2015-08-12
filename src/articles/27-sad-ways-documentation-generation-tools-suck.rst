@@ -367,8 +367,7 @@ Sometimes rather than looking at an example it is good enough to see just a few
 lines of code. This is done quite a lot in `tutorials
 <http://nim-lang.org/docs/tut1.html>`_. Unfortunately these snippets of code
 are not verified and tend to `bit rot
-<https://github.com/nim-lang/Nim/issues/2928>`_. Like hyperlinks you want to
-make sure you don't produce incorrect validation. The way I was planning to
+<https://github.com/nim-lang/Nim/issues/2928>`_. The way I was planning to
 solve this in Nim was to add two extra sections before and after the source
 code to showcase. The build tool should concatenate all three blocks of source
 code (pre + body + post) into a temporary source file and build it to scan for
@@ -420,6 +419,7 @@ no symbol collision you can write the reference like usual. If there are two
 symbols with the same name, the build tool will warn you and force you to write
 ``stdlib.symbol`` instead of just ``symbol`` in your hyperlinks. Just like
 normal source code! How amazingly original!
+
 
 Feature: documentation macros
 -----------------------------
