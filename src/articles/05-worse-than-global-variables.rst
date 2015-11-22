@@ -1,7 +1,7 @@
 ---
 title: Worse than global variables
 pubdate: 2013-12-09 11:54
-moddate: 2013-12-09 11:54
+moddate: 2015-11-22 22:56
 tags: programming, languages, design, objc
 ---
 
@@ -32,6 +32,17 @@ variables entered the scene, having a shorter lifespan compared to that of the
 *precious* as our `bodily fluids
 <https://www.youtube.com/watch?v=Qr2bSL5VQgM>`_, and any attack against them
 had to be answered with resolution.
+
+.. raw:: html
+
+    <center>
+    <img
+        src="../../../i/globals_everywhere.jpg"
+        alt="Is it just me who sees those global variables?"
+        style="width:100%;max-width:750px" align="center"
+        hspace="8pt" vspace="8pt"></a>
+    </center>
+
 
 Indeed, global variables are at odds with structured programming (and even more
 concurrent programming). Consider the following C program:
@@ -97,6 +108,15 @@ because it doesn't use any global state.
 
 The crusade against global variables
 ------------------------------------
+
+.. raw:: html
+
+    <img
+        src="../../../i/globals_choose.jpg"
+        alt="Blue pill or red pill?"
+        style="width:100%;max-width:600px" align="right"
+        hspace="8pt" vspace="8pt"></a>
+    </center>
 
 The solution to all this suffering is easy. Ban global variables. Banish the
 ``strtok`` function from the standard C library. Even better! Why don't we make
