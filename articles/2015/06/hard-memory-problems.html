@@ -67,7 +67,8 @@
     alt="Gangsta sharing"
     style="width:100%;max-width:320px" align="right"
     hspace="8pt" vspace="8pt"></a><p>While a lot has been written about memory allocation and fragmentation prevention techniques (like <a href="https://en.wikipedia.org/wiki/Region-based_memory_management">regions</a>, quite popular in video games for level loading), the problems of sharing memory between different processes, or sharing memory between different languages running in the same process are rarely talked about because they fall out of the domain of a single stakeholder. Memory fragmentation is easier to deal with because it is <span style="font-style: italic;">yours</span>. Memory sharing with other processes? Meh, it's <span style="font-style: italic;">their</span> fault. Don't expect any improvements in this area in your lifetime, at least until programming languages don't incorporate memory sharing primitives in their languages (or make memory sharing proxies transparent, which is the most realistic solution as proved by mobile platforms).</p>
-<p>And now, get back to your <code>malloc()</code> and <code>free()</code>!</p>
+<p>Some of the examples described here may look alien to you, especially if you work on desktops or servers which have comparatively huge quantities of memory resources compared to mobile or (gosh!) <span style="font-style: italic;">real</span> embedded systems (no, mobiles today are just little desktops). If so, you can take a look at the short 5 minute video <a href="https://www.youtube.com/watch?v=x8Hddx1eOZo">Trimming and Sharing Memory (Android Performance Patterns Season 3 ep5)</a> which puts the ideas here into context on Android. For a longer video, look at <a href="https://developer.apple.com/videos/play/wwdc2015-212/">Optimizing Your App for Multitasking on iPad in iOS 9</a> which explains the growing difficulties of memory sharing in newer iOS version supporting multitasking. The idea of storing uncompressed resources as <a href="http://man7.org/linux/man-pages/man2/mmap.2.html">mmap'ed memory</a> reminds me a lot of <a href="https://en.wikipedia.org/wiki/MegaTexture">Doom3's megatexture</a> techniques.</p>
+<p>Where is your OS helping you write applications when application developers have to handle the memory hierarchy themselves, huh?  And now, get back to your <code>malloc()</code> and <code>free()</code>!</p>
 
 <br clear="right">
 	</div>
@@ -78,7 +79,7 @@
     <a href="../../../tags/user-experience.html">user-experience</a>
     
 .<br>Published on: 14/06/2015 20:05. Last update:
-			14/06/2015 20:05. <a
+			19/01/2016 21:08. <a
 			href="../../../feed.xml"><img
 			alt="rss feed" src="../../../i/Feed-icon.svg"
 			width="18pt" height="18pt"></a><br>

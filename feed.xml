@@ -5,7 +5,7 @@
   <link href="http://gradha.github.io/feed.xml" rel="self" />
   <id>http://gradha.github.io/</id>
   <generator>ipsumgenera</generator>
-  <updated>2015-11-22T21:57:39Z</updated>
+  <updated>2016-01-19T21:12:04Z</updated>
     <entry>
       <title>Sad ways documentation generation tools suck</title>
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2015/08/sad-ways-documentation-generation-tools-suck.html"/>
@@ -91,7 +91,7 @@ To create a stacktrace, rerun compilation with ./koch temp doc2 &amp;lt;file&amp
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2015/06/hard-memory-problems.html"/>
       <id>http://gradha.github.io/articles/2015/06/hard-memory-problems.html</id>
       <published>2015-06-14T20:05:00Z</published>
-      <updated>2015-06-14T20:05:00Z</updated>
+      <updated>2016-01-19T21:08:00Z</updated>
       <author><name>Grzegorz Adam Hankiewicz</name></author>
       <content type="html">
         &lt;h1&gt;Hard memory problems&lt;/h1&gt;
@@ -147,7 +147,8 @@ To create a stacktrace, rerun compilation with ./koch temp doc2 &amp;lt;file&amp
     alt=&quot;Gangsta sharing&quot;
     style=&quot;width:100%;max-width:320px&quot; align=&quot;right&quot;
     hspace=&quot;8pt&quot; vspace=&quot;8pt&quot;&gt;&lt;/a&gt;&lt;p&gt;While a lot has been written about memory allocation and fragmentation prevention techniques (like &lt;a href=&quot;https://en.wikipedia.org/wiki/Region-based_memory_management&quot;&gt;regions&lt;/a&gt;, quite popular in video games for level loading), the problems of sharing memory between different processes, or sharing memory between different languages running in the same process are rarely talked about because they fall out of the domain of a single stakeholder. Memory fragmentation is easier to deal with because it is &lt;span style=&quot;font-style: italic;&quot;&gt;yours&lt;/span&gt;. Memory sharing with other processes? Meh, it's &lt;span style=&quot;font-style: italic;&quot;&gt;their&lt;/span&gt; fault. Don't expect any improvements in this area in your lifetime, at least until programming languages don't incorporate memory sharing primitives in their languages (or make memory sharing proxies transparent, which is the most realistic solution as proved by mobile platforms).&lt;/p&gt;
-&lt;p&gt;And now, get back to your &lt;code&gt;malloc()&lt;/code&gt; and &lt;code&gt;free()&lt;/code&gt;!&lt;/p&gt;
+&lt;p&gt;Some of the examples described here may look alien to you, especially if you work on desktops or servers which have comparatively huge quantities of memory resources compared to mobile or (gosh!) &lt;span style=&quot;font-style: italic;&quot;&gt;real&lt;/span&gt; embedded systems (no, mobiles today are just little desktops). If so, you can take a look at the short 5 minute video &lt;a href=&quot;https://www.youtube.com/watch?v=x8Hddx1eOZo&quot;&gt;Trimming and Sharing Memory (Android Performance Patterns Season 3 ep5)&lt;/a&gt; which puts the ideas here into context on Android. For a longer video, look at &lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2015-212/&quot;&gt;Optimizing Your App for Multitasking on iPad in iOS 9&lt;/a&gt; which explains the growing difficulties of memory sharing in newer iOS version supporting multitasking. The idea of storing uncompressed resources as &lt;a href=&quot;http://man7.org/linux/man-pages/man2/mmap.2.html&quot;&gt;mmap'ed memory&lt;/a&gt; reminds me a lot of &lt;a href=&quot;https://en.wikipedia.org/wiki/MegaTexture&quot;&gt;Doom3's megatexture&lt;/a&gt; techniques.&lt;/p&gt;
+&lt;p&gt;Where is your OS helping you write applications when application developers have to handle the memory hierarchy themselves, huh?  And now, get back to your &lt;code&gt;malloc()&lt;/code&gt; and &lt;code&gt;free()&lt;/code&gt;!&lt;/p&gt;
 
 &lt;br clear=&quot;right&quot;&gt;
       </content>
@@ -157,10 +158,10 @@ To create a stacktrace, rerun compilation with ./koch temp doc2 &amp;lt;file&amp
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2015/04/whitespace-goto-fail.html"/>
       <id>http://gradha.github.io/articles/2015/04/whitespace-goto-fail.html</id>
       <published>2015-04-17T23:37:00Z</published>
-      <updated>2015-04-17T23:37:00Z</updated>
+      <updated>2016-01-10T18:41:00Z</updated>
       <author><name>Grzegorz Adam Hankiewicz</name></author>
       <content type="html">
-        &lt;h1&gt;Whitespace goto fail&lt;/h1&gt;&lt;p&gt;Recently I fixed the following interesting code in an Android application I wrote. According to source control it had &lt;span style=&quot;font-style: italic;&quot;&gt;survived&lt;/span&gt; undetected for about eight months until it manifested as a runtime crash:&lt;/p&gt;
+        &lt;h1&gt;Whitespace goto fail&lt;/h1&gt;&lt;blockquote&gt;&lt;span style=&quot;font-weight: bold;&quot;&gt;UPDATE&lt;/span&gt;: &lt;a href=&quot;https://gnu.wildebeest.org/blog/mjw/2016/01/09/looking-forward-to-gcc6-nice-new-warnings/&quot;&gt;GCC6 will warn about misleading indentation&lt;/a&gt;, but don't tell that to &lt;a href=&quot;https://www.reddit.com/r/programming/comments/36j1zd/whitespace_goto_fail/&quot;&gt;reddit's experts&lt;/a&gt; because you know, they parse source code looking at braces instead of indentation. Maybe they aren't human and reddit posts are generated by sentient C compilers? Oh, and look what happens if you turn that warning into &lt;span style=&quot;font-weight: bold;&quot;&gt;an error&lt;/span&gt;?  Yup, C just got &lt;span style=&quot;font-style: italic;&quot;&gt;0wned&lt;/span&gt; as an indentation sensitive language. &lt;a href=&quot;https://xkcd.com/386/&quot;&gt;LOL&lt;/a&gt;, so much for braces. Seriously, they are not for humans.&lt;/blockquote&gt;&lt;p&gt;Recently I fixed the following interesting code in an Android application I wrote. According to source control it had &lt;span style=&quot;font-style: italic;&quot;&gt;survived&lt;/span&gt; undetected for about eight months until it manifested as a runtime crash:&lt;/p&gt;
 &lt;p&gt;&lt;pre class='code'&gt;&lt;span class=&quot;Identifier&quot;&gt;…&lt;/span&gt;
 &lt;span class=&quot;Keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;Punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;Keyword&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;Operator&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;Identifier&quot;&gt;savedInstanceState&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;Punctuation&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;Keyword&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;Punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;Keyword&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;Operator&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;Keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;item&lt;/span&gt; &lt;span class=&quot;Operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;Keyword&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;Operator&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;Keyword&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;Identifier&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;Punctuation&quot;&gt;)&lt;/span&gt;
