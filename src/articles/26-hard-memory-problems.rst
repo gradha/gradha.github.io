@@ -1,7 +1,7 @@
 ---
 title: Hard memory problems
 pubdate: 2015-06-14 21:05
-moddate: 2015-06-14 21:05
+moddate: 2016-01-19 22:08
 tags: multitasking, user-experience
 ---
 
@@ -344,7 +344,23 @@ programming languages don't incorporate memory sharing primitives in their
 languages (or make memory sharing proxies transparent, which is the most
 realistic solution as proved by mobile platforms).
 
-And now, get back to your ``malloc()`` and ``free()``!
+Some of the examples described here may look alien to you, especially if you
+work on desktops or servers which have comparatively huge quantities of memory
+resources compared to mobile or (gosh!) *real* embedded systems (no, mobiles
+today are just little desktops). If so, you can take a look at the short 5
+minute video `Trimming and Sharing Memory (Android Performance Patterns Season
+3 ep5) <https://www.youtube.com/watch?v=x8Hddx1eOZo>`_ which puts the ideas
+here into context on Android. For a longer video, look at `Optimizing Your App
+for Multitasking on iPad in iOS 9
+<https://developer.apple.com/videos/play/wwdc2015-212/>`_ which explains the
+growing difficulties of memory sharing in newer iOS version supporting
+multitasking. The idea of storing uncompressed resources as `mmap'ed memory
+<http://man7.org/linux/man-pages/man2/mmap.2.html>`_ reminds me a lot of
+`Doom3's megatexture <https://en.wikipedia.org/wiki/MegaTexture>`_ techniques.
+
+Where is your OS helping you write applications when application developers
+have to handle the memory hierarchy themselves, huh?  And now, get back to your
+``malloc()`` and ``free()``!
 
 .. raw:: html
 
