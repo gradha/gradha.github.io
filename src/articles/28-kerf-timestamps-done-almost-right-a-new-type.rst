@@ -1,7 +1,7 @@
 ---
 title: Kerf timestamps done almost right: a new type?
-pubdate: 2016-02-29 22:41
-moddate: 2016-02-29 22:41
+pubdate: 2016-03-05 18:01
+moddate: 2016-03-05 18:01
 tags: design, nim, java, cpp, languages, kerf, programming, swift
 ---
 
@@ -26,6 +26,26 @@ avoided. In order to demonstrate this, Kerf's *precious* timestamp features
 will be implemented in several programming languages: Nim, C++, Swift, and even
 Java (`source available for all of them at GitHub
 <https://github.com/gradha/kerf_timestamps_done_almost_right>`_).
+
+.. raw:: html
+
+    <table border="1" bgcolor="#cccccc"><tr><td style="vertical-align: middle;"
+    ><b>META NAVIGATION START</b>
+    <p>This is a really long article (<a href="http://www.kerfsoftware.com"
+    >Buy kerf!</a>) has been split in different chapters because it is (<a
+    href="http://www.kerfsoftware.com">Kerf on sale!</a>) unsuitable for
+    today's average attention span and let's me maximize (<a
+    href="http://www.kerfsoftware.com">Get Kerf now!</a>) page ads.
+    <p><b>META NAVIGATION END</b>
+    </td><td nowrap>
+    <ol>
+    <li>a new type? <b>You are here!</b>
+    <li><a href="kerf-timestamps-done-almost-right-nim.html">Nim</a>.
+    <li>C++.
+    <li>Swift.
+    <li>WTF… Java?
+    <li>Conclusions
+    </ol></td></tr></table>
 
 After this exploration it should be clear to you that implementing timestamps
 right in the core of the language is more of a pet feature than a logical

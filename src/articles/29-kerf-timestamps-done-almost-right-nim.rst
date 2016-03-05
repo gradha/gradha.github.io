@@ -1,7 +1,7 @@
 ---
 title: Kerf timestamps done almost right: Nim
-pubdate: 2016-02-29 22:42
-moddate: 2016-02-29 22:42
+pubdate: 2016-03-05 18:02
+moddate: 2016-03-05 18:02
 tags: design, nim, java, cpp, languages, kerf, programming, swift
 ---
 
@@ -18,6 +18,29 @@ language:
 3. Custom literals for easier construction of such types.
 4. Operator overloading to implement all possible custom operations.
 5. Generics are not necessary but help with implementation.
+
+.. raw:: html
+
+    <table border="1" bgcolor="#cccccc"><tr><td style="vertical-align: middle;"
+    ><b>META NAVIGATION START</b>
+    <p>This is a really long article (<a
+    href="https://www.manning.com/books/nim-in-action">Nim in Action</a>) has
+    been split in different chapters because it is (<a
+    href="https://www.manning.com/books/nim-in-action"
+    >Nim in Action on sale!</a>) unsuitable for today's average attention span
+    and let's me
+    maximize (<a href="https://www.manning.com/books/nim-in-action"
+    >Get Nim in Action now!</a>) page ads.
+    <p><b>META NAVIGATION END</b>
+    </td><td nowrap>
+    <ol>
+    <li><a href="kerf-timestamps-done-almost-right-a-new-type.html">a new type?</a>.
+    <li>Nim <b>You are here!</b>
+    <li>C++.
+    <li>Swift.
+    <li>WTF… Java?
+    <li>Conclusions
+    </ol></td></tr></table>
 
 `Nim <http://nim-lang.org>`_ (formerly known as "Nimrod") is a statically
 typed, imperative programming language that tries to give the programmer
@@ -728,7 +751,7 @@ Some verbosity due to the lack of real custom syntax is recovered through the
 overloading of the operators to avoid having to write ``times mapright
 range(10)``, but all in all the result is quite the same in readability. If you
 don't like operators you could use names as in Kerf, remember that there is
-nothing special about writing an operator in nim, it's just a proc with two
+nothing special about writing an operator in Nim, it's just a proc with two
 parameters. The `last bit of the example may throw you off
 <https://github.com/gradha/kerf_timestamps_done_almost_right/blob/master/nim/units.nim#L30-L31>`_:
 
@@ -754,8 +777,8 @@ getter
 I explicitly **did not** implement real calendars because that is boring. So if
 you look at the calendar you will see that the differences between Keft and my
 Nim implementation is that the first week of 2012 starts on the 2nd day of
-January. A real implementation would do this right and the Nim output would
-equal Kerf's.
+January and not on the 8th day like the simple implementation presumes. A real
+implementation would do this right and the Nim output would then equal Kerfs.
 
 
 Bonus subscript operator
@@ -817,9 +840,21 @@ allowing them to implement new types as needed in search of the optimal
 performance.
 
 Does then our timestamp type have **anything** to do with storing dates or
-ticks in a database? Nope. It's an integer storing nanoseconds, so by the time
-we write database for our serialization layer we could be storing it `encoded
-in emoji <http://www.emojicode.org/docs/guides/compile-and-run.html>`_ just for
-fun and to annoy other people, and it wouldn't hurt the type at all in the
-language. Next we will do this in C++ (I mean the Kerf timestamp, not the weird
-emoji shit).
+ticks in a database? Nope. The type uses an integer storing nanoseconds, but by
+the time we write to the database in our serialization layer we could be
+storing it `encoded in emoji
+<http://www.emojicode.org/docs/guides/compile-and-run.html>`_ just for fun and
+to annoy other people. It would be a really poor storage decision, and Scott
+would loudly complain about performance bottlenecks, but it wouldn't hurt the
+type at all in the language. Next we will do this in C++ (I mean the Kerf
+timestamp, not the weird emoji shit).
+
+.. raw:: html
+
+    <br clear="right"><center>
+    <a href="http://www.idol-grapher.com/1239"><img
+        src="../../../i/kerf_emoji.jpg"
+        alt="Don't talk to me, talk to the emoji"
+        style="width:100%;max-width:600px" align="center"
+        hspace="8pt" vspace="8pt"></a>
+    </center>
