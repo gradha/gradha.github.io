@@ -8,9 +8,10 @@ tags: design, nim, java, cpp, languages, kerf, programming, swift
 Kerf timestamps done almost right: Nim
 ======================================
 
-In the previous chapter of the series we reached the conclusion that to
-implement Kerf's timestamp types we need the following features from any
-language:
+In the `previous chapter of the series
+<kerf-timestamps-done-almost-right-a-new-type.html>`_ we reached the conclusion
+that to implement Kerf's timestamp types we need the following features from a
+programming language:
 
 1. Value type semantics with strong typing to avoid mistakes.
 2. Instancing types on the stack to avoid slow heap memory allocations and
@@ -24,11 +25,12 @@ language:
     <table border="1" bgcolor="#cccccc"><tr><td style="vertical-align: middle;"
     ><b>META NAVIGATION START</b>
     <p>This is a really long article (<a
-    href="https://www.manning.com/books/nim-in-action">Nim in Action</a>) has
+    href="https://www.manning.com/books/nim-in-action"
+    >Buy Nim in Action!</a>) which has
     been split in different chapters because it is (<a
     href="https://www.manning.com/books/nim-in-action"
     >Nim in Action on sale!</a>) unsuitable for today's average attention span
-    and let's me
+    and lets me
     maximize (<a href="https://www.manning.com/books/nim-in-action"
     >Get Nim in Action now!</a>) page ads.
     <p><b>META NAVIGATION END</b>
@@ -72,7 +74,7 @@ Distinct timestamps
 .. raw:: html
     <a href="http://www.all-idol.com/1620"><img
         src="../../../i/kerf_distinct_types.jpg"
-        alt="Distinct types"
+        alt="Distinct types, low maintenance, easy to use and effective, just what you need to deal with those type problems"
         style="width:100%;max-width:600px" align="right"
         hspace="8pt" vspace="8pt"></a>
 
@@ -781,8 +783,8 @@ January and not on the 8th day like the simple implementation presumes. A real
 implementation would do this right and the Nim output would then equal Kerfs.
 
 
-Bonus subscript operator
-------------------------
+Bonus generic subscript operator
+--------------------------------
 
 The last lines of the Nim implementation use a `bonusWeek() proc defined
 earlier
@@ -845,9 +847,9 @@ the time we write to the database in our serialization layer we could be
 storing it `encoded in emoji
 <http://www.emojicode.org/docs/guides/compile-and-run.html>`_ just for fun and
 to annoy other people. It would be a really poor storage decision, and Scott
-would loudly complain about performance bottlenecks, but it wouldn't hurt the
-type at all in the language. Next we will do this in C++ (I mean the Kerf
-timestamp, not the weird emoji shit).
+would loudly complain about Unicode conversion performance bottlenecks, but it
+wouldn't hurt the type at all in the language. Next we will do this in C++ (I
+mean the Kerf timestamp, not the weird emoji shit).
 
 .. raw:: html
 

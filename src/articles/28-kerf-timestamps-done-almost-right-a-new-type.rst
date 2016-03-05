@@ -32,11 +32,11 @@ Java (`source available for all of them at GitHub
     <table border="1" bgcolor="#cccccc"><tr><td style="vertical-align: middle;"
     ><b>META NAVIGATION START</b>
     <p>This is a really long article (<a href="http://www.kerfsoftware.com"
-    >Buy kerf!</a>) has been split in different chapters because it is (<a
-    href="http://www.kerfsoftware.com">Kerf on sale!</a>) unsuitable for
-    today's average attention span and let's me maximize (<a
-    href="http://www.kerfsoftware.com">Get Kerf now!</a>) page ads.
-    <p><b>META NAVIGATION END</b>
+    >Buy Kerf!</a>) which has been split in different chapters because it is
+    (<a href="http://www.kerfsoftware.com">Kerf on sale!</a>) unsuitable for
+    today's average attention span and lets me maximize (<a
+    href="http://www.kerfsoftware.com">Get Kerf now!</a>) page ads.  <p><b>META
+    NAVIGATION END</b>
     </td><td nowrap>
     <ol>
     <li>a new type? <b>You are here!</b>
@@ -402,7 +402,8 @@ expect a `perfect bug-compatible clone
 <http://code.google.com/p/android/issues/detail?id=13830>`_ of Kerf at the end.
 
 And finally, I'm prone to mistakes, so don't laugh too hard if I end up adding
-knifes to politicians by mistake…
+knifes to politicians by mistake… `just go and read the next chapter
+<kerf-timestamps-done-almost-right-nim.html>`_.
 
 ::
     $ ./politicians_eating_timely_fruit.exe
