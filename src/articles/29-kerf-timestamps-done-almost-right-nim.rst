@@ -36,10 +36,10 @@ programming language:
     <p><b>META NAVIGATION END</b>
     </td><td nowrap>
     <ol>
-    <li><a href="kerf-timestamps-done-almost-right-a-new-type.html">a new type?</a>.
+    <li><a href="kerf-timestamps-done-almost-right-a-new-type.html">a new type?</a>
     <li>Nim <b>You are here!</b>
-    <li>C++.
-    <li>Swift.
+    <li><a href="kerf-timestamps-done-almost-right-c-plus--plus-.html">C++</a>
+    <li>Swift
     <li>WTF… Java?
     <li>Conclusions
     </ol></td></tr></table>
@@ -848,8 +848,9 @@ storing it `encoded in emoji
 <http://www.emojicode.org/docs/guides/compile-and-run.html>`_ just for fun and
 to annoy other people. It would be a really poor storage decision, and Scott
 would loudly complain about Unicode conversion performance bottlenecks, but it
-wouldn't hurt the type at all in the language. Next we will do this in C++ (I
-mean the Kerf timestamp, not the weird emoji shit).
+wouldn't hurt the type at all in the language. Next `we will do this in C++
+<kerf-timestamps-done-almost-right-c-plus--plus-.html>`_ (I mean the Kerf
+timestamp, not the weird emoji shit).
 
 .. raw:: html
 
