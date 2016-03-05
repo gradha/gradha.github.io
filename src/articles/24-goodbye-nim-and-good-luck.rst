@@ -27,8 +27,8 @@ from a different programming language (or vice versa), the amount of barriers
 to jump over to do what in other **unsafe** languages is just accessing a
 variable starts to pile up.
 
-At that point that I realized that from all the amount of software written in
-Nim there were two kinds of software barely explored: GUIs and multithreading.
+At that point I realized that from all the amount of software written in Nim
+there were two kinds of software barely explored: GUIs and multithreading.
 It's not difficult to `read in the Nim forums <http://forum.nim-lang.org>`_ how
 people are using one or the other, either using GTK for things like `Aporia
 <https://github.com/nim-lang/Aporia>`_ or creating `raytracers which scale up
@@ -57,7 +57,7 @@ languages too).
 
 Since I started this blog with the purpose of writing articles about Nim and
 taking potshots at other programming languages from the safety of a random
-troll, I don't think I'll write anything more here. All the nim software I've
+troll, I don't think I'll write anything more here. All the Nim software I've
 created also has an expiration date: Nim 1.0. I've already spent the last weeks
 cleaning and upgrading the code I had working with 0.9.6 to work with 0.10.2,
 but there are still many deprecated warnings left which will make it again
