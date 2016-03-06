@@ -1,0 +1,369 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang='en'>
+	<head>
+		<title>Kerf timestamps done almost right: Swift - Rants from the Ballmer Peak</title>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="../../../css/normalize.css">
+		<link rel="stylesheet" href="../../../css/style.css">
+		<link href="../../../feed.xml" title="Articles" type="application/atom+xml" rel="alternate">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	</head>
+	<body>
+	<div class="content">
+		<h3><a href="../../../index.html">Rants from the Ballmer Peak</a> <a
+				href="../../../feed.xml"><img
+			alt="rss feed" src="../../../i/Feed-icon.svg"
+			width="18pt" height="18pt"></a></h3>
+		<h1>Kerf timestamps done almost right: Swift</h1><p>In the <a href="kerf-timestamps-done-almost-right-a-new-type.html">first chapter of the series</a> we reached the conclusion that to implement Kerf's timestamp types we need the following features from a programming language:</p>
+<ol><li>Value type semantics with strong typing to avoid mistakes.</li><li>Instancing types on the stack to avoid slow heap memory allocations and alleviate manual memory handling or garbage collector pressure.</li><li>Custom literals for easier construction of such types.</li><li>Operator overloading to implement all possible custom operations.</li><li>Generics are not necessary but help with implementation.</li></ol>
+<table border="1" bgcolor="#cccccc"><tr><td style="vertical-align: middle;"
+><b>META NAVIGATION START</b>
+<p>This is a really long article (<a
+href="http://www.amazon.com/Swift-Programming-Ranch-Guide-Guides/dp/0134398017"
+>Buy Swift Programming!</a>) which has
+been split in different chapters because it is (<a
+href="http://www.amazon.com/Swift-Programming-Ranch-Guide-Guides/dp/0134398017"
+>Swift Programming on sale!</a>) unsuitable for today's average attention span
+and lets me
+maximize (<a href="http://www.amazon.com/Swift-Programming-Ranch-Guide-Guides/dp/0134398017"
+>Get Swift Programming now!</a>) page ads.
+<p><b>META NAVIGATION END</b>
+</td><td nowrap>
+<ol>
+<li><a href="kerf-timestamps-done-almost-right-a-new-type.html">a new type?</a>
+<li><a href="kerf-timestamps-done-almost-right-nim.html">Nim</a>
+<li><a href="kerf-timestamps-done-almost-right-c-plus--plus-.html">C++</a>
+<li>Swift <b>You are here!</b>
+<li><a href="kerf-timestamps-done-almost-right-wtf…-java.html">WTF… Java?</a>
+<li><a href="kerf-timestamps-done-almost-right-conclusions.html">conclusions</a>
+</ol></td></tr></table><p><a href="https://en.wikipedia.org/wiki/Swift_(programming_language)">Swift</a> is a multi-paradigm, compiled programming language created for iOS, OS X, watchOS, tvOS and Linux development by Apple Inc. Swift is designed to work with Apple's Cocoa and Cocoa Touch frameworks and the large body of existing Objective-C code written for Apple products. Swift is intended to be more resilient to erroneous code (&quot;safer&quot;) than Objective-C and also more concise. It is built with the LLVM compiler framework included in Xcode 6 and later and uses the Objective-C runtime, which allows C, Objective-C, C++ and Swift code to run within a single program. Running our requirement list against Swift's feature set we get:</p>
+<ol><li>Swift has value type semantics with strong typing to avoid mistakes (yay!).</li><li>Allows instancing types on the stack through custom structs (yay!).</li><li>There are no custom literals but we can write literal extensions to fake them (ok, I hope).</li><li>Allows operator overloading (yay!).</li><li>Supports generics, but they seem daunting to use due to the perceived type complexity (hmmmm). Luckily this is not a requirement.</li></ol><p>The key concept to understand Swift is that it is bogged down by its mandatory inheritance. Swift has a very specific task: <a href="https://en.wikipedia.org/wiki/Objective-C">replace Objective-C</a>. And with such a requirement the first thing you have to do is being able to interface at binary level with Objective-C's libraries. This involves interfacing with code that still uses reference counting below, either manually or through <a href="https://en.wikipedia.org/wiki/Automatic_Reference_Counting">automatic reference counting (ARC)</a>, which can be a landmine by itself.  So if you thought that either C++ or Objective-C having C compatibility was already a handicap, imagine having to interact with all those together and still present the façade of an unencumbered language. That may be the reason why the compiler is slow. But let's not get ahead of ourselves, lets implement first our friendly <code>Nano</code> and <code>Stamp</code> structures to appease the Kerf gods.</p>
+<h2>Faking new types one struct at a time</h2><a href="http://www.idol-grapher.com/1690"><img
+    src="../../../i/kerf_banana.jpg"
+    alt="Trust me, I'm not a banana, I'm a new timestamp type"
+    style="width:100%;max-width:600px" align="right"
+    hspace="8pt" vspace="8pt"></a><p>Since Swift doesn't have any language support for distinct types <a href="https://lists.swift.org/pipermail/swift-evolution/Week-of-Mon-20160104/005369.html">we will have to revert to writing piles of code</a> just like for the C++ implementation. And copying C++'s implementation we will create two structs, <a href="https://github.com/gradha/kerf_timestamps_done_almost_right/blob/master/swift/time_nanos.swift">let's start with the Nano one</a>:</p>
+<p><pre class='code'><span class="Identifier">let</span> <span class="Identifier">u_nano</span> <span class="Operator">=</span> <span class="Identifier">Nano</span><span class="Punctuation">(</span><span class="DecNumber">1</span><span class="Punctuation">)</span>
+<span class="Identifier">let</span> <span class="Identifier">u_second</span> <span class="Operator">=</span> <span class="Identifier">Nano</span><span class="Punctuation">(</span><span class="DecNumber">1</span><span class="Identifier">_000_000_000</span><span class="Punctuation">)</span>
+<span class="Identifier">let</span> <span class="Identifier">u_minute</span> <span class="Operator">=</span> <span class="Identifier">u_second</span> <span class="Operator">*</span> <span class="DecNumber">60</span>
+<span class="Identifier">let</span> <span class="Identifier">u_hour</span> <span class="Operator">=</span> <span class="Identifier">u_minute</span> <span class="Operator">*</span> <span class="DecNumber">60</span>
+<span class="Identifier">let</span> <span class="Identifier">u_day</span> <span class="Operator">=</span> <span class="DecNumber">24</span> <span class="Operator">*</span> <span class="Identifier">u_hour</span>
+<span class="Identifier">let</span> <span class="Identifier">u_month</span> <span class="Operator">=</span> <span class="DecNumber">30</span> <span class="Operator">*</span> <span class="Identifier">u_day</span>
+<span class="Identifier">let</span> <span class="Identifier">u_year</span> <span class="Operator">=</span> <span class="Identifier">u_day</span> <span class="Operator">*</span> <span class="DecNumber">365</span>
+
+<span class="Identifier">struct</span> <span class="Identifier">Nano</span> <span class="Punctuation">:</span> <span class="Identifier">CustomStringConvertible</span> <span class="Punctuation">{</span>
+        <span class="Identifier">var</span> <span class="Identifier">value</span><span class="Punctuation">:</span> <span class="Identifier">Int64</span> <span class="Operator">=</span> <span class="DecNumber">0</span>
+        
+        <span class="Identifier">init</span><span class="Punctuation">(</span><span class="Identifier">_</span> <span class="Identifier">x</span><span class="Punctuation">:</span> <span class="Identifier">Int64</span><span class="Punctuation">)</span> <span class="Punctuation">{</span> <span class="Identifier">self</span><span class="Punctuation">.</span><span class="Identifier">value</span> <span class="Operator">=</span> <span class="Identifier">x</span> <span class="Punctuation">}</span>
+        <span class="Identifier">init</span><span class="Punctuation">(</span><span class="Identifier">_</span> <span class="Identifier">x</span><span class="Punctuation">:</span> <span class="Identifier">Stamp</span><span class="Punctuation">)</span> <span class="Punctuation">{</span> <span class="Identifier">self</span><span class="Punctuation">.</span><span class="Identifier">value</span> <span class="Operator">=</span> <span class="Identifier">x</span><span class="Punctuation">.</span><span class="Identifier">value</span> <span class="Punctuation">}</span>
+        
+        <span class="Identifier">var</span> <span class="Identifier">description</span><span class="Punctuation">:</span> <span class="Identifier">String</span> <span class="Punctuation">{</span>
+                <span class="Keyword">return</span> <span class="Identifier">…</span>
+        <span class="Punctuation">}</span>
+        
+        <span class="Identifier">var</span> <span class="Identifier">s</span><span class="Punctuation">:</span> <span class="Identifier">String</span> <span class="Punctuation">{</span> <span class="Keyword">return</span> <span class="Identifier">description</span> <span class="Punctuation">}</span>
+        <span class="Comment">// …more code goes here…</span>
+<span class="Punctuation">}</span>
+</pre></p>
+<p>Unlike C++ or Nim, the first thing that catches the eye is that you can actually use the <code>Nano(1)</code> initializer despite the <code>Nano</code> class not being known to the compiler on that very first line. Maybe the designers of Swift thought that forward declarations are bad for human programmers and decided to get rid of them.  Masses of careless programmers rejoiced, but there is a cost to pay: non deterministic compilation times. I'm not claiming that the compiler throws up a dice and decides compilation will take longer on even days, but now the compiler has to plow forward and keep code in a temporal maybe it compiles/maybe it doesn't Schrödinger state because some lines later <span style="font-style: italic;">may</span> make the previous code compile. Java eliminated the header vs implementation duplication problem ages ago without requiring extra work for compilers.  But in Swift the compiler is required to juggle multiple potential parallel compilation universes due to language design. Nice, extra gratuitous complexity for very low end user benefit. I'm so glad I don't have to implement compilers. Another case of non forward declaration is the secondary <code>init(_ x: Stamp)</code> initializer. This constructor <span style="font-style: italic;">converts</span> the value of a <code>Stamp</code> to a <code>Nano</code> despite the <code>Stamp</code> type not existing yet.</p>
+<p>The ramifications of the non forwardness of declarations can also be seen in the lack of any <code>import</code> or <code>include</code> lines. Our <code>Nano</code> structure inherits from the <code>CustomStringConvertible</code> protocol. Where does this protocol come from? Who knows, the compiler is doing <span style="font-style: italic;">magic</span> to include or know about this protocol beforehand. So again, does the compiler actually scan and parse all known protocols in its standard library for every simple compilation unit? That would be crazy, as in batshit crazy, but could explain the slow compile times.  Just so you know, the <code>CustomStringConvertible</code> protocol is required to make our <code>Nano</code> type valid input to other code expecting objects conforming to this protocol, like  <code>print()</code>. This protocol defines a <code>description</code> pseudo variable. This feels arbitrary to me, you can define a variable which works as a function, and the only difference between a normal function is that you are not using parentheses to invoke it. But as a user of the code you have to know which is which or the compiler will give you an error. There are other ways of making a type conform to a protocol, like using an extension, we will look at extensions in a moment.</p>
+<p>Since the <code>description</code> pseudo variable of the <code>CustomStringConvertible</code> protocol is too long, I decided to write an alias as the <code>s</code> pseudo variable returning whatever <code>description</code> does. That custom <code>s</code> variable is used in the <a href="https://github.com/gradha/kerf_timestamps_done_almost_right/blob/master/swift/time_nanos.swift#L105-L115">following operator functions</a>:</p>
+<p><pre class='code'><span class="Identifier">func</span> <span class="Operator">*</span><span class="Punctuation">(</span><span class="Identifier">lhs</span><span class="Punctuation">:</span> <span class="Identifier">Nano</span><span class="Punctuation">,</span> <span class="Identifier">rhs</span><span class="Punctuation">:</span> <span class="Identifier">Int</span><span class="Punctuation">)</span> <span class="Operator">-&gt;</span> <span class="Identifier">Nano</span> <span class="Punctuation">{</span> <span class="Keyword">return</span> <span class="Identifier">Nano</span><span class="Punctuation">(</span><span class="Identifier">lhs</span><span class="Punctuation">.</span><span class="Identifier">value</span> <span class="Operator">*</span> <span class="Identifier">Int64</span><span class="Punctuation">(</span><span class="Identifier">rhs</span><span class="Punctuation">)</span><span class="Punctuation">)</span> <span class="Punctuation">}</span>
+<span class="Identifier">func</span> <span class="Operator">*</span><span class="Punctuation">(</span><span class="Identifier">lhs</span><span class="Punctuation">:</span> <span class="Identifier">Int</span><span class="Punctuation">,</span> <span class="Identifier">rhs</span><span class="Punctuation">:</span> <span class="Identifier">Nano</span><span class="Punctuation">)</span> <span class="Operator">-&gt;</span> <span class="Identifier">Nano</span> <span class="Punctuation">{</span> <span class="Keyword">return</span> <span class="Identifier">Nano</span><span class="Punctuation">(</span><span class="Identifier">Int64</span><span class="Punctuation">(</span><span class="Identifier">lhs</span><span class="Punctuation">)</span> <span class="Operator">*</span> <span class="Identifier">rhs</span><span class="Punctuation">.</span><span class="Identifier">value</span><span class="Punctuation">)</span> <span class="Punctuation">}</span>
+<span class="Identifier">func</span> <span class="Operator">+</span><span class="Punctuation">(</span><span class="Identifier">lhs</span><span class="Punctuation">:</span> <span class="Identifier">Nano</span><span class="Punctuation">,</span> <span class="Identifier">rhs</span><span class="Punctuation">:</span> <span class="Identifier">String</span><span class="Punctuation">)</span> <span class="Operator">-&gt;</span> <span class="Identifier">String</span> <span class="Punctuation">{</span> <span class="Keyword">return</span> <span class="Identifier">lhs</span><span class="Punctuation">.</span><span class="Identifier">s</span> <span class="Operator">+</span> <span class="Identifier">rhs</span> <span class="Punctuation">}</span>
+<span class="Identifier">func</span> <span class="Operator">+</span><span class="Punctuation">(</span><span class="Identifier">lhs</span><span class="Punctuation">:</span> <span class="Identifier">String</span><span class="Punctuation">,</span> <span class="Identifier">rhs</span><span class="Punctuation">:</span> <span class="Identifier">Nano</span><span class="Punctuation">)</span> <span class="Operator">-&gt;</span> <span class="Identifier">String</span> <span class="Punctuation">{</span> <span class="Keyword">return</span> <span class="Identifier">lhs</span> <span class="Operator">+</span> <span class="Identifier">rhs</span><span class="Punctuation">.</span><span class="Identifier">s</span> <span class="Punctuation">}</span>
+<span class="Identifier">func</span> <span class="Operator">+</span><span class="Punctuation">(</span><span class="Identifier">lhs</span><span class="Punctuation">:</span> <span class="Identifier">Nano</span><span class="Punctuation">,</span> <span class="Identifier">rhs</span><span class="Punctuation">:</span> <span class="Identifier">Nano</span><span class="Punctuation">)</span> <span class="Operator">-&gt;</span> <span class="Identifier">Nano</span> <span class="Punctuation">{</span> <span class="Keyword">return</span> <span class="Identifier">Nano</span><span class="Punctuation">(</span><span class="Identifier">lhs</span><span class="Punctuation">.</span><span class="Identifier">value</span> <span class="Operator">+</span> <span class="Identifier">rhs</span><span class="Punctuation">.</span><span class="Identifier">value</span><span class="Punctuation">)</span> <span class="Punctuation">}</span>
+<span class="Identifier">func</span> <span class="Operator">-</span><span class="Punctuation">(</span><span class="Identifier">lhs</span><span class="Punctuation">:</span> <span class="Identifier">Nano</span><span class="Punctuation">,</span> <span class="Identifier">rhs</span><span class="Punctuation">:</span> <span class="Identifier">Nano</span><span class="Punctuation">)</span> <span class="Operator">-&gt;</span> <span class="Identifier">Nano</span> <span class="Punctuation">{</span> <span class="Keyword">return</span> <span class="Identifier">Nano</span><span class="Punctuation">(</span><span class="Identifier">lhs</span><span class="Punctuation">.</span><span class="Identifier">value</span> <span class="Operator">-</span> <span class="Identifier">rhs</span><span class="Punctuation">.</span><span class="Identifier">value</span><span class="Punctuation">)</span> <span class="Punctuation">}</span>
+<span class="Identifier">func</span> <span class="Operator">-</span><span class="Punctuation">(</span><span class="Identifier">lhs</span><span class="Punctuation">:</span> <span class="Identifier">Nano</span><span class="Punctuation">,</span> <span class="Identifier">rhs</span><span class="Punctuation">:</span> <span class="Identifier">Int64</span><span class="Punctuation">)</span> <span class="Operator">-&gt;</span> <span class="Identifier">Nano</span> <span class="Punctuation">{</span> <span class="Keyword">return</span> <span class="Identifier">Nano</span><span class="Punctuation">(</span><span class="Identifier">lhs</span><span class="Punctuation">.</span><span class="Identifier">value</span> <span class="Operator">-</span> <span class="Identifier">rhs</span><span class="Punctuation">)</span> <span class="Punctuation">}</span>
+<span class="Identifier">func</span> <span class="Operator">%</span><span class="Punctuation">(</span><span class="Identifier">lhs</span><span class="Punctuation">:</span> <span class="Identifier">Nano</span><span class="Punctuation">,</span> <span class="Identifier">rhs</span><span class="Punctuation">:</span> <span class="Identifier">Nano</span><span class="Punctuation">)</span> <span class="Operator">-&gt;</span> <span class="Identifier">Int64</span> <span class="Punctuation">{</span> <span class="Keyword">return</span> <span class="Identifier">lhs</span><span class="Punctuation">.</span><span class="Identifier">value</span> <span class="Operator">%</span> <span class="Identifier">rhs</span><span class="Punctuation">.</span><span class="Identifier">value</span> <span class="Punctuation">}</span>
+<span class="Identifier">func</span> <span class="Operator">%</span><span class="Punctuation">(</span><span class="Identifier">lhs</span><span class="Punctuation">:</span> <span class="Identifier">Int64</span><span class="Punctuation">,</span> <span class="Identifier">rhs</span><span class="Punctuation">:</span> <span class="Identifier">Nano</span><span class="Punctuation">)</span> <span class="Operator">-&gt;</span> <span class="Identifier">Int64</span> <span class="Punctuation">{</span> <span class="Keyword">return</span> <span class="Identifier">lhs</span> <span class="Operator">%</span> <span class="Identifier">rhs</span><span class="Punctuation">.</span><span class="Identifier">value</span> <span class="Punctuation">}</span>
+<span class="Identifier">func</span> /<span class="Punctuation">(</span><span class="Identifier">lhs</span><span class="Punctuation">:</span> <span class="Identifier">Nano</span><span class="Punctuation">,</span> <span class="Identifier">rhs</span><span class="Punctuation">:</span> <span class="Identifier">Nano</span><span class="Punctuation">)</span> <span class="Operator">-&gt;</span> <span class="Identifier">Int64</span> <span class="Punctuation">{</span> <span class="Keyword">return</span> <span class="Identifier">lhs</span><span class="Punctuation">.</span><span class="Identifier">value</span> / <span class="Identifier">rhs</span><span class="Punctuation">.</span><span class="Identifier">value</span> <span class="Punctuation">}</span>
+<span class="Identifier">func</span> /<span class="Punctuation">(</span><span class="Identifier">lhs</span><span class="Punctuation">:</span> <span class="Identifier">Int64</span><span class="Punctuation">,</span> <span class="Identifier">rhs</span><span class="Punctuation">:</span> <span class="Identifier">Nano</span><span class="Punctuation">)</span> <span class="Operator">-&gt;</span> <span class="Identifier">Int64</span> <span class="Punctuation">{</span> <span class="Keyword">return</span> <span class="Identifier">lhs</span> / <span class="Identifier">rhs</span><span class="Punctuation">.</span><span class="Identifier">value</span> <span class="Punctuation">}</span>
+</pre></p>
+<p>Of interest is the overloading of the addition operator for string concatenation, which seems quite normal in Swift land, and it's where I'm using the <code>s</code> variable. In <a href="kerf-timestamps-done-almost-right-nim.html">the Nim implementation chapter</a> I mentioned that it is better if string concatenation is done using an operator other than addition. If you use the same, you can end up writing code whose intent is not clear. Consider the following lines of potential code:</p>
+<p><pre class='code'><span class="Identifier">let</span> <span class="Identifier">normal</span> <span class="Operator">=</span> <span class="Identifier">Nano</span><span class="Punctuation">(</span><span class="DecNumber">1</span><span class="Punctuation">)</span>
+<span class="Identifier">let</span> <span class="Identifier">sneaky</span> <span class="Operator">=</span> <span class="Identifier">normal</span><span class="Punctuation">.</span><span class="Identifier">s</span>
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;Values </span><span class="EscapeSequence">\(</span><span class="StringLit">sneaky + normal)&quot;</span><span class="Punctuation">)</span>
+</pre></p>
+<p>The first line defines our <code>Nano</code> variable, the second converts it to a string representation. Due to type inference we <span style="font-style: italic;">might</span> miss this bit (cue all the pedants changing their obnoxious style guides to force everybody explicitly state types everywhere), and the third line prints the values using <a href="../../2014/11/swift-string-interpolation-with-nimrod-macros.html">string interpolation</a>. What is the expected output? The cat is out of the bag, and I have already mentioned that <code>sneaky</code> is a string representation. So we will get <code>1ns1ns</code> printed, which is two nanoseconds joined together as strings. But maybe the <span style="font-weight: bold;">intent</span> was to add numerically those two values? If Swift didn't use the addition operator for string concatenation this would have not compiled, the compiler would have told that you can't add a <code>Nano</code> to a <code>String</code>. Not a serious issue you say? Right, tell that to those who write numerical crunching code. Or me, because I made this mistake myself when I was <a href="https://github.com/gradha/kerf_timestamps_done_almost_right/commit/7ef75336bc33a953c118db40d30a939e64d26cbb">trying to write Nim code which looked like Swift using the addition operator</a> (the right side to that equal sign was being concatenated as strings due to the associativity of the addition operator). In Swift you have to add <a href="https://github.com/gradha/kerf_timestamps_done_almost_right/blob/master/swift/time_nanos.swift#L138">defensive parentheses to make sure you don't make such mistakes</a> or maybe play with the operator priority rules.</p>
+<p>In the introduction I said that you can't define custom user literals like in C++. In Swift we can fake conversions in a similar way to Nim using <a href="https://github.com/gradha/kerf_timestamps_done_almost_right/blob/master/swift/time_nanos.swift#L117-L125">literal extensions</a>:</p>
+<p><pre class='code'><span class="Identifier">extension</span> <span class="Identifier">Int</span> <span class="Punctuation">{</span>
+        <span class="Identifier">var</span> <span class="Identifier">ns</span><span class="Punctuation">:</span> <span class="Identifier">Nano</span> <span class="Punctuation">{</span> <span class="Keyword">return</span> <span class="Identifier">Nano</span><span class="Punctuation">(</span><span class="Identifier">Int64</span><span class="Punctuation">(</span><span class="Identifier">self</span><span class="Punctuation">)</span><span class="Punctuation">)</span> <span class="Punctuation">}</span>
+        <span class="Identifier">var</span> <span class="Identifier">s</span><span class="Punctuation">:</span> <span class="Identifier">Nano</span> <span class="Punctuation">{</span> <span class="Keyword">return</span> <span class="Identifier">self</span> <span class="Operator">*</span> <span class="Identifier">u_second</span> <span class="Punctuation">}</span>
+        <span class="Identifier">var</span> <span class="Identifier">i</span><span class="Punctuation">:</span> <span class="Identifier">Nano</span> <span class="Punctuation">{</span> <span class="Keyword">return</span> <span class="Identifier">self</span> <span class="Operator">*</span> <span class="Identifier">u_minute</span> <span class="Punctuation">}</span>
+        <span class="Identifier">var</span> <span class="Identifier">h</span><span class="Punctuation">:</span> <span class="Identifier">Nano</span> <span class="Punctuation">{</span> <span class="Keyword">return</span> <span class="Identifier">self</span> <span class="Operator">*</span> <span class="Identifier">u_hour</span> <span class="Punctuation">}</span>
+        <span class="Identifier">var</span> <span class="Identifier">d</span><span class="Punctuation">:</span> <span class="Identifier">Nano</span> <span class="Punctuation">{</span> <span class="Keyword">return</span> <span class="Identifier">self</span> <span class="Operator">*</span> <span class="Identifier">u_day</span> <span class="Punctuation">}</span>
+        <span class="Identifier">var</span> <span class="Identifier">m</span><span class="Punctuation">:</span> <span class="Identifier">Nano</span> <span class="Punctuation">{</span> <span class="Keyword">return</span> <span class="Identifier">self</span> <span class="Operator">*</span> <span class="Identifier">u_month</span> <span class="Punctuation">}</span>
+        <span class="Identifier">var</span> <span class="Identifier">y</span><span class="Punctuation">:</span> <span class="Identifier">Nano</span> <span class="Punctuation">{</span> <span class="Keyword">return</span> <span class="Identifier">self</span> <span class="Operator">*</span> <span class="Identifier">u_year</span> <span class="Punctuation">}</span>
+<span class="Punctuation">}</span>
+</pre></p>
+<p>The extension tells the compiler that all <code>Int</code> types have suddenly new variables called <code>ns</code>, <code>s</code>, <code>i</code>, etc which return <code>Nano</code> types. With this extension we can finally write a <a href="https://github.com/gradha/kerf_timestamps_done_almost_right/blob/master/swift/time_nanos.swift#L131-L151">thoroughly verbose test case similar to our previous implementations</a>:</p>
+<p><pre class='code'><span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;Testing second operations:</span><span class="EscapeSequence">\n</span><span class="StringLit">&quot;</span><span class="Punctuation">)</span>
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;</span><span class="EscapeSequence">\(</span><span class="EscapeSequence">Nano(500)) = \(</span><span class="StringLit">500.ns)&quot;</span><span class="Punctuation">)</span>
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="Identifier">Nano</span><span class="Punctuation">(</span><span class="DecNumber">500</span><span class="Punctuation">)</span> <span class="Operator">+</span> <span class="StringLit">&quot; = &quot;</span> <span class="Operator">+</span> <span class="FloatNumber">500.n</span><span class="Identifier">s</span><span class="Punctuation">)</span>
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="Identifier">u_second</span> <span class="Operator">+</span> <span class="StringLit">&quot; = &quot;</span> <span class="Operator">+</span> <span class="FloatNumber">1.s</span><span class="Punctuation">)</span>
+<span class="Comment">// Uncomment this line to make the swift 2.1.1 compiler cry like a child.</span>
+<span class="Comment">//print(u_minute + u_second + Nano(500) + &quot; = &quot; + 1.i + 1.s + 500.ns)</span>
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;</span><span class="EscapeSequence">\(</span><span class="EscapeSequence">u_minute + u_second + Nano(500)) = \(</span><span class="StringLit">1.i + 1.s + 500.ns)&quot;</span><span class="Punctuation">)</span>
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="Punctuation">(</span><span class="Identifier">u_minute</span> <span class="Operator">+</span> <span class="Identifier">u_second</span> <span class="Operator">+</span> <span class="Identifier">Nano</span><span class="Punctuation">(</span><span class="DecNumber">500</span><span class="Punctuation">)</span><span class="Punctuation">)</span> <span class="Operator">+</span> <span class="StringLit">&quot; = &quot;</span> <span class="Operator">+</span> <span class="Punctuation">(</span><span class="FloatNumber">1.i</span> <span class="Operator">+</span> <span class="FloatNumber">1.s</span> <span class="Operator">+</span> <span class="FloatNumber">500.n</span><span class="Identifier">s</span><span class="Punctuation">)</span><span class="Punctuation">)</span>
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;</span><span class="EscapeSequence">\(</span><span class="EscapeSequence">1.h + 23.i + 45.s) = \(</span><span class="EscapeSequence">composed_difference) = \(</span><span class="StringLit">composed_string)&quot;</span><span class="Punctuation">)</span>
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;</span><span class="EscapeSequence">\(</span><span class="EscapeSequence">u_day) = \(</span><span class="StringLit">1.d)&quot;</span><span class="Punctuation">)</span>
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;</span><span class="EscapeSequence">\(</span><span class="EscapeSequence">u_year) = \(</span><span class="StringLit">1.y)&quot;</span><span class="Punctuation">)</span>
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;</span><span class="EscapeSequence">\(</span><span class="StringLit">u_year - 1.d)&quot;</span><span class="Punctuation">)</span>
+
+<span class="Identifier">let</span> <span class="Identifier">a</span> <span class="Operator">=</span> <span class="Identifier">composed_difference</span> <span class="Operator">+</span> <span class="FloatNumber">3.y</span> <span class="Operator">+</span> <span class="FloatNumber">6.m</span> <span class="Operator">+</span> <span class="FloatNumber">4.d</span> <span class="Operator">+</span> <span class="DecNumber">12</span><span class="Identifier">_987</span><span class="Punctuation">.</span><span class="Identifier">ns</span>
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;total </span><span class="EscapeSequence">\(</span><span class="StringLit">a)&quot;</span><span class="Punctuation">)</span>
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;</span><span class="EscapeSequence">\t</span><span class="EscapeSequence">year \(</span><span class="StringLit">a.year)&quot;</span><span class="Punctuation">)</span>
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;</span><span class="EscapeSequence">\t</span><span class="EscapeSequence">month \(</span><span class="StringLit">a.month)&quot;</span><span class="Punctuation">)</span>
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;</span><span class="EscapeSequence">\t</span><span class="EscapeSequence">day \(</span><span class="StringLit">a.day)&quot;</span><span class="Punctuation">)</span>
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;</span><span class="EscapeSequence">\t</span><span class="EscapeSequence">hour \(</span><span class="StringLit">a.hour)&quot;</span><span class="Punctuation">)</span>
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;</span><span class="EscapeSequence">\t</span><span class="EscapeSequence">minute \(</span><span class="StringLit">a.minute)&quot;</span><span class="Punctuation">)</span>
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;</span><span class="EscapeSequence">\t</span><span class="EscapeSequence">second \(</span><span class="StringLit">a.second)&quot;</span><span class="Punctuation">)</span>
+</pre></p>
+<p>As you can see this is the usual test we have been repeating so far, with the expected output. The syntax is pretty much like Nim's, only harder to read due to Swift's awkward string interpolation which adds noise in the form of extra parentheses and backslashes. But, you may have noticed that comment right there, the one about crying, what the hell is that?</p>
+<h2>Slowness intermission</h2><p>The Swift compiler is not slow, it is just allowing you to exercise the virtue of patience. Let's compare the speeds of the Swift 2.1.1 compiler against the Nim 0.13.0 compiler:</p>
+<p><pre class='code'>
+$ time swiftc -o units.exe *.swift
+
+real	0m25.137s
+user	0m24.235s
+sys	0m0.863s
+
+$ time nim c -o:units.exe units
+Hint: system [Processing]
+Hint: units [Processing]
+Hint: time_nanos [Processing]
+Hint: time_stamp [Processing]
+Hint: strutils [Processing]
+Hint: parseutils [Processing]
+Hint: sequtils [Processing]
+Users/gradha/project/kerf_timestamps_done_almost_right/nim/units.nim(18, 17) Warning: mapIt is deprecated [Deprecated]
+Users/gradha/project/kerf_timestamps_done_almost_right/nim/units.nim(18, 16) Warning: mapIt is deprecated [Deprecated]
+Users/gradha/project/kerf_timestamps_done_almost_right/nim/units.nim(19, 22) Warning: mapIt is deprecated [Deprecated]
+Users/gradha/project/kerf_timestamps_done_almost_right/nim/units.nim(19, 21) Warning: mapIt is deprecated [Deprecated]
+Users/gradha/project/kerf_timestamps_done_almost_right/nim/units.nim(24, 8) Warning: mapIt is deprecated [Deprecated]
+Users/gradha/project/kerf_timestamps_done_almost_right/nim/units.nim(24, 7) Warning: mapIt is deprecated [Deprecated]
+Users/gradha/project/kerf_timestamps_done_almost_right/nim/units.nim(25, 8) Warning: mapIt is deprecated [Deprecated]
+Users/gradha/project/kerf_timestamps_done_almost_right/nim/units.nim(25, 7) Warning: mapIt is deprecated [Deprecated]
+CC: units
+CC: stdlib_system
+CC: time_nanos
+CC: time_stamp
+CC: stdlib_strutils
+CC: stdlib_parseutils
+CC: stdlib_sequtils
+Hint:  [Link]
+Hint: operation successful (13343 lines compiled; 0.374 sec total; 20.204MB; Debug Build) [SuccessX]
+
+real	0m0.384s
+user	0m0.445s
+sys	0m0.093s
+</pre></p>
+<p>Yep, that's right. For a hopefully equivalent implementation (the Swift code is 443 lines long, the Nim version 411 lines long) the Nim compiler takes about half a second to compile and generate a binary, while the Swift compiler sends my source code to the NSA for inspection through a slow hybrid goat/pigeon link in Afghanistan, which takes about 25 seconds, or <span style="font-weight: bold;">50 fucking times more than the Nim compiler</span>. These are times from what we could consider <span style="font-style: italic;">cold boot</span>, because the Nim compiler actually halves the compilation time I quoted if it is allowed to reuse the <code>nimcache</code> directory from a previous compilation.  On the other hand running the Swift compiler several times only makes me consistently more impatient.</p>
+<p>But wait, there's more! We haven't yet <a href="https://github.com/gradha/kerf_timestamps_done_almost_right/blob/master/swift/time_nanos.swift#L135">uncommented the deadly line of umpossible compilation</a>. With this line in place, here is the result:</p>
+<p><pre class='code'>
+$ time swiftc -o units.exe *.swift
+time_nanos.swift:136:2: error: expression was too complex to be solved in reasonable time; consider breaking up the expression into distinct sub-expressions
+        print(u_minute + u_second + Nano(500) + &quot; = &quot; + 1.i + 1.s + 500.ns)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+real	0m24.637s
+user	0m23.967s
+sys	0m0.612s
+</pre></p>
+<p>Wow, that's a really complex expression. Or maybe not? Let's put into perspective now the things I complained about earlier:</p>
+<ol><li>No forward declarations.</li><li>No need to import protocols, they are magic!</li><li><a href="http://blog.krzyzanowskim.com/2015/03/01/swift_madness_of_generic_integer/">Extremely complex type hierarchies</a>.</li><li>Use of the addition operator for String concatenation, but also for numeric operations!</li></ol><p>Now these things start to add up and the compiler is actually having trouble with all those parallel Schrödinger universes where an expression could mean this, or could mean that, or maybe if we compiled a few lines more could mean something else entirely because a chained sub expression changes its output type depending on <span style="font-style: italic;">maybe-even-a-few-lines-more</span> down the file…! I understand your pain, Swift compiler. And if you tell me that this is not a fault of language design, does that mean that the people writing the Swift compiler are morons?  Ok, ok, that's too harsh, let's not make ad hominem attacks. Also, Swift is still a language in its infancy, with a shape shifting compiler. I was testing version 2.1.1, what would happen with newer releases?</p>
+<p><pre class='code'>
+$ swiftc -v
+Apple Swift version 2.2-dev (LLVM 846c513aa9, Clang 71eca7da8e, Swift 96628e41cc)
+Target: x86_64-apple-macosx10.9
+$ time swiftc -o units.exe *.swift
+time_nanos.swift:136:2: error: expression was too complex to be solved in reasonable time; consider breaking up the expression into distinct sub-expressions
+        print(u_minute + u_second + Nano(500) + &quot; = &quot; + 1.i + 1.s + 500.ns)
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+time_nanos.swift:138:2: error: expression was too complex to be solved in reasonable time; consider breaking up the expression into distinct sub-expressions
+        print((u_minute + u_second + Nano(500)) + &quot; = &quot; + (1.i + 1.s + 500.ns))
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+real	0m29.855s
+user	0m28.892s
+sys	0m0.670s
+</pre></p>
+<p>Oh, right, I forgot to comment out that <span style="font-style: italic;">deadly complex expression</span>:</p>
+<p><pre class='code'>
+$ git checkout time_nanos.swift
+$ time swiftc -o units.exe *.swift
+time_nanos.swift:138:2: error: expression was too complex to be solved in reasonable time; consider breaking up the expression into distinct sub-expressions
+        print((u_minute + u_second + Nano(500)) + &quot; = &quot; + (1.i + 1.s + 500.ns))
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+real	0m26.188s
+user	0m25.619s
+sys	0m0.546s
+</pre></p>
+<p>Wow, that's pretty awesome, the 2.2-dev version is <span style="font-weight: bold;">going backwards</span> and making previously easy to compile expression <span style="font-weight: bold;">umpossible complex</span> now. Wait, let's not give up here, we are so close to success I can smell it, let's try the latest and greatest:</p>
+<p><pre class='code'>
+$ swiftc -v
+Apple Swift version 3.0-dev (LLVM b361b0fc05, Clang 11493b0f62, Swift 24a0c3de75)
+Target: x86_64-apple-macosx10.9
+$ time swiftc -o units.exe *.swift
+time_stamp.swift:199:3: warning: 'inout' before a parameter name is deprecated, place it before the parameter type instead
+                inout _ token: String,
+                ^~~~~~
+                               inout
+time_stamp.swift:199:3: warning: 'inout' before a parameter name is deprecated, place it before the parameter type instead
+                inout _ token: String,
+                ^~~~~~
+                               inout
+time_nanos.swift:138:2: error: expression was too complex to be solved in reasonable time; consider breaking up the expression into distinct sub-expressions
+        print((u_minute + u_second + Nano(500)) + &quot; = &quot; + (1.i + 1.s + 500.ns))
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+real	0m29.556s
+user	0m28.732s
+sys	0m0.532s
+</pre></p>
+<a href="http://mang2goon.tistory.com/438"><img
+    src="../../../i/kerf_excuses.jpg"
+    alt="Trust me, I'm not a banana, I'm a new timestamp type"
+    style="width:100%;max-width:600px" align="right"
+    hspace="8pt" vspace="8pt"></a><p>So the compiler takes 4s more to tell me that a parameter is deprecated but is still unable to handle that expression. Thanks, Swift compiler, that warning is really helpful, unlike actually producing a binary I can run. Of course I reported this as <a href="https://bugs.swift.org/browse/SR-838?jql=text%20~%20%22expression%20was%20too%20complex%22">bug SR-838 with a reduced test case that runs faster</a> (you can get <a href="https://github.com/gradha/kerf_timestamps_done_almost_right/tree/master/swift/performance_problems">the reduced comparison test from GitHub</a>. Browsing their repo looks like other people are also experiencing such compilation problems with apparently less complex code. This experience makes me doubt Swift's viable future as a nice programming language <a href="https://xkcd.com/303/">unless waiting for the compiler is your cup of tea</a>. Also the bug tracker feels a little bit desolate. If it is anything like <a href="http://fixradarorgtfo.com">the old one</a> I won't bother with future reports.</p>
+<p>So now that the intermission is done, keep in mind that you need Swift compiler version 2.1.1 or this little exercise might be too much to handle!</p>
+<h2>One Stamp after another</h2><p>If you had not enough protocols yet, you will squeal of joy to find that <a href="https://github.com/gradha/kerf_timestamps_done_almost_right/blob/master/swift/time_stamp.swift#L13-L26">we ourselves define a new TimeComponents protocol for the Stamp</a>:</p>
+<p><pre class='code'><span class="Identifier">protocol</span> <span class="Identifier">TimeComponents</span> <span class="Punctuation">{</span>
+        <span class="Identifier">var</span> <span class="Identifier">year</span><span class="Punctuation">:</span> <span class="Identifier">Int</span> <span class="Punctuation">{</span> <span class="Identifier">get</span> <span class="Punctuation">}</span>
+        <span class="Identifier">var</span> <span class="Identifier">week</span><span class="Punctuation">:</span> <span class="Identifier">Int</span> <span class="Punctuation">{</span> <span class="Identifier">get</span> <span class="Punctuation">}</span>
+        <span class="Identifier">var</span> <span class="Identifier">month</span><span class="Punctuation">:</span> <span class="Identifier">Int</span> <span class="Punctuation">{</span> <span class="Identifier">get</span> <span class="Punctuation">}</span>
+        <span class="Identifier">var</span> <span class="Identifier">day</span><span class="Punctuation">:</span> <span class="Identifier">Int</span> <span class="Punctuation">{</span> <span class="Identifier">get</span> <span class="Punctuation">}</span>
+        <span class="Identifier">var</span> <span class="Identifier">hour</span><span class="Punctuation">:</span> <span class="Identifier">Int</span> <span class="Punctuation">{</span> <span class="Identifier">get</span> <span class="Punctuation">}</span>
+        <span class="Identifier">var</span> <span class="Identifier">minute</span><span class="Punctuation">:</span> <span class="Identifier">Int</span> <span class="Punctuation">{</span> <span class="Identifier">get</span> <span class="Punctuation">}</span>
+        <span class="Identifier">var</span> <span class="Identifier">second</span><span class="Punctuation">:</span> <span class="Identifier">Int</span> <span class="Punctuation">{</span> <span class="Identifier">get</span> <span class="Punctuation">}</span>
+        <span class="Identifier">var</span> <span class="Identifier">microsecond</span><span class="Punctuation">:</span> <span class="Identifier">Int</span> <span class="Punctuation">{</span> <span class="Identifier">get</span> <span class="Punctuation">}</span>
+        <span class="Identifier">var</span> <span class="Identifier">millisecond</span><span class="Punctuation">:</span> <span class="Identifier">Int</span> <span class="Punctuation">{</span> <span class="Identifier">get</span> <span class="Punctuation">}</span>
+        <span class="Identifier">var</span> <span class="Identifier">nanosecond</span><span class="Punctuation">:</span> <span class="Identifier">Int</span> <span class="Punctuation">{</span> <span class="Identifier">get</span> <span class="Punctuation">}</span>
+<span class="Punctuation">}</span>
+
+<span class="Identifier">struct</span> <span class="Identifier">Stamp</span> <span class="Punctuation">:</span> <span class="Identifier">CustomStringConvertible</span><span class="Punctuation">,</span> <span class="Identifier">TimeComponents</span> <span class="Punctuation">{</span>
+        <span class="Identifier">var</span> <span class="Identifier">value</span><span class="Punctuation">:</span> <span class="Identifier">Int64</span> <span class="Operator">=</span> <span class="DecNumber">0</span>
+        <span class="Identifier">…</span> <span class="Identifier">more</span> <span class="Identifier">code</span> <span class="Identifier">here…</span>
+<span class="Punctuation">}</span>
+</pre></p>
+<p>For the <code>Nano</code> struct I didn't apply this protocol. The reason to create and use this protocol is that later we want to extend the <code>Array</code> type, a generic collection type, with this protocol in order to be able to call these methods on the sequence items.  Apart from this protocol, which will be exercised later, the rest of the implementation is pretty mundane. After the struct definition we see a <a href="https://github.com/gradha/kerf_timestamps_done_almost_right/blob/master/swift/time_stamp.swift#L157-L161">String extension</a>:</p>
+<p><pre class='code'><span class="Identifier">extension</span> <span class="Identifier">String</span> <span class="Punctuation">{</span>
+        <span class="Identifier">var</span> <span class="Identifier">date</span><span class="Punctuation">:</span> <span class="Identifier">Stamp</span> <span class="Punctuation">{</span> <span class="Keyword">return</span> <span class="Identifier">Stamp</span><span class="Punctuation">(</span><span class="Identifier">self</span><span class="Punctuation">)</span> <span class="Punctuation">}</span>
+        <span class="Comment">// Avoid losing sanity. Hey, at least this is not java!</span>
+        <span class="Identifier">var</span> <span class="Identifier">len</span><span class="Punctuation">:</span> <span class="Identifier">Int</span> <span class="Punctuation">{</span> <span class="Keyword">return</span> <span class="Identifier">self</span><span class="Punctuation">.</span><span class="Identifier">characters</span><span class="Punctuation">.</span><span class="Identifier">count</span> <span class="Punctuation">}</span>
+<span class="Punctuation">}</span>
+</pre></p>
+<p>What we are defining here is our pseudo custom literal for strings to invoke the <code>Stamp</code> initializer. On top of that I added the <code>len</code> extension because I dislike typing unnecessary characters. Just after this extension we get the one I mentioned above, an <a href="https://github.com/gradha/kerf_timestamps_done_almost_right/blob/master/swift/time_stamp.swift#L163-L184">extension on Arrays to overload the subscript operator</a>:</p>
+<p><pre class='code'><span class="Identifier">extension</span> <span class="Identifier">Array</span> <span class="Identifier">where</span> <span class="Identifier">Element</span><span class="Punctuation">:</span> <span class="Identifier">TimeComponents</span> <span class="Punctuation">{</span>
+        <span class="Comment">// Marking as optional because swift 2.1 doesn't allow throwing inside</span>
+        <span class="Comment">// subscripts yet: http://stackoverflow.com/a/33724709/172690 or does it?</span>
+        <span class="Identifier">subscript</span><span class="Punctuation">(</span><span class="Identifier">position</span><span class="Punctuation">:</span> <span class="Identifier">String</span><span class="Punctuation">)</span> <span class="Operator">-&gt;</span> <span class="Punctuation">[</span><span class="Identifier">Int</span><span class="Punctuation">]</span><span class="Operator">?</span> <span class="Punctuation">{</span>
+                <span class="Identifier">get</span> <span class="Punctuation">{</span>
+                        <span class="Keyword">switch</span> <span class="Punctuation">(</span><span class="Identifier">position</span><span class="Punctuation">)</span> <span class="Punctuation">{</span>
+                                <span class="Keyword">case</span> <span class="StringLit">&quot;week&quot;</span><span class="Punctuation">:</span> <span class="Keyword">return</span> <span class="Identifier">self</span><span class="Punctuation">.</span><span class="Identifier">map</span><span class="Punctuation">(</span><span class="Punctuation">)</span> <span class="Punctuation">{</span> <span class="Operator">$</span><span class="FloatNumber">0.w</span><span class="Identifier">eek</span> <span class="Punctuation">}</span>
+                                <span class="Keyword">case</span> <span class="StringLit">&quot;year&quot;</span><span class="Punctuation">:</span> <span class="Keyword">return</span> <span class="Identifier">self</span><span class="Punctuation">.</span><span class="Identifier">map</span><span class="Punctuation">(</span><span class="Punctuation">)</span> <span class="Punctuation">{</span> <span class="Operator">$</span><span class="FloatNumber">0.y</span><span class="Identifier">ear</span> <span class="Punctuation">}</span>
+                                <span class="Keyword">case</span> <span class="StringLit">&quot;month&quot;</span><span class="Punctuation">:</span> <span class="Keyword">return</span> <span class="Identifier">self</span><span class="Punctuation">.</span><span class="Identifier">map</span><span class="Punctuation">(</span><span class="Punctuation">)</span> <span class="Punctuation">{</span> <span class="Operator">$</span><span class="FloatNumber">0.m</span><span class="Identifier">onth</span> <span class="Punctuation">}</span>
+                                <span class="Keyword">case</span> <span class="StringLit">&quot;day&quot;</span><span class="Punctuation">:</span> <span class="Keyword">return</span> <span class="Identifier">self</span><span class="Punctuation">.</span><span class="Identifier">map</span><span class="Punctuation">(</span><span class="Punctuation">)</span> <span class="Punctuation">{</span> <span class="Operator">$</span><span class="FloatNumber">0.d</span><span class="Identifier">ay</span> <span class="Punctuation">}</span>
+                                <span class="Keyword">case</span> <span class="StringLit">&quot;hour&quot;</span><span class="Punctuation">:</span> <span class="Keyword">return</span> <span class="Identifier">self</span><span class="Punctuation">.</span><span class="Identifier">map</span><span class="Punctuation">(</span><span class="Punctuation">)</span> <span class="Punctuation">{</span> <span class="Operator">$</span><span class="FloatNumber">0.h</span><span class="Identifier">our</span> <span class="Punctuation">}</span>
+                                <span class="Keyword">case</span> <span class="StringLit">&quot;minute&quot;</span><span class="Punctuation">:</span> <span class="Keyword">return</span> <span class="Identifier">self</span><span class="Punctuation">.</span><span class="Identifier">map</span><span class="Punctuation">(</span><span class="Punctuation">)</span> <span class="Punctuation">{</span> <span class="Operator">$</span><span class="FloatNumber">0.m</span><span class="Identifier">inute</span> <span class="Punctuation">}</span>
+                                <span class="Keyword">case</span> <span class="StringLit">&quot;second&quot;</span><span class="Punctuation">:</span> <span class="Keyword">return</span> <span class="Identifier">self</span><span class="Punctuation">.</span><span class="Identifier">map</span><span class="Punctuation">(</span><span class="Punctuation">)</span> <span class="Punctuation">{</span> <span class="Operator">$</span><span class="FloatNumber">0.s</span><span class="Identifier">econd</span> <span class="Punctuation">}</span>
+                                <span class="Keyword">case</span> <span class="StringLit">&quot;microsecond&quot;</span><span class="Punctuation">:</span> <span class="Keyword">return</span> <span class="Identifier">self</span><span class="Punctuation">.</span><span class="Identifier">map</span><span class="Punctuation">(</span><span class="Punctuation">)</span> <span class="Punctuation">{</span> <span class="Operator">$</span><span class="FloatNumber">0.m</span><span class="Identifier">icrosecond</span> <span class="Punctuation">}</span>
+                                <span class="Keyword">case</span> <span class="StringLit">&quot;millisecond&quot;</span><span class="Punctuation">:</span> <span class="Keyword">return</span> <span class="Identifier">self</span><span class="Punctuation">.</span><span class="Identifier">map</span><span class="Punctuation">(</span><span class="Punctuation">)</span> <span class="Punctuation">{</span> <span class="Operator">$</span><span class="FloatNumber">0.m</span><span class="Identifier">illisecond</span> <span class="Punctuation">}</span>
+                                <span class="Keyword">case</span> <span class="StringLit">&quot;nanosecond&quot;</span><span class="Punctuation">:</span> <span class="Keyword">return</span> <span class="Identifier">self</span><span class="Punctuation">.</span><span class="Identifier">map</span><span class="Punctuation">(</span><span class="Punctuation">)</span> <span class="Punctuation">{</span> <span class="Operator">$</span><span class="FloatNumber">0.n</span><span class="Identifier">anosecond</span> <span class="Punctuation">}</span>
+                                <span class="Keyword">default</span><span class="Punctuation">:</span> <span class="Keyword">return</span> <span class="Identifier">nil</span>
+                        <span class="Punctuation">}</span>
+                <span class="Punctuation">}</span>
+        <span class="Punctuation">}</span>
+<span class="Punctuation">}</span>
+</pre></p>
+<p>In the <a href="kerf-timestamps-done-almost-right-nim.html">bonus generic subscript operator section of the Nim implementation chapter</a> I implemented Kerf's subscript operator using filter procs, which allowed us to pass any kind of proc to be applied to sequences. Here I'm taking a different turn and implementing a string based version <a href="kerf-timestamps-done-almost-right-a-new-type.html">like I mentioned in the introduction chapter</a>. This version shows that using strings can be done, but it is not extensible, and in the case of typos this extension returns Nil. This forces extra checks on the caller code. The generic <code>Array</code> type was forced with <code>where Element: TimeComponents</code> to a concrete protocol, so I could write the <code>map()</code> calls using the proper calendar component getters. In Swift you can't coerce the generic <code>Array</code> to a <code>Stamp</code>, if you try you get the message <code>error: type 'Element' constrained to non-protocol type 'Stamp'</code> from the compiler (and also a crash with stacktrace on version 2.1.1 of the compiler).</p>
+<p>After <a href="https://github.com/gradha/kerf_timestamps_done_almost_right/blob/master/swift/time_stamp.swift#L186-L216">some lines dedicated to reimplement basic Nim parsing code</a> for the purpose of keeping it as close as possible to the original, we reach <a href="https://github.com/gradha/kerf_timestamps_done_almost_right/blob/master/swift/time_stamp.swift#L219-L244">the final self test code of the file</a>. Nothing exceptional there, so let's take a look at the <a href="https://github.com/gradha/kerf_timestamps_done_almost_right/blob/master/swift/main.swift">main.swift file</a> which implements the Kerf syntax examples we want to copy:</p>
+<p><pre class='code'><span class="Identifier">let</span> <span class="Identifier">a</span> <span class="Operator">=</span> <span class="StringLit">&quot;2012.01.01&quot;</span><span class="Punctuation">.</span><span class="Identifier">date</span>
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;Example 1: </span><span class="EscapeSequence">\(</span><span class="StringLit">a)&quot;</span><span class="Punctuation">)</span>
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;Example 2:&quot;</span><span class="Punctuation">)</span>
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;</span><span class="EscapeSequence">\t</span><span class="EscapeSequence">\(</span><span class="StringLit">a + 1.d)&quot;</span><span class="Punctuation">)</span>
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;</span><span class="EscapeSequence">\t</span><span class="EscapeSequence">\(</span><span class="StringLit">&quot;</span><span class="FloatNumber">2012.01</span><span class="Punctuation">.</span><span class="Punctuation">01</span><span class="StringLit">&quot;.date + 1.d)&quot;</span><span class="Punctuation">)</span>
+
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;Example 3: </span><span class="EscapeSequence">\(</span><span class="StringLit">&quot;</span><span class="FloatNumber">2012.01</span><span class="Punctuation">.</span><span class="Punctuation">01</span><span class="StringLit">&quot;.date + 1.m + 1.d + 1.h + 15.i + 17.s)&quot;</span><span class="Punctuation">)</span>
+</pre></p>
+<p>Basic initialization and operator overloading works fine, this looks just like the Nim code plus the weird string interpolation. Then, just like in the Nim version, we attempt <a href="https://github.com/gradha/kerf_timestamps_done_almost_right/blob/master/swift/main.swift#L12-L16">Kerf's 4th example using temporary variables</a>:</p>
+<p><pre class='code'><span class="Identifier">let</span> <span class="Identifier">r</span> <span class="Operator">=</span> <span class="Punctuation">(</span><span class="FloatNumber">0.</span><span class="Punctuation">.</span><span class="Operator">&lt;</span><span class="DecNumber">10</span><span class="Punctuation">)</span>
+<span class="Identifier">let</span> <span class="Identifier">offsets</span> <span class="Operator">=</span> <span class="Identifier">r</span><span class="Punctuation">.</span><span class="Identifier">map</span><span class="Punctuation">(</span><span class="Punctuation">)</span> <span class="Punctuation">{</span> <span class="Punctuation">(</span><span class="FloatNumber">1.m</span> <span class="Operator">+</span> <span class="FloatNumber">1.d</span> <span class="Operator">+</span> <span class="FloatNumber">1.h</span> <span class="Operator">+</span> <span class="FloatNumber">15.i</span> <span class="Operator">+</span> <span class="FloatNumber">17.s</span><span class="Punctuation">)</span> <span class="Operator">*</span> <span class="Operator">$</span><span class="DecNumber">0</span> <span class="Punctuation">}</span>
+<span class="Identifier">let</span> <span class="Identifier">values</span> <span class="Operator">=</span> <span class="Identifier">offsets</span><span class="Punctuation">.</span><span class="Identifier">map</span><span class="Punctuation">(</span><span class="Punctuation">)</span> <span class="Punctuation">{</span> <span class="StringLit">&quot;2012.01.01&quot;</span><span class="Punctuation">.</span><span class="Identifier">date</span> <span class="Operator">+</span> <span class="Operator">$</span><span class="DecNumber">0</span> <span class="Punctuation">}</span>
+
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;Example 4: </span><span class="EscapeSequence">\(</span><span class="StringLit">values)&quot;</span><span class="Punctuation">)</span>
+</pre></p>
+<p>And it works. In Nim a template was used to map arbitrary expressions to the input sequence. Here in Swift the <code>map()</code> functions accept as parameter closures. If the closure is the last parameter in the function definition it can be omitted from the actual call (between the parentheses) and placed within braces after it. Inside this closure the implicit input parameter is represented as <code>$0</code> which stands for the first parameter. The second Nim version which was rolled in a single expression can't be used with string interpolation, so <a href="https://github.com/gradha/kerf_timestamps_done_almost_right/blob/master/swift/main.swift#L18-L27">a temporary variable is used instead</a>:</p>
+<p><pre class='code'><span class="Identifier">let</span> <span class="Identifier">x</span> <span class="Operator">=</span> <span class="Identifier">String</span><span class="Punctuation">(</span><span class="Punctuation">(</span><span class="FloatNumber">0.</span><span class="Punctuation">.</span><span class="Operator">&lt;</span><span class="DecNumber">10</span><span class="Punctuation">)</span>
+        <span class="Punctuation">.</span><span class="Identifier">map</span><span class="Punctuation">(</span><span class="Punctuation">)</span> <span class="Punctuation">{</span> <span class="Punctuation">(</span><span class="FloatNumber">1.m</span> <span class="Operator">+</span> <span class="FloatNumber">1.d</span> <span class="Operator">+</span> <span class="FloatNumber">1.h</span> <span class="Operator">+</span> <span class="FloatNumber">15.i</span> <span class="Operator">+</span> <span class="FloatNumber">17.s</span><span class="Punctuation">)</span> <span class="Operator">*</span> <span class="Operator">$</span><span class="DecNumber">0</span> <span class="Punctuation">}</span>
+        <span class="Punctuation">.</span><span class="Identifier">map</span><span class="Punctuation">(</span><span class="Punctuation">)</span> <span class="Punctuation">{</span> <span class="StringLit">&quot;2012.01.01&quot;</span><span class="Punctuation">.</span><span class="Identifier">date</span> <span class="Operator">+</span> <span class="Operator">$</span><span class="DecNumber">0</span> <span class="Punctuation">}</span><span class="Punctuation">)</span>
+<span class="Comment">// Swift's compiler agrees that string interpolation is crap and bails out</span>
+<span class="Comment">// if you try to embed the previous expression, so we create a temporal.</span>
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;…again but compressed… </span><span class="EscapeSequence">\(</span><span class="StringLit">x)&quot;</span><span class="Punctuation">)</span>
+
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;…again with explicit concatenation… &quot;</span> <span class="Operator">+</span> <span class="Identifier">String</span><span class="Punctuation">(</span><span class="Punctuation">(</span><span class="FloatNumber">0.</span><span class="Punctuation">.</span><span class="Operator">&lt;</span><span class="DecNumber">10</span><span class="Punctuation">)</span>
+        <span class="Punctuation">.</span><span class="Identifier">map</span><span class="Punctuation">(</span><span class="Punctuation">)</span> <span class="Punctuation">{</span> <span class="Punctuation">(</span><span class="FloatNumber">1.m</span> <span class="Operator">+</span> <span class="FloatNumber">1.d</span> <span class="Operator">+</span> <span class="FloatNumber">1.h</span> <span class="Operator">+</span> <span class="FloatNumber">15.i</span> <span class="Operator">+</span> <span class="FloatNumber">17.s</span><span class="Punctuation">)</span> <span class="Operator">*</span> <span class="Operator">$</span><span class="DecNumber">0</span> <span class="Punctuation">}</span>
+        <span class="Punctuation">.</span><span class="Identifier">map</span><span class="Punctuation">(</span><span class="Punctuation">)</span> <span class="Punctuation">{</span> <span class="StringLit">&quot;2012.01.01&quot;</span><span class="Punctuation">.</span><span class="Identifier">date</span> <span class="Operator">+</span> <span class="Operator">$</span><span class="DecNumber">0</span> <span class="Punctuation">}</span><span class="Punctuation">)</span><span class="Punctuation">)</span>
+</pre></p>
+<p>Alternatively, instead of string interpolation explicit concatenation can be used, as the last expression shows. And at this point we would implement the shorter operator overloaded version for arrays so we could match Kerf's syntax. Unfortunately the <span style="font-style: italic;">complex expression</span> bugs stopped me in all attempts to do so, maybe in a future when Swift is more mature I'll try again. For the last example using the subscript operator to access calendar components, I placed it <a href="https://github.com/gradha/kerf_timestamps_done_almost_right/blob/master/swift/main.swift#L31-L35">near to the alternative strongly typed map version</a>:</p>
+<p><pre class='code'><span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;Example 5 b[week]: </span><span class="EscapeSequence">\(</span><span class="StringLit">values.map() { $0.week })&quot;</span><span class="Punctuation">)</span>
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;Example 5 b[second]: </span><span class="EscapeSequence">\(</span><span class="StringLit">values.map() { $0.second })&quot;</span><span class="Punctuation">)</span>
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;Example 5 b[second]: </span><span class="EscapeSequence">\(</span><span class="StringLit">values[&quot;</span><span class="Identifier">week</span><span class="StringLit">&quot;])&quot;</span><span class="Punctuation">)</span>
+<span class="Identifier">print</span><span class="Punctuation">(</span><span class="StringLit">&quot;Example 5 b[second]: </span><span class="EscapeSequence">\(</span><span class="StringLit">values[&quot;</span><span class="Identifier">runtime</span> <span class="Identifier">error</span><span class="StringLit">&quot;])&quot;</span><span class="Punctuation">)</span>
+</pre></p>
+<p>As mentioned above, the subscript version may look cleaner, but it allows potential typos, which is why it returns a nil. On the other hand if you use the <code>map()</code> version and try to access the <code>weak</code> variable, you will get a nice compiler error:</p>
+<p><pre class='code'>
+main.swift:31:45: error: value of type 'Stamp' has no member 'weak'
+        print(&quot;Example 5 b[week]: \(values.map() { $0.weak })&quot;)
+                                                   ^~ ~~~~
+</pre></p>
+<p>For completeness, here is the successful output of this last example part, note the optional sequence syntax in the output:</p>
+<p><pre class='code'>
+Example 5 b[week]: [1, 5, 9, 14, 18, 23, 27, 32, 36, 40]
+Example 5 b[second]: [0, 17, 34, 51, 8, 25, 42, 59, 16, 33]
+Example 5 b[second]: Optional([1, 5, 9, 14, 18, 23, 27, 32, 36, 40])
+Example 5 b[second]: nil
+
+</pre></p>
+<h2>Conclusion</h2><p>Working with Swift is particularly unsatisfying, but I can't put my finger yet on what exactly is causing me more grief. Is it is because the language design feels unnecessarily complex? Is it because the compiler takes ages to do simple things?  Is it because of bugs? What matters is that in Swift you can also implement Kerf's timestamp types. Now we only have to wait for better compiler implementations to <span style="font-style: italic;">maybe enjoy</span> the language in the future.  In the meantime, you might want to take a laugh at the <a href="kerf-timestamps-done-almost-right-wtf…-java.html">horrifying Java implementation I came up with</a>.</p>
+
+<br clear="right"><center>
+<a href="http://mang2goon.tistory.com/466"><img
+    src="../../../i/kerf_patient.jpg"
+    alt="Patient Woohee is patiently waiting for the compiler to finish, or for a newer compiler that doesn't suck"
+    style="width:100%;max-width:600px" align="center"
+    hspace="8pt" vspace="8pt"></a>
+</center>
+	</div>
+		<hr>
+		<p>See <a href="../../../index.html">the article index</a> or browse
+		articles by tags:     <a href="../../../tags/design.html">design</a>
+    ,
+    <a href="../../../tags/nim.html">nim</a>
+    ,
+    <a href="../../../tags/java.html">java</a>
+    ,
+    <a href="../../../tags/cpp.html">cpp</a>
+    ,
+    <a href="../../../tags/languages.html">languages</a>
+    ,
+    <a href="../../../tags/kerf.html">kerf</a>
+    ,
+    <a href="../../../tags/programming.html">programming</a>
+    ,
+    <a href="../../../tags/swift.html">swift</a>
+    
+.<br>Published on: 06/03/2016 22:52. Last update:
+			06/03/2016 22:52. <a
+			href="../../../feed.xml"><img
+			alt="rss feed" src="../../../i/Feed-icon.svg"
+			width="18pt" height="18pt"></a><br>
+		Copyright 2016 by <a href="../../../about.html">Grzegorz Adam Hankiewicz</a>.<br>
+		Generated with <a href="https://github.com/dom96/ipsumgenera">ipsum
+			genera</a>. Look at <a
+		href="https://github.com/gradha/gradha.github.io">the
+		source code</a>.</p>
+	</body>
+</html>
