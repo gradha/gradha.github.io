@@ -42,7 +42,7 @@ Java (`source available for all of them at GitHub
     <li>a new type? <b>You are here!</b>
     <li><a href="kerf-timestamps-done-almost-right-nim.html">Nim</a>
     <li><a href="kerf-timestamps-done-almost-right-c-plus--plus-.html">C++</a>
-    <li>Swift
+    <li><a href="kerf-timestamps-done-almost-right-swift.html">Swift</a>
     <li>WTF… Java?
     <li>Conclusions
     </ol></td></tr></table>

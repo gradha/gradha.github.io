@@ -39,7 +39,7 @@ programming language:
     <li><a href="kerf-timestamps-done-almost-right-a-new-type.html">a new type?</a>
     <li><a href="kerf-timestamps-done-almost-right-nim.html">Nim</a>
     <li>C++ <b>You are here!</b>
-    <li>Swift
+    <li><a href="kerf-timestamps-done-almost-right-swift.html">Swift</a>
     <li>WTF… Java?
     <li>Conclusions
     </ol></td></tr></table>
@@ -456,16 +456,16 @@ and most people suggest using `composition
 <http://stackoverflow.com/questions/16660437/vector-and-operator-overloading>`_
 which would make the code even uglier and cumbersome. Doable, but I just don't
 have the patience to do it. Except for this last *trouble* from an
-unexperienced C++ programmer, the C++ language allows us to efficiently
+inexperienced C++ programmer, the C++ language allows us to efficiently
 implement Kerf's timestamp and the surrounding operators for the same final
 expressiveness. The only problem is the time you need to invest to learn about
-all the hystorical quirks the language has accrued over time and write piles of
+all the historical quirks the language has accrued over time and write piles of
 code to do things which are one liners in more modern languages.
 
 All in all, not bad for a language born in 1983, from the shadow of the `C
 programming language <https://en.wikipedia.org/wiki/C_(programming_language)>`_
 which was created in 1972. Let's see what we can do with a newer `hipster
-language next… <>`_.
+language next… <kerf-timestamps-done-almost-right-swift.html>`_
 
 .. raw:: html
 

@@ -39,7 +39,7 @@ programming language:
     <li><a href="kerf-timestamps-done-almost-right-a-new-type.html">a new type?</a>
     <li>Nim <b>You are here!</b>
     <li><a href="kerf-timestamps-done-almost-right-c-plus--plus-.html">C++</a>
-    <li>Swift
+    <li><a href="kerf-timestamps-done-almost-right-swift.html">Swift</a>
     <li>WTF… Java?
     <li>Conclusions
     </ol></td></tr></table>
@@ -393,8 +393,8 @@ otherwise if you wrote **by mistake** the addition between a string and a
 concatenating it to the previous variable. This is a bad idea, hence a ``&``
 operator is preferred in languages which allow overloading, to avoid confusion
 and/or extra parentheses around your expressions to coerce them to the expected
-type. This little design decision will have implications in the Swift
-implementation.
+type. This little design decision will have implications in the `Swift
+implementation <kerf-timestamps-done-almost-right-swift.html>`_.
 
 After these helpers we have `another custom operator helper <https://github.com/gradha/kerf_timestamps_done_almost_right/blob/master/nim/time_nanos.nim#L132-L139>`_. It's usage is not obvious at the moment so we will come back to it by the end of the article. The implementation `ends up with a basic self unit testing code <https://github.com/gradha/kerf_timestamps_done_almost_right/blob/master/nim/time_nanos.nim#L142-L167>`_ I wrote to verify I'm not doing anything too stupid. From this code we can see how near or far we have come to Kerf's version:
 
