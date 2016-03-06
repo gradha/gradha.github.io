@@ -40,8 +40,8 @@ programming language:
     <li><a href="kerf-timestamps-done-almost-right-nim.html">Nim</a>
     <li><a href="kerf-timestamps-done-almost-right-c-plus--plus-.html">C++</a>
     <li>Swift <b>You are here!</b>
-    <li>WTF… Java?
-    <li>Conclusions
+    <li><a href="kerf-timestamps-done-almost-right-wtf…-java.html">WTF… Java?</a>
+    <li><a href="kerf-timestamps-done-almost-right-conclusions.html">Conclusions</a>
     </ol></td></tr></table>
 
 `Swift <https://en.wikipedia.org/wiki/Swift_(programming_language)>`_ is a
@@ -426,7 +426,7 @@ So the compiler takes 4s more to tell me that a parameter is deprecated but is
 still unable to handle that expression. Thanks, Swift compiler, that warning is
 really helpful, unlike actually producing a binary I can run. Of course I
 reported this as `bug SR-838 with a reduced test case that runs faster
-<https://bugs.swift.org/browse/SR-838?jql=text%20~%20%22expression%20was%20too%20complex%22>`_.
+<https://bugs.swift.org/browse/SR-838?jql=text%20~%20%22expression%20was%20too%20complex%22>`_ (you can get `the reduced comparison test from GitHub <https://github.com/gradha/kerf_timestamps_done_almost_right/tree/master/swift/performance_problems>`_.
 Browsing their repo looks like other people are also experiencing such
 compilation problems with apparently less complex code. This experience makes
 me doubt Swift's viable future as a nice programming language `unless waiting
@@ -627,8 +627,8 @@ feels unnecessarily complex? Is it because the compiler takes ages to do simple
 things?  Is it because of bugs? What matters is that in Swift you can also
 implement Kerf's timestamp types. Now we only have to wait for better compiler
 implementations to *maybe enjoy* the language in the future.  In the meantime,
-you might want to take a laugh at the horrifying Java implementation I came up
-with.
+you might want to take a laugh at the `horrifying Java implementation I came up
+with <kerf-timestamps-done-almost-right-wtf…-java.html>`_.
 
 .. raw:: html
 

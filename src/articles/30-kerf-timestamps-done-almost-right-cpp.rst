@@ -40,8 +40,8 @@ programming language:
     <li><a href="kerf-timestamps-done-almost-right-nim.html">Nim</a>
     <li>C++ <b>You are here!</b>
     <li><a href="kerf-timestamps-done-almost-right-swift.html">Swift</a>
-    <li>WTF… Java?
-    <li>Conclusions
+    <li><a href="kerf-timestamps-done-almost-right-wtf…-java.html">WTF… Java?</a>
+    <li><a href="kerf-timestamps-done-almost-right-conclusions.html">Conclusions</a>
     </ol></td></tr></table>
 
 .. raw:: html

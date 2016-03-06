@@ -40,8 +40,8 @@ programming language:
     <li>Nim <b>You are here!</b>
     <li><a href="kerf-timestamps-done-almost-right-c-plus--plus-.html">C++</a>
     <li><a href="kerf-timestamps-done-almost-right-swift.html">Swift</a>
-    <li>WTF… Java?
-    <li>Conclusions
+    <li><a href="kerf-timestamps-done-almost-right-wtf…-java.html">WTF… Java?</a>
+    <li><a href="kerf-timestamps-done-almost-right-conclusions.html">Conclusions</a>
     </ol></td></tr></table>
 
 `Nim <http://nim-lang.org>`_ (formerly known as "Nimrod") is a statically
