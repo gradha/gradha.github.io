@@ -1,7 +1,7 @@
 ---
 title: Kerf timestamps done almost right: conclusions
-pubdate: 2016-03-05 18:06
-moddate: 2016-03-05 18:06
+pubdate: 2016-03-06 23:54
+moddate: 2016-03-06 23:54
 tags: design, nim, java, cpp, languages, kerf, programming, swift
 ---
 
@@ -34,7 +34,7 @@ its final lessons for future language authors:
     <li><a href="kerf-timestamps-done-almost-right-c-plus--plus-.html">C++</a>
     <li><a href="kerf-timestamps-done-almost-right-swift.html">Swift</a>
     <li><a href="kerf-timestamps-done-almost-right-wtf…-java.html">WTF… Java?</a>
-    <li>Conclusions <b>You are here!</b>
+    <li>conclusions <b>You are here!</b>
     </ol></td></tr></table>
 
 
@@ -81,12 +81,13 @@ and Swift has shown that it is not necessary to bake timestamps as a language
 feature, it is enough to have a language which allows extension by programmers.
 
 But then, Scott makes a jab at Python or Java, which are known for being
-terrible languages in terms of performance. Yes, you can find specific
-performant Java code which has been optimized for benchmarks or you can use
-`JNI <https://en.wikipedia.org/wiki/Java_Native_Interface>`_ to call native C
-libraries. And you can find Python code which runs C underneath for speed, but
-that's essentially accepting that the language generally sucks and you always
-need to externalize the performance critical paths of your program.
+terrible languages in terms of performance (no idea about R, sorry). Yes, you
+can find specific performant Java code which has been optimized for benchmarks
+or you can use `JNI <https://en.wikipedia.org/wiki/Java_Native_Interface>`_ to
+call native C libraries. And you can find Python code which runs C underneath
+for speed, but that's essentially accepting that the language generally sucks
+and you always need to externalize the performance critical paths of your
+program.
 
 .. raw:: html
     <blockquote><em>
@@ -102,9 +103,10 @@ one of the most alien tasks known to humanity, along with maths or statistics,
 a programmer is forced to write Java code. Run, fools, run if you hear this
 word, for somebody is trying to sell you a bridge! Accessing implied fields is
 a matter of taste, and it can be done anyway. Remember when I added the ``len``
-variable to the ``String`` type just because I'm worth it? If I had a date
-library or type which didn't do what I wanted I could extend it myself without
-problems.
+variable to the ``String`` type `in Swift
+<kerf-timestamps-done-almost-right-swift.html>`_ just because I'm worth it? If
+I had a date library or type which didn't do what I wanted I could extend it
+myself without problems.
 
 There is no *performant* type for anything, because performance is context
 sensitive. For some tasks Kerf's timestamp will be the most performant
@@ -131,15 +133,16 @@ Implementation summary
 ----------------------
 
 I'm glad I decided to start writing these articles. They didn't really take a
-lot of time to implement, but since I have other priorities in life it simply
-dragged for weeks. In fact I think that writing the articles explaining the
-implementations took me **more** time that the implementations themselves, but
-I never bothered to check, shame on me. As usual implementing stuff in Nim is a
-pleasure. C++ was surprising as well, the syntax sucks but it could deal with
-the problem like a champ. Swift was a mixed bag, but I'll let it slide due to
-its compiler being relatively very new. Java, LOL, nice try. Here is a summary
-table with the score I give to each implementation for its final fidelity to
-Kerf's timestamp type:
+lot of time to implement and I found some interesting things in the process,
+but since I have other priorities in life it simply dragged for weeks. In fact
+I believe that writing the articles explaining the implementations took me
+**more** time that the implementations themselves, but I never bothered to
+check, shame on me. As usual implementing stuff in Nim is a pleasure. C++ was
+surprising as well, the syntax sucks but it could deal with the problem like a
+champ. Swift was a mixed bag, but I'll let it slide due to its compiler being
+relatively very new. Java, LOL, nice try. Here is a summary table with the
+score I give to each implementation for its final fidelity to Kerf's timestamp
+type:
 
 .. raw:: html
 
@@ -204,7 +207,9 @@ Lessons for future blog article writers
 ---------------------------------------
 
 1. Try to avoid writing sweeping generalizations. You'll always find somebody
-   annoyed enough to contradict you with little details that don't matter.
+   annoyed enough to contradict you with little details that don't matter for
+   the point that you are trying to make (making your stuff attractive for
+   people to buy it).
 
 2. If you use anecdotes to illustrate your case try to not base the article on
    them, anecdotes tend to be flimsy when scrutinized. Prefer source code
@@ -217,8 +222,9 @@ Lessons for future blog article writers
    comparing languages, at least try to compare yourself to equivalent
    languages who can stand their own in a fight. Comparing yourself to lesser
    languages doesn't have merit, it would be like claiming you are the fastest
-   runner on earth and showcase this comparing yourself with a `Korean idol
+   runner on earth and showcase this comparing yourself to a `Korean pop idol
    <https://www.youtube.com/watch?v=_YnrVnUoWAU>`_.
 
 4. Put random unrelated pictures or GIFs to spice your endless walls of text.
-   Readers are still humans, you know? They'll appreciate the distraction.
+   Readers are still humans, you know? They'll appreciate the distraction and
+   will hopefully have something to laugh about other than your sad article.

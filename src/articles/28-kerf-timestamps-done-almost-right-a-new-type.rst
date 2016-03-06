@@ -1,7 +1,7 @@
 ---
 title: Kerf timestamps done almost right: a new type?
-pubdate: 2016-03-05 18:01
-moddate: 2016-03-05 18:01
+pubdate: 2016-03-06 23:49
+moddate: 2016-03-06 23:49
 tags: design, nim, java, cpp, languages, kerf, programming, swift
 ---
 
@@ -44,7 +44,7 @@ Java (`source available for all of them at GitHub
     <li><a href="kerf-timestamps-done-almost-right-c-plus--plus-.html">C++</a>
     <li><a href="kerf-timestamps-done-almost-right-swift.html">Swift</a>
     <li><a href="kerf-timestamps-done-almost-right-wtf…-java.html">WTF… Java?</a>
-    <li><a href="kerf-timestamps-done-almost-right-conclusions.html">Conclusions</a>
+    <li><a href="kerf-timestamps-done-almost-right-conclusions.html">conclusions</a>
     </ol></td></tr></table>
 
 After this exploration it should be clear to you that implementing timestamps

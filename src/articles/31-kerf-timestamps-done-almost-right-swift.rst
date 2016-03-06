@@ -1,7 +1,7 @@
 ---
 title: Kerf timestamps done almost right: Swift
-pubdate: 2016-03-05 18:04
-moddate: 2016-03-05 18:04
+pubdate: 2016-03-06 23:52
+moddate: 2016-03-06 23:52
 tags: design, nim, java, cpp, languages, kerf, programming, swift
 ---
 
@@ -41,7 +41,7 @@ programming language:
     <li><a href="kerf-timestamps-done-almost-right-c-plus--plus-.html">C++</a>
     <li>Swift <b>You are here!</b>
     <li><a href="kerf-timestamps-done-almost-right-wtf…-java.html">WTF… Java?</a>
-    <li><a href="kerf-timestamps-done-almost-right-conclusions.html">Conclusions</a>
+    <li><a href="kerf-timestamps-done-almost-right-conclusions.html">conclusions</a>
     </ol></td></tr></table>
 
 `Swift <https://en.wikipedia.org/wiki/Swift_(programming_language)>`_ is a

@@ -1,7 +1,7 @@
 ---
 title: Kerf timestamps done almost right: WTF… Java?
-pubdate: 2016-03-05 18:05
-moddate: 2016-03-05 18:05
+pubdate: 2016-03-06 23:53
+moddate: 2016-03-06 23:53
 tags: design, nim, java, cpp, languages, kerf, programming, swift
 ---
 
@@ -41,7 +41,7 @@ programming language:
     <li><a href="kerf-timestamps-done-almost-right-c-plus--plus-.html">C++</a>
     <li><a href="kerf-timestamps-done-almost-right-swift.html">Swift</a>
     <li>WTF… Java? <b>You are here!</b>
-    <li><a href="kerf-timestamps-done-almost-right-conclusions.html">Conclusions</a>
+    <li><a href="kerf-timestamps-done-almost-right-conclusions.html">conclusions</a>
     </ol></td></tr></table>
 
 
