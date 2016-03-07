@@ -149,6 +149,7 @@ type:
     <table border="1"><tr>
     <th>Language</th>
     <th>Fidelity</th>
+    <th>LOCs</th>
     <th>Pleasure to use</th>
     <th>Extra notes</th>
     </tr>
@@ -156,6 +157,7 @@ type:
     <tr>
     <td style="vertical-align: middle;">Nim</td>
     <td style="vertical-align: middle;">95%</td>
+    <td style="vertical-align: middle;">411</td>
     <td style="vertical-align: middle;">100%</td><td
     >The only thing that keeps Nim from being 100% exact to Kerf is that there
     is no custom syntax to match, and the differences are minor in any
@@ -164,6 +166,7 @@ type:
     <tr>
     <td style="vertical-align: middle;">C++</td>
     <td style="vertical-align: middle;">75%</td>
+    <td style="vertical-align: middle;">654</td>
     <td style="vertical-align: middle;">70%</td><td
     >Overloading the STL is icky, and the syntax is complex and sometimes
     obscure.  Fortunately the full functionality of the type can be reproduced,
@@ -174,6 +177,7 @@ type:
     <tr>
     <td style="vertical-align: middle;">Swift</td>
     <td style="vertical-align: middle;">65%</td>
+    <td style="vertical-align: middle;">443</td>
     <td style="vertical-align: middle;">50%</td><td
     >The fidelity should be higher than C++ once the bugs about complex
     expressions are ironed out and more compact operators can be used. Right
@@ -183,6 +187,7 @@ type:
     <tr>
     <td style="vertical-align: middle;">Java</td>
     <td style="vertical-align: middle;">10%</td>
+    <td style="vertical-align: middle;">571</td>
     <td style="vertical-align: middle;">-42%</td><td
     >Don't worry Java, you will always be special.<td></tr>
 
