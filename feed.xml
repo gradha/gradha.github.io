@@ -5,7 +5,7 @@
   <link href="http://gradha.github.io/feed.xml" rel="self" />
   <id>http://gradha.github.io/</id>
   <generator>ipsumgenera</generator>
-  <updated>2016-03-06T23:11:09Z</updated>
+  <updated>2016-03-07T07:31:40Z</updated>
     <entry>
       <title>Kerf timestamps done almost right: conclusions</title>
       <link rel="alternate" type="text/html" href="http://gradha.github.io/articles/2016/03/kerf-timestamps-done-almost-right-conclusions.html"/>
@@ -67,6 +67,7 @@ hard to measure nanoseconds.&lt;/em&gt;&lt;/blockquote&gt;&lt;p&gt;That's OK, &l
 &lt;table border=&quot;1&quot;&gt;&lt;tr&gt;
 &lt;th&gt;Language&lt;/th&gt;
 &lt;th&gt;Fidelity&lt;/th&gt;
+&lt;th&gt;LOCs&lt;/th&gt;
 &lt;th&gt;Pleasure to use&lt;/th&gt;
 &lt;th&gt;Extra notes&lt;/th&gt;
 &lt;/tr&gt;
@@ -74,6 +75,7 @@ hard to measure nanoseconds.&lt;/em&gt;&lt;/blockquote&gt;&lt;p&gt;That's OK, &l
 &lt;tr&gt;
 &lt;td style=&quot;vertical-align: middle;&quot;&gt;Nim&lt;/td&gt;
 &lt;td style=&quot;vertical-align: middle;&quot;&gt;95%&lt;/td&gt;
+&lt;td style=&quot;vertical-align: middle;&quot;&gt;411&lt;/td&gt;
 &lt;td style=&quot;vertical-align: middle;&quot;&gt;100%&lt;/td&gt;&lt;td
 &gt;The only thing that keeps Nim from being 100% exact to Kerf is that there
 is no custom syntax to match, and the differences are minor in any
@@ -82,6 +84,7 @@ case.&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&quot;vertical-align: middle;&quot;&gt;C++&lt;/td&gt;
 &lt;td style=&quot;vertical-align: middle;&quot;&gt;75%&lt;/td&gt;
+&lt;td style=&quot;vertical-align: middle;&quot;&gt;654&lt;/td&gt;
 &lt;td style=&quot;vertical-align: middle;&quot;&gt;70%&lt;/td&gt;&lt;td
 &gt;Overloading the STL is icky, and the syntax is complex and sometimes
 obscure.  Fortunately the full functionality of the type can be reproduced,
@@ -92,6 +95,7 @@ unfriendliness towards beginners.&lt;td&gt;&lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&quot;vertical-align: middle;&quot;&gt;Swift&lt;/td&gt;
 &lt;td style=&quot;vertical-align: middle;&quot;&gt;65%&lt;/td&gt;
+&lt;td style=&quot;vertical-align: middle;&quot;&gt;443&lt;/td&gt;
 &lt;td style=&quot;vertical-align: middle;&quot;&gt;50%&lt;/td&gt;&lt;td
 &gt;The fidelity should be higher than C++ once the bugs about complex
 expressions are ironed out and more compact operators can be used. Right
@@ -101,6 +105,7 @@ compiler.&lt;/td&gt;&lt;/tr&gt;
 &lt;tr&gt;
 &lt;td style=&quot;vertical-align: middle;&quot;&gt;Java&lt;/td&gt;
 &lt;td style=&quot;vertical-align: middle;&quot;&gt;10%&lt;/td&gt;
+&lt;td style=&quot;vertical-align: middle;&quot;&gt;571&lt;/td&gt;
 &lt;td style=&quot;vertical-align: middle;&quot;&gt;-42%&lt;/td&gt;&lt;td
 &gt;Don't worry Java, you will always be special.&lt;td&gt;&lt;/tr&gt;
 
