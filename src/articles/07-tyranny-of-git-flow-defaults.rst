@@ -10,7 +10,7 @@ The tyranny of git-flow defaults
 
 **UPDATE:** The suggestion to remove the git ``master`` branch is very bad. `It
 is better to keep it
-<http://gradha.github.io/articles/2014/02/master-cant-die.html>`_ and change
+<https://gradha.github.io/articles/2014/02/master-cant-die.html>`_ and change
 git-flow's ``develop`` for a ``stable`` branch.
 
 I'm a proponent of developing software in branches, and more particularly,
@@ -20,11 +20,11 @@ of performing hotfixes whenever necessary without interrupting the normal
 development cycle. One nice tool which helps enforce this style of development
 from the command line is `git-flow <https://github.com/nvie/gitflow>`_. It's
 just a bunch of scripts which avoids typing repetitive commands. If you prefer
-using a GUI, the `nice folks from Atlassian <http://www.atlassian.com>`_,
+using a GUI, the `nice folks from Atlassian <https://www.atlassian.com>`_,
 creators of `Bitbucket
 <https://www.atlassian.com/software/bitbucket/overview>`_, also have released
-`SourceTree <http://www.sourcetreeapp.com>`_, a `git <http://git-scm.com>`_ and
-`Mercurial <http://mercurial.selenic.com>`_ client with `smart branching
+`SourceTree <https://www.sourcetreeapp.com>`_, a `git <https://git-scm.com>`_
+and `Mercurial <https://mercurial.selenic.com>`_ client with `smart branching
 support for git-flow
 <http://blog.sourcetreeapp.com/2012/08/01/smart-branching-with-sourcetree-and-git-flow/>`_.
 
@@ -244,7 +244,7 @@ will likely still see it if you try to list it::
       remotes/upstream/stable  8cdc31d Stable
 
 You only need to `run a command to prune the local cache
-<http://stackoverflow.com/a/1072178/172690>`_::
+<https://stackoverflow.com/a/1072178/172690>`_::
 
     $ git remote prune upstream
     Pruning upstream
@@ -268,5 +268,5 @@ documentation (or their intuition) to check out the ``stable`` branch.
 
 **UPDATE:** The suggestion to remove the git ``master`` branch is very bad. `It
 is better to keep it
-<http://gradha.github.io/articles/2014/02/master-cant-die.html>`_ and change
+<https://gradha.github.io/articles/2014/02/master-cant-die.html>`_ and change
 git-flow's ``develop`` for a ``stable`` branch.

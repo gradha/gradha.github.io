@@ -395,11 +395,11 @@ included file. Well, make it public, generate a ``docindex.sqlite`` file or
 something. Let users include this file or refer to it in your documentation for
 cross library/API references. Go to the main `midnight_dynamite module
 documentation
-<http://gradha.github.io/midnight_dynamite/gh_docs/master/midnight_dynamite.html>`_
+<https://gradha.github.io/midnight_dynamite/gh_docs/master/midnight_dynamite.html>`_
 and look at the sad, very sad imports section. Click that `os module link
-<http://gradha.github.io/midnight_dynamite/gh_docs/master/os.html>`_. Not
+<https://gradha.github.io/midnight_dynamite/gh_docs/master/os.html>`_. Not
 there? Try then `streams module
-<http://gradha.github.io/midnight_dynamite/gh_docs/master/streams.html>`_ then.
+<https://gradha.github.io/midnight_dynamite/gh_docs/master/streams.html>`_ then.
 What, 404 too? Seriously, why? A minimal start would be to know that these
 modules are not available and *remove* the hyperlink. After all, what good does
 it do to frustrate users?  Leave the reference as plain text and avoid the

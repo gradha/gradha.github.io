@@ -9,7 +9,7 @@ Master can't die
 ================
 
 In a `previous article
-<http://gradha.github.io/articles/2014/01/the-tyranny-of-gitflow-defaults.html>`_
+<https://gradha.github.io/articles/2014/01/the-tyranny-of-gitflow-defaults.html>`_
 I suggested renaming repository branch ``master`` to ``stable`` and leave
 ``develop`` as the development hub. Part was to inform users, and part to
 detect which software is unable to work with git repositories without a master

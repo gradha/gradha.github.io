@@ -56,7 +56,7 @@ This code has several issues on the long run:
 With Nim you can do better. And better than the obviousness of Christina's
 slutdrop, I find `Ace of Angels' <https://en.wikipedia.org/wiki/AOA_(band)>`_
 `miniskirt unzipping and ass shaking
-<http://www.youtube.com/watch?v=q6f-LLM1H6U>`_ more tasteful and pleasant to
+<https://www.youtube.com/watch?v=q6f-LLM1H6U>`_ more tasteful and pleasant to
 the eye (after all, at the moment I'm writing this Christina loses with
 9.986.070 views to the 11.394.880 views of Ace of Angels, yet AOA's video has
 existed for far less time). Following the steps of these Queens Of Teasing,

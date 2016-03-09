@@ -49,10 +49,10 @@ exported to C with hard coded values, not acceptable to other people. I started
 then to move the custom Nim code to a separate module named `lazy_rest
 <https://github.com/gradha/lazy_rest>`_.  Exposing directly the Nim API didn't
 make sense for several reasons, so first I `implemented a slightly different
-Nim API <http://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest.html>`_
+Nim API <https://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest.html>`_
 which I think is nicer than the original, then proceeded to wrap it in a
 separate `C API module
-<http://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest_c_api.html>`_ which
+<https://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest_c_api.html>`_ which
 is really another Nim file wrapping all of its procs with the `exportc pragma
 <http://nim-lang.org/docs/manual.html#foreign-function-interface-exportc-pragma>`_.
 
@@ -145,7 +145,7 @@ named ``PStringTable`` in Nimrod 0.9.6, and unfortunately `it is not possible
 to export such symbols <https://github.com/Araq/Nim/issues/1579>`_.  The
 typical usage of this type is to store configuration options from a file or
 memory string, so instead I provided `lr_set_global_rst_options()
-<http://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest_c_api.html#lr_set_global_rst_options>`_.
+<https://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest_c_api.html#lr_set_global_rst_options>`_.
 C users can create an in memory string with the necessary configuration options
 and let the Nim code parse that.  Not very optimal, but this is not performance
 critical. Typically you will call this once before any other reStructuredText
@@ -168,7 +168,7 @@ Export enums and constants
 The Nim language doesn't allow `exporting enums or consts to C
 <https://github.com/Araq/Nim/issues/826>`_. This is quite a bummer. For
 ``lazy_rest`` I did add the `lconfig module
-<http://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest_pkg/lconfig.html>`_
+<https://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest_pkg/lconfig.html>`_
 which contains several constants mapping to strings used for ``StringTableRef``
 configuration objects. C users have to look at the documentation and duplicate
 their own hard coded strings.
@@ -202,7 +202,7 @@ Errors and exception handling
 
 Exceptions are something else C doesn't have. Nim procs like
 `rst_string_to_html()
-<http://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest.html#rst_string_to_html>`_
+<https://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest.html#rst_string_to_html>`_
 will throw exceptions on error, so how does the C binding deal with that? The C
 API module uses `Nim's effect system
 <http://nim-lang.org/docs/manual.html#effect-system>`_ for exception tracking.
@@ -223,7 +223,7 @@ Nim domain. Such exceptions are treated for the C API as functions returning
 ``NULL`` instead of the expected value.  The errors are again stored in another
 Nim global variable, and you can retrieve them with helper functions ending in
 ``_error`` like `lr_rst_string_to_html_error()
-<http://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest_c_api.html#lr_rst_string_to_html_error>`_.
+<https://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest_c_api.html#lr_rst_string_to_html_error>`_.
 
 
 Callback exception tracking
@@ -264,7 +264,7 @@ In any case this wasn't a problem for the library, since I wanted the callbacks
 to be usable from C there wasn't any point in making them raise exceptions (how
 would you raise a Nim exception from C code?). I simply modified the
 `TMsgHandler
-<http://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest_pkg/lrst.html#TMsgHandler>`_
+<https://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest_pkg/lrst.html#TMsgHandler>`_
 callback type to raise nothing and instead return the possible error as a non
 nil string. This avoided the problem of callbacks raising any exceptions.
 
