@@ -14,8 +14,8 @@
 				href="../../../feed.xml"><img
 			alt="rss feed" src="../../../i/Feed-icon.svg"
 			width="18pt" height="18pt"></a></h3>
-		<h1>The tyranny of git-flow defaults</h1><p><span style="font-weight: bold;">UPDATE:</span> The suggestion to remove the git <code>master</code> branch is very bad. <a href="http://gradha.github.io/articles/2014/02/master-cant-die.html">It is better to keep it</a> and change git-flow's <code>develop</code> for a <code>stable</code> branch.</p>
-<p>I'm a proponent of developing software in branches, and more particularly, having a <a href="https://www.atlassian.com/git/workflows#!workflow-gitflow">stable or production branch which tracks public software releases</a> for the purpose of performing hotfixes whenever necessary without interrupting the normal development cycle. One nice tool which helps enforce this style of development from the command line is <a href="https://github.com/nvie/gitflow">git-flow</a>. It's just a bunch of scripts which avoids typing repetitive commands. If you prefer using a GUI, the <a href="http://www.atlassian.com">nice folks from Atlassian</a>, creators of <a href="https://www.atlassian.com/software/bitbucket/overview">Bitbucket</a>, also have released <a href="http://www.sourcetreeapp.com">SourceTree</a>, a <a href="http://git-scm.com">git</a> and <a href="http://mercurial.selenic.com">Mercurial</a> client with <a href="http://blog.sourcetreeapp.com/2012/08/01/smart-branching-with-sourcetree-and-git-flow/">smart branching support for git-flow</a>.</p>
+		<h1>The tyranny of git-flow defaults</h1><p><span style="font-weight: bold;">UPDATE:</span> The suggestion to remove the git <code>master</code> branch is very bad. <a href="https://gradha.github.io/articles/2014/02/master-cant-die.html">It is better to keep it</a> and change git-flow's <code>develop</code> for a <code>stable</code> branch.</p>
+<p>I'm a proponent of developing software in branches, and more particularly, having a <a href="https://www.atlassian.com/git/workflows#!workflow-gitflow">stable or production branch which tracks public software releases</a> for the purpose of performing hotfixes whenever necessary without interrupting the normal development cycle. One nice tool which helps enforce this style of development from the command line is <a href="https://github.com/nvie/gitflow">git-flow</a>. It's just a bunch of scripts which avoids typing repetitive commands. If you prefer using a GUI, the <a href="https://www.atlassian.com">nice folks from Atlassian</a>, creators of <a href="https://www.atlassian.com/software/bitbucket/overview">Bitbucket</a>, also have released <a href="https://www.sourcetreeapp.com">SourceTree</a>, a <a href="https://git-scm.com">git</a> and <a href="https://mercurial.selenic.com">Mercurial</a> client with <a href="http://blog.sourcetreeapp.com/2012/08/01/smart-branching-with-sourcetree-and-git-flow/">smart branching support for git-flow</a>.</p>
 <p>But the defaults for git-flow and any git host like <a href="https://github.com">GitHub</a> clash. By default git, and any git hosting, is going to create empty repositories with a default branch named <code>master</code>. When you initialize git-flow on such a repository, it will ask a set of questions and suggest defaults:<pre class='literal'>
 $ git-flow init
 No branches exist yet. Base branches must be created now.
@@ -99,14 +99,14 @@ $ git branch -va
   remotes/upstream/develop 280e777 Develop
   remotes/upstream/master  a8e1d54 Initial commit
   remotes/upstream/stable  8cdc31d Stable</pre></p>
-<p>You only need to <a href="http://stackoverflow.com/a/1072178/172690">run a command to prune the local cache</a>:<pre class='literal'>
+<p>You only need to <a href="https://stackoverflow.com/a/1072178/172690">run a command to prune the local cache</a>:<pre class='literal'>
 $ git remote prune upstream
 Pruning upstream
 URL: git@github.com:remoteuser/healthyspam.git
  * [pruned] upstream/master</pre></p>
 <p>Now you are clean and properly updated with the upstream branches.</p>
 <h1>But users get now the develop branch by default!</h1><p>Indeed, if you have changed GitHub's default branch to <code>develop</code> and a user clones a repository, by default he gets that single development branch. And that's what you want, really. Git is not a software distribution platform (cue complaints from people downloading huge repository histories), it's for developers.  If you are in the situation of having multiple branches, one of them for releases, that's because you are <span style="font-style: italic;">doing</span> public releases. Your users willing to get a stable version will get those, or will follow your documentation (or their intuition) to check out the <code>stable</code> branch.</p>
-<p><span style="font-weight: bold;">UPDATE:</span> The suggestion to remove the git <code>master</code> branch is very bad. <a href="http://gradha.github.io/articles/2014/02/master-cant-die.html">It is better to keep it</a> and change git-flow's <code>develop</code> for a <code>stable</code> branch. </p>
+<p><span style="font-weight: bold;">UPDATE:</span> The suggestion to remove the git <code>master</code> branch is very bad. <a href="https://gradha.github.io/articles/2014/02/master-cant-die.html">It is better to keep it</a> and change git-flow's <code>develop</code> for a <code>stable</code> branch. </p>
 
 	</div>
 		<hr>

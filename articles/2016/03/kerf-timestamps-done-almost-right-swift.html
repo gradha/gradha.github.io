@@ -225,7 +225,7 @@ sys	0m0.532s
 </pre></p>
 <a href="http://mang2goon.tistory.com/438"><img
     src="../../../i/kerf_excuses.jpg"
-    alt="Trust me, I'm not a banana, I'm a new timestamp type"
+    alt="Excuses, if you think that's a complex expression try to look cute with a plush doll on your head for a day"
     style="width:100%;max-width:600px" align="right"
     hspace="8pt" vspace="8pt"></a><p>So the compiler takes 4s more to tell me that a parameter is deprecated but is still unable to handle that expression. Thanks, Swift compiler, that warning is really helpful, unlike actually producing a binary I can run. Of course I reported this as <a href="https://bugs.swift.org/browse/SR-838?jql=text%20~%20%22expression%20was%20too%20complex%22">bug SR-838 with a reduced test case that runs faster</a> (you can get <a href="https://github.com/gradha/kerf_timestamps_done_almost_right/tree/master/swift/performance_problems">the reduced comparison test from GitHub</a>. Browsing their repo looks like other people are also experiencing such compilation problems with apparently less complex code. This experience makes me doubt Swift's viable future as a nice programming language <a href="https://xkcd.com/303/">unless waiting for the compiler is your cup of tea</a>. Also the bug tracker feels a little bit desolate. If it is anything like <a href="http://fixradarorgtfo.com">the old one</a> I won't bother with future reports.</p>
 <p>So now that the intermission is done, keep in mind that you need Swift compiler version 2.1.1 or this little exercise might be too much to handle!</p>
