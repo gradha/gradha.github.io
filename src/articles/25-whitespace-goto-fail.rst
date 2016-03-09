@@ -89,7 +89,7 @@ which doesn't use braces and instead uses whitespace indentation like `Eero
     <center>
     <a href="http://dijkcrayon.tistory.com/363"><img
         src="../../../i/whitespace_reactions.jpg"
-        alt="At first I was like…"
+        alt="Whitespace indentation? How can you program in such a lame language?"
         style="width:100%;max-width:750px" align="center"
         hspace="8pt" vspace="8pt"></a>
     </center>
@@ -166,7 +166,7 @@ your own to leave it however it falls.
     <center>
     <a href="http://xkcd.com/1513/"><img
         src="../../../i/xkcd_code_quality.png"
-        alt="At first I was like…"
+        alt="XKCD: code quality"
         style="width:100%;max-width:740px" align="center"
         hspace="8pt" vspace="8pt"></a>
     </center>

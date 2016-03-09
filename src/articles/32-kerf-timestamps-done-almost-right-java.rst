@@ -188,7 +188,7 @@ Patching the language with annotations
 .. raw:: html
     <a href="http://spdstudio.tistory.com/3274"><img
         src="../../../i/kerf_pain.jpg"
-        alt="Trust me, I'm not a banana, I'm a new timestamp type"
+        alt="Pain, surely you jest? You haven't attempted to walk in my high heels for a few hours, have you?"
         style="width:100%;max-width:600px" align="right"
         hspace="8pt" vspace="8pt"></a>
 

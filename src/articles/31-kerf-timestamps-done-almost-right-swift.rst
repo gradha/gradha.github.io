@@ -418,7 +418,7 @@ sys	0m0.532s
 .. raw:: html
     <a href="http://mang2goon.tistory.com/438"><img
         src="../../../i/kerf_excuses.jpg"
-        alt="Trust me, I'm not a banana, I'm a new timestamp type"
+        alt="Excuses, if you think that's a complex expression try to look cute with a plush doll on your head for a day"
         style="width:100%;max-width:600px" align="right"
         hspace="8pt" vspace="8pt"></a>
 
