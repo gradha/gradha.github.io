@@ -14,6 +14,7 @@
 /readme.html
 /src/support/miniskirter
 /src/support/nimcache/
+/src/articles/draft
 
 # Don't remove this or GitHub pages fail building!
 /src/output 
