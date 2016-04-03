@@ -8,12 +8,11 @@ tags: programming, nim, nimrod, seohtracker, elhaso, objc
 Nim for cross platform software
 ===============================
 
-On the 21st of February of 2014, Sarah Con… er… `Seohtracker v4 was released
-for iOS <http://www.elhaso.es/seohtracker/ios.en.html>`_. A puny little iOS
-app. And now the app has crossed the bridge and made it to the Mac App Store as
-`Seohtracker for OSX <http://www.elhaso.es/seohtracker/osx.en.html>`_. Why
-would this be of any relevance? Because both programs are partially implemented
-in the `Nim programming language <http://nim-lang.org>`_.
+On the 21st of February of 2014, Sarah Con… er… Seohtracker v4 was released for
+iOS. A puny little iOS app. And now the app has crossed the bridge and made it
+to the Mac App Store as Seohtracker for OSX. Why would this be of any
+relevance? Because both programs are partially implemented in the `Nim
+programming language <http://nim-lang.org>`_.
 
 .. raw:: html
 
@@ -29,19 +28,14 @@ high level!  And more lisp macros. And… whatever man.  It's just cool, and I
 believe it is going to allow me to produce real life programs for more
 platforms with less effort (still working on the *less effort* part, though).
 
-But Nim is relatively new and unpopular. Despite the website stating *"The
-Nim Compiler can also generate C++ or Objective C for easier interfacing"*,
-there's not much *proof* out there you can take as reference. So I decided to
-start my own, and that's what Seohtracker is. The internal architecture of
-Seohtracker splits the interface from the logic. Hence, you have a `cross
-platform logic code <https://github.com/gradha/seohtracker-logic>`_ which is
-implemented in pure Nim. Then, somewhere in the middle is floating a `thin
-Nim to Obj-C convenience layer
-<https://github.com/gradha/seohtracker-ios/blob/c512307ea505dc7c2262b88ddc8599e94f5f4a74/src/nim/n_global.nim>`_
-which exposes the Nim logic, and finally you have the `iOS
-<https://github.com/gradha/seohtracker-ios>`_ and `OSX
-<https://github.com/gradha/seohtracker-mac>`_ clients which are consumers of
-this API.
+But Nim is relatively new and unpopular. Despite the website stating *"The Nim
+Compiler can also generate C++ or Objective C for easier interfacing"*, there's
+not much *proof* out there you can take as reference. So I decided to start my
+own, and that's what Seohtracker is. The internal architecture of Seohtracker
+splits the interface from the logic. Hence, you have a cross platform logic
+code which is implemented in pure Nim. Then, somewhere in the middle is
+floating a thin Nim to Obj-C convenience layer which exposes the Nim logic, and
+finally you have the iOS and OSX clients which are consumers of this API.
 
 Why not write **everything** in Nim? That's something I've heard a lot. The
 most important practical reason is I'm a simple guy doing this on his own, and
@@ -154,9 +148,8 @@ on the iOS, OSX, and logic modules as tagged for the v4 release:
 * Even though both the iOS and OSX clients are just interface, instead of shell
   scripts I used Nim through `nakefiles
   <https://github.com/fowlmouth/nake>`_ to drive compilation, generate and
-  package the different resources. Think of nakefiles as `GNU makefiles on
-  steroids
-  <https://github.com/gradha/seohtracker-mac/blob/0163927a5e8294c0dc2923f3f3612e36a9b6e389/nakefile.nim>`_.
+  package the different resources. Think of nakefiles as GNU makefiles on
+  steroids.
   That's the reason you see Nim lines of code dedicated to them. Nearly none
   of them do any *logic* code in the app the user sees, they are for support.
   Also, both iOS and OSX nakefiles share some code I haven't yet come to
@@ -170,10 +163,8 @@ on the iOS, OSX, and logic modules as tagged for the v4 release:
   files). Anyway, the point here is that reducing the Nim lines of code
   attributed to the iOS client would increase the percentage of native
   Objective-C code and put it more in line with the OSX version.
-* Thanks to the separation of logic vs interface, the `test suite of the logic
-  module
-  <https://github.com/gradha/seohtracker-logic/tree/bcb1fb7fec655a0b5714d1e9efd349abb257a6e4/tests>`_
-  needs to exist only once. Compare this to current independent mobile
+* Thanks to the separation of logic vs interface, the test suite of the logic
+  module needs to exist only once. Compare this to current independent mobile
   developments where different teams develop iOS and Android (sometimes even
   different code bases for iPhone vs iPad!), each incurring its own share of
   bugs and odd behaviours. Have you seen firms update their iOS/Android app to
@@ -278,10 +269,7 @@ Thoughts:
   like on the mobile platforms. I did take a look at `BuySellAds
   <http://buysellads.com>`_ and `The DECK <http://decknetwork.net>`_, but they
   are so exclusive they don't answer email or they reject you. So I rolled my
-  own. `Behold the power of marketing!
-  <https://raw.github.com/gradha/seohtracker-mac/0163927a5e8294c0dc2923f3f3612e36a9b6e389/resources/screenshots/2.png>`_
-  (right there, in the lower right corner of the left window). Any opportunity
-  is good to make fun of the world for being such a shitty place.
+  own.
 
 
 The good about using Nim
@@ -291,8 +279,7 @@ The good about using Nim
   custom builders, compiles and runs at the speed of c (light).
 * Features like `exception tracking
   <http://nim-lang.org/docs/manual.html#effect-system-exception-tracking>`_ in
-  the language allow one to `decorate the Nim API exported to C
-  <https://github.com/gradha/seohtracker-ios/commit/64252e473bb944f396a66c7bf27ea0fed8f7ea07>`_
+  the language allow one to decorate the Nim API exported to C
   and prevent uncaught Nim exceptions from crashing your pretty program.
   Languages like Ruby or Python require you to write unit tests instead, and
   depend on your skill to cover all cases.

@@ -14,18 +14,16 @@ programming languages which would compile to C, so I could use the generated
 code everywhere. Like Java. And I enjoyed learning it.
 
 I did spend a big chunk of time exploring the possibilities of applying Nim to
-my day job, which is writing mobile apps. I wrote first `Seohtracker for iOS
-<https://github.com/gradha/seohtracker-ios>`_ and later `Seohtracker for OSX
-<https://github.com/gradha/seohtracker-mac>`_ as proof of code reuse.
-Unfortunately I started to `find troubles
-<../../2014/03/nimrod-for-cross-platform-software.html>`_ with the language
-implementation. I also slowly realized that no matter how fantastic the
-language implementation could be, Nim is designed to use soft realtime GC on
-thread local heaps. This means that a thread cannot touch the memory of another
-thread. If you add to this the necessary level of indirection of calling Nim
-from a different programming language (or vice versa), the amount of barriers
-to jump over to do what in other **unsafe** languages is just accessing a
-variable starts to pile up.
+my day job, which is writing mobile apps. I wrote first Seohtracker for iOS and
+later Seohtracker for OSX as proof of code reuse.  Unfortunately I started to
+`find troubles <../../2014/03/nimrod-for-cross-platform-software.html>`_ with
+the language implementation. I also slowly realized that no matter how
+fantastic the language implementation could be, Nim is designed to use soft
+realtime GC on thread local heaps. This means that a thread cannot touch the
+memory of another thread. If you add to this the necessary level of indirection
+of calling Nim from a different programming language (or vice versa), the
+amount of barriers to jump over to do what in other **unsafe** languages is
+just accessing a variable starts to pile up.
 
 At that point I realized that from all the amount of software written in Nim
 there were two kinds of software barely explored: GUIs and multithreading.
