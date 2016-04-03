@@ -374,7 +374,7 @@ those mysterious ``nbox()`` and ``sbox()`` methods were for, since the only way
 to work with streams is to upgrade from the ``long`` to the ``Long`` type. And
 the reason we have *lost* is that instead of using native types we would be
 better off using real class objects, even though we wouldn't have then the
-performance and memory efficiency of native types. The last attempt at
+performance and memory efficiency of value types. The last attempt at
 extracting the calendar components from a list containing those ``Long``
 objects is `particularly painful to watch
 <https://github.com/gradha/kerf_timestamps_done_almost_right/blob/master/java/Units.java#L44-L50>`_:
