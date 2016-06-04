@@ -1,7 +1,7 @@
 ---
 title: Kerf timestamps done almost right: Swift
 pubdate: 2016-03-06 23:52
-moddate: 2016-03-06 23:52
+moddate: 2016-06-04 19:23
 tags: design, nim, java, cpp, languages, kerf, programming, swift
 ---
 
@@ -629,6 +629,15 @@ implement Kerf's timestamp types. Now we only have to wait for better compiler
 implementations to *maybe enjoy* the language in the future.  In the meantime,
 you might want to take a laugh at the `horrifying Java implementation I came up
 with <kerf-timestamps-done-almost-right-wtf…-java.html>`_.
+
+**UPDATE**: You know your compiler is in deep shit when the community around it
+decides to build a `time analyzer
+<https://github.com/RobertGummesson/BuildTimeAnalyzer-for-Xcode>`_ plugin to
+navigate around the parts of your compiler which are so poorly implemented they
+make `Gordon Moore <https://en.wikipedia.org/wiki/Gordon_Moore>`_ weep in a
+corner. I've worked with about ten wildly different programming languages, each
+with their own set of problems, and compilation performance was rarely of
+concern. How spoiled I was.
 
 .. raw:: html
 
