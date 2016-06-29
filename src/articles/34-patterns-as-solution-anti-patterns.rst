@@ -329,8 +329,8 @@ and somebody doesn't know it, don't be a dick and explain it rather than
 stating aloud how uneducated people are these days, or what good is the salary
 being paid to the victim. Also, don't explain *what* the pattern is, explain
 what kind of situation it is trying to solve. Applying a pattern is a matter of
-experience, if the people receiving the new knowledge doesn't seem to get it,
-don't force them to do it. Monitor their code and let them fail a little,
+experience, if the people receiving the new knowledge don't seem to get it,
+don't force them to use it. Monitor their code and let them fail a little,
 starting to derail from the optimal path. Once the problem is visible, explain
 where it is and how applying the pattern can help.
 
