@@ -1,7 +1,7 @@
 ---
 title: Goodbye Nim, and good luck
 pubDate: 2015-02-04 23:23
-modDate: 2015-04-23 22:49
+modDate: 2016-07-10 11:50
 tags: languages, programming, nim, nimrod
 ---
 
@@ -63,3 +63,7 @@ impossible to compile with 1.0, whenever it happens.
 
 At least I'll leave those repositories up in case somebody wants to pick them
 up. Good luck, Nim programmers. I'll keep watching from a distance.
+
+**UPDATE**: For all useful repositories a one year *death* notice was put in
+place, they were forked, and are now maintained by their forkers, so I deleted
+them to avoid confusion or maintenance limbo.
