@@ -351,3 +351,6 @@ to your head won't help.
         style="width:100%;max-width:750px" align="center"
         hspace="8pt" vspace="8pt"></a>
     </center>
+
+::
+    $ cat advice.txt > /dev/null
