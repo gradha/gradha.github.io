@@ -1,21 +1,19 @@
 ---
 title: Using Vagrant for Nimrod builds
 pubDate: 2014-12-08 18:10
-modDate: 2014-12-08 18:10
+moddate: 2016-09-10 19:58
 tags: nim, nimrod, programming, languages, testing, tools
 ---
 
 Using Vagrant for Nim builds
 ============================
 
-I have written many small Nim programs so far. As trivial as they look, each
-of them pushes me to improve some aspect of the documentation, development,
+I have written many small Nim programs so far. As trivial as they look, each of
+them pushes me to improve some aspect of the documentation, development,
 testing, or binary distribution. They actually serve that purpose, you can't
 improve releasing software if you do it once every several years. So for each
-of my projects I've been refining a `release steps document
-<https://github.com/gradha/lazy_rest/blob/master/docs/release_steps.rst>`_
-which helps me to provide the same consistent quality (good or bad) for each
-software release.
+of my projects I've been refining a release steps document which helps me to
+provide the same consistent quality (good or bad) for each software release.
 
 For software which is not just a library for other developers, a good goal to
 aim for is to provide binaries for end users. Compiling software is nowadays
@@ -28,10 +26,9 @@ command line error rather than the software they were expecting. And if those
 users are persistent, you will end up having to deal with end user support.
 Yuck!
 
-I have provided binaries in the past (e.g. `dropbox_filename_sanitizer releases
-<https://github.com/gradha/dropbox_filename_sanitizer/releases>`_) and one of
-the most inconvenient aspects is to leave your development environment. I have
-made myself `tools to test builds in sandboxed environments
+I have provided binaries in the past and one of the most inconvenient aspects
+is to leave your development environment. I have made myself `tools to test
+builds in sandboxed environments
 <../05/testing-installation-instructions.html>`_ from the convenience of a
 `nake <https://github.com/fowlmouth/nake>`_ task, but they depend on other
 machines. For instance, if I'm offline I can't log in remotely to them. I've
@@ -44,22 +41,18 @@ builds.
 That's where software like `Vagrant <https://www.vagrantup.com>`_ helps.
 Vagrant automatizes the creation and provisioning of development environments
 through virtual machines. With Vagrant you only need two files to create a
-headless virtual machine: a `Vagrantfile
-<https://github.com/gradha/lazy_rest/blob/7c87153c48205b903811a6e95c37b56ab17683fe/vagrant_linux/32bit/Vagrantfile>`_
-which describes the virtual hardware (in my case I didn't change anything from
-the default template) and a `bootstrap.sh
-<https://github.com/gradha/lazy_rest/blob/7c87153c48205b903811a6e95c37b56ab17683fe/vagrant_linux/bootstrap.sh>`_
-provisioning script, which simply downloads and prepares the software you want
-to run.
+headless virtual machine: a **Vagrantfile** which describes the virtual
+hardware (in my case I didn't change anything from the default template) and a
+**bootstrap.sh** provisioning script, which simply downloads and prepares the
+software you want to run.
 
-So now I'm writing a new `lazy_rest Nim module
-<https://github.com/gradha/lazy_rest>`_ for myself (and maybe others too) and
-tried to use Vagrant to improve my distribution process. Instead of having a
-remote machine I have now two virtual machines I can automatically launch and
-destroy in the span of a few minutes to collect the goodies. Why two?
-Previously I had a real physical box to build Linux binaries. The problem is
-that this box had it's own architecture bit width (say 64bits). So the binaries
-you produce are by default for this architecture.
+So now I'm writing a new ``lazy_rest`` Nim module for myself and tried to use
+Vagrant to improve my distribution process. Instead of having a remote machine
+I have now two virtual machines I can automatically launch and destroy in the
+span of a few minutes to collect the goodies. Why two?  Previously I had a real
+physical box to build Linux binaries. The problem is that this box had it's own
+architecture bit width (say 64bits). So the binaries you produce are by default
+for this architecture.
 
 .. raw:: html
 
@@ -88,16 +81,14 @@ expects milliseconds instead of seconds. Unfortunately this overflows the
 width of the machine, if you want to use explicitly 32 or 64 bits you need to
 use ``int32`` or ``int64``.
 
-The `change to fix this
-<https://github.com/gradha/lazy_rest/commit/2098a3caab7627e08e466f55aa5238eb4db0073f>`_
-wasn't very hard, I only had to cast the result explicitly to 64 bits so that
-when run on a 32 bit system the Nim code would not overflow. However, it
-highlights that stuff like this can easily creep in, and maybe your typical
-development environment doesn't suffer from such issues. Also, in this
-particular case the error would have gone unnoticed for a long time, maybe
-forever, since the time calculation I'm doing there is for a non critical part
-(a timestamp in the generated footer) which end users might avoid altogether
-replacing it with their own branding.
+The change to fix this wasn't very hard, I only had to cast the result
+explicitly to 64 bits so that when run on a 32 bit system the Nim code would
+not overflow. However, it highlights that stuff like this can easily creep in,
+and maybe your typical development environment doesn't suffer from such issues.
+Also, in this particular case the error would have gone unnoticed for a long
+time, maybe forever, since the time calculation I'm doing there is for a non
+critical part (a timestamp in the generated footer) which end users might avoid
+altogether replacing it with their own branding.
 
 Conclusion
 ==========
@@ -111,17 +102,6 @@ specific architecture (when you can have any). In fact, maybe in the future
 I'll end up buying a copy of Windows 7 to produce win32 binaries because
 `Windows as a guest is supported since Vagrant 1.6
 <https://www.vagrantup.com/blog/feature-preview-vagrant-1-6-windows.html>`_.
-
-I find these Vagrant environments very useful, so I'm sharing the scripts with
-you. They create and prepare a Linux box, so you can run them from Windows or
-OSX and forget about this platform. In case you missed the hyperlink earlier,
-you can get them from:
-
-  https://github.com/gradha/lazy_rest/tree/7c87153c48205b903811a6e95c37b56ab17683fe/vagrant_linux
-
-This is a specific commit version snapshot of the directory where I have the
-``bootstrap.sh``, but you can also browse the `current live version
-<https://github.com/gradha/lazy_rest/tree/master/vagrant_linux>`_.
 
 ::
     $ nake dist

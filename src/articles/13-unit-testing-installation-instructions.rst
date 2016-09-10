@@ -1,7 +1,7 @@
 ---
 title: Testing installation instructions
 pubDate: 2014-05-01 18:00
-moddate: 2015-08-02 16:01
+moddate: 2016-09-10 19:58
 tags: nim, nimrod, testing, programming, user experience
 ---
 
@@ -49,8 +49,8 @@ difficult to test. In fact, everybody should be testing them.
 Testing dropbox_filename_sanitizer
 ----------------------------------
 
-For this article I'll be using my own `dropbox_filename_sanitizer project
-<https://github.com/gradha/dropbox_filename_sanitizer>`_ because pointing
+For this article I'll be using my own ``dropbox_filename_sanitizer project``
+because pointing
 errors in other people's software is too easy and doesn't enrich me. This
 project also offers a nice range of things to test: there is a stable source
 code installation, a development source code installation, and a pre built
@@ -123,25 +123,20 @@ to type the following commands::
     $ babel install argument_parser
     $ babel install dropbox_filename_sanitizer
 
-Fun fact: presumably you don't have to install `argument_parser
-<https://github.com/gradha/argument_parser>`_ manually since `babel
+Fun fact: presumably you don't have to install ``argument_parser``
+manually since `babel
 <https://github.com/nimrod-code/babel>`_ will take care of dependencies.
 Unfortunately `a bug prevents correct installation
 <https://github.com/nimrod-code/babel/issues/37>`_ due to a mistake in handling
-version numbers. Yes, the problem was found while `setting up the project for
-testing <https://github.com/gradha/dropbox_filename_sanitizer/issues/12>`_ in
-advance for this blog post. Bug inception!
+version numbers. Yes, the problem was found while setting up the project for
+testing in advance for this blog post. Bug inception!
 
-Since the project already features a `nakefile
-<https://github.com/gradha/dropbox_filename_sanitizer/blob/master/nakefile.nim>`_
+Since the project already features a ``nakefile``
 which drives other tasks (see the `nake project
-<https://github.com/fowlmouth/nake>`_) I decided to add a `shell_test
-<https://github.com/gradha/dropbox_filename_sanitizer/blob/329d5e7a52e5b4a705f89a68a751ce698e941501/nakefile.nim#L372>`_
-command. This command accepts `json files
-<https://github.com/gradha/dropbox_filename_sanitizer/tree/329d5e7a52e5b4a705f89a68a751ce698e941501/shell_tests>`_
-which contain some parameters of what is to be tested. Let's see `one of those
-json files first
-<https://github.com/gradha/dropbox_filename_sanitizer/blob/329d5e7a52e5b4a705f89a68a751ce698e941501/shell_tests/macosx_igor_nimrod_devel_chunk1.json>`_:
+<https://github.com/fowlmouth/nake>`_) I decided to add a shell_test
+command. This command accepts json files
+which contain some parameters of what is to be tested. Let's see one of those
+json files first:
 
 - ``host``, ``user``:
   These are the typical host and user parameters for the secure shell. Use
@@ -167,8 +162,8 @@ json files first
   several possible instructions, having different json files for each block.
 - ``bin_version``:
   Similar to ``nimrod_version_str``, this parameter specifies if we are testing
-  against the development version of dropbox_filename_sanitizer (which will get
-  the number directly imported from the module) or the last stable version
+  against the development version of ``dropbox_filename_sanitizer`` (which will
+  get the number directly imported from the module) or the last stable version
   (which will be obtained from git tags).
 
 The nakefile code for the task is a little bit split and tough to follow
@@ -200,8 +195,8 @@ if any of the following commands returns a non zero error status.
 Testing the development babel installation
 ------------------------------------------
 
-To install the development version of dropbox_filename_sanitizer the user has
-to type a little bit more::
+To install the development version of ``dropbox_filename_sanitizer`` the user
+has to type a little bit more::
 
     $ babel update
     $ babel install argument_parser
@@ -211,17 +206,14 @@ to type a little bit more::
 
 The only difference is that instead of asking babel to fetch the package we
 clone the git repository and install it manually by omitting the parameter (and
-having a `babel spec file available
-<https://github.com/gradha/dropbox_filename_sanitizer/blob/master/dropbox_filename_sanitizer.babel>`_
-in the working directory). The only difference between the stable and
-development versions of the test script will be the lines run to install the
-software. These lines are obtained through the previously mentioned
-``chunk_number`` parameter in the json file.  The crude `gen_chunk_script
-<https://github.com/gradha/dropbox_filename_sanitizer/blob/329d5e7a52e5b4a705f89a68a751ce698e941501/nakefile.nim#L252>`_
-proc in the nakefile will parse the readme and extract all the lines for
-whatever block was specified. One could go hi-tech and use the `rst nim module
-<http://nim-lang.org/docs/rst.html>`_ to parse the readme, but simple line
-stripping serves well.
+having a babel spec file available in the working directory). The only
+difference between the stable and development versions of the test script will
+be the lines run to install the software. These lines are obtained through the
+previously mentioned ``chunk_number`` parameter in the json file.  The crude
+``gen_chunk_script`` proc in the nakefile will parse the readme and extract all
+the lines for whatever block was specified. One could go hi-tech and use the
+`rst nim module <http://nim-lang.org/docs/rst.html>`_ to parse the readme, but
+simple line stripping serves well.
 
 
 Testing the pre built binaries
@@ -231,8 +223,7 @@ I haven't bothered yet to do this for a very simple reason: you only need to
 test this once. The compiled binaries work without dependencies, so by the time
 you create them, you test them yourself once and… that's it! It's the source
 installation which depends on many more steps and packages which can go wrong.
-Certainly there is room to test for `failures in the packaging itself
-<https://github.com/gradha/dropbox_filename_sanitizer/issues/11>`_, but the
+Certainly there is room to test for failures in the packaging itself, but the
 packaging itself is automated. Maybe if I get very bored I'll do it.
 
 

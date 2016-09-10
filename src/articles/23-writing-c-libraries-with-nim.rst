@@ -1,7 +1,7 @@
 ---
 title: Writing C libraries with Nim
 pubDate: 2015-01-14 23:59
-moddate: 2015-08-02 16:01
+moddate: 2016-09-10 19:58
 tags: languages, programming, nim, nimrod
 ---
 
@@ -28,17 +28,16 @@ Wouldn't it be nice to have a C library for reStructuredText?
 
 Since I dislike Python due to its brittleness and slow speed, I didn't want to
 use a Python solution for an `OS X Quick Look plugin
-<https://en.wikipedia.org/wiki/Quick_Look>`_. I wrote `quicklook-rest-with-nim
-<https://github.com/gradha/quicklook-rest-with-nim>`_ which just takes the work
+<https://en.wikipedia.org/wiki/Quick_Look>`_. I wrote
+``quicklook-rest-with-nim`` which just takes the work
 done by the Nim developers in the `rst
 <https://github.com/Araq/Nim/blob/80b83611875383760da40d626a516e794e1245e7/lib/packages/docutils/rst.nim>`_,
 `rstast <http://nim-lang.org/docs/rstast.html>`_ and `rstgen
 <http://nim-lang.org/docs/rstgen.html>`_ modules and packages it as a Quick
 Look renderer. Everything is statically linked, you can copy the plugin to any
-machine and it should run without any other runtime dependencies (note: `some
-unknown bug <https://github.com/gradha/quicklook-rest-with-nim/issues/48>`_
-prevents it from working on Yosemite when installed in a home directory, but
-works fine form a system folder).
+machine and it should run without any other runtime dependencies (note: some
+unknown bug prevents it from working on Yosemite when installed in a home
+directory, but works fine form a system folder).
 
 The Quick Look renderer is implemented using the default Objective-C Xcode
 template modifying it to call the Nim code through C bindings. That's when I
@@ -46,25 +45,22 @@ realised the Nim implementation could be distributed as a plain C library for
 other languages to use, to avoid their pain rewriting the wheel or running
 shell commands. For the Quick Look plugin I was simply using two entry points
 exported to C with hard coded values, not acceptable to other people. I started
-then to move the custom Nim code to a separate module named `lazy_rest
-<https://github.com/gradha/lazy_rest>`_.  Exposing directly the Nim API didn't
-make sense for several reasons, so first I `implemented a slightly different
-Nim API <https://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest.html>`_
+then to move the custom Nim code to a separate module named ``lazy_rest``.
+Exposing directly the Nim API didn't
+make sense for several reasons, so first I implemented a slightly different
 which I think is nicer than the original, then proceeded to wrap it in a
-separate `C API module
-<https://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest_c_api.html>`_ which
+separate C API module which
 is really another Nim file wrapping all of its procs with the `exportc pragma
 <http://nim-lang.org/docs/manual.html#foreign-function-interface-exportc-pragma>`_.
 
-The project was successful, when I `replaced the old rester module
-<https://github.com/gradha/quicklook-rest-with-nim/issues/42>`_ with
+The project was successful, when I replaced the old rester module with
 ``lazy_rest`` I dropped several brittle shell scripts and external nim compiler
 invocations from the project and simply dragged the C files into the Xcode
 project. This was pleasantly easy. The refactoring of the original
-reStructuredText modules into `lazy_rest
-<https://github.com/gradha/lazy_rest>`_ wasn't that easy though, I did hit some
-problems or annoyances. This post is going to enumerate the issues I found, in
-case you would like to make some other Nim module available to C users.
+reStructuredText modules into ``lazy_rest`` wasn't that easy though, I did hit
+some problems or annoyances. This post is going to enumerate the issues I
+found, in case you would like to make some other Nim module available to C
+users.
 
 
 Namespaces and identifiers
@@ -130,10 +126,8 @@ base greater than one (me).
 One thing worth mentioning here too is that conversions between ``string`` and
 ``cstring`` are `not always correct
 <https://github.com/Araq/Nim/issues/1577>`_. A ``nil`` ``string`` won't convert
-to a ``nil`` ``cstring``. One way to deal with this is `wrapping the string to
-cstring conversion
-<https://github.com/gradha/badger_bits/blob/5dcc623d1fd5b8232a133370e068b1e3928f56bc/bb_system.nim#L135>`_
-to check explicitly for ``nil``.
+to a ``nil`` ``cstring``. One way to deal with this is wrapping the string to
+cstring conversion to check explicitly for ``nil``.
 
 
 Exporting types from the Nim standard library
@@ -144,8 +138,7 @@ a `StringTableRef <http://nim-lang.org/docs/strtabs.html>`_. These type was
 named ``PStringTable`` in Nimrod 0.9.6, and unfortunately `it is not possible
 to export such symbols <https://github.com/Araq/Nim/issues/1579>`_.  The
 typical usage of this type is to store configuration options from a file or
-memory string, so instead I provided `lr_set_global_rst_options()
-<https://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest_c_api.html#lr_set_global_rst_options>`_.
+memory string, so instead I provided ``lr_set_global_rst_options()``.
 C users can create an in memory string with the necessary configuration options
 and let the Nim code parse that.  Not very optimal, but this is not performance
 critical. Typically you will call this once before any other reStructuredText
@@ -167,8 +160,7 @@ Export enums and constants
 
 The Nim language doesn't allow `exporting enums or consts to C
 <https://github.com/Araq/Nim/issues/826>`_. This is quite a bummer. For
-``lazy_rest`` I did add the `lconfig module
-<https://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest_pkg/lconfig.html>`_
+``lazy_rest`` I did add the ``lconfig`` module
 which contains several constants mapping to strings used for ``StringTableRef``
 configuration objects. C users have to look at the documentation and duplicate
 their own hard coded strings.
@@ -201,8 +193,7 @@ Errors and exception handling
         hspace="8pt" vspace="8pt"></a>
 
 Exceptions are something else C doesn't have. Nim procs like
-`rst_string_to_html()
-<https://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest.html#rst_string_to_html>`_
+``rst_string_to_html()``
 will throw exceptions on error, so how does the C binding deal with that? The C
 API module uses `Nim's effect system
 <http://nim-lang.org/docs/manual.html#effect-system>`_ for exception tracking.
@@ -222,8 +213,7 @@ Thanks to this pragma I am confident there won't be any exception leaving the
 Nim domain. Such exceptions are treated for the C API as functions returning
 ``NULL`` instead of the expected value.  The errors are again stored in another
 Nim global variable, and you can retrieve them with helper functions ending in
-``_error`` like `lr_rst_string_to_html_error()
-<https://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest_c_api.html#lr_rst_string_to_html_error>`_.
+``_error`` like ``lr_rst_string_to_html_error()``.
 
 
 Callback exception tracking
@@ -263,8 +253,7 @@ about a ten line program.
 In any case this wasn't a problem for the library, since I wanted the callbacks
 to be usable from C there wasn't any point in making them raise exceptions (how
 would you raise a Nim exception from C code?). I simply modified the
-`TMsgHandler
-<https://gradha.github.io/lazy_rest/gh_docs/v0.2.2/lazy_rest_pkg/lrst.html#TMsgHandler>`_
+``TMsgHandler``
 callback type to raise nothing and instead return the possible error as a non
 nil string. This avoided the problem of callbacks raising any exceptions.
 
@@ -295,8 +284,7 @@ the files or strings you need to process (e.g. results of scanning the file
 system) and let the multiple processors do their job, returning all the
 results.
 
-I started the `lqueues module
-<https://github.com/gradha/lazy_rest/blob/50738869005675b99b039516e8a6031ddf151972/lazy_rest_pkg/lqueues.nim>`_
+I started the ``lqueues`` module
 but couldn't get much done so I've left it disabled. I've done threading in C,
 Java, Objective-C, and after the initial problems grasping deadlocks and race
 conditions, nowadays I seem to be able to write at least non crashing code. But
@@ -333,8 +321,8 @@ Conclusion
 ----------
 
 From the point of view of C library consumers, this project mostly works and is
-viable. Users can go to the `lazy_rest releases section
-<https://github.com/gradha/lazy_rest/releases>`_, download the pre generated C
+viable. Users can go to the ``lazy_rest`` releases section, download the pre
+generated C
 sources packages and use without having to install or even know about Nim. For
 generic C API libraries only the exportation of enums, constants and type
 fields seems to be a glaring problem because mostly everybody will hit it.
