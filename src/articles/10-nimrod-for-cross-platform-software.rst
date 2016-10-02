@@ -389,7 +389,7 @@ will even start to be relevant to Wikipedia? In your dreams…
     <small><table border="1" bgcolor="ffdbdb" cellpadding="8pt"><tr><td>
 
 `Nim (programming language). From Wikipedia, the free encyclopedia
-<https://en.wikipedia.org/wiki/Nim_(programming_language)>`_.
+<https://en.wikipedia.org/wiki/Talk:Nim_(programming_language)>`_.
 
 This page has been deleted. The deletion and move log for the page are provided
 below for reference.
