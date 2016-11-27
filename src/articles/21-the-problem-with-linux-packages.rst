@@ -1,7 +1,7 @@
 ---
 title: The problem with Linux packages
 pubDate: 2014-12-14 18:15
-modDate: 2014-12-14 18:15
+modDate: 2016-11-27 22:16
 tags: tools, bureaucracy, design, static-linking
 ---
 
@@ -30,9 +30,17 @@ Abort.
 ---------
 
 And people still think I'm a lunatic when I tell them to `build statically
-linked binaries <../../2013/08/users-prefer-static-linking.html>`_ for their
-programs… yet somehow I feel sorry for the ``lisp-compiler`` package to not
-have hopped on the bloat bandwagon.
+linked binaries <../../2013/08/users-prefer-static-linking.html>`_ since that
+will increase the binary footprint… the same people who happily install
+gigabytes of optional dependencies without a blink. Somehow I feel sorry for
+the ``lisp-compiler`` package to not have hopped on the bloat bandwagon.
+
+**UPDATE**: Yes, `I know you can install asciidoc without all that bloat
+<http://askubuntu.com/questions/356604/why-does-asciidoc-have-texlive-as-a-dependency>`_.
+No, I'm not advocating to statically link against texlive. Yes, 99% of users
+stick to apt-get's defaults (`or any software, really
+<http://www.mylinuxrig.com/post/9120015925/linux-and-the-tyranny-of-the-default>`_)
+and install packages they won't ever use.
 
 .. raw:: html
 
