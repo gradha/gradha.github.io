@@ -14,7 +14,8 @@
 				href="../../../feed.xml"><img
 			alt="rss feed" src="../../../i/Feed-icon.svg"
 			width="18pt" height="18pt"></a></h3>
-		<h1>Users prefer static linking</h1><h2>What is static linking</h2><p>Users prefer static linking. That is, if software users would actually know what static linking is. Most users don't know anything about software, how it is built, or how much time you pour into it, but they know one thing: if it works, they expect it to keep working.</p>
+		<h1>Users prefer static linking</h1><h2>What is static linking</h2><p><span style="font-weight: bold;">UPDATE</span>: Maybe static linking <a href="../../2016/12/static-vs-dynamic-linking-is-the-wrong-discussion.html">is not really what the world needs</a>.</p>
+<p>Users prefer static linking. That is, if software users would actually know what static linking is. Most users don't know anything about software, how it is built, or how much time you pour into it, but they know one thing: if it works, they expect it to keep working.</p>
 <p>That's where the static linking is important. When a program is compiled a <span style="font-style: italic;">binary</span> is generated. The binary can have dynamic dependencies, which means that it relies on external code that is loaded every time the binary is loaded into memory to be executed. On the other hand, a statically linked binary will <span style="font-style: italic;">copy</span> all (or some) of the external code it requires into the final binary itself.</p>
 <p>The advantage of static linking is that you can copy the binary to another system and it will keep running, something which may not happen if the other system environment doesn't also have the same external library installed. The cost to pay for this is increased binary size, and there are also other drawbacks like the operating system not being able to share the library between processes and having duplicate instances of the same code in memory during execution.</p>
 <p>Mainstream consumer operating systems (Windows, Linux, OS X) provide a big set of shared libraries, allowing programmers to not have to care distributing their own copy with the program. But that soon started to be a problem: different versions of each operating system and/or library could be problematic for the programs. This is usually known as <a href="https://en.wikipedia.org/wiki/DLL_Hell">DLL Hell</a>, where installation of program A on the end user machine brings in version 1 of a shared library, and installation of program B brings in an incompatible version 2 of that same shared library.</p>
@@ -35,6 +36,7 @@
 <p>The problem is, will it work? Compiling most source code will require using modules from the standard library. But where are these? Scattered somewhere else. So while it is true that Nim produces a statically linked contained binary, it is effectively not portable if for 99% of its usage it depends on external files. Another example, you could be using different Nim compiler versions for testing, and one works with a specific version of the standard library, but a previous compiled binary won't work due to changes in the language. This requires you to maintain different versions of the standard library module tree, and make sure to point to the correct one with each binary if you actually need to switch.</p>
 <p>Certainly developers are special <span style="font-style: italic;">power</span> users, and they are expected to know how to install tool dependencies, search the net for obscure incantations of poorly known commands, and are usually resilient to repeated failure, with a special knack for banging their head against a wall until they figure out what is wrong.</p>
 <p>However, couldn't we all be nice and provide 100% portable tools too? Why do we provide portability to end users yet again and again we torture ourselves with DLL Hell? Do we enjoy it so much?</p>
+<p><span style="font-weight: bold;">UPDATE</span>: Maybe static linking <a href="../../2016/12/static-vs-dynamic-linking-is-the-wrong-discussion.html">is not really what the world needs</a>.</p>
 <p><pre class='code'><span class="Operator">$</span> <span class="Identifier">nim</span> <span class="Identifier">c</span> <span class="Identifier">forum</span><span class="Operator">.</span><span class="Identifier">nim</span>
 <span class="Operator">$</span> <span class="Operator">./</span><span class="Identifier">forum</span>
 <span class="Identifier">could</span> <span class="Keyword">not</span> <span class="Identifier">load</span><span class="Punctuation">:</span> <span class="Identifier">libcairo</span><span class="Operator">.</span><span class="Identifier">dylib</span>
@@ -52,7 +54,7 @@
     <a href="../../../tags/user-experience.html">user experience</a>
     
 .<br>Published on: 03/08/2013 12:31. Last update:
-			28/11/2013 11:36. <a
+			26/12/2016 22:44. <a
 			href="../../../feed.xml"><img
 			alt="rss feed" src="../../../i/Feed-icon.svg"
 			width="18pt" height="18pt"></a><br>
