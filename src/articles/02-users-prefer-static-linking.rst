@@ -1,7 +1,7 @@
 ---
 title: Users prefer static linking
 pubdate: 2013-08-03 13:31
-moddate: 2013-11-28 12:36
+moddate: 2016-12-26 23:44
 tags: nim, nimrod, static linking, user experience
 ---
 
@@ -10,6 +10,9 @@ Users prefer static linking
 
 What is static linking
 ----------------------
+
+**UPDATE**: Maybe static linking `is not really what the world needs
+<../../2016/12/static-vs-dynamic-linking-is-the-wrong-discussion.html>`_.
 
 Users prefer static linking. That is, if software users would
 actually know what static linking is. Most users don't know anything
@@ -208,6 +211,9 @@ against a wall until they figure out what is wrong.
 However, couldn't we all be nice and provide 100% portable tools
 too? Why do we provide portability to end users yet again and again
 we torture ourselves with DLL Hell? Do we enjoy it so much?
+
+**UPDATE**: Maybe static linking `is not really what the world needs
+<../../2016/12/static-vs-dynamic-linking-is-the-wrong-discussion.html>`_.
 
 ```nimrod
 $ nim c forum.nim
