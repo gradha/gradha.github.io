@@ -68,9 +68,9 @@ simple and effective pattern I've used is to split all applications into three
 layers: the user interface, the business logic, and the storage. In fact, best
 way to write a user interface is to write it like you were writing it for a
 `daemon program <https://en.wikipedia.org/wiki/Daemon_(computing)>`_. A daemon
-usually **does not** have an explicit user interface, it is just a program
-which runs without user interaction, and hence does not need a user interface.
-But most of them do, they can have a command line interface, a telnet
+**does not** require an explicit user interface, it is just a program which
+runs without user interaction, and hence does not need a user interface.  But
+most of them have one, they can have a command line interface, a telnet
 interface, or a graphical interface. Think of web servers like daemons, most of
 the time accessing their storage in order to serve web pages, and web browsers
 like user interface against them.
@@ -171,11 +171,12 @@ as you can see, such *misfeatures* can be problematic if one doesn't double
 check every model property access, because costly IO operations are now
 implicit and could happen any time without you being able to foresee them.
 
-The obvious solution to this problem is to **contain** Core Data to its
-storage layer in your app, and create two objects: one for your model, one for
-Core Data, and convert one to the other and vice versa at the boundary. That's
-why Google's text says: "*Unfortunately, developers usually end up sharing the
-model between their app and the UI*". Nobody using Core Data does this.
+The obvious solution to this problem is to **contain** Core Data to its storage
+layer in your app, and create two objects: one for your model, one for Core
+Data, and convert one to the other and vice versa at the boundary. That's why
+Google's text says: "*Unfortunately, developers usually end up sharing the
+model between their app and the UI*". Nobody using Core Data does this kind of
+split.
 
 
 The invisible red thread of bloat
