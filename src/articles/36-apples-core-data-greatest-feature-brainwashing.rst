@@ -159,9 +159,9 @@ where it shows another *hidden* problem with threading and lazy loading:
     the author. The first invocation of the getAuthor() call queries the
     database. Some time later, you realize that you need to display the author
     name in your app's UI, as well. You can add the method call easily enough,
-    as shown in the following code snippet:*
+    as shown in the following code snippet*::
     
-    ``authorNameTextView.setText(user.getAuthor().getName());``
+        authorNameTextView.setText(user.getAuthor().getName());
 
     **However, this seemingly innocent change causes the Author table to be
     queried on the main thread […]**.
