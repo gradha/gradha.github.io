@@ -149,6 +149,20 @@ refuses to work unless it connects somewhere for some unknown purpose. It's not
 even updates, since a few days ago it had been updated and online on an
 Internet connected WiFi at home.
 
+.. raw:: html
+
+    <center>
+    <img
+        src="../../../i/shitcast_1.jpg"
+        alt="Vuelve a conectarme. "ShitCast" está conectado a mini chrome, pero no tiene acceso a Internet. Comprueba que tu conexión a Internet funcione. De lo contrario, abre la aplicación Google Home para seleccionar otra red."
+        style="width:100%;max-width:750px" align="center"
+        hspace="8pt" vspace="8pt"><br>
+        <b>"ShitCast" is connected to mini chrome, but doesn't have internet
+        access.</b>
+
+    </center>
+
+
 The solution to patch this horrible design decision was to create a WiFi on my
 phone with data connection and let the Shitcast join it, as well as other
 mobile phones. Then, once the Shitcast is happy (it takes less than a second to
@@ -176,6 +190,25 @@ Still, I looked through the packaging and detailed description and there is
 nowhere to be found that the device **requires** internet access, it only says
 WiFi is required. How unfortunate of me to *presume* WiFi means WiFi without
 Internet access.
+
+.. raw:: html
+
+    <center>
+    <img
+        src="../../../i/shitcast_2.jpg"
+        alt="Vuelve a conectarme. "ShitCast" está conectado a mini chrome, pero no tiene acceso a Internet. Comprueba que tu conexión a Internet funcione. De lo contrario, abre la aplicación Google Home para seleccionar otra red."
+        style="width:100%;max-width:600px" align="center"
+        hspace="8pt" vspace="8pt"><br>
+        <b>Connect the Chromecast to an HDMI port and join a WiFi network.</b><br>
+    <img
+        src="../../../i/shitcast_3.jpg"
+        alt="Vuelve a conectarme. "ShitCast" está conectado a mini chrome, pero no tiene acceso a Internet. Comprueba que tu conexión a Internet funcione. De lo contrario, abre la aplicación Google Home para seleccionar otra red."
+        style="width:100%;max-width:750px" align="center"
+        hspace="8pt" vspace="8pt"><br>
+        <b>Chromecast requires a television with an HDMI port, a Wi-Fi network
+        and a computer or compatible mobile device.</b>
+
+    </center>
 
 
 Conclusion
