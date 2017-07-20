@@ -1,7 +1,7 @@
 ---
 title: Chromecast without internet is the Shitcast
 pubdate: 2017-07-20 20:12
-moddate: 2017-07-20 20:12
+moddate: 2017-07-20 22:00
 tags: google, design, user experience
 ---
 
@@ -76,7 +76,7 @@ run Google's Home application on a WiFi phone the Chromecast is easily
 configured to get the new password and join the network. Looking around the
 play store we even found an app named `Rakuten Viki
 <https://play.google.com/store/apps/details?id=com.viki.android>`_ which
-offered streaming Corean dramas with Spanish subtitles. The alcohol joining us
+offered streaming Korean dramas with Spanish subtitles. The alcohol joining us
 met the required standards so we tried the first chapter of `Strong Girl Do
 Bong Soon <https://www.viki.com/tv/32311c-strong-woman-do-bong-soon>`_. This
 drama goes about a weird fiction lineage of herculean strength Korean women.
