@@ -100,7 +100,7 @@ nearly the same height as her shoulders. She's either a hobbit or the director
 wanted to display her as one and asked to build a special giant door. I hope
 it's the former but without the ugly feet.
 
-Park Bo Young tries to live as a normal person, always hiding her true power to
+Do Bong Soon tries to live as a normal person, always hiding her true power to
 avoid others from noticing her, but of course this is pretty much impossible,
 since she seems to be lawful good. The first chapter shows how she doesn't even
 break a sweat dealing with some gangsters blocking a road and harassing a bus
