@@ -70,11 +70,11 @@ stuttered visually, as if displaying the frames in the wrong order, 1 3 2 5 4…
 instead of 1 2 3 4 5…, making everything unwatchable. But that seems more of a
 Chrome browser issue issue.
 
-Before holidays I went to a friend to show off the Chromecast, since he had
-heard about it and was interested in seeing how it performed. Again, once you
-run Google's Home application on a WiFi phone the Chromecast is easily
-configured to get the new password and join the network. Looking around the
-play store we even found an app named `Rakuten Viki
+Before holidays I went to `a friend <http://gonlamperouge.tumblr.com>`_ to show
+off the Chromecast, since he had heard about it and was interested in seeing
+how it performed. Again, once you run Google's Home application on a WiFi phone
+the Chromecast is easily configured to get the new password and join the
+network. Looking around the play store we even found an app named `Rakuten Viki
 <https://play.google.com/store/apps/details?id=com.viki.android>`_ which
 offered streaming Korean dramas with Spanish subtitles. The alcohol joining us
 met the required standards so we tried the first chapter of `Strong Girl Do
