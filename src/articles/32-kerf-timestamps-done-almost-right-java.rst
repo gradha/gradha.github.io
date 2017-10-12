@@ -367,7 +367,7 @@ echo("Example 4: @[" + values.stream()
 ```
 
 The fourth Kerf example uses functional like mapping, and this can be done with
-some pain with Jave 8 streams. Unfortunately by emulating functional mapping
+some pain with Java 8 streams. Unfortunately by emulating functional mapping
 calls we have **already lost the bet**: just like templates, Java 8 streams
 don't work on primitive types and require boxing and unboxing. That's what
 those mysterious ``nbox()`` and ``sbox()`` methods were for, since the only way
