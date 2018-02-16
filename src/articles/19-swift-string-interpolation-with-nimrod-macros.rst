@@ -2,7 +2,7 @@
 title: Swift string interpolation with Nimrod macros
 pubDate: 2014-11-12 00:40
 moddate: 2015-08-02 16:01
-tags: nim, programming, languages, swift
+tags: nim, programming, languages, swift, metaprogramming
 ---
 
 Swift string interpolation with Nim macros
