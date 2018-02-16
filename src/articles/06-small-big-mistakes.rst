@@ -2,7 +2,7 @@
 title: Small big mistakes
 pubdate: 2014-01-14 09:02
 moddate: 2014-02-23 21:12
-tags: programming, nim, nimrod, bureaucracy
+tags: programming, nim, bureaucracy
 ---
 
 Small big mistakes

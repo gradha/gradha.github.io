@@ -2,7 +2,7 @@
 title: The sweet trap of dynamic languages and development time
 pubdate: 2014-03-24 22:57
 moddate: 2015-08-02 16:01
-tags: programming, languages, python, nim, nimrod, objc
+tags: programming, languages, python, nim, objc
 ---
 
 The sweet trap of dynamic languages and development time

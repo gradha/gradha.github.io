@@ -2,7 +2,7 @@
 title: Dirrty objects, in dirrty Nimrod
 pubDate: 2014-06-07 20:23
 moddate: 2015-08-02 16:01
-tags: nim, nimrod, programming, objc
+tags: nim, programming, objc
 ---
 
 Dirrty objects, in dirrty Nim

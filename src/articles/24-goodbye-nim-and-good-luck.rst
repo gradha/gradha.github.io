@@ -2,7 +2,7 @@
 title: Goodbye Nim, and good luck
 pubDate: 2015-02-04 23:23
 modDate: 2016-07-10 11:50
-tags: languages, programming, nim, nimrod
+tags: languages, programming, nim
 ---
 
 Goodbye Nim, and good luck

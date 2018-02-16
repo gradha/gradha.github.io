@@ -2,7 +2,7 @@
 title: Writing C libraries with Nim
 pubDate: 2015-01-14 23:59
 moddate: 2016-09-10 19:58
-tags: languages, programming, nim, nimrod
+tags: languages, programming, nim
 ---
 
 Writing C libraries with Nim

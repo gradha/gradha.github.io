@@ -2,7 +2,7 @@
 title: Could Dropbox switch to Nimrod?
 pubDate: 2014-04-04 20:12
 modDate: 2014-04-04 20:19
-tags: programming,languages,python,nim, nimrod,dropbox
+tags: programming,languages,python,nim, dropbox
 ---
 
 Could Dropbox switch to Nim?
