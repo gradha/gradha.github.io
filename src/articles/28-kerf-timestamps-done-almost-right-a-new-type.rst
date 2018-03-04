@@ -129,7 +129,7 @@ since I know nothing about R, maybe it really sucks?) and more with other
 factors outside of the language domain and into the practical/political domain
 which can be worked around. Stronger better types are always nice, and I
 applaud Kerf's designers for improving over the status quo, attitude which is
-desperately needed so we can get forget about Java comparisons, but from this
+desperately needed so we can forget about Java comparisons, but from this
 to the article's conclusion and recommendations there's a leap of faith.
 
 In any case we get a hint of the *expected correct* way of dealing with
