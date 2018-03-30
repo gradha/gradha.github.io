@@ -1,12 +1,12 @@
 ---
-title: Prototyping a private server for location sharing apps
+title: Prototyping a dumb server for location sharing apps
 pubdate: 2018-03-29 18:24
 moddate: 2018-03-29 18:24
 tags: design, user experience, programming
 ---
 
-Prototyping a private server for location sharing apps
-======================================================
+Prototyping a dumb server for location sharing apps
+===================================================
 
 At the beginning of the year 2009 Google created `Google Latitude
 <https://en.wikipedia.org/wiki/Google_Latitude>`_, which was a service to
@@ -22,7 +22,7 @@ for `Apple to innovate with their Find My Friends app
 <https://en.wikipedia.org/wiki/Find_My_Friends>`_, offering pretty much the
 same service as Google, except for the fact that you were limited to using
 Apple devices and, at least at that time, there was no way to view a friend's
-location on a desktop web browser. These limitations set the world on fire, and
+location on a desktop web browser. Those limitations set the world on fire, and
 thus a new era of location tracking apps *officially* emerged.
 
 Google closed its service in 2013 (and so had to do my friend), but later
@@ -89,7 +89,7 @@ this we can piggyback on existing secure messaging platforms like `Tox
 <https://wiki.tox.chat/>`_, `Signal
 <https://signal.org/blog/private-contact-discovery/>`_, `Whatsapp
 <https://www.whatsapp.com>`_ or `Threema <https://threema.ch/en/>`_. Our
-private server will be used to relay our position to other parties, but those
+dumb server will be used to relay our position to other parties, but those
 will join us using one of these communication networks, there is no need to
 reinvent **that** wheel. For instance, to start broadcasting our position to
 other users, we will generate a blob of data, encoded in a URL or file, which
@@ -99,8 +99,9 @@ will contain all the necessary information to join the location server.
 While I have in mind implementing real time communication with something
 similar to `websockets <https://en.wikipedia.org/wiki/WebSocket>`_, there is
 nothing specific to websockets in the design, you could as well implement it
-over `avian carriers <https://en.wikipedia.org/wiki/IP_over_Avian_Carriers>`_.
-The first important step is starting a position broadcast, which requires:
+over `avian carriers <https://en.wikipedia.org/wiki/IP_over_Avian_Carriers>`_
+(if you can stomach the latency).  The first important step is starting a
+position broadcast and sharing it with others, which requires:
 
 * Information about the message relay server and its configuration, usually a
   URL.
@@ -130,40 +131,49 @@ no way for the server or its users know if a broadcast is going on, finished,
 didn't yet start, etc. Giving a 404 for a bad session identifier is an
 information leak we don't need.
 
-Users joining the session **can** broadcast their joining, but **are not
-required to do it**. It is nice to know if other people are listening, but
-security/privacy shouldn't depend on this information being available. In case
-of broadcasting, the clients will first identify themselves through a random
-value (likely another UUID), and *interested* clients may deliver to them
-further authentication requests. To simplify things for now, let's presume user
-identities are not know and we only have UUIDs, which are needed to distinguish
-different users broadcasting their position at the same time. The messages
-client machines will exchange with the server are in plaintext JSON:
+Whenever a client connects to a session, that client is assigned a random 16bit
+integer user identifier, which is broadcast to other listening users for them
+to know somebody has joined. This identifier can be used in more advanced
+setups to authenticate users, but for the moment let's presume all users are
+simply random and anonymous. A client being disconnected will get a new random
+value the next time he joins. The messages client machines will exchange with
+the server are in plaintext JSON:
 
-* ``{"id": "uuid as string", "lat": float, "lon": float}``: message sent by
-  whoever is willing to broadcast their position along their random identifier
-  picked for this session. The identifier is used by clients to overwrite the
-  previous position. The position is presumed to be current at the moment of
-  receiving it, with a +/- 1 minute error, broadcasters are presumed to send
-  their position at least once every 15 seconds.
+* ``{"a": "logged_in", "id": 16bit}``: message received by a new user
+  connecting to a session. From that moment on the specified ``id`` will be
+  used for the rest of the connection.
+* ``{"a": "new_user", "id": 16bit}``: message sent by the server to other
+  users, they can update their list of members in the chat.
+* ``{"a": "logged_out", "id": 16bit}``: message sent by the server to whoever
+  is listening indicating that the specified ``id`` is no longer valid and won't
+  accept connections. It is possible for a reconnecting user to get their
+  previous id, but this shouldn't be expected.
+* ``{"a": "pos", "id": 16bit int, "lat": float, "lon": float}``: message sent
+  by whoever is willing to broadcast their position along their random
+  identifier picked for this session. The identifier is used by listening
+  clients to overwrite the previous known position of that user.
 
 And that's it! What else could we want from a minimally viable location
-broadcasting project expect, anyway. The former packet will be sent *encrypted*
-in a wrapper JSON with the following form:
+broadcasting project expect, anyway. The ``logged_in``, ``logged_out`` and
+``new_user`` messages are sent by the server unencrypted, but  ``pos`` packets
+will be sent *encrypted* in a wrapper JSON with the following form:
 
-* ``{"p": "base64 encrypted string"}``: This is what all the listeners to the
-  session will see, a basic payload packet where the base64 encoded string has
-  to be decrypted with the symmetric session key. All the listeners receive the
-  message (except whoever sent it).
+* ``{"p": "base64 encrypted string"[, "to": 16bit]}``: This is what all the
+  listeners to the session will see, a basic payload packet where the base64
+  encoded string has to be decrypted with the symmetric session key. All the
+  listeners receive the message (except whoever sent it), unless the ``to``
+  field is present, in which case the message is sent only to the addressed
+  users. Delivery is never guaranteed.
 
-With all this setup what we end up with is a server which doesn't even perform
-any authentication, authorization or storage at all, it simply forwards
-messages here and there to whoever is listening. Starting from this base
-experiment we can keep adding features, as long as they don't reduce the
-privacy we have achieved so far. The server can't know who we are or where we
-are with great precision, they can still know our approximate IP geolocation,
-which is information your cell phone provider can also provide to say law
-enforcement. Should this be a concern, maybe use a `Tor connection
+The server will simply relay all the messages with a ``p`` without doing
+anything else with it.  With all this setup what we end up with is a server
+which doesn't even perform any authentication, authorization or storage at all,
+it simply forwards messages here and there to whoever is listening. Starting
+from this base experiment we can keep adding features, as long as they don't
+reduce the privacy we have achieved so far. The server can't know who we are or
+where we are with great precision, they can still know our approximate IP
+geolocation, which is information your cell phone provider can also provide to
+say law enforcement.  Should this be a concern, maybe use a `Tor connection
 <https://www.torproject.org>`_ against the server through a proxy like `Orbot
 <https://guardianproject.info/apps/orbot/>`_ that won't show your real IP.
 
