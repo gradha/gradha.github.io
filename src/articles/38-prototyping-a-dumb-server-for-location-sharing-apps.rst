@@ -1,12 +1,20 @@
 ---
 title: Prototyping a dumb server for location sharing apps
-pubdate: 2018-04-01 18:24
-moddate: 2018-04-01 18:24
+pubdate: 2018-04-01 02:27
+moddate: 2018-04-01 02:27
 tags: design, user experience, programming
 ---
 
 Prototyping a dumb server for location sharing apps
 ===================================================
+
+.. raw:: html
+
+    <div style="background-color:yellow;float:right;margin:1px"
+        ><a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"><video autoplay muted loop
+        style="width: 166px; height: 166px;"> <source
+        src="../../../i/omb_01.mp4" type="video/mp4"
+        /> No silly animated videos, good for you!</video></a></div>
 
 At the beginning of the year 2009 Google created `Google Latitude
 <https://en.wikipedia.org/wiki/Google_Latitude>`_, which was a service to
@@ -25,6 +33,14 @@ Apple devices and, at least at that time, there was no way to view a friend's
 location on a desktop web browser. Those limitations set the world on fire, and
 thus a new era of location tracking apps *officially* emerged.
 
+.. raw:: html
+
+    <div style="background-color:yellow;float:left;margin:1px"
+        ><a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"><video autoplay muted loop
+        style="width: 166px; height: 166px;"> <source
+        src="../../../i/omb_02.mp4" type="video/mp4"
+        /> No silly animated videos, good for you!</video></a></div>
+
 Google closed its service in 2013 (and so had to do my friend), but later
 embedded the feature directly in their Google Maps app, so that only *their*
 official client was able to use *their* servers. Maybe you weren't aware of it
@@ -35,6 +51,14 @@ and Google having Maps in most of their Android devices, you would think there
 was no place for other firms to develop similar apps. But the funny thing about
 wheels is that just as they don't seem to stop with the appropriate momentum,
 so do software developers seem to endlessly rewrite them.
+
+.. raw:: html
+
+    <div style="background-color:yellow;float:right;margin:1px"
+        ><a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"><video autoplay muted loop
+        style="width: 166px; height: 166px;"> <source
+        src="../../../i/omb_03.mp4" type="video/mp4"
+        /> No silly animated videos, good for you!</video></a></div>
 
 It is thanks to `mishaps like those from Facebook
 <https://arstechnica.com/information-technology/2018/03/your-facebook-data-archive-wont-really-show-everything-facebook-knows-about-you/>`_
@@ -49,6 +73,14 @@ privacy might mean to avoid selling or sharing your data to third parties.
 Maybe it could mean not storing logs or backups of your data forever. But
 whatever concession is made and sold to you, the server *wants to access* your
 data, and you build an implicit trust relationship with it.
+
+.. raw:: html
+
+    <div style="background-color:yellow;float:left;margin:1px"
+        ><a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"><video autoplay muted loop
+        style="width: 166px; height: 166px;"> <source
+        src="../../../i/omb_04.mp4" type="video/mp4"
+        /> No silly animated videos, good for you!</video></a></div>
 
 Is it possible to build a service similar to Google's Latitude or Apple's Find
 My Friends which respects the privacy of its users? Even if you *trust* a
@@ -67,6 +99,14 @@ dumb as it possibly is: the less it knows, the better for your privacy.
 Requirements
 ------------
 
+.. raw:: html
+
+    <div style="background-color:yellow;float:right;margin:1px"
+        ><a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"><video autoplay muted loop
+        style="width: 166px; height: 166px;"> <source
+        src="../../../i/omb_05.mp4" type="video/mp4"
+        /> No silly animated videos, good for you!</video></a></div>
+
 What I will outline in the rest of this article are my personal requirements
 for configuration and operation of a server working as location relay to
 different mobile users. It is unlikely to stop `state level surveillance
@@ -81,6 +121,14 @@ located doesn't really matter, it could be `Google App Engine
 <https://cloud.google.com/appengine/>`_, a mobile oriented service like `Pusher
 <https://pusher.com>`_, or a custom server hosted on the `Sandstorm platform
 <https://sandstorm.io>`_.
+
+.. raw:: html
+
+    <div style="background-color:yellow;float:left;margin:1px"
+        ><a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"><video autoplay muted loop
+        style="width: 166px; height: 166px;"> <source
+        src="../../../i/omb_06.mp4" type="video/mp4"
+        /> No silly animated videos, good for you!</video></a></div>
 
 The main requirement is to avoid giving up on two things to the server: our
 social network, and our location. The social network is essentially the list of
@@ -103,6 +151,14 @@ over `avian carriers <https://en.wikipedia.org/wiki/IP_over_Avian_Carriers>`_
 (if you can stomach the latency).  The first important step is starting a
 position broadcast and sharing it with others, which requires:
 
+.. raw:: html
+
+    <div style="background-color:yellow;float:right;margin:1px"
+        ><a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"><video autoplay muted loop
+        style="width: 166px; height: 166px;"> <source
+        src="../../../i/omb_07.mp4" type="video/mp4"
+        /> No silly animated videos, good for you!</video></a></div>
+
 * Information about the message relay server and its configuration, usually a
   URL.
 * Session identifier or chat name. The server can be used by multiple users at
@@ -122,6 +178,14 @@ position broadcast and sharing it with others, which requires:
   same time!) will create a new symmetric key. Most messages will be a simple
   JSON with the encrypted payload.
 
+.. raw:: html
+
+    <div style="background-color:yellow;float:left;margin:1px"
+        ><a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"><video autoplay muted loop
+        style="width: 166px; height: 166px;"> <source
+        src="../../../i/omb_08.mp4" type="video/mp4"
+        /> No silly animated videos, good for you!</video></a></div>
+
 Example of URL:
 
 ::
@@ -140,6 +204,14 @@ simply random and anonymous. A client being disconnected will get a new random
 value the next time he joins. The messages client machines will exchange with
 the server are in plaintext JSON:
 
+.. raw:: html
+
+    <div style="background-color:yellow;float:right;margin:1px"
+        ><a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"><video autoplay muted loop
+        style="width: 166px; height: 166px;"> <source
+        src="../../../i/omb_09.mp4" type="video/mp4"
+        /> No silly animated videos, good for you!</video></a></div>
+
 * ``{"a": "logged_in", "id": 32bit, "t": 64bit}``
 
   Message received by a new user connecting to a session. From that moment on
@@ -152,6 +224,14 @@ the server are in plaintext JSON:
 
   Message sent by the server to other users, they can update their list of
   members in the chat.
+
+.. raw:: html
+
+    <div style="background-color:yellow;float:left;margin:1px"
+        ><a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"><video autoplay muted loop
+        style="width: 166px; height: 166px;"> <source
+        src="../../../i/omb_10.mp4" type="video/mp4"
+        /> No silly animated videos, good for you!</video></a></div>
 
 * ``{"a": "logged_out", "id": 32bit}``
 
@@ -167,6 +247,14 @@ the server are in plaintext JSON:
   identifier of the sender.  The identifier is used by listening clients to
   overwrite the previous known position of that user, as well as decrypt the
   message.
+
+.. raw:: html
+
+    <div style="background-color:yellow;float:right;margin:1px"
+        ><a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"><video autoplay muted loop
+        style="width: 166px; height: 166px;"> <source
+        src="../../../i/omb_11.mp4" type="video/mp4"
+        /> No silly animated videos, good for you!</video></a></div>
 
 And that's it! What else could we want from a minimally viable location
 broadcasting project expect, anyway. The ``logged_in``, ``logged_out`` and
@@ -188,6 +276,14 @@ will be sent *encrypted* in a wrapper JSON with the following form:
   mostly to help the symmetric encryption algorithm, which will be explained
   later below, and is used as part of a nonce to avoid message repetition.
 
+.. raw:: html
+
+    <div style="background-color:yellow;float:left;margin:1px"
+        ><a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"><video autoplay muted loop
+        style="width: 166px; height: 166px;"> <source
+        src="../../../i/omb_12.mp4" type="video/mp4"
+        /> No silly animated videos, good for you!</video></a></div>
+
 The server will simply relay all the messages with a ``p`` without doing
 anything else with it.  With all this setup what we end up with is a server
 which doesn't even perform any authentication, authorization or storage at all,
@@ -205,6 +301,14 @@ a `VPN service <https://en.wikipedia.org/wiki/Virtual_private_network>`_ like
 
 The initial libsodium prototype
 -------------------------------
+
+.. raw:: html
+
+    <div style="background-color:yellow;float:right;margin:1px"
+        ><a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"><video autoplay muted loop
+        style="width: 166px; height: 166px;"> <source
+        src="../../../i/omb_13.mp4" type="video/mp4"
+        /> No silly animated videos, good for you!</video></a></div>
 
 To verify that the above makes some sense, let's start creating a simple C
 example using libsodium to simulate the creation of a session on a non existent
@@ -246,6 +350,14 @@ in case you don't *trust* running it yourself::
     secretbox mac bytes 16
     Simulate EOF
 
+.. raw:: html
+
+    <div style="background-color:yellow;float:left;margin:1px"
+        ><a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"><video autoplay muted loop
+        style="width: 166px; height: 166px;"> <source
+        src="../../../i/omb_14.mp4" type="video/mp4"
+        /> No silly animated videos, good for you!</video></a></div>
+
 As you can see most binary outputs are displayed in hexadecimal, and some of
 them are also base64 encoded, which is a way of embedding binary data into
 plaintext like JSON formats. The first block shows that the libsodium
@@ -276,6 +388,14 @@ The second block shows the typical login/join behaviour::
     to client 13250510: {'a': 'new_user', 'id': 103415}
     Client ids: 1:6050335, 2:13250510: 3:103415
 
+.. raw:: html
+
+    <div style="background-color:yellow;float:right;margin:1px"
+        ><a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"><video autoplay muted loop
+        style="width: 166px; height: 166px;"> <source
+        src="../../../i/omb_15.mp4" type="video/mp4"
+        /> No silly animated videos, good for you!</video></a></div>
+
 The first client joins the session and is assigned the id 6050335. The second
 client joins the chat and gets assigned the id 13250510. This event is
 broadcast by the server to the first already logged in client. The same dance
@@ -295,6 +415,14 @@ All the encryption/decryption goodness is in the third block::
     	JSON sent to client 103415
     Client decrypted '{'a': 'pos', 'lat': 43.200001, 'lon': 15.935000}'
 
+.. raw:: html
+
+    <div style="background-color:yellow;float:left;margin:1px"
+        ><a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"><video autoplay muted loop
+        style="width: 166px; height: 166px;"> <source
+        src="../../../i/omb_16.mp4" type="video/mp4"
+        /> No silly animated videos, good for you!</video></a></div>
+
 The first client wants to send the position action JSON with the latitude and
 longitude at the time. The simulation calls the `gen_broadcast_pos() function
 <https://gitlab.com/gradha/prototyping-a-dumb-server-for-location-sharing-apps/blob/master/client.c#L46-76>`_
@@ -306,6 +434,14 @@ be written, the source plain text, the length of the source plain text (we are
 saying *text* here but it really is any sequence of bytes, printable or not), a
 nonce, and the encryption key. What is the nonce and what do we need it when we
 already have an encryption key?
+
+.. raw:: html
+
+    <div style="background-color:yellow;float:right;margin:1px"
+        ><a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"><video autoplay muted loop
+        style="width: 166px; height: 166px;"> <source
+        src="../../../i/omb_17.mp4" type="video/mp4"
+        /> No silly animated videos, good for you!</video></a></div>
 
 The nonce is essentially an initialization vector used to randomize more the
 output of the encryption, with the purpose of avoiding replay attacks. Since
@@ -321,6 +457,14 @@ just like we send the encryption key through an external channel to other users
 we could send a 13 byte nonce prefix to use, which would defeat the server
 being able to serve us always the same identifier/time during login.
 
+.. raw:: html
+
+    <div style="background-color:yellow;float:left;margin:1px"
+        ><a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"><video autoplay muted loop
+        style="width: 166px; height: 166px;"> <source
+        src="../../../i/omb_18.mp4" type="video/mp4"
+        /> No silly animated videos, good for you!</video></a></div>
+
 Once sent, we see that the encrypted JSON is sent to the server, and this is
 broadcast to the two other listeners. Note how the listeners receive the
 encrypted payload and the two changing values that make up the nonce for each
@@ -335,6 +479,14 @@ to reverse the decryption. If you modify the simulation program and change a
 few bytes here or there, or modify the nonce values you should see the function
 failing.
 
+.. raw:: html
+
+    <div style="background-color:yellow;float:right;margin:1px"
+        ><a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"><video autoplay muted loop
+        style="width: 166px; height: 166px;"> <source
+        src="../../../i/omb_19.mp4" type="video/mp4"
+        /> No silly animated videos, good for you!</video></a></div>
+
 Finally, the last block of lines shows a few constants which might be of
 interest. The first line tells us that symmetric encryption keys need to have a
 length of 32 bytes. The second line tells us that the nonce is 24 bytes long.
@@ -347,6 +499,14 @@ that it has not been tampered with during the exchange.
 
 Being user friendly to… users
 -----------------------------
+
+.. raw:: html
+
+    <div style="background-color:yellow;float:left;margin:1px"
+        ><a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"><video autoplay muted loop
+        style="width: 166px; height: 166px;"> <source
+        src="../../../i/omb_20.mp4" type="video/mp4"
+        /> No silly animated videos, good for you!</video></a></div>
 
 If we ended up implementing the above, we would have a system where we could
 use a third party server to relay our position to other users securely as long
@@ -365,6 +525,14 @@ protocol to ask for/exchange information about ourselves. For example:
   joined user, but instead of sending this message to the whole channel they
   can use the ``to`` optional parameter of the wrapper to direct the message to
   the new id.
+
+.. raw:: html
+
+    <div style="background-color:yellow;float:right;margin:1px"
+        ><a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"><video autoplay muted loop
+        style="width: 166px; height: 166px;"> <source
+        src="../../../i/omb_21.mp4" type="video/mp4"
+        /> No silly animated videos, good for you!</video></a></div>
 
 * ``{"a": "user_info", name: string, "static_id": 64bit}``
 
@@ -388,6 +556,14 @@ protocol to ask for/exchange information about ourselves. For example:
 
 Slave to the state
 ------------------
+
+.. raw:: html
+
+    <div style="background-color:yellow;float:left;margin:1px"
+        ><a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"><video autoplay muted loop
+        style="width: 166px; height: 166px;"> <source
+        src="../../../i/omb_22.mp4" type="video/mp4"
+        /> No silly animated videos, good for you!</video></a></div>
 
 Another user friendly thing to implement would be state. At the moment clients
 can know their positions by asking, but we know not everybody is going to be
@@ -413,6 +589,14 @@ packet an optional field ``store``, which set to true would tell the server to
 *remeber* this packet and associate it to the user. Then, any user logging in
 could send a request to fetch all the stored information so far:
 
+.. raw:: html
+
+    <div style="background-color:yellow;float:right;margin:1px"
+        ><a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"><video autoplay muted loop
+        style="width: 166px; height: 166px;"> <source
+        src="../../../i/omb_23.mp4" type="video/mp4"
+        /> No silly animated videos, good for you!</video></a></div>
+
 * ``{"a": "see_storage"}``:
 
   This message sent to the server would not be relayed to other users, instead
@@ -430,6 +614,14 @@ would like to persist for the session, like a chat between users or the avatars
 (so that they don't log in to faceless avatars), we would end up with a very
 big chunk of encrypted data sent periodically to the server, since we can't
 update just a tiny bit of the whole encrypted data.
+
+.. raw:: html
+
+    <div style="background-color:yellow;float:left;margin:1px"
+        ><a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"><video autoplay muted loop
+        style="width: 166px; height: 166px;"> <source
+        src="../../../i/omb_24.mp4" type="video/mp4"
+        /> No silly animated videos, good for you!</video></a></div>
 
 If we don't like that, or the server/backend we have selected doesn't allow any
 form or storage, we could store the state faking a server through a
@@ -459,6 +651,14 @@ available to others even when they are not online.
 
 Out of marbles
 --------------
+
+.. raw:: html
+
+    <div style="background-color:yellow;float:right;margin:1px"
+        ><a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"><video autoplay muted loop
+        style="width: 166px; height: 166px;"> <source
+        src="../../../i/omb_25.mp4" type="video/mp4"
+        /> No silly animated videos, good for you!</video></a></div>
 
 At this point, regardless of how fun it is to use libsodium or how cool we feel
 for hiding our position to a third party using encryption, we are definitely
