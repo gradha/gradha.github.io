@@ -5,7 +5,18 @@
   <link href="https://gradha.github.io/feed.xml" rel="self" />
   <id>https://gradha.github.io/</id>
   <generator>ipsumgenera</generator>
-  <updated>2018-02-27T22:01:37Z</updated>
+  <updated>2018-04-01T00:49:45Z</updated>
+    <entry>
+      <title>Prototyping a dumb server for location sharing apps</title>
+      <link href="https://gradha.github.io/articles/2018/04/prototyping-a-dumb-server-for-location-sharing-apps.html" rel="alternate" type="text/html" />
+      <id>https://gradha.github.io/articles/2018/04/prototyping-a-dumb-server-for-location-sharing-apps.html</id>
+      <published>2018-04-01T01:27:00Z</published>
+      <updated>2018-04-01T01:27:00Z</updated>
+      <author><name>Grzegorz Adam Hankiewicz</name></author>
+      <content type="html">
+&lt;h1&gt;Prototyping a dumb server for location sharing apps&lt;/h1&gt;
+&lt;div style="background-color:yellow;float:right;margin:1px"&gt;&lt;a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"&gt;&lt;video autoplay="autoplay" muted="muted" loop="loop" style="width: 166px; height: 166px;"&gt; &lt;source src="../../../i/omb_01.mp4" type="video/mp4"&gt; No silly animated videos, good for you!&lt;/source&gt;&lt;/video&gt;&lt;/a&gt;&lt;/div&gt;&lt;p&gt;At the beginning of the year 2009 Google created &lt;a href="https://en.wikipedia.org/wiki/Google_Latitude"&gt;Google Latitude&lt;/a&gt;, which was a service to report your own mobile location to their servers so that other users could see where you are. It is funny to me that I didn't even know such a thing existed until 2010, when one of my previous coworkers released &lt;a href="https://web.archive.org/web/20101027221033/http://www.latitudie.com/"&gt;Latitudie&lt;/a&gt;, which was an iOS app using Google's Latitude service (I even did buy it and use it for my nefarious purposes!). But you had to wait until the end of 2011 (&lt;a href="https://arstechnica.com/gadgets/2011/04/how-apple-tracks-your-location-without-your-consent-and-why-it-matters/"&gt;after possibly the most public false start&lt;/a&gt;) for &lt;a href="https://en.wikipedia.org/wiki/Find_My_Friends"&gt;Apple to innovate with their Find My Friends app&lt;/a&gt;, offering pretty much the same service as Google, except for the fact that you were limited to using Apple devices and, at least at that time, there was no way to view a friend's location on a desktop web browser. Those limita...&lt;/p&gt;1515 bytes out of 40991.</content>
+    </entry>
     <entry>
       <title>Chromecast without internet is the Shitcast</title>
       <link href="https://gradha.github.io/articles/2017/07/chromecast-without-internet-is-the-shitcast.html" rel="alternate" type="text/html" />
@@ -78,25 +89,5 @@ maximize (&lt;a href="https://www.youtube.com/watch?v=GUl9_5kK9ts"&gt;It tastes 
 &lt;/li&gt;&lt;li&gt;&lt;a href="kerf-timestamps-done-almost-right-wtf...-java.html"&gt;WTF... Java?&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;conclusions &lt;b&gt;You are here!&lt;/b&gt;
 &lt;/li&gt;&lt;/ol&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;h2&gt;Scott's lessons for future language authors&lt;/h2&gt;&lt;a href="http://www.idol-grapher.com/1881"&gt;&lt;/a&gt;1470 bytes out of 9438.</content>
-    </entry>
-    <entry>
-      <title>Kerf timestamps done almost right: WTF... Java?</title>
-      <link href="https://gradha.github.io/articles/2016/03/kerf-timestamps-done-almost-right-wtf%E2%80%A6-java.html" rel="alternate" type="text/html" />
-      <id>https://gradha.github.io/articles/2016/03/kerf-timestamps-done-almost-right-wtf%E2%80%A6-java.html</id>
-      <published>2016-03-06T22:53:00Z</published>
-      <updated>2016-03-06T22:53:00Z</updated>
-      <author><name>Grzegorz Adam Hankiewicz</name></author>
-      <content type="html">
-&lt;h1&gt;Kerf timestamps done almost right: WTF... Java?&lt;/h1&gt;&lt;p&gt;In the &lt;a href="https://gradha.github.io/articles/2016/03/kerf-timestamps-done-almost-right-a-new-type.html"&gt;first chapter of the series&lt;/a&gt; we reached the conclusion that to implement Kerf's timestamp types we need the following features from a programming language:&lt;/p&gt;
-&lt;ol&gt;&lt;li&gt;Value type semantics with strong typing to avoid mistakes.&lt;/li&gt;&lt;li&gt;Instancing types on the stack to avoid slow heap memory allocations and alleviate manual memory handling or garbage collector pressure.&lt;/li&gt;&lt;li&gt;Custom literals for easier construction of such types.&lt;/li&gt;&lt;li&gt;Operator overloading to implement all possible custom operations.&lt;/li&gt;&lt;li&gt;Generics are not necessary but help with implementation.&lt;/li&gt;&lt;/ol&gt;
-&lt;table border="1" bgcolor="#cccccc"&gt;&lt;tr&gt;&lt;td style="vertical-align: middle;"&gt;&lt;b&gt;META NAVIGATION START&lt;/b&gt;
-&lt;p&gt;This is a really long article (&lt;a href="http://www.amazon.com/Beginning-Programming-Java-Dummies-Barry/dp/1118407814"&gt;Buy Java for Dummies!&lt;/a&gt;) which has
-been split in different chapters because it is (&lt;a href="http://www.amazon.com/Beginning-Programming-Java-Dummies-Barry/dp/1118407814"&gt;Java for dummies on sale!&lt;/a&gt;) unsuitable for today's average attention span
-and lets me
-maximize (&lt;a href="http://www.amazon.com/Beginning-Programming-Java-Dummies-Barry/dp/1118407814"&gt;Get Java for Dummies now!&lt;/a&gt;) page ads.
-&lt;/p&gt;&lt;p&gt;&lt;b&gt;META NAVIGATION END&lt;/b&gt;
-&lt;/p&gt;&lt;/td&gt;&lt;td nowrap="nowrap"&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;1479 bytes out of 53706.</content>
     </entry>
 </feed>
