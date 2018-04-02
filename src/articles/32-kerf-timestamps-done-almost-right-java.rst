@@ -81,9 +81,12 @@ language was:
 
 .. raw:: html
 
-    <a href="http://aaronsanimals.com/gifs/"><img
-        src="../../../i/shitposting_time.gif" width='300px' height='169px'
-        align="right"></a>
+    <div style="float:right;margin:1px"
+        ><a href="http://aaronsanimals.com/gifs/"><video
+        autoplay muted loop
+        style="width: 300px; height: 168px;"> <source
+        src="../../../i/shitposting_time.mp4" type="video/mp4"
+        />No silly animated videos, good for you!</video></a></div>
 
 
 An oxymoron right from the beginning, object orientation is not simple when you
@@ -117,9 +120,12 @@ you!
 
 .. raw:: html
 
-    <a href="http://aaronsanimals.com/gifs/"><img
-        src="../../../i/youre_fat.gif" width='250px' height='250px'
-        align="right"></a>
+    <a href="http://aaronsanimals.com/gifs/"><div
+        style="float:right;margin:1px"><video
+        autoplay muted loop
+        style="width: 250px; height: 250px;"> <source
+        src="../../../i/youre_fat.mp4" type="video/mp4"
+        />No silly animated videos, good for you!</video></div></a>
 
 Have you tried to write Java with a simple editor, like people sometimes do for
 languages like C, Pascal, Haskell, Ruby or Python? These languages can benefit

@@ -18,9 +18,12 @@ When you go to its website, on the front page you can read these sentences:
 
 .. raw:: html
 
-    <a href="http://this-plt-life.tumblr.com/post/66298485729/when-im-being-propagandized-by-an-fp-weenie"><img
-        src="../../../i/go_fpweenie.gif" width='155px' height='100px'
-        align="right"></a>
+    <a href="http://this-plt-life.tumblr.com/post/66298485729/when-im-being-propagandized-by-an-fp-weenie"><div
+        style="float:right;margin:1px"><video
+        autoplay muted loop
+        style="width: 155px; height: 99px;"> <source
+        src="../../../i/go_fpweenie.mp4" type="video/mp4"
+        />No silly animated videos, good for you!</video></div></a>
 
 * […] Beneath a nice infix/indentation based syntax with a powerful (AST based,
   hygienic) macro system lies a semantic model that supports a soft realtime GC
@@ -43,9 +46,13 @@ offensive.
 
 .. raw:: html
 
-    <a href="http://this-plt-life.tumblr.com/post/36425244621/when-i-hear-your-new-pl-doesnt-have-exceptions"><img
-        src="../../../i/go_dexter.gif" width='150px' height='85px'
-        align="right"></a>
+    <a href="http://this-plt-life.tumblr.com/post/36425244621/when-i-hear-your-new-pl-doesnt-have-exceptions"><div
+        style="float:right;margin:1px"><video
+        autoplay muted loop
+        style="width: 150px; height: 85px;"> <source
+        src="../../../i/go_dexter.mp4" type="video/mp4"
+        />No silly animated videos, good for you!</video></div></a>
+
 
 I'm not a stranger to `John Gabriel's Greater Internet Fuckwad Theory
 <http://www.penny-arcade.com/comic/2004/03/19/>`_, being insulted on the
@@ -62,9 +69,13 @@ What are macros anyway?
 
 .. raw:: html
 
-    <a href="http://this-plt-life.tumblr.com/post/37285848921/when-i-heard-of-gos-error-handling"><img
-        src="../../../i/go_go.gif" width='210px' height='142px'
-        align="right"></a>
+    <a href="http://this-plt-life.tumblr.com/post/37285848921/when-i-heard-of-gos-error-handling"><div
+        style="float:right;margin:1px"><video
+        autoplay muted loop
+        style="width: 210px; height: 142px;"> <source
+        src="../../../i/go_go.mp4" type="video/mp4"
+        />No silly animated videos, good for you!</video></div></a>
+
 
 If you don't have the time to `read Wikipedia's full article
 <https://en.wikipedia.org/wiki/Macro_(computer_science)#Syntactic_macros>`_,
@@ -93,9 +104,13 @@ int main(void)
 
 .. raw:: html
 
-    <a href="http://this-plt-life.tumblr.com/post/44079123074/when-im-working-on-a-new-pl-most-of-the-time"><img
-        src="../../../i/go_new.gif" width='250px' height='122px'
-        align="right"></a>
+    <a href="http://this-plt-life.tumblr.com/post/44079123074/when-im-working-on-a-new-pl-most-of-the-time"><div
+        style="float:right;margin:1px"><video
+        autoplay muted loop
+        style="width: 250px; height: 122px;"> <source
+        src="../../../i/go_new.mp4" type="video/mp4"
+        />No silly animated videos, good for you!</video></div></a>
+
 
 Running this program will produce the output 42, **not** 54 as one could
 naively *read*. Since C macros are textual replacements, you actually get the
@@ -132,9 +147,13 @@ written like this:
 
 .. raw:: html
 
-    <a href="http://this-plt-life.tumblr.com/post/36425231672/when-a-code-base-uses-a-directory-structure-deeper"><img
-        src="../../../i/go_src.gif" width='160px' height='120px'
-        align="right"></a>
+    <a href="http://this-plt-life.tumblr.com/post/36425231672/when-a-code-base-uses-a-directory-structure-deeper"><div
+        style="float:right;margin:1px"><video
+        autoplay muted loop
+        style="width: 160px; height: 122px;"> <source
+        src="../../../i/go_src.mp4" type="video/mp4"
+        />No silly animated videos, good for you!</video></div></a>
+
 
 Which is essentially the Objective-C equivalent of the `do while(false)
 <http://stackoverflow.com/questions/4674480/do-whilefalse-pattern>`_ pattern
@@ -168,9 +187,13 @@ Nim macros
 
 .. raw:: html
 
-    <a href="http://this-plt-life.tumblr.com/post/43655942984/when-im-working-on-a-macro-system-with-phase"><img
-        src="../../../i/go_tower.gif" width='100px' height='100px'
-        align="right"></a>
+    <a href="http://this-plt-life.tumblr.com/post/43655942984/when-im-working-on-a-macro-system-with-phase"><div
+        style="float:right;margin:1px"><video
+        autoplay muted loop
+        style="width: 100px; height: 100px;"> <source
+        src="../../../i/go_tower.mp4" type="video/mp4"
+        />No silly animated videos, good for you!</video></div></a>
+
 
 In the quest for improving meta programming, we reach `syntactic macros
 <https://en.wikipedia.org/wiki/Macro_(computer_science)#Syntactic_macros>`_,
@@ -186,9 +209,13 @@ main differences:
 
 .. raw:: html
 
-    <a href="http://this-plt-life.tumblr.com/post/40016419394/when-somebody-asks-me-about-a-non-s-expression"><img
-        src="../../../i/go_huh_what.gif" width='125px' height='101px'
-        align="right"></a>
+    <a href="http://this-plt-life.tumblr.com/post/40016419394/when-somebody-asks-me-about-a-non-s-expression"><div
+        style="float:right;margin:1px"><video
+        autoplay muted loop
+        style="width: 125px; height: 101px;"> <source
+        src="../../../i/go_huh_what.mp4" type="video/mp4"
+        />No silly animated videos, good for you!</video></div></a>
+
 
 Like the Wikipedia article mentions, macros are kind of natural of
 `S-expression <https://en.wikipedia.org/wiki/S-expression>`_ languages, since
@@ -211,9 +238,13 @@ So what does this have to do with Go, they don't have macros!
 
 .. raw:: html
 
-    <a href="http://this-plt-life.tumblr.com/post/36425239482/when-i-hear-theyre-adding-features-to-c"><img
-        src="../../../i/go_cxx.gif" width='120px' height='114px'
-        align="right"></a>
+    <a href="http://this-plt-life.tumblr.com/post/36425239482/when-i-hear-theyre-adding-features-to-c"><div
+        style="float:right;margin:1px"><video
+        autoplay muted loop
+        style="width: 120px; height: 114px;"> <source
+        src="../../../i/go_cxx.mp4" type="video/mp4"
+        />No silly animated videos, good for you!</video></div></a>
+
 
 Yes they do. The blog post `Generating code <http://blog.golang.org/generate>`_
 posted on the 22nd of December of 2014 should already hint with its title that
@@ -230,9 +261,13 @@ ever **go** to version 1.4 and beyond!
 
 .. raw:: html
 
-    <a href="http://this-plt-life.tumblr.com/post/39920361990/when-someone-is-enamored-with-a-languages-petty"><img
-        src="../../../i/go_irrelevant.gif" width='150px' height='150px'
-        align="right"></a>
+    <a href="http://this-plt-life.tumblr.com/post/39920361990/when-someone-is-enamored-with-a-languages-petty"><div
+        style="float:right;margin:1px"><video
+        autoplay muted loop
+        style="width: 150px; height: 150px;"> <source
+        src="../../../i/go_irrelevant.mp4" type="video/mp4"
+        />No silly animated videos, good for you!</video></div></a>
+
 
 The example given in Go's blog is to stringify enum constants into strings so
 you can print them or maybe compare them. The `Go generate design document
@@ -265,9 +300,13 @@ been playing with it. Let's see some comments from the `reddit discussion
 
 .. raw:: html
 
-    <a href="http://this-plt-life.tumblr.com/post/44373483122/when-somebody-tries-to-add-a-type-system-to-an"><img
-        src="../../../i/go_ts.gif" width='180px' height='101px'
-        align="right"></a>
+    <a href="http://this-plt-life.tumblr.com/post/44373483122/when-somebody-tries-to-add-a-type-system-to-an"><div
+        style="float:right;margin:1px"><video
+        autoplay muted loop
+        style="width: 180px; height: 101px;"> <source
+        src="../../../i/go_ts.mp4" type="video/mp4"
+        />No silly animated videos, good for you!</video></div></a>
+
 
 This is inevitable. Go programmers like the language and they want more, so
 they explore meta programming. Unfortunately, the language authors don't want
@@ -299,9 +338,13 @@ Conclusion
 
 .. raw:: html
 
-    <a href="http://this-plt-life.tumblr.com/post/36425240884/when-everybody-hypes-a-language-that-i-find-crap"><img
-        src="../../../i/go_hate.gif" width='147px' height='90px'
-        align="right"></a>
+    <a href="http://this-plt-life.tumblr.com/post/36425240884/when-everybody-hypes-a-language-that-i-find-crap"><div
+        style="float:right;margin:1px"><video
+        autoplay muted loop
+        style="width: 147px; height: 90px;"> <source
+        src="../../../i/go_hate.mp4" type="video/mp4"
+        />No silly animated videos, good for you!</video></div></a>
+
 
 Meta programming has come to stay. If you have been conditioned to think macros
 are bad because you have been spoon fed plenty of C/C++ horror stories, you
