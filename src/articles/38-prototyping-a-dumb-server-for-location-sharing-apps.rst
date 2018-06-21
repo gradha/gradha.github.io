@@ -62,9 +62,11 @@ so do software developers seem to endlessly rewrite them.
 
 It is thanks to `mishaps like those from Facebook
 <https://arstechnica.com/information-technology/2018/03/your-facebook-data-archive-wont-really-show-everything-facebook-knows-about-you/>`_
-that users are starting to realize all the services they enjoy might not have
+that users are starting to realize `all the services they enjoy might not have
 been paid for themselves through their uploading of food pictures to whatever
-social network they use. `Privacy is a word hard to define
+social network they use
+<https://www.schneier.com/crypto-gram/archives/2018/0415.html#1>`_. `Privacy is
+a word hard to define
 <http://www.vs.inf.ethz.ch/publ/papers/privacy-principles.pdf>`_, especially
 since `some cultures don't even have such a word
 <https://en.wikipedia.org/wiki/Privacy>`_, and what exactly is privacy for a
