@@ -5,17 +5,17 @@
   <link href="https://gradha.github.io/feed.xml" rel="self" />
   <id>https://gradha.github.io/</id>
   <generator>ipsumgenera</generator>
-  <updated>2018-04-01T00:49:45Z</updated>
+  <updated>2018-07-26T23:27:16Z</updated>
     <entry>
       <title>Prototyping a dumb server for location sharing apps</title>
       <link href="https://gradha.github.io/articles/2018/04/prototyping-a-dumb-server-for-location-sharing-apps.html" rel="alternate" type="text/html" />
       <id>https://gradha.github.io/articles/2018/04/prototyping-a-dumb-server-for-location-sharing-apps.html</id>
       <published>2018-04-01T01:27:00Z</published>
-      <updated>2018-04-01T01:27:00Z</updated>
+      <updated>2018-07-27T00:26:00Z</updated>
       <author><name>Grzegorz Adam Hankiewicz</name></author>
       <content type="html">
 &lt;h1&gt;Prototyping a dumb server for location sharing apps&lt;/h1&gt;
-&lt;div style="background-color:yellow;float:right;margin:1px"&gt;&lt;a href="http://www.youtube.com/watch?v=gHuZ_yQxtyE"&gt;&lt;video autoplay="autoplay" muted="muted" loop="loop" style="width: 166px; height: 166px;"&gt; &lt;source src="../../../i/omb_01.mp4" type="video/mp4"&gt; No silly animated videos, good for you!&lt;/source&gt;&lt;/video&gt;&lt;/a&gt;&lt;/div&gt;&lt;p&gt;At the beginning of the year 2009 Google created &lt;a href="https://en.wikipedia.org/wiki/Google_Latitude"&gt;Google Latitude&lt;/a&gt;, which was a service to report your own mobile location to their servers so that other users could see where you are. It is funny to me that I didn't even know such a thing existed until 2010, when one of my previous coworkers released &lt;a href="https://web.archive.org/web/20101027221033/http://www.latitudie.com/"&gt;Latitudie&lt;/a&gt;, which was an iOS app using Google's Latitude service (I even did buy it and use it for my nefarious purposes!). But you had to wait until the end of 2011 (&lt;a href="https://arstechnica.com/gadgets/2011/04/how-apple-tracks-your-location-without-your-consent-and-why-it-matters/"&gt;after possibly the most public false start&lt;/a&gt;) for &lt;a href="https://en.wikipedia.org/wiki/Find_My_Friends"&gt;Apple to innovate with their Find My Friends app&lt;/a&gt;, offering pretty much the same service as Google, except for the fact that you were limited to using Apple devices and, at least at that time, there was no way to view a friend's location on a desktop web browser. Those limita...&lt;/p&gt;1515 bytes out of 40991.</content>
+&lt;div style="background-color:yellow;float:right;margin:1px"&gt;&lt;a href="https://youtu.be/p4tLL59NtZc?t=51"&gt;&lt;video autoplay="autoplay" muted="muted" loop="loop" style="width: 166px; height: 166px;"&gt; &lt;source src="../../../i/omb_01.mp4" type="video/mp4"&gt; No silly animated videos, good for you!&lt;/source&gt;&lt;/video&gt;&lt;/a&gt;&lt;/div&gt;&lt;p&gt;At the beginning of the year 2009 Google created &lt;a href="https://en.wikipedia.org/wiki/Google_Latitude"&gt;Google Latitude&lt;/a&gt;, which was a service to report your own mobile location to their servers so that other users could see where you are. It is funny to me that I didn't even know such a thing existed until 2010, when one of my previous coworkers released &lt;a href="https://web.archive.org/web/20101027221033/http://www.latitudie.com/"&gt;Latitudie&lt;/a&gt;, which was an iOS app using Google's Latitude service (I even did buy it and use it for my nefarious purposes!). But you had to wait until the end of 2011 (&lt;a href="https://arstechnica.com/gadgets/2011/04/how-apple-tracks-your-location-without-your-consent-and-why-it-matters/"&gt;after possibly the most public false start&lt;/a&gt;) for &lt;a href="https://en.wikipedia.org/wiki/Find_My_Friends"&gt;Apple to innovate with their Find My Friends app&lt;/a&gt;, offering pretty much the same service as Google, except for the fact that you were limited to using Apple devices and, at least at that time, there was no way to view a friend's location on a desktop web browser. Those limitations set...&lt;/p&gt;1515 bytes out of 40907.</content>
     </entry>
     <entry>
       <title>Chromecast without internet is the Shitcast</title>
