@@ -14,7 +14,7 @@ Prototyping a dumb server for location sharing apps
         ><a href="https://youtu.be/p4tLL59NtZc?t=51"><video autoplay muted loop
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_01.mp4" type="video/mp4"
-        /> No silly animated videos, good for you!</video></a></div>
+        /><img src="../../../i/omb_01.gif" width=166 height=166></video></a></div>
 
 At the beginning of the year 2009 Google created `Google Latitude
 <https://en.wikipedia.org/wiki/Google_Latitude>`_, which was a service to
@@ -39,7 +39,7 @@ thus a new era of location tracking apps *officially* emerged.
         ><a href="https://www.youtube.com/watch?v=rW9r_1ys2ec"><video autoplay muted loop
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_02.mp4" type="video/mp4"
-        /> No silly animated videos, good for you!</video></a></div>
+        /><img src="../../../i/omb_02.gif" width=166 height=166></video></a></div>
 
 Google closed its service in 2013 (and so had to do my friend), but later
 embedded the feature directly in their Google Maps app, so that only *their*
@@ -58,7 +58,7 @@ so do software developers seem to endlessly rewrite them.
         ><a href="https://www.youtube.com/watch?v=A5aTxyEdD4k"><video autoplay muted loop
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_03.mp4" type="video/mp4"
-        /> No silly animated videos, good for you!</video></a></div>
+        /><img src="../../../i/omb_03.gif" width=166 height=166></video></a></div>
 
 It is thanks to `mishaps like those from Facebook
 <https://arstechnica.com/information-technology/2018/03/your-facebook-data-archive-wont-really-show-everything-facebook-knows-about-you/>`_
@@ -82,7 +82,7 @@ data, and you build an implicit trust relationship with it.
         ><a href="https://youtu.be/Lqa8e0r5uI8?t=14"><video autoplay muted loop
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_04.mp4" type="video/mp4"
-        /> No silly animated videos, good for you!</video></a></div>
+        /><img src="../../../i/omb_04.gif" width=166 height=166></video></a></div>
 
 Is it possible to build a service similar to Google's Latitude or Apple's Find
 My Friends which respects the privacy of its users? Even if you *trust* a
@@ -107,7 +107,7 @@ Requirements
         ><a href="https://youtu.be/DVZ1GDc634o?t=33"><video autoplay muted loop
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_05.mp4" type="video/mp4"
-        /> No silly animated videos, good for you!</video></a></div>
+        /><img src="../../../i/omb_05.gif" width=166 height=166></video></a></div>
 
 What I will outline in the rest of this article are my personal requirements
 for configuration and operation of a server working as location relay to
@@ -130,7 +130,7 @@ located doesn't really matter, it could be `Google App Engine
         ><a href="https://youtu.be/ZAeNaWv8V7o?t=32"><video autoplay muted loop
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_06.mp4" type="video/mp4"
-        /> No silly animated videos, good for you!</video></a></div>
+        /><img src="../../../i/omb_06.gif" width=166 height=166></video></a></div>
 
 The main requirement is to avoid giving up on two things to the server: our
 social network, and our location. The social network is essentially the list of
@@ -159,7 +159,7 @@ position broadcast and sharing it with others, which requires:
         ><a href="https://www.youtube.com/watch?v=0liD6Jv5JuE"><video autoplay muted loop
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_07.mp4" type="video/mp4"
-        /> No silly animated videos, good for you!</video></a></div>
+        /><img src="../../../i/omb_07.gif" width=166 height=166></video></a></div>
 
 * Information about the message relay server and its configuration, usually a
   URL.
@@ -186,7 +186,7 @@ position broadcast and sharing it with others, which requires:
         ><a href="https://youtu.be/VB3GLxDpjVM?t=163"><video autoplay muted loop
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_08.mp4" type="video/mp4"
-        /> No silly animated videos, good for you!</video></a></div>
+        /><img src="../../../i/omb_08.gif" width=166 height=166></video></a></div>
 
 Example of URL:
 
@@ -212,7 +212,7 @@ the server are in plaintext JSON:
         ><a href="https://youtu.be/PY_71_zD6tw?t=12"><video autoplay muted loop
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_09.mp4" type="video/mp4"
-        /> No silly animated videos, good for you!</video></a></div>
+        /><img src="../../../i/omb_09.gif" width=166 height=166></video></a></div>
 
 * ``{"a": "logged_in", "id": 32bit, "t": 64bit}``
 
@@ -233,7 +233,7 @@ the server are in plaintext JSON:
         ><a href="https://youtu.be/MPOtEIhikxU?t=25"><video autoplay muted loop
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_10.mp4" type="video/mp4"
-        /> No silly animated videos, good for you!</video></a></div>
+        /><img src="../../../i/omb_10.gif" width=166 height=166></video></a></div>
 
 * ``{"a": "logged_out", "id": 32bit}``
 
@@ -256,7 +256,7 @@ the server are in plaintext JSON:
         ><a href="https://www.youtube.com/watch?v=tdE9YQKYMik"><video autoplay muted loop
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_11.mp4" type="video/mp4"
-        /> No silly animated videos, good for you!</video></a></div>
+        /><img src="../../../i/omb_11.gif" width=166 height=166></video></a></div>
 
 And that's it! What else could we want from a minimally viable location
 broadcasting project expect, anyway. The ``logged_in``, ``logged_out`` and
@@ -284,7 +284,7 @@ will be sent *encrypted* in a wrapper JSON with the following form:
         ><a href="https://youtu.be/Wo38Rz0iBgw?t=198"><video autoplay muted loop
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_12.mp4" type="video/mp4"
-        /> No silly animated videos, good for you!</video></a></div>
+        /><img src="../../../i/omb_12.gif" width=166 height=166></video></a></div>
 
 The server will simply relay all the messages with a ``p`` without doing
 anything else with it.  With all this setup what we end up with is a server
@@ -310,7 +310,7 @@ The initial libsodium prototype
         ><a href="https://youtu.be/_7xk5pBSiYo?t=56"><video autoplay muted loop
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_13.mp4" type="video/mp4"
-        /> No silly animated videos, good for you!</video></a></div>
+        /><img src="../../../i/omb_13.gif" width=166 height=166></video></a></div>
 
 To verify that the above makes some sense, let's start creating a simple C
 example using libsodium to simulate the creation of a session on a non existent
@@ -358,7 +358,7 @@ in case you don't *trust* running it yourself::
         ><a href="https://youtu.be/kCXW5qYalgY?t=137"><video autoplay muted loop
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_14.mp4" type="video/mp4"
-        /> No silly animated videos, good for you!</video></a></div>
+        /><img src="../../../i/omb_14.gif" width=166 height=166></video></a></div>
 
 As you can see most binary outputs are displayed in hexadecimal, and some of
 them are also base64 encoded, which is a way of embedding binary data into
@@ -396,7 +396,7 @@ The second block shows the typical login/join behaviour::
         ><a href="https://youtu.be/nr6W6ZRBKXs?t=96"><video autoplay muted loop
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_15.mp4" type="video/mp4"
-        /> No silly animated videos, good for you!</video></a></div>
+        /><img src="../../../i/omb_15.gif" width=166 height=166></video></a></div>
 
 The first client joins the session and is assigned the id 6050335. The second
 client joins the chat and gets assigned the id 13250510. This event is
@@ -423,7 +423,7 @@ All the encryption/decryption goodness is in the third block::
         ><a href="https://youtu.be/C_3S95ruYe8?t=42"><video autoplay muted loop
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_16.mp4" type="video/mp4"
-        /> No silly animated videos, good for you!</video></a></div>
+        /><img src="../../../i/omb_16.gif" width=166 height=166></video></a></div>
 
 The first client wants to send the position action JSON with the latitude and
 longitude at the time. The simulation calls the `gen_broadcast_pos() function
@@ -443,7 +443,7 @@ already have an encryption key?
         ><a href="https://youtu.be/qOEdvexx06Q?t=112"><video autoplay muted loop
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_17.mp4" type="video/mp4"
-        /> No silly animated videos, good for you!</video></a></div>
+        /><img src="../../../i/omb_17.gif" width=166 height=166></video></a></div>
 
 The nonce is essentially an initialization vector used to randomize more the
 output of the encryption, with the purpose of avoiding replay attacks. Since
@@ -465,7 +465,7 @@ being able to serve us always the same identifier/time during login.
         ><a href="https://www.youtube.com/watch?v=8J2lPs39Iic"><video autoplay muted loop
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_18.mp4" type="video/mp4"
-        /> No silly animated videos, good for you!</video></a></div>
+        /><img src="../../../i/omb_18.gif" width=166 height=166></video></a></div>
 
 Once sent, we see that the encrypted JSON is sent to the server, and this is
 broadcast to the two other listeners. Note how the listeners receive the
@@ -487,7 +487,7 @@ failing.
         ><a href="https://youtu.be/qKM3819wLqs?t=98"><video autoplay muted loop
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_19.mp4" type="video/mp4"
-        /> No silly animated videos, good for you!</video></a></div>
+        /><img src="../../../i/omb_19.gif" width=166 height=166></video></a></div>
 
 Finally, the last block of lines shows a few constants which might be of
 interest. The first line tells us that symmetric encryption keys need to have a
@@ -508,7 +508,7 @@ Being user friendly to… users
         ><a href="https://www.youtube.com/watch?v=jlSKz_eSPIw"><video autoplay muted loop
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_20.mp4" type="video/mp4"
-        /> No silly animated videos, good for you!</video></a></div>
+        /><img src="../../../i/omb_20.gif" width=166 height=166></video></a></div>
 
 If we ended up implementing the above, we would have a system where we could
 use a third party server to relay our position to other users securely as long
@@ -534,7 +534,7 @@ protocol to ask for/exchange information about ourselves. For example:
         ><a href="https://youtu.be/DK895XQPzWQ?t=16"><video autoplay muted loop
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_21.mp4" type="video/mp4"
-        /> No silly animated videos, good for you!</video></a></div>
+        /><img src="../../../i/omb_21.gif" width=166 height=166></video></a></div>
 
 * ``{"a": "user_info", name: string, "static_id": 64bit}``
 
@@ -565,7 +565,7 @@ Slave to the state
         ><a href="https://youtu.be/wSjAOl2vQUU?t=86"><video autoplay muted loop
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_22.mp4" type="video/mp4"
-        /> No silly animated videos, good for you!</video></a></div>
+        /><img src="../../../i/omb_22.gif" width=166 height=166></video></a></div>
 
 Another user friendly thing to implement would be state. At the moment clients
 can know their positions by asking, but we know not everybody is going to be
@@ -597,7 +597,7 @@ could send a request to fetch all the stored information so far:
         ><a href="https://youtu.be/PpZgSXcQ3k8?t=137"><video autoplay muted loop
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_23.mp4" type="video/mp4"
-        /> No silly animated videos, good for you!</video></a></div>
+        /><img src="../../../i/omb_23.gif" width=166 height=166></video></a></div>
 
 * ``{"a": "see_storage"}``:
 
@@ -623,7 +623,7 @@ update just a tiny bit of the whole encrypted data.
         ><a href="https://youtu.be/yw5xawWPDHI?t=87"><video autoplay muted loop
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_24.mp4" type="video/mp4"
-        /> No silly animated videos, good for you!</video></a></div>
+        /><img src="../../../i/omb_24.gif" width=166 height=166></video></a></div>
 
 If we don't like that, or the server/backend we have selected doesn't allow any
 form or storage, we could store the state faking a server through a
@@ -660,7 +660,7 @@ Out of marbles
         ><a href="https://youtu.be/xxCmQa5zV_c?t=7"><video autoplay muted loop
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_25.mp4" type="video/mp4"
-        /> No silly animated videos, good for you!</video></a></div>
+        /><img src="../../../i/omb_25.gif" width=166 height=166></video></a></div>
 
 At this point, regardless of how fun it is to use libsodium or how cool we feel
 for hiding our position to a third party using encryption, we are definitely
