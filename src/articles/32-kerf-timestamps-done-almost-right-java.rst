@@ -24,14 +24,14 @@ programming language:
 
     <table border="1" bgcolor="#cccccc"><tr><td style="vertical-align: middle;"
     ><b>META NAVIGATION START</b>
-    <p>This is a really long article (<a
+    <p>This is a really long article (<a class="blink"
     href="http://www.amazon.com/Beginning-Programming-Java-Dummies-Barry/dp/1118407814"
     >Buy Java for Dummies!</a>) which has
-    been split in different chapters because it is (<a
+    been split in different chapters because it is (<a class="blink"
     href="http://www.amazon.com/Beginning-Programming-Java-Dummies-Barry/dp/1118407814"
     >Java for dummies on sale!</a>) unsuitable for today's average attention span
     and lets me
-    maximize (<a href="http://www.amazon.com/Beginning-Programming-Java-Dummies-Barry/dp/1118407814"
+    maximize (<a class="blink" href="http://www.amazon.com/Beginning-Programming-Java-Dummies-Barry/dp/1118407814"
     >Get Java for Dummies now!</a>) page ads.
     <p><b>META NAVIGATION END</b>
     </td><td nowrap>

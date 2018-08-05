@@ -24,14 +24,14 @@ programming language:
 
     <table border="1" bgcolor="#cccccc"><tr><td style="vertical-align: middle;"
     ><b>META NAVIGATION START</b>
-    <p>This is a really long article (<a
+    <p>This is a really long article (<a class="blink"
     href="http://www.amazon.com/Swift-Programming-Ranch-Guide-Guides/dp/0134398017"
     >Buy Swift Programming!</a>) which has
-    been split in different chapters because it is (<a
+    been split in different chapters because it is (<a class="blink"
     href="http://www.amazon.com/Swift-Programming-Ranch-Guide-Guides/dp/0134398017"
     >Swift Programming on sale!</a>) unsuitable for today's average attention span
     and lets me
-    maximize (<a href="http://www.amazon.com/Swift-Programming-Ranch-Guide-Guides/dp/0134398017"
+    maximize (<a href="http://www.amazon.com/Swift-Programming-Ranch-Guide-Guides/dp/0134398017" class="blink"
     >Get Swift Programming now!</a>) page ads.
     <p><b>META NAVIGATION END</b>
     </td><td nowrap>

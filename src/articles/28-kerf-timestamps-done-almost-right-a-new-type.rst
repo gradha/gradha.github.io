@@ -31,10 +31,10 @@ Java (`source available for all of them at GitHub
 
     <table border="1" bgcolor="#cccccc"><tr><td style="vertical-align: middle;"
     ><b>META NAVIGATION START</b>
-    <p>This is a really long article (<a href="http://www.kerfsoftware.com"
+    <p>This is a really long article (<a href="http://www.kerfsoftware.com" class="blink"
     >Buy Kerf!</a>) which has been split in different chapters because it is
-    (<a href="http://www.kerfsoftware.com">Kerf on sale!</a>) unsuitable for
-    today's average attention span and lets me maximize (<a
+    (<a class="blink" href="http://www.kerfsoftware.com">Kerf on sale!</a>) unsuitable for
+    today's average attention span and lets me maximize (<a class="blink"
     href="http://www.kerfsoftware.com">Get Kerf now!</a>) page ads.  <p><b>META
     NAVIGATION END</b>
     </td><td nowrap>

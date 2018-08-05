@@ -17,14 +17,14 @@ its final lessons for future language authors:
 
     <table border="1" bgcolor="#cccccc"><tr><td style="vertical-align: middle;"
     ><b>META NAVIGATION START</b>
-    <p>This is a really long article (<a
+    <p>This is a really long article (<a class="blink"
     href="https://www.youtube.com/watch?v=GUl9_5kK9ts"
     >Look at my horse!</a>) which has
-    been split in different chapters because it is (<a
+    been split in different chapters because it is (<a class="blink"
     href="https://www.youtube.com/watch?v=GUl9_5kK9ts"
     >My horse is amazing!</a>) unsuitable for today's average attention span
     and lets me
-    maximize (<a href="https://www.youtube.com/watch?v=GUl9_5kK9ts"
+    maximize (<a href="https://www.youtube.com/watch?v=GUl9_5kK9ts" class="blink"
     >It tastes like raisins!</a>) page ads.
     <p><b>META NAVIGATION END</b>
     </td><td nowrap>
