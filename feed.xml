@@ -5,7 +5,7 @@
   <link href="https://gradha.github.io/feed.xml" rel="self" />
   <id>https://gradha.github.io/</id>
   <generator>ipsumgenera</generator>
-  <updated>2018-07-29T22:09:29Z</updated>
+  <updated>2018-08-05T17:23:11Z</updated>
     <entry>
       <title>Prototyping a dumb server for location sharing apps</title>
       <link href="https://gradha.github.io/articles/2018/04/prototyping-a-dumb-server-for-location-sharing-apps.html" rel="alternate" type="text/html" />
@@ -75,10 +75,10 @@
       <content type="html">
 &lt;h1&gt;Kerf timestamps done almost right: conclusions&lt;/h1&gt;&lt;p&gt;After implementing Kerf's timestamps in several programming languages we should take a look again at &lt;a href="https://getkerf.wordpress.com/2016/01/19/timestamps-done-right/"&gt;Scott's original Kerf article&lt;/a&gt; and review its final lessons for future language authors:&lt;/p&gt;
 &lt;table border="1" bgcolor="#cccccc"&gt;&lt;tr&gt;&lt;td style="vertical-align: middle;"&gt;&lt;b&gt;META NAVIGATION START&lt;/b&gt;
-&lt;p&gt;This is a really long article (&lt;a href="https://www.youtube.com/watch?v=GUl9_5kK9ts"&gt;Look at my horse!&lt;/a&gt;) which has
-been split in different chapters because it is (&lt;a href="https://www.youtube.com/watch?v=GUl9_5kK9ts"&gt;My horse is amazing!&lt;/a&gt;) unsuitable for today's average attention span
+&lt;p&gt;This is a really long article (&lt;a class="blink" href="https://www.youtube.com/watch?v=GUl9_5kK9ts"&gt;Look at my horse!&lt;/a&gt;) which has
+been split in different chapters because it is (&lt;a class="blink" href="https://www.youtube.com/watch?v=GUl9_5kK9ts"&gt;My horse is amazing!&lt;/a&gt;) unsuitable for today's average attention span
 and lets me
-maximize (&lt;a href="https://www.youtube.com/watch?v=GUl9_5kK9ts"&gt;It tastes like raisins!&lt;/a&gt;) page ads.
+maximize (&lt;a href="https://www.youtube.com/watch?v=GUl9_5kK9ts" class="blink"&gt;It tastes like raisins!&lt;/a&gt;) page ads.
 &lt;/p&gt;&lt;p&gt;&lt;b&gt;META NAVIGATION END&lt;/b&gt;
 &lt;/p&gt;&lt;/td&gt;&lt;td nowrap="nowrap"&gt;
 &lt;ol&gt;
@@ -88,6 +88,6 @@ maximize (&lt;a href="https://www.youtube.com/watch?v=GUl9_5kK9ts"&gt;It tastes 
 &lt;/li&gt;&lt;li&gt;&lt;a href="kerf-timestamps-done-almost-right-swift.html"&gt;Swift&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;&lt;a href="kerf-timestamps-done-almost-right-wtf...-java.html"&gt;WTF... Java?&lt;/a&gt;
 &lt;/li&gt;&lt;li&gt;conclusions &lt;b&gt;You are here!&lt;/b&gt;
-&lt;/li&gt;&lt;/ol&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;h2&gt;Scott's lessons for future language authors&lt;/h2&gt;&lt;a href="http://www.idol-grapher.com/1881"&gt;&lt;/a&gt;1470 bytes out of 9438.</content>
+&lt;/li&gt;&lt;/ol&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;h2&gt;Scott's lessons for future language authors&lt;/h2&gt;&lt;a href="http://www.idol-grapher.com/1881"&gt;&lt;/a&gt;1512 bytes out of 9480.</content>
     </entry>
 </feed>
