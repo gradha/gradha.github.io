@@ -5,7 +5,18 @@
   <link href="https://gradha.github.io/feed.xml" rel="self" />
   <id>https://gradha.github.io/</id>
   <generator>ipsumgenera</generator>
-  <updated>2018-08-05T17:23:11Z</updated>
+  <updated>2018-11-19T00:34:15Z</updated>
+    <entry>
+      <title>Package managers, the lazy alternative to git submodules</title>
+      <link href="https://gradha.github.io/articles/2018/11/package-managers-the-lazy-alternative-to-git-submodules.html" rel="alternate" type="text/html" />
+      <id>https://gradha.github.io/articles/2018/11/package-managers-the-lazy-alternative-to-git-submodules.html</id>
+      <published>2018-11-19T00:30:00Z</published>
+      <updated>2018-11-19T00:30:00Z</updated>
+      <author><name>Grzegorz Adam Hankiewicz</name></author>
+      <content type="html">
+&lt;h1&gt;Package managers, the lazy alternative to git submodules&lt;/h1&gt;&lt;h2&gt;The problem&lt;/h2&gt;
+&lt;a href="http://www.idol-grapher.com/2099"&gt;&lt;img src="../../../i/lazy_developers.jpg" alt="I'm not lazy, I'm just saving my energy" style="width:100%;max-width:600px" align="right" hspace="8pt" vspace="8pt" /&gt;&lt;/a&gt;&lt;p&gt;Package managers have always looked strange to me. Why would you &lt;span style="font-style: italic;"&gt;want&lt;/span&gt; to use one?  It is actually not weird to have that point of view, especially if your background comes from programming languages like C or C++, which don't have any well known package manager (&lt;a href="https://stackoverflow.com/a/36023212/172690"&gt;even though people keep trying to build some&lt;/a&gt;) and &lt;a href="https://www.reddit.com/r/cpp/comments/3d1vjq/is_there_a_c_package_manager_if_not_how_do_you/"&gt;developers resort to using the system libraries/packages or git submodules to manage their software builds&lt;/a&gt;. On the other hand, people mostly coming from interpreted languages are so used to the idea that &lt;span style="font-weight: bold;"&gt;not&lt;/span&gt; using a package manager seems like crazy advice. Today, software development uses some form of source content management, and it seems like &lt;a href="https://git-scm.com"&gt;git&lt;/a&gt; has &lt;span style="font-style: italic;"&gt;won the war&lt;/span&gt;, especially since it is used by &lt;a href="https://github.com"&gt;GitHub&lt;/a&gt;, possibly the most popular free repository choice for open source and free software. As such, many de...&lt;/p&gt;1484 bytes out of 31670.</content>
+    </entry>
     <entry>
       <title>Prototyping a dumb server for location sharing apps</title>
       <link href="https://gradha.github.io/articles/2018/04/prototyping-a-dumb-server-for-location-sharing-apps.html" rel="alternate" type="text/html" />
@@ -64,30 +75,5 @@
 &lt;h1&gt;Patterns as solution anti-patterns&lt;/h1&gt;
 &lt;a href="http://antikpopfangirl.blogspot.com.es/2016/06/the-kpopalypse-guide-to-university-life.html"&gt;&lt;img src="../../../i/patterns_university_iu.jpg" alt="Unfortunately I'm stupidier than IU" style="width:100%;max-width:460px" align="right" hspace="8pt" vspace="8pt" /&gt;&lt;/a&gt;&lt;p&gt;I don't remember the exact time I &lt;span style="font-style: italic;"&gt;crashed&lt;/span&gt; against software design patterns. Most likely it was my university days, most of the stuff I learnt there I hated with a passion. But since &lt;a href="http://arcadey.net/2015/05/netizens-finally-start-to-realize-that-they-were-wrong-about-t-aras-bullying-scandal/"&gt;you can't hate forever&lt;/a&gt;, slowly the hate turned into apathy, and at least I stopped trying to run away from them. Recent &lt;a href="https://youtu.be/t1_Pw563opc?t=35"&gt;directives&lt;/a&gt; at my current workplace have reminded me of patterns, but now I've tried to understand what drove me crazy about patterns. What makes patterns so vilified by some, or followed blindly by others like a &lt;a href="https://www.java.com/"&gt;religion&lt;/a&gt;? Is there something we can do to avoid the bickering? Are patterns bad per se, good, or neutral? Is it us who wield them incorrectly? If you are bored enough and want to waste your time, follow me along this public introspection. Otherwise my TL;DR for you is patterns can't be taught at will and making them a requirement for software development is usually a bad idea.&lt;/p&gt;
 &lt;h2&gt;B...&lt;/h2&gt;1485 bytes out of 20141.</content>
-    </entry>
-    <entry>
-      <title>Kerf timestamps done almost right: conclusions</title>
-      <link href="https://gradha.github.io/articles/2016/03/kerf-timestamps-done-almost-right-conclusions.html" rel="alternate" type="text/html" />
-      <id>https://gradha.github.io/articles/2016/03/kerf-timestamps-done-almost-right-conclusions.html</id>
-      <published>2016-03-06T22:54:00Z</published>
-      <updated>2016-03-06T22:54:00Z</updated>
-      <author><name>Grzegorz Adam Hankiewicz</name></author>
-      <content type="html">
-&lt;h1&gt;Kerf timestamps done almost right: conclusions&lt;/h1&gt;&lt;p&gt;After implementing Kerf's timestamps in several programming languages we should take a look again at &lt;a href="https://getkerf.wordpress.com/2016/01/19/timestamps-done-right/"&gt;Scott's original Kerf article&lt;/a&gt; and review its final lessons for future language authors:&lt;/p&gt;
-&lt;table border="1" bgcolor="#cccccc"&gt;&lt;tr&gt;&lt;td style="vertical-align: middle;"&gt;&lt;b&gt;META NAVIGATION START&lt;/b&gt;
-&lt;p&gt;This is a really long article (&lt;a class="blink" href="https://www.youtube.com/watch?v=GUl9_5kK9ts"&gt;Look at my horse!&lt;/a&gt;) which has
-been split in different chapters because it is (&lt;a class="blink" href="https://www.youtube.com/watch?v=GUl9_5kK9ts"&gt;My horse is amazing!&lt;/a&gt;) unsuitable for today's average attention span
-and lets me
-maximize (&lt;a href="https://www.youtube.com/watch?v=GUl9_5kK9ts" class="blink"&gt;It tastes like raisins!&lt;/a&gt;) page ads.
-&lt;/p&gt;&lt;p&gt;&lt;b&gt;META NAVIGATION END&lt;/b&gt;
-&lt;/p&gt;&lt;/td&gt;&lt;td nowrap="nowrap"&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href="kerf-timestamps-done-almost-right-a-new-type.html"&gt;a new type?&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;&lt;a href="kerf-timestamps-done-almost-right-nim.html"&gt;Nim&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;&lt;a href="kerf-timestamps-done-almost-right-c-plus--plus-.html"&gt;C++&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;&lt;a href="kerf-timestamps-done-almost-right-swift.html"&gt;Swift&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;&lt;a href="kerf-timestamps-done-almost-right-wtf...-java.html"&gt;WTF... Java?&lt;/a&gt;
-&lt;/li&gt;&lt;li&gt;conclusions &lt;b&gt;You are here!&lt;/b&gt;
-&lt;/li&gt;&lt;/ol&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;h2&gt;Scott's lessons for future language authors&lt;/h2&gt;&lt;a href="http://www.idol-grapher.com/1881"&gt;&lt;/a&gt;1512 bytes out of 9480.</content>
     </entry>
 </feed>
