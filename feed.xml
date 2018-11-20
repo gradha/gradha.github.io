@@ -5,17 +5,17 @@
   <link href="https://gradha.github.io/feed.xml" rel="self" />
   <id>https://gradha.github.io/</id>
   <generator>ipsumgenera</generator>
-  <updated>2018-11-19T00:34:15Z</updated>
+  <updated>2018-11-20T18:33:19Z</updated>
     <entry>
       <title>Package managers, the lazy alternative to git submodules</title>
       <link href="https://gradha.github.io/articles/2018/11/package-managers-the-lazy-alternative-to-git-submodules.html" rel="alternate" type="text/html" />
       <id>https://gradha.github.io/articles/2018/11/package-managers-the-lazy-alternative-to-git-submodules.html</id>
       <published>2018-11-19T00:30:00Z</published>
-      <updated>2018-11-19T00:30:00Z</updated>
+      <updated>2018-11-20T18:32:00Z</updated>
       <author><name>Grzegorz Adam Hankiewicz</name></author>
       <content type="html">
 &lt;h1&gt;Package managers, the lazy alternative to git submodules&lt;/h1&gt;&lt;h2&gt;The problem&lt;/h2&gt;
-&lt;a href="http://www.idol-grapher.com/2099"&gt;&lt;img src="../../../i/lazy_developers.jpg" alt="I'm not lazy, I'm just saving my energy" style="width:100%;max-width:600px" align="right" hspace="8pt" vspace="8pt" /&gt;&lt;/a&gt;&lt;p&gt;Package managers have always looked strange to me. Why would you &lt;span style="font-style: italic;"&gt;want&lt;/span&gt; to use one?  It is actually not weird to have that point of view, especially if your background comes from programming languages like C or C++, which don't have any well known package manager (&lt;a href="https://stackoverflow.com/a/36023212/172690"&gt;even though people keep trying to build some&lt;/a&gt;) and &lt;a href="https://www.reddit.com/r/cpp/comments/3d1vjq/is_there_a_c_package_manager_if_not_how_do_you/"&gt;developers resort to using the system libraries/packages or git submodules to manage their software builds&lt;/a&gt;. On the other hand, people mostly coming from interpreted languages are so used to the idea that &lt;span style="font-weight: bold;"&gt;not&lt;/span&gt; using a package manager seems like crazy advice. Today, software development uses some form of source content management, and it seems like &lt;a href="https://git-scm.com"&gt;git&lt;/a&gt; has &lt;span style="font-style: italic;"&gt;won the war&lt;/span&gt;, especially since it is used by &lt;a href="https://github.com"&gt;GitHub&lt;/a&gt;, possibly the most popular free repository choice for open source and free software. As such, many de...&lt;/p&gt;1484 bytes out of 31670.</content>
+&lt;a href="http://www.idol-grapher.com/2099"&gt;&lt;img src="../../../i/lazy_developers.jpg" alt="I'm not lazy, I'm just saving my energy" style="width:100%;max-width:600px" align="right" hspace="8pt" vspace="8pt" /&gt;&lt;/a&gt;&lt;p&gt;Package managers have always looked strange to me. Why would you &lt;span style="font-style: italic;"&gt;want&lt;/span&gt; to use one?  It is actually not weird to have that point of view, especially if your background comes from programming languages like C or C++, which don't have any well known package manager (&lt;a href="https://stackoverflow.com/a/36023212/172690"&gt;even though people keep trying to build some&lt;/a&gt;) and &lt;a href="https://www.reddit.com/r/cpp/comments/3d1vjq/is_there_a_c_package_manager_if_not_how_do_you/"&gt;developers resort to using the system libraries/packages or git submodules to manage their software builds&lt;/a&gt;. On the other hand, people mostly coming from interpreted languages are so used to the idea that &lt;span style="font-weight: bold;"&gt;not&lt;/span&gt; using a package manager seems like crazy advice. Today, software development uses some form of source content management, and it seems like &lt;a href="https://git-scm.com"&gt;git&lt;/a&gt; has &lt;span style="font-style: italic;"&gt;won the war&lt;/span&gt;, especially since it is used by &lt;a href="https://github.com"&gt;GitHub&lt;/a&gt;, possibly the most popular free repository choice for open source and free software. As such, many de...&lt;/p&gt;1484 bytes out of 31695.</content>
     </entry>
     <entry>
       <title>Prototyping a dumb server for location sharing apps</title>
