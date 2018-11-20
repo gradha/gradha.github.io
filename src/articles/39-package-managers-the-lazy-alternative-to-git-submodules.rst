@@ -1,7 +1,7 @@
 ---
 title: Package managers, the lazy alternative to git submodules
 pubdate: 2018-11-19 01:30
-moddate: 2018-11-19 01:30
+moddate: 2018-11-20 19:32
 tags: design, user experience, programming, git, tools, python
 ---
 
@@ -111,8 +111,8 @@ At this point the package manager is just a fancy wrapper around the ``git
 submodule`` command, so is it really needed? It is true that package managers
 can offer more features, like search of packages by keywords or automatic
 build/testing features, so maybe there is a valid reason for using package
-managers they reduce the amount of work a developer has to do, but in terms of
-supply chain attacks and build reproducibility they are just a ticking bomb
+managers if they reduce the amount of work a developer has to do, but in terms
+of supply chain attacks and build reproducibility they are just a ticking bomb
 waiting to explode in your face. Plus I'd argue those *other* features are best
 serviced somewhere else, or in different separate commands/tools (the last
 thing you want for user friendliness is a package manager with more command
@@ -126,13 +126,13 @@ the protocol for people with other source versioning software.
 
 Even if developers are lazy and use an arbitrary version number to get a
 package into their system because they are exploring solutions, as long as they
-validate it and verify it is OK, they could then *freeze* the local hash into
-their build specification. With this simple change, supply chain attacks would
-be prevented, because changing a good ``2.3.4`` package into an evil ``2.3.4``
-would necessarily alter the hash of the final package, and the package manager
-could flag it and prevent including malicious code into a project (pretty
-important for automated continuous integration build machines distributing
-nightly snapshots of a development branch to end users!).
+validate and verify it is what they were looking for, they could then *freeze*
+the local hash into their build specification. With this simple change, supply
+chain attacks would be prevented, because changing a good ``2.3.4`` package
+into an evil ``2.3.4`` would necessarily alter the hash of the final package,
+and the package manager could flag it and prevent including malicious code into
+a project (pretty important for automated continuous integration build machines
+distributing nightly snapshots of a development branch to end users!).
 
 One more feature I find very useful of **not** using package managers is the
 specification of different or conflicting versions of a dependency compared to
@@ -494,7 +494,7 @@ potentially dangerous::
          main()
 
 OK, so what have we done here? The first step is to modify the ``.gitmodules``
-file and change the http URL with a local path. The ``git submodule sync``
+file and replace the http URL with a local path. The ``git submodule sync``
 takes the contents of ``.gitmodules`` and does whatever sorcery is needed to
 make the repository point to that local path instead of the internet. Next, as
 any programmer would do, we enter the submodule, check that it points to our
