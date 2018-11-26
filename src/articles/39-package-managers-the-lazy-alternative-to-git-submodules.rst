@@ -1,7 +1,7 @@
 ---
 title: Package managers, the lazy alternative to git submodules
 pubdate: 2018-11-19 01:30
-moddate: 2018-11-20 19:32
+moddate: 2018-11-26 19:31
 tags: design, user experience, programming, git, tools, python
 ---
 
@@ -36,7 +36,7 @@ is used by `GitHub <https://github.com>`_, possibly the most popular free
 repository choice for open source and free software. As such, many developers
 are exposed to ``git``, but not many know about `submodules
 <https://git-scm.com/docs/gitsubmodules>`_, a command which allows you to keep
-track external sources in a secure and deterministic way.
+track of external sources in a secure and deterministic way.
 
 Package managers are more user friendly than ``git submodule``, and the
 requirements to get started using one tend to be reduced to writing a simple
@@ -61,10 +61,11 @@ Recently Homebrew, the so called missing package manager for macOs, suffered a
 <https://medium.com/@vesirin/how-i-gained-commit-access-to-homebrew-in-30-minutes-2ae314df03ab>`_,
 where people blindly trusting and downloading Homebrew packages could have
 gotten extra unwanted code. Using ``git submodule`` doesn't offer any
-protection against malicious developers uploading libraries with *hidden
-malicious behavior*, but it can help to prevent the supplantation of an
-existing *good* package with a bad one (`unless you are capable of subverting
-git hashes <https://stackoverflow.com/a/23253149/172690>`_, of course).
+protection against `malicious developers uploading libraries with hidden
+malicious behavior <https://github.com/dominictarr/event-stream/issues/116>`_,
+but it can help to prevent the supplantation of an existing *good* package with
+a bad one (`unless you are capable of subverting git hashes
+<https://stackoverflow.com/a/23253149/172690>`_, of course).
 
 Package managers keep references to external packages through a textual version
 requirement number, usually in the form of a string like ``2.3.4`` or
