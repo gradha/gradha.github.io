@@ -20,7 +20,7 @@ When you go to its website, on the front page you can read these sentences:
 
     <a href="http://this-plt-life.tumblr.com/post/66298485729/when-im-being-propagandized-by-an-fp-weenie"><div
         style="float:right;margin:1px"><video
-        autoplay muted loop
+        autoplay muted loop playsinline
         style="width: 155px; height: 99px;"> <source
         src="../../../i/go_fpweenie.mp4" type="video/mp4"
         />No silly animated videos, good for you!</video></div></a>
@@ -48,7 +48,7 @@ offensive.
 
     <a href="http://this-plt-life.tumblr.com/post/36425244621/when-i-hear-your-new-pl-doesnt-have-exceptions"><div
         style="float:right;margin:1px"><video
-        autoplay muted loop
+        autoplay muted loop playsinline
         style="width: 150px; height: 85px;"> <source
         src="../../../i/go_dexter.mp4" type="video/mp4"
         />No silly animated videos, good for you!</video></div></a>
@@ -71,7 +71,7 @@ What are macros anyway?
 
     <a href="http://this-plt-life.tumblr.com/post/37285848921/when-i-heard-of-gos-error-handling"><div
         style="float:right;margin:1px"><video
-        autoplay muted loop
+        autoplay muted loop playsinline
         style="width: 210px; height: 142px;"> <source
         src="../../../i/go_go.mp4" type="video/mp4"
         />No silly animated videos, good for you!</video></div></a>
@@ -106,7 +106,7 @@ int main(void)
 
     <a href="http://this-plt-life.tumblr.com/post/44079123074/when-im-working-on-a-new-pl-most-of-the-time"><div
         style="float:right;margin:1px"><video
-        autoplay muted loop
+        autoplay muted loop playsinline
         style="width: 250px; height: 122px;"> <source
         src="../../../i/go_new.mp4" type="video/mp4"
         />No silly animated videos, good for you!</video></div></a>
@@ -149,7 +149,7 @@ written like this:
 
     <a href="http://this-plt-life.tumblr.com/post/36425231672/when-a-code-base-uses-a-directory-structure-deeper"><div
         style="float:right;margin:1px"><video
-        autoplay muted loop
+        autoplay muted loop playsinline
         style="width: 160px; height: 122px;"> <source
         src="../../../i/go_src.mp4" type="video/mp4"
         />No silly animated videos, good for you!</video></div></a>
@@ -189,7 +189,7 @@ Nim macros
 
     <a href="http://this-plt-life.tumblr.com/post/43655942984/when-im-working-on-a-macro-system-with-phase"><div
         style="float:right;margin:1px"><video
-        autoplay muted loop
+        autoplay muted loop playsinline
         style="width: 100px; height: 100px;"> <source
         src="../../../i/go_tower.mp4" type="video/mp4"
         />No silly animated videos, good for you!</video></div></a>
@@ -211,7 +211,7 @@ main differences:
 
     <a href="http://this-plt-life.tumblr.com/post/40016419394/when-somebody-asks-me-about-a-non-s-expression"><div
         style="float:right;margin:1px"><video
-        autoplay muted loop
+        autoplay muted loop playsinline
         style="width: 125px; height: 101px;"> <source
         src="../../../i/go_huh_what.mp4" type="video/mp4"
         />No silly animated videos, good for you!</video></div></a>
@@ -240,7 +240,7 @@ So what does this have to do with Go, they don't have macros!
 
     <a href="http://this-plt-life.tumblr.com/post/36425239482/when-i-hear-theyre-adding-features-to-c"><div
         style="float:right;margin:1px"><video
-        autoplay muted loop
+        autoplay muted loop playsinline
         style="width: 120px; height: 114px;"> <source
         src="../../../i/go_cxx.mp4" type="video/mp4"
         />No silly animated videos, good for you!</video></div></a>
@@ -263,7 +263,7 @@ ever **go** to version 1.4 and beyond!
 
     <a href="http://this-plt-life.tumblr.com/post/39920361990/when-someone-is-enamored-with-a-languages-petty"><div
         style="float:right;margin:1px"><video
-        autoplay muted loop
+        autoplay muted loop playsinline
         style="width: 150px; height: 150px;"> <source
         src="../../../i/go_irrelevant.mp4" type="video/mp4"
         />No silly animated videos, good for you!</video></div></a>
@@ -302,7 +302,7 @@ been playing with it. Let's see some comments from the `reddit discussion
 
     <a href="http://this-plt-life.tumblr.com/post/44373483122/when-somebody-tries-to-add-a-type-system-to-an"><div
         style="float:right;margin:1px"><video
-        autoplay muted loop
+        autoplay muted loop playsinline
         style="width: 180px; height: 101px;"> <source
         src="../../../i/go_ts.mp4" type="video/mp4"
         />No silly animated videos, good for you!</video></div></a>
@@ -340,7 +340,7 @@ Conclusion
 
     <a href="http://this-plt-life.tumblr.com/post/36425240884/when-everybody-hypes-a-language-that-i-find-crap"><div
         style="float:right;margin:1px"><video
-        autoplay muted loop
+        autoplay muted loop playsinline
         style="width: 147px; height: 90px;"> <source
         src="../../../i/go_hate.mp4" type="video/mp4"
         />No silly animated videos, good for you!</video></div></a>

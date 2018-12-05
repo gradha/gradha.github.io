@@ -11,7 +11,7 @@ Prototyping a dumb server for location sharing apps
 .. raw:: html
 
     <div style="background-color:yellow;float:right;margin:1px"
-        ><a href="https://youtu.be/p4tLL59NtZc?t=51"><video autoplay muted loop
+        ><a href="https://youtu.be/p4tLL59NtZc?t=51"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_01.mp4" type="video/mp4"
         /><img src="../../../i/omb_01.gif" width=166 height=166></video></a></div>
@@ -36,7 +36,7 @@ thus a new era of location tracking apps *officially* emerged.
 .. raw:: html
 
     <div style="background-color:yellow;float:left;margin:1px"
-        ><a href="https://www.youtube.com/watch?v=rW9r_1ys2ec"><video autoplay muted loop
+        ><a href="https://www.youtube.com/watch?v=rW9r_1ys2ec"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_02.mp4" type="video/mp4"
         /><img src="../../../i/omb_02.gif" width=166 height=166></video></a></div>
@@ -55,7 +55,7 @@ so do software developers seem to endlessly rewrite them.
 .. raw:: html
 
     <div style="background-color:yellow;float:right;margin:1px"
-        ><a href="https://www.youtube.com/watch?v=A5aTxyEdD4k"><video autoplay muted loop
+        ><a href="https://www.youtube.com/watch?v=A5aTxyEdD4k"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_03.mp4" type="video/mp4"
         /><img src="../../../i/omb_03.gif" width=166 height=166></video></a></div>
@@ -79,7 +79,7 @@ data, and you build an implicit trust relationship with it.
 .. raw:: html
 
     <div style="background-color:yellow;float:left;margin:1px"
-        ><a href="https://youtu.be/Lqa8e0r5uI8?t=14"><video autoplay muted loop
+        ><a href="https://youtu.be/Lqa8e0r5uI8?t=14"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_04.mp4" type="video/mp4"
         /><img src="../../../i/omb_04.gif" width=166 height=166></video></a></div>
@@ -104,7 +104,7 @@ Requirements
 .. raw:: html
 
     <div style="background-color:yellow;float:right;margin:1px"
-        ><a href="https://youtu.be/DVZ1GDc634o?t=33"><video autoplay muted loop
+        ><a href="https://youtu.be/DVZ1GDc634o?t=33"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_05.mp4" type="video/mp4"
         /><img src="../../../i/omb_05.gif" width=166 height=166></video></a></div>
@@ -127,7 +127,7 @@ located doesn't really matter, it could be `Google App Engine
 .. raw:: html
 
     <div style="background-color:yellow;float:left;margin:1px"
-        ><a href="https://youtu.be/ZAeNaWv8V7o?t=32"><video autoplay muted loop
+        ><a href="https://youtu.be/ZAeNaWv8V7o?t=32"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_06.mp4" type="video/mp4"
         /><img src="../../../i/omb_06.gif" width=166 height=166></video></a></div>
@@ -156,7 +156,7 @@ position broadcast and sharing it with others, which requires:
 .. raw:: html
 
     <div style="background-color:yellow;float:right;margin:1px"
-        ><a href="https://www.youtube.com/watch?v=0liD6Jv5JuE"><video autoplay muted loop
+        ><a href="https://www.youtube.com/watch?v=0liD6Jv5JuE"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_07.mp4" type="video/mp4"
         /><img src="../../../i/omb_07.gif" width=166 height=166></video></a></div>
@@ -183,7 +183,7 @@ position broadcast and sharing it with others, which requires:
 .. raw:: html
 
     <div style="background-color:yellow;float:left;margin:1px"
-        ><a href="https://youtu.be/VB3GLxDpjVM?t=163"><video autoplay muted loop
+        ><a href="https://youtu.be/VB3GLxDpjVM?t=163"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_08.mp4" type="video/mp4"
         /><img src="../../../i/omb_08.gif" width=166 height=166></video></a></div>
@@ -209,7 +209,7 @@ the server are in plaintext JSON:
 .. raw:: html
 
     <div style="background-color:yellow;float:right;margin:1px"
-        ><a href="https://youtu.be/PY_71_zD6tw?t=12"><video autoplay muted loop
+        ><a href="https://youtu.be/PY_71_zD6tw?t=12"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_09.mp4" type="video/mp4"
         /><img src="../../../i/omb_09.gif" width=166 height=166></video></a></div>
@@ -230,7 +230,7 @@ the server are in plaintext JSON:
 .. raw:: html
 
     <div style="background-color:yellow;float:left;margin:1px"
-        ><a href="https://youtu.be/MPOtEIhikxU?t=25"><video autoplay muted loop
+        ><a href="https://youtu.be/MPOtEIhikxU?t=25"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_10.mp4" type="video/mp4"
         /><img src="../../../i/omb_10.gif" width=166 height=166></video></a></div>
@@ -253,7 +253,7 @@ the server are in plaintext JSON:
 .. raw:: html
 
     <div style="background-color:yellow;float:right;margin:1px"
-        ><a href="https://www.youtube.com/watch?v=tdE9YQKYMik"><video autoplay muted loop
+        ><a href="https://www.youtube.com/watch?v=tdE9YQKYMik"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_11.mp4" type="video/mp4"
         /><img src="../../../i/omb_11.gif" width=166 height=166></video></a></div>
@@ -281,7 +281,7 @@ will be sent *encrypted* in a wrapper JSON with the following form:
 .. raw:: html
 
     <div style="background-color:yellow;float:left;margin:1px"
-        ><a href="https://youtu.be/Wo38Rz0iBgw?t=198"><video autoplay muted loop
+        ><a href="https://youtu.be/Wo38Rz0iBgw?t=198"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_12.mp4" type="video/mp4"
         /><img src="../../../i/omb_12.gif" width=166 height=166></video></a></div>
@@ -307,7 +307,7 @@ The initial libsodium prototype
 .. raw:: html
 
     <div style="background-color:yellow;float:right;margin:1px"
-        ><a href="https://youtu.be/_7xk5pBSiYo?t=56"><video autoplay muted loop
+        ><a href="https://youtu.be/_7xk5pBSiYo?t=56"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_13.mp4" type="video/mp4"
         /><img src="../../../i/omb_13.gif" width=166 height=166></video></a></div>
@@ -355,7 +355,7 @@ in case you don't *trust* running it yourself::
 .. raw:: html
 
     <div style="background-color:yellow;float:left;margin:1px"
-        ><a href="https://youtu.be/kCXW5qYalgY?t=137"><video autoplay muted loop
+        ><a href="https://youtu.be/kCXW5qYalgY?t=137"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_14.mp4" type="video/mp4"
         /><img src="../../../i/omb_14.gif" width=166 height=166></video></a></div>
@@ -393,7 +393,7 @@ The second block shows the typical login/join behaviour::
 .. raw:: html
 
     <div style="background-color:yellow;float:right;margin:1px"
-        ><a href="https://youtu.be/nr6W6ZRBKXs?t=96"><video autoplay muted loop
+        ><a href="https://youtu.be/nr6W6ZRBKXs?t=96"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_15.mp4" type="video/mp4"
         /><img src="../../../i/omb_15.gif" width=166 height=166></video></a></div>
@@ -420,7 +420,7 @@ All the encryption/decryption goodness is in the third block::
 .. raw:: html
 
     <div style="background-color:yellow;float:left;margin:1px"
-        ><a href="https://youtu.be/C_3S95ruYe8?t=42"><video autoplay muted loop
+        ><a href="https://youtu.be/C_3S95ruYe8?t=42"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_16.mp4" type="video/mp4"
         /><img src="../../../i/omb_16.gif" width=166 height=166></video></a></div>
@@ -440,7 +440,7 @@ already have an encryption key?
 .. raw:: html
 
     <div style="background-color:yellow;float:right;margin:1px"
-        ><a href="https://youtu.be/qOEdvexx06Q?t=112"><video autoplay muted loop
+        ><a href="https://youtu.be/qOEdvexx06Q?t=112"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_17.mp4" type="video/mp4"
         /><img src="../../../i/omb_17.gif" width=166 height=166></video></a></div>
@@ -462,7 +462,7 @@ being able to serve us always the same identifier/time during login.
 .. raw:: html
 
     <div style="background-color:yellow;float:left;margin:1px"
-        ><a href="https://www.youtube.com/watch?v=8J2lPs39Iic"><video autoplay muted loop
+        ><a href="https://www.youtube.com/watch?v=8J2lPs39Iic"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_18.mp4" type="video/mp4"
         /><img src="../../../i/omb_18.gif" width=166 height=166></video></a></div>
@@ -484,7 +484,7 @@ failing.
 .. raw:: html
 
     <div style="background-color:yellow;float:right;margin:1px"
-        ><a href="https://youtu.be/qKM3819wLqs?t=98"><video autoplay muted loop
+        ><a href="https://youtu.be/qKM3819wLqs?t=98"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_19.mp4" type="video/mp4"
         /><img src="../../../i/omb_19.gif" width=166 height=166></video></a></div>
@@ -505,7 +505,7 @@ Being user friendly to… users
 .. raw:: html
 
     <div style="background-color:yellow;float:left;margin:1px"
-        ><a href="https://www.youtube.com/watch?v=jlSKz_eSPIw"><video autoplay muted loop
+        ><a href="https://www.youtube.com/watch?v=jlSKz_eSPIw"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_20.mp4" type="video/mp4"
         /><img src="../../../i/omb_20.gif" width=166 height=166></video></a></div>
@@ -531,7 +531,7 @@ protocol to ask for/exchange information about ourselves. For example:
 .. raw:: html
 
     <div style="background-color:yellow;float:right;margin:1px"
-        ><a href="https://youtu.be/DK895XQPzWQ?t=16"><video autoplay muted loop
+        ><a href="https://youtu.be/DK895XQPzWQ?t=16"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_21.mp4" type="video/mp4"
         /><img src="../../../i/omb_21.gif" width=166 height=166></video></a></div>
@@ -562,7 +562,7 @@ Slave to the state
 .. raw:: html
 
     <div style="background-color:yellow;float:left;margin:1px"
-        ><a href="https://youtu.be/wSjAOl2vQUU?t=86"><video autoplay muted loop
+        ><a href="https://youtu.be/wSjAOl2vQUU?t=86"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_22.mp4" type="video/mp4"
         /><img src="../../../i/omb_22.gif" width=166 height=166></video></a></div>
@@ -594,7 +594,7 @@ could send a request to fetch all the stored information so far:
 .. raw:: html
 
     <div style="background-color:yellow;float:right;margin:1px"
-        ><a href="https://youtu.be/PpZgSXcQ3k8?t=137"><video autoplay muted loop
+        ><a href="https://youtu.be/PpZgSXcQ3k8?t=137"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_23.mp4" type="video/mp4"
         /><img src="../../../i/omb_23.gif" width=166 height=166></video></a></div>
@@ -620,7 +620,7 @@ update just a tiny bit of the whole encrypted data.
 .. raw:: html
 
     <div style="background-color:yellow;float:left;margin:1px"
-        ><a href="https://youtu.be/yw5xawWPDHI?t=87"><video autoplay muted loop
+        ><a href="https://youtu.be/yw5xawWPDHI?t=87"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_24.mp4" type="video/mp4"
         /><img src="../../../i/omb_24.gif" width=166 height=166></video></a></div>
@@ -657,7 +657,7 @@ Out of marbles
 .. raw:: html
 
     <div style="background-color:yellow;float:right;margin:1px"
-        ><a href="https://youtu.be/xxCmQa5zV_c?t=7"><video autoplay muted loop
+        ><a href="https://youtu.be/xxCmQa5zV_c?t=7"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_25.mp4" type="video/mp4"
         /><img src="../../../i/omb_25.gif" width=166 height=166></video></a></div>

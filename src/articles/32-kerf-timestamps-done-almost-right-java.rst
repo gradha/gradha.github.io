@@ -83,7 +83,7 @@ language was:
 
     <div style="float:right;margin:1px"
         ><a href="http://aaronsanimals.com/gifs/"><video
-        autoplay muted loop
+        autoplay muted loop playsinline
         style="width: 300px; height: 168px;"> <source
         src="../../../i/shitposting_time.mp4" type="video/mp4"
         />No silly animated videos, good for you!</video></a></div>
@@ -122,7 +122,7 @@ you!
 
     <a href="http://aaronsanimals.com/gifs/"><div
         style="float:right;margin:1px"><video
-        autoplay muted loop
+        autoplay muted loop playsinline
         style="width: 250px; height: 250px;"> <source
         src="../../../i/youre_fat.mp4" type="video/mp4"
         />No silly animated videos, good for you!</video></div></a>
