@@ -1,7 +1,7 @@
 ---
 title: Apple's Core Data greatest feature: brainwashing
 pubdate: 2017-05-28 10:45
-moddate: 2017-05-28 10:45
+moddate: 2018-12-06 00:42
 tags: apple, design, bureaucracy, multitasking, programming
 ---
 
@@ -250,17 +250,18 @@ Conclusion
 ----------
 
 My point of view on Core Data for mobile is that it doesn't make much sense,
-it's not worth the trouble. But it keeps attracting new developers, unaware of
-its constraints or its hidden maintenance costs (hence my title of
-brainwashing).  Maybe if your mobile app is as feature full as a desktop app
-involving content creation (undo), lots of data (lazy loading), and online
-storage (iCloud integration) then Core Data makes sense. But it is awkward at
-best for most apps which are just some news kind of RSS reader,
-diet/weight/exercise trackers, games, small utilities, etc. Apple ported Core
-Data from desktop to mobile because it made sense for those who already
-invested lot of work on it on the desktop and wanted to share that work. The
-appeal is not there if you start a project from scratch and don't share code
-with a desktop application, or have no desktop presence at all. My
+`it's not worth the trouble
+<https://davedelong.com/blog/2018/05/09/the-laws-of-core-data/>`_. But it keeps
+attracting new developers, unaware of its constraints or its hidden maintenance
+costs (hence my title of brainwashing).  Maybe if your mobile app is as feature
+full as a desktop app involving content creation (undo), lots of data (lazy
+loading), and online storage (iCloud integration) then Core Data makes sense.
+But it is awkward at best for most apps which are just some news kind of RSS
+reader, diet/weight/exercise trackers, games, small utilities, etc. Apple
+ported Core Data from desktop to mobile because it made sense for those who
+already invested lot of work on it on the desktop and wanted to share that
+work. The appeal is not there if you start a project from scratch and don't
+share code with a desktop application, or have no desktop presence at all. My
 recommendation is that you should think twice if using Core Data is good for
 your future sanity (or mine, since I end up grabbing so many Core Data projects
 with problems).
