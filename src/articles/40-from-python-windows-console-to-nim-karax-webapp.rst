@@ -24,10 +24,11 @@ Between people who really love programming and those who treat technology like
 inscrutable magic there are those like Kpopalypse who are capable of building
 software without being dedicated programmers. If you go to `Kpopalypse's
 website <https://kpopalypse.com/>`_ and `click on Sully
-<https://kpopalypse.com/2014/01/20/kpopalypse-faq/>`_ you will find many facts
-about his persona, but you will miss that he has released `sp00ky interactive
-Halloween fanfiction <https://kpopalypse.com/2018/10/19/stan-loona-or-else/>`_
-or adventure games like `Escape from the Idol Dungeon
+<https://kpopalypse.com/2014/01/20/kpopalypse-faq/>`_ you will find out many
+facts about his persona, but you will miss that he has released `sp00ky
+interactive Halloween fanfiction
+<https://kpopalypse.com/2018/10/19/stan-loona-or-else/>`_ or adventure games
+like `Escape from the Idol Dungeon
 <https://kpopalypse.com/2019/01/24/escape-from-the-idol-dungeon-an-adventure-game-by-kpopalypse/>`_,
 showing higher than average levels of determination to understand and dominate
 technology.
