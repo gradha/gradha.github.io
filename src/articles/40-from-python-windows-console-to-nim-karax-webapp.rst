@@ -78,7 +78,7 @@ And of course, you can use the final resulting webapp at
 create a bookmark on your mobile phone or add it to your desktop so it opens as
 a kind of native application. You can also save the contents of that page to
 your hard drive and it should work locally. But why would you do that since you
-want to use it to generate a comment you want to post somewhere online, right?
+use it to generate a comment you want to post somewhere online, right?
 
 
 Translating the Python script to Nim
