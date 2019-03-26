@@ -5,7 +5,7 @@
   <link href="https://gradha.github.io/feed.xml" rel="self" />
   <id>https://gradha.github.io/</id>
   <generator>ipsumgenera</generator>
-  <updated>2019-03-26T20:59:57Z</updated>
+  <updated>2019-03-26T21:13:06Z</updated>
     <entry>
       <title>From Python windows console to Nim Karax webapp</title>
       <link href="https://gradha.github.io/articles/2019/03/from-python-windows-console-to-nim-karax-webapp.html" rel="alternate" type="text/html" />
@@ -15,8 +15,8 @@
       <author><name>Grzegorz Adam Hankiewicz</name></author>
       <content type="html">
 &lt;h1&gt;From Python windows console to Nim Karax webapp&lt;/h1&gt;&lt;h2&gt;A challenger appears&lt;/h2&gt;
-&lt;a href="https://locomotion1020.tistory.com/18"&gt;&lt;img src="../../../i/webapp_nim_wat.jpg" alt="A webapp in Nim? What is he smoking? Is that possible at all?" style="width:100%;max-width:600px" align="right" hspace="8pt" vspace="8pt" /&gt;&lt;/a&gt;&lt;p&gt;Between people who really love programming and those who treat technology like inscrutable magic there are those like Kpopalypse who are capable of building software without being dedicated programmers. If you go to &lt;a href="https://kpopalypse.com/"&gt;Kpopalypse's website&lt;/a&gt; and &lt;a href="https://kpopalypse.com/2014/01/20/kpopalypse-faq/"&gt;click on Sully&lt;/a&gt; you will find many facts about his persona, but you will miss that he has released &lt;a href="https://kpopalypse.com/2018/10/19/stan-loona-or-else/"&gt;sp00ky interactive Halloween fanfiction&lt;/a&gt; or adventure games like &lt;a href="https://kpopalypse.com/2019/01/24/escape-from-the-idol-dungeon-an-adventure-game-by-kpopalypse/"&gt;Escape from the Idol Dungeon&lt;/a&gt;, showing higher than average levels of determination to understand and dominate technology.&lt;/p&gt;
-&lt;p&gt;Most recently Kpopalypse released a &lt;a href="https://kpopalypse.com/2019/02/24/the-kpopalypse-fan-comment-generator/"&gt;fan comment generator&lt;/a&gt;, which allows anybody with a Windows computer to mechanize the act of answering posts in crazy kpop forums. The original binary can be &lt;/p&gt;1422 bytes out of 23961.</content>
+&lt;a href="https://locomotion1020.tistory.com/18"&gt;&lt;img src="../../../i/webapp_nim_wat.jpg" alt="A webapp in Nim? What is he smoking? Is that possible at all?" style="width:100%;max-width:600px" align="right" hspace="8pt" vspace="8pt" /&gt;&lt;/a&gt;&lt;p&gt;Between people who really love programming and those who treat technology like inscrutable magic there are those like Kpopalypse who are capable of building software without being dedicated programmers. If you go to &lt;a href="https://kpopalypse.com/"&gt;Kpopalypse's website&lt;/a&gt; and &lt;a href="https://kpopalypse.com/2014/01/20/kpopalypse-faq/"&gt;click on Sully&lt;/a&gt; you will find out many facts about his persona, but you will miss that he has released &lt;a href="https://kpopalypse.com/2018/10/19/stan-loona-or-else/"&gt;sp00ky interactive Halloween fanfiction&lt;/a&gt; or adventure games like &lt;a href="https://kpopalypse.com/2019/01/24/escape-from-the-idol-dungeon-an-adventure-game-by-kpopalypse/"&gt;Escape from the Idol Dungeon&lt;/a&gt;, showing higher than average levels of determination to understand and dominate technology.&lt;/p&gt;
+&lt;p&gt;Most recently Kpopalypse released a &lt;a href="https://kpopalypse.com/2019/02/24/the-kpopalypse-fan-comment-generator/"&gt;fan comment generator&lt;/a&gt;, which allows anybody with a Windows computer to mechanize the act of answering posts in crazy kpop forums. The original binary can be &lt;/p&gt;1426 bytes out of 23965.</content>
     </entry>
     <entry>
       <title>Package managers, the lazy alternative to git submodules</title>
