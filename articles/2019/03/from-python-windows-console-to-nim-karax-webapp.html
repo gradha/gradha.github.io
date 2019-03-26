@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang='en'>
+	<head>
+		<title>From Python windows console to Nim Karax webapp - Rants from the Ballmer Peak</title>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="../../../css/normalize.css">
+		<link rel="stylesheet" href="../../../css/style.css">
+		<link href="../../../feed.xml" title="Articles" type="application/atom+xml" rel="alternate">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	</head>
+	<body>
+	<div class="content">
+		<h3><a href="../../../index.html">Rants from the Ballmer Peak</a> <a
+				href="../../../feed.xml"><img
+			alt="rss feed" src="../../../i/Feed-icon.svg"
+			width="18pt" height="18pt"></a></h3>
+		<h1>From Python windows console to Nim Karax webapp</h1><h2>A challenger appears</h2>
+<a href="https://locomotion1020.tistory.com/18"
+    ><img src="../../../i/webapp_nim_wat.jpg"
+    alt="A webapp in Nim? What is he smoking? Is that possible at all?"
+    style="width:100%;max-width:600px" align="right"
+    hspace="8pt" vspace="8pt"></a><p>Between people who really love programming and those who treat technology like inscrutable magic there are those like Kpopalypse who are capable of building software without being dedicated programmers. If you go to <a href="https://kpopalypse.com/">Kpopalypse's website</a> and <a href="https://kpopalypse.com/2014/01/20/kpopalypse-faq/">click on Sully</a> you will find many facts about his persona, but you will miss that he has released <a href="https://kpopalypse.com/2018/10/19/stan-loona-or-else/">sp00ky interactive Halloween fanfiction</a> or adventure games like <a href="https://kpopalypse.com/2019/01/24/escape-from-the-idol-dungeon-an-adventure-game-by-kpopalypse/">Escape from the Idol Dungeon</a>, showing higher than average levels of determination to understand and dominate technology.</p>
+<p>Most recently Kpopalypse released a <a href="https://kpopalypse.com/2019/02/24/the-kpopalypse-fan-comment-generator/">fan comment generator</a>, which allows anybody with a Windows computer to mechanize the act of answering posts in crazy kpop forums. The original binary can be <a href="https://kpopalypse.itch.io/the-kpopalypse-fan-comment-generator">downloaded from his itch.io webpage</a>, but most interestingly the source code for this Windows console program can be <a href="https://www.patreon.com/posts/for-super-nerds-24968118">downloaded from his Patreon page</a>. Windows programs are not bad, but in this day and age, everybody wants to use software everywhere, including their phones, and for maximum cross platform portability that usually means webapps in some combination of HTML and JavaScript.</p>
+<p>Since <a href="https://www.python.org">Python</a> looks <a href="https://github.com/nim-lang/Nim/wiki/Nim-for-Python-Programmers">very similar</a> to the <a href="https://nim-lang.org">Nim programming language</a>, and the Nim compiler includes <a href="https://nim-lang.org/features.html">JavaScript compilation</a>, I decided to teach myself how to make a webapp with Nim, first translating Kpopalypse's Python program to Nim, then making a webapp with <a href="https://github.com/pragmagic/karax">Karax, a single page application framework</a> based on it. Even though I know Python and Nim, before this exercise I had only heard rumors about webapps.</p>
+<p>What follows is a description of how things went which might be of interest if you are looking to do something similar. Everything described here is stored at a <a href="https://gitlab.com/gradha/kpopalypse_crazycommentgenerator">GitLab repository</a>. There you can see:</p>
+<ul><li>The <a href="https://gitlab.com/gradha/kpopalypse_crazycommentgenerator/blob/master/01_original_python/crazycommentgenerator.txt">original Python 3 program by kpopalypse</a>.</li><li>The <a href="https://gitlab.com/gradha/kpopalypse_crazycommentgenerator/blob/master/02_nim_command_line/crazycommentgenerator.nim">translated version to Nim</a>, with minimal differences.</li><li>The <a href="https://gitlab.com/gradha/kpopalypse_crazycommentgenerator/blob/master/03_nim_webapp/crazycommentgenerator.nim">Nim + Karax version for the webapp</a>, which is certainly very different from the console version, but strives to retain the original purpose.</li></ul><p>And of course, you can use the final resulting webapp at <a href="https://gradha.gitlab.io/kpopalypse_crazycommentgenerator/">https://gradha.gitlab.io/kpopalypse_crazycommentgenerator/</a>. You can even create a bookmark on your mobile phone or add it to your desktop so it opens as a kind of native application. You can also save the contents of that page to your hard drive and it should work locally. But why would you do that since you want to use it to generate a comment you want to post somewhere online, right?</p>
+<h2>Translating the Python script to Nim</h2><p>Translating the Python source code to Nim was very easy. Both are imperative programming languages which use whitespace as indentation. Other than the minor differences in syntax (e.g. in Python you write <code>def</code>, in Nim you write <code>proc</code>) the most significant difference in the Nim version are the emulations of the Python functions <code>input()</code>, <code>print()</code> and the need to <span style="font-style: italic;">forward declare</span> procedure.</p>
+<p>Both Python and Nim read the source input line by line, but in Python you can reference functions or globals which the interpreter has not yet seen. Python will presume they will be defined later and look for some time later. The following Python fragment is correct:<pre class='literal'>
+def function_1():
+    print(&quot;I'm function 1&quot;)
+    function_2()
+
+def function_2():
+    print(&quot;I'm function 2&quot;)
+
+function_1()</pre></p>
+<p>But if you try to transcribe this to Nim, the compiler will complain that on the third line you are attempting to use <code>function_2()</code> which has not been defined yet. Hence the forward declaration, which tells the compiler that it should stay calm and keep compiling:<pre class='literal'>
+# This is a forward declaration.
+proc proc_2()
+
+proc proc_1() =
+    echo(&quot;I'm proc 1&quot;)
+    proc_2()
+
+proc proc_2() =
+    echo(&quot;I'm proc 2&quot;)
+
+proc_1()</pre></p>
+<p>Another practical difference is that in Python you end up with Python <span style="font-style: italic;">scripts</span>. These are both source code and final version, since you use the Python interpreter to run them. In order to produce a final binary (aka: <code>.exe</code>) that can be run on machines without Python, you need to use a special tool like <a href="http://py2exe.org">py2exe</a> which just packages Python along your script and makes them executable. In Nim you always need to compile the source code, so by definition you get a working executable you can move to practically any other machine.</p>
+<p>With regards to the structure of the program itself, most of it is <span style="font-style: italic;">user interface</span> handling, meaning the program asks you a series of questions and stores the values in global variables. By the end, when you have entered all the required data, a single function will go through the input data and generate a big comment. The <span style="font-style: italic;">user interface</span> is of course a line by line terminal like console, or a DOS prompt for Windows users. The program asks you things, and you write stuff, followed by the return key.</p>
+<p>Being new to programming, Kpopalypse makes a few mistakes. First <a href="https://gitlab.com/gradha/kpopalypse_crazycommentgenerator/blob/master/01_original_python/crazycommentgenerator.txt#L20">modules are imported</a>, then <a href="https://gitlab.com/gradha/kpopalypse_crazycommentgenerator/blob/master/01_original_python/crazycommentgenerator.txt#L35">modules are defined through the def statement</a>. The second part should read <span style="font-style: italic;">functions are defined through the def statement</span>, since modules are actually collections of functions and variables.</p>
+<p>Another mistake is that function calls are actually treated like <a href="https://arstechnica.com/information-technology/2014/02/extremely-critical-crypto-flaw-in-ios-may-also-affect-fully-patched-macs/">good'ol goto statements</a>, meaning that when Kpopalypse <a href="https://gitlab.com/gradha/kpopalypse_crazycommentgenerator/blob/master/01_original_python/crazycommentgenerator.txt#L73">writes that something returns</a>, it actually does <span style="font-weight: bold;">not</span> return but calls the mentioned function. For the use case of this program, who cares, right? But if you were to be a highly determined caonima and generated lots and lots of comments without quitting the program, you would eventually reach a stack overflow, since each call without return to a function increases the stack until it can't grow any more. We have plenty of memory in our machines nowadays so it is never going to be a problem in real life.</p>
+<h2>What is a webapp?</h2><p>Webapps are abominations born from the pit of despair. Originally web pages were just static declarations of hierarchical content. You defined a title, a paragraph, some images and you essentially have this site. At some point JavaScript was added to browsers for them to run scripts, and these scripts were allowed to modify the webpage they were associated with. People figured out they could actually change everything in the web page, since its content hierarchy was described as a tree, or <a href="https://en.wikipedia.org/wiki/Document_Object_Model">DOM (Document Object Model)</a>. And then chaos ensued, known as single page webapps.</p>
+<p>A basic single page webapp, like the one we will do, creates a content structure (DOM), and defines JavaScript code which modifies it based on user input (events) like button clicks or mouse movement. As such, our code has to keep the state of what should the web page actually be displaying, and typical webapps are just infinite loops (<a href="https://gitlab.com/gradha/kpopalypse_crazycommentgenerator/blob/master/01_original_python/crazycommentgenerator.txt#L256">described as lame by Kpopalypse</a>) which check the state and generate or update the web page appropriately to display <span style="font-style: italic;">different screens</span> without actually changing the page. Thus the illusion of a single page webapp.</p>
+<p>But the craziness of this is actually <span style="font-weight: bold;">not enough</span>, since we will raise the bar by using the Nim programming language instead of JavaScript. Does this make sense?  Unlikely. This would only make sense if you actually knew a lot of Nim, and nothing or little of JavaScript (what a coincidence!). Or maybe you know a lot of JavaScript, and <a href="https://www.destroyallsoftware.com/talks/wat">this extensive knowledge of the most horrible rituals known to mankind</a> has made you reflect and return to saner programming languages like Nim. How ironic that by trying to be saner you increase the overall insanity! Are you perhaps <a href="https://www.youtube.com/watch?v=3kQuMVffbWA">following</a> <a href="http://www.asianjunkie.com">other</a> <a href="https://www.youtube.com/watch?v=XEOCbFJjRw0">cults</a> <a href="https://www.youtube.com/watch?v=-KFpL9DUyms">too</a>?</p>
+<p>One possible way of translating the console script to web format would be to emulate the workings of a console. This would be quite simple, we only need to store a list of the lines that we are meant to display. Our <code>print()</code> function would just add the line to this global list of lines, and then tell the web page to render itself again, which would make the new line visible. Thus, adding lines to our global list would emulate new lines of text on a console. Whenever a question is asked by the program, an input text box could be displayed at the end of all visible lines. While functional, this would also look very crude to the average web user, who has been trained with animated images and flashy elements requiring mouse clicks.</p>
+<p>In general users don't need to see how the previous question was asked on the screen, so we can replace the list of questions with a single one that changes text. This also avoids huge scrolling pages for mobile users with less screen space. But some form of history is good for usability, so we can display the user input entered so far as a horizontal list at the top. Also, whenever a binary question is asked, the original script makes an effort to detect different types of input and react accordingly. One typical mistake is that if you were to input certain values in upper case, the script would fail to recognise the.  See this console output:<pre class='literal'>
+Are you stanning a group or a solo performer?
+Press g for group, or s for a solo performer.
+Press ENTER after your selection.
+G
+Please enter a valid selection.</pre></p>
+<p>Just by having the caps lock key on we have users scratching their head and thinking why their option <code>G</code> was not recognised. That's because the script expects such questions in lower case, and does no effort to add the upper case variants to the list of possible answers. In the web version we can skip all this nonsense and simply present buttons to click. Click here for group, or click here for solo performer. Done. Changing from free form text to mouse clicks restricts user input enough that we barely have to implement any validation to check cases like the one mentioned above with the upper case.</p>
+<h2>Standing on Karax's wobbling shoulders</h2>
+<a href="https://locomotion1020.tistory.com/10"
+    ><img src="../../../i/webapp_understanding.jpg"
+    alt="Did you understand that? Let me check the documentation… nope. Also this doesn't have enough hearts yet, let me draw some"
+    style="width:100%;max-width:600px" align="right"
+    hspace="8pt" vspace="8pt"></a><p>When I described how webapps work (maintaining state and regenerating every part of the page) I simplified a lot. There are many <span style="font-style: italic;">low level</span> details on how to do this, and while web pages seem to be cross platform, there are many differences between browsers, and sometimes even their versions. To abstract all of these, people build libraries or frameworks to help them write webapps, and I chose <a href="https://github.com/pragmagic/karax">Karax</a>, which at the moment is the <a href="https://github.com/topics/nim-language">highest starred nim-language repository on GitHub with 312 stars</a>. Karax asks you to write a simple DOM root which will then be rewritten for every Nim code change, presumably letting you write your whole webapp in Nim without touching JavaScript at all.</p>
+<p>Unfortunately, Karax is not ideal for newcomers to webapp programming, or just newcomers in general. Nothing screams more <span style="font-style: italic;">unfinished software</span> like a project with <a href="https://github.com/pragmagic/karax/releases">zero stable releases</a>. Unless you are prepared to deal with ever changing software, you should stay away from it. In terms of user friendliness, actual documentation is <a href="https://github.com/pragmagic/karax/tree/20fe35355c83de024dbf13a6489073ddbb666e81/docs">a joke someone tried to play 2 years ago</a>, and you are forced to rely on the base <code>readme.rst</code> and available examples to work. Which would not be a problem if the documentation was right, however if you try to run the first example on OSX (as extracted from the readme):<pre class='literal'>
+cd karax
+cd examples/todoapp
+nim js todoapp.nim
+open todoapp.html</pre></p>
+<p>You will be greeted with a blank web page, with the JavaScript console spitting out a <span style="font-style: italic;">SecurityError: The operation is insecure</span> message. So you later learn to use the <code>karun</code> tool instead, and that works, but just below the mention of <code>karun</code> you are disheartened by the notice that in order to know what Karax is doing, you should actually compile your code with <code>-d:debugKaraxDsl</code> to see what it does. Which is not very beginner friendly, as you need to know both JavaScript and Nim to know what the hell is going on (have you ever seen a C programming language tutorial tell you to look at the assembly/machine code generated by the compiler?). The learning curve for newcomers to Nim webapps is very steep.</p>
+<p>One of the problem for newcomers to webapp programming in Nim is that it is not clear what is meant to work and what not. The usual expectancy of normal desktop Nim code is broken in a webapp environment. Being a newcomer myself, I had to go through all the examples scratching my head as to why things would work or would not. For instance, take a look at the following fragment of the <a href="https://github.com/pragmagic/karax/blob/20fe35355c83de024dbf13a6489073ddbb666e81/examples/toychat.nim">toychat.nim example</a>:<pre class='literal'>
+if loggedIn:
+  label(`for` = message):
+    text &quot;Message: &quot;
+  input(class = &quot;input&quot;, id = message, onkeyupenter = doSendMessage)</pre></p>
+<p>In the <code>toychat.nim</code> example (if you run it with <code>karun -r toychat.nim</code>) you get a simulation of a chat like environment, where typing text into an area box and pressing the enter key adds the written input to the web page. Of course nothing is sent anywhere, but you get the idea of how the user interface could work. Aha! You tell yourself looking at other examples, let's add a button to emulate the pressing of the return key!:<pre class='literal'>
+if loggedIn:
+  label(`for` = message):
+    text &quot;Message: &quot;
+  input(class = &quot;input&quot;, id = message, onkeyupenter = doSendMessage)
+  button(id = message, onclick = doSendMessage):
+    text &quot;Click here to send stuff&quot;</pre></p>
+<p>You compile again the example and you see the button, but something is not right: first of all, typing a text and pressing the enter key sends a <code>null</code>, then blank lines, and the button works the same, sending blank lines instead of whatever has been typed. Why does adding a button break the behaviour of the <code>input</code> form? Trying random stuff, I removed the <code>id = message</code> part from the button and that made the <code>input</code> area work again. Yeah! Shame the button callback still doesn't do anything useful and generates blank lines. And why does using the same <code>id</code> in the button <span style="font-weight: bold;">break</span> the <code>input</code> part? The <code>readme.rst</code> mentions that callbacks are somehow special, but if you don't know JavaScript and what Karax is meant to generate well, you will be kept in the dark praying to luck to move forward.</p>
+<p>Still, some work can be done blindly by mangling examples until stuff works. The source code for the webapp version <a href="https://gitlab.com/gradha/kpopalypse_crazycommentgenerator/blob/master/03_nim_webapp/crazycommentgenerator.nim">of Kpopalypse's crazy comment generator has comments too</a>, trying to explain a few things about the structure, so I'll skip them here. Most notable <span style="font-style: italic;">weird magic shit</span> is the <a href="https://gitlab.com/gradha/kpopalypse_crazycommentgenerator/blob/master/03_nim_webapp/crazycommentgenerator.nim#L211">JavaScript code to copy text to the clipboard</a>. If you are using the comment generator on a mobile device, selecting and copying a wall of text is not going to be very user friendly, since selection is prone to <span style="font-style: italic;">sausage fingers</span> making it a frustrating operation.</p>
+<p>Therefore I wanted to add a button to the final screen which would allow you to copy the generated text to the clipboard, ready to paste in your web browser. While the mechanism of the JavaScript code to copy the text is pretty simple to follow, trying to coerce Nim into generating it was a real pain in the ass, so I decided to take a shortcut and use the <a href="https://nim-lang.github.io/Nim/manual.html#implementation-specific-pragmas-emit-pragma">Nim emit pragma</a>. The <code>emit</code> pragma is well known by people avoiding Nim compiler bugs or just trying to do stuff the compiler is striving to prevent you from doing and simply dumps whatever you ass it to the final backend (in this case JavaScript generator). The webapp works without this, but its end user friendliness is slightly reduced.</p>
+<p>Another interesting part of the webapp source code is the usage of <a href="https://gitlab.com/gradha/kpopalypse_crazycommentgenerator/blob/master/03_nim_webapp/crazycommentgenerator.nim#L132">templates to generate repetitive procs</a>. The webapp uses callbacks for each button to modify the global variables, and copying and pasting several times the same proc gets repetitive. Templates allow to parametrize code generation in a very natural way. But then <a href="https://gitlab.com/gradha/kpopalypse_crazycommentgenerator/blob/master/03_nim_webapp/crazycommentgenerator.nim#L366">I hit a compiler bug</a> when I tried to parametrize the code to build user input for each variable. For some reason, the following template (whose structure was used successfully twice before) does not compile:<pre class='literal'>
+template buildGroupMemberN(procName, inputCallback, nextState): untyped =
+  proc procName(): VNode =
+    result = buildHtml(tdiv):
+      p:
+        tdiv: text &quot;Enter the name of another group member: &quot;
+      input(class = &quot;input&quot;, id = inputFieldId, onkeyupenter = inputCallback)
+      button:
+        text &quot;Click here if there are no more members&quot;
+        proc onclick(ev: Event; n: VNode) =
+          setRemainingGroupMembers(10)
+          screen = nextState
+      tdiv: text errorMessage
+
+buildGroupMemberN(buildGroupMember11, setGroupMember10, sAdjective1)</pre></p>
+<p>Trying to compile the webapp will spit out the following error:<pre class='literal'>
+stack trace: (most recent call last)
+karax_mirror/karax/karaxdsl.nim(182) buildHtml
+karax_mirror/karax/karaxdsl.nim(138) tcall2
+karax_mirror/karax/karaxdsl.nim(79) tcall2
+karax_mirror/karax/karaxdsl.nim(138) tcall2
+karax_mirror/karax/karaxdsl.nim(79) tcall2
+karax_mirror/karax/karaxdsl.nim(138) tcall2
+karax_mirror/karax/karaxdsl.nim(79) tcall2
+karax_mirror/karax/karaxdsl.nim(102) tcall2
+karax_mirror/karax/karaxdsl.nim(32) getName
+../../../../.choosenim/toolchains/nim-0.19.4/lib/core/macros.nim(523) expectKind
+crazycommentgenerator.nim(388, 18) template/generic instantiation from here
+crazycommentgenerator.nim(377, 23) template/generic instantiation from here
+crazycommentgenerator.nim(379, 15) Error: Expected a node of kind nnkIdent, got nnkOpenSymChoice</pre></p>
+<p>So just like with Karax weird input vs button behaviour I decided to look elsewhere and copy&amp;paste the necessary repetition. Life is to short to look into obscure compiler meta programming bugs.</p>
+<h2>Conclusions</h2><p>Can you write single page web applications in the Nim programming language? <a href="https://gradha.gitlab.io/kpopalypse_crazycommentgenerator/">Sure you can</a>! Is this something I would recommend somebody else? Nah, I'll let a few years pass by and check Karax in the future. Maybe by then others will have had their teeth cut on Karax and documentation will be useful for newcomers or at least understandable. At the moment Karax needs the equivalent of <a href="https://narimiran.github.io/nim-basics">Nim basics</a> tutorial to gain users. The current pseudo documentation heavily relies on you willing to read every bit of <a href="https://github.com/pragmagic/karax/tree/master/examples/todoapp">the todo example</a> to gain minimal insight, but it is complicated enough that the solutions written there don't make much sense to newcomers or are too specialized to be used anywhere else.</p>
+<p>As for making Kpopalypse crazy comment generator available as a web page, I consider this a 100% success, so now I'll take a rest of web app programming until I learn more about <a href="https://en.wikipedia.org/wiki/Cthulhu">Cthulhu</a> and the other deities that have to be worshiped to avoid loosing too much sanity during the process.</p>
+
+<center><a href="https://locomotion1020.tistory.com/52"
+    ><img src="../../../i/webapp_oppa.jpg"
+    alt="Fuck yeah! With this comment webapp Oppa will notice us!"
+    style="width:100%;max-width:600px" align="center"
+    hspace="8pt" vspace="8pt"></a></center><pre class='literal'>$ karun -r tesla.nim
+Error Chuu not president.</pre>
+	</div>
+		<hr>
+		<p>See <a href="../../../index.html">the article index</a> or browse
+		articles by tags:     <a href="../../../tags/metaprogramming.html">metaprogramming</a>
+    ,
+    <a href="../../../tags/programming.html">programming</a>
+    ,
+    <a href="../../../tags/languages.html">languages</a>
+    ,
+    <a href="../../../tags/python.html">python</a>
+    ,
+    <a href="../../../tags/nim.html">nim</a>
+    
+.<br>Published on: 26/03/2019 20:58. Last update:
+			26/03/2019 20:58. <a
+			href="../../../feed.xml"><img
+			alt="rss feed" src="../../../i/Feed-icon.svg"
+			width="18pt" height="18pt"></a><br>
+		Copyright 2019 by <a href="../../../about.html">Grzegorz Adam Hankiewicz</a>.<br>
+		Generated with <a href="https://github.com/dom96/ipsumgenera">ipsum
+			genera</a>. Look at <a
+		href="https://github.com/gradha/gradha.github.io">the
+		source code</a>.</p>
+	</body>
+</html>

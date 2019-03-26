@@ -18,21 +18,21 @@
 
 <a href="http://this-plt-life.tumblr.com/post/66298485729/when-im-being-propagandized-by-an-fp-weenie"><div
     style="float:right;margin:1px"><video
-    autoplay muted loop
+    autoplay muted loop playsinline
     style="width: 155px; height: 99px;"> <source
     src="../../../i/go_fpweenie.mp4" type="video/mp4"
     />No silly animated videos, good for you!</video></div></a><ul><li>[…] Beneath a nice infix/indentation based syntax with a powerful (AST based, hygienic) macro system lies a semantic model that supports a soft realtime GC on thread local heaps. […]</li><li>Macros can modify the abstract syntax tree at compile time.</li><li>Macros can use the imperative paradigm to construct parse trees. Nim does not require a different coding style for meta programming.</li><li>Macros cannot change Nim's syntax because there is no need for it. Nim's syntax is flexible enough.</li></ul><p>If you learn about a new language and read these things on the front page, you understand that macros are a really important part of the language, and their use is encouraged by the language developers. As such, it was very surprising that when I posted to <a href="http://www.reddit.com/r/nimrod/comments/2polby/swift_string_interpolation_with_nim_macros/">reddit one of my articles about Nim macros</a> the user <span style="font-weight: bold;">SupersonicSpitfire</span> mentioned the article is offensive without any logic, macros are not an advantage, but a huge disadvantage, I'm stupid and I suck (later edited to <span style="font-style: italic;">soften</span> the language a bit), and macros in general are offensive.</p>
 
 <a href="http://this-plt-life.tumblr.com/post/36425244621/when-i-hear-your-new-pl-doesnt-have-exceptions"><div
     style="float:right;margin:1px"><video
-    autoplay muted loop
+    autoplay muted loop playsinline
     style="width: 150px; height: 85px;"> <source
     src="../../../i/go_dexter.mp4" type="video/mp4"
     />No silly animated videos, good for you!</video></div></a><p>I'm not a stranger to <a href="http://www.penny-arcade.com/comic/2004/03/19/">John Gabriel's Greater Internet Fuckwad Theory</a>, being insulted on the internet is just the norm. But I didn't cross post this anywhere else, it was an article about Nim for other Nim programmers. Is <span style="font-weight: bold;">SupersonicSpitfire</span> an actual Nim programmer who hates… a big chunk of the language? That's really bothering me. It's like something is broken in this universe. Why would people who passionately hate a feature follow their communities? Self inflicted stress? Pain?!</p>
 <h2>What are macros anyway?</h2>
 <a href="http://this-plt-life.tumblr.com/post/37285848921/when-i-heard-of-gos-error-handling"><div
     style="float:right;margin:1px"><video
-    autoplay muted loop
+    autoplay muted loop playsinline
     style="width: 210px; height: 142px;"> <source
     src="../../../i/go_go.mp4" type="video/mp4"
     />No silly animated videos, good for you!</video></div></a><p>If you don't have the time to <a href="https://en.wikipedia.org/wiki/Macro_(computer_science)#Syntactic_macros">read Wikipedia's full article</a>, macros are just one of the many methods to reduce typing. With macros you can <span style="font-style: italic;">generate</span> source code for the compiler. Unfortunately the most well known macros are those from C/C++, which are just <a href="https://en.wikipedia.org/wiki/Macro_(computer_science)#Text_substitution_macros">text macros</a> implemented by the language <span style="font-weight: bold;">preprocessor</span> (the <span style="font-weight: bold;">pre</span> should tell you already something about how they work).  While they are part of the standard (you can't implement C without them), they are not really part of the language itself, since the language doesn't know anything about them, and the preprocessor can only deal with source code as lines of text. Here is one fun example:</p>
@@ -49,7 +49,7 @@
 
 <a href="http://this-plt-life.tumblr.com/post/44079123074/when-im-working-on-a-new-pl-most-of-the-time"><div
     style="float:right;margin:1px"><video
-    autoplay muted loop
+    autoplay muted loop playsinline
     style="width: 250px; height: 122px;"> <source
     src="../../../i/go_new.mp4" type="video/mp4"
     />No silly animated videos, good for you!</video></div></a><p>Running this program will produce the output 42, <span style="font-weight: bold;">not</span> 54 as one could naively <span style="font-style: italic;">read</span>. Since C macros are textual replacements, you actually get the expression <code>1 + 5 * 8 + 1</code>, where the multiplication has higher priority, thus evaluates to <code>1 + 40 + 1 == 42</code>. Experienced C programmers will bracket the hell out of their macros <span style="font-weight: bold;">just in case</span>.  And this is the tip of the iceberg when people complain that macros hurt readability, entries of the <a href="http://ioccc.org">international obfuscated C code contest</a> <a href="http://ioccc.org/2013/endoh3/endoh3.c">typically</a> <a href="http://ioccc.org/2013/hou/hou.c">exploit</a> <a href="http://ioccc.org/2013/mills/mills.c">macros</a> <a href="http://ioccc.org/2013/morgan2/morgan2.c">extensively</a>.</p>
@@ -60,7 +60,7 @@
 
 <a href="http://this-plt-life.tumblr.com/post/36425231672/when-a-code-base-uses-a-directory-structure-deeper"><div
     style="float:right;margin:1px"><video
-    autoplay muted loop
+    autoplay muted loop playsinline
     style="width: 160px; height: 122px;"> <source
     src="../../../i/go_src.mp4" type="video/mp4"
     />No silly animated videos, good for you!</video></div></a><p>Which is essentially the Objective-C equivalent of the <a href="http://stackoverflow.com/questions/4674480/do-whilefalse-pattern">do while(false)</a> pattern used exclusively to bring that at-sign (<code>@</code>) into your code so it <span style="font-style: italic;">looks</span> like a <span style="font-style: italic;">native</span> compiler directive. It's a clever hack, but following how it works is not easy at all: more bad reputation.</p>
@@ -69,14 +69,14 @@
 <h2>Nim macros</h2>
 <a href="http://this-plt-life.tumblr.com/post/43655942984/when-im-working-on-a-macro-system-with-phase"><div
     style="float:right;margin:1px"><video
-    autoplay muted loop
+    autoplay muted loop playsinline
     style="width: 100px; height: 100px;"> <source
     src="../../../i/go_tower.mp4" type="video/mp4"
     />No silly animated videos, good for you!</video></div></a><p>In the quest for improving meta programming, we reach <a href="https://en.wikipedia.org/wiki/Macro_(computer_science)#Syntactic_macros">syntactic macros</a>, which work on abstract syntax trees (ASTs) instead of lines of text. Nim macros, like other languages, features hygienic macros, meaning that unlike C macros where you can affect code posterior to the macro expansion, whatever you do in the macro stays there. Nim macros end up being like normal procs with two main differences:</p>
 <ul><li>They run at compile time (in the case of Nim, other languages might do macro expansion at runtime)</li><li>They process ASTs, and generate ASTs.</li></ul>
 <a href="http://this-plt-life.tumblr.com/post/40016419394/when-somebody-asks-me-about-a-non-s-expression"><div
     style="float:right;margin:1px"><video
-    autoplay muted loop
+    autoplay muted loop playsinline
     style="width: 125px; height: 101px;"> <source
     src="../../../i/go_huh_what.mp4" type="video/mp4"
     />No silly animated videos, good for you!</video></div></a><p>Like the Wikipedia article mentions, macros are kind of natural of <a href="https://en.wikipedia.org/wiki/S-expression">S-expression</a> languages, since S-expression allows easily to treat code and data equally. But many people feel uncomfortable with S-expressions. Nim has an imperative syntax, so it looks more familiar, at the cost of being more verbose. The availability of modifying the ASTs is also limited. In a text macro implementation you can change whatever you want. But here you are fed just a subtree of the user's AST, and that's the only thing you can modify.</p>
@@ -84,7 +84,7 @@
 <h2>So what does this have to do with Go, they don't have macros!</h2>
 <a href="http://this-plt-life.tumblr.com/post/36425239482/when-i-hear-theyre-adding-features-to-c"><div
     style="float:right;margin:1px"><video
-    autoplay muted loop
+    autoplay muted loop playsinline
     style="width: 120px; height: 114px;"> <source
     src="../../../i/go_cxx.mp4" type="video/mp4"
     />No silly animated videos, good for you!</video></div></a><p>Yes they do. The blog post <a href="http://blog.golang.org/generate">Generating code</a> posted on the 22nd of December of 2014 should already hint with its title that Go version 1.4 includes some sort of mechanism to generate code. Oh… shiny… that sounds like meta programming… as if you could generate code for the compiler…</p>
@@ -92,7 +92,7 @@
 
 <a href="http://this-plt-life.tumblr.com/post/39920361990/when-someone-is-enamored-with-a-languages-petty"><div
     style="float:right;margin:1px"><video
-    autoplay muted loop
+    autoplay muted loop playsinline
     style="width: 150px; height: 150px;"> <source
     src="../../../i/go_irrelevant.mp4" type="video/mp4"
     />No silly animated videos, good for you!</video></div></a><p>The example given in Go's blog is to stringify enum constants into strings so you can print them or maybe compare them. The <a href="https://docs.google.com/a/golang.org/document/d/1V03LUfjSADDooDMhe-_K59EgpTEm3V8uvQRuNMAEnjg/edit?pli=1">Go generate design document</a> provides additional examples like generating protocol buffers bindings (which you could do with a Nim macro based on a type definition), embedding binary data (which you could do with a Nim macro, but is so common that you can use Nim's <a href="http://nim-lang.org/docs/system.html#staticRead">staticRead()</a>), etc. Other quotes from that document:</p>
@@ -100,7 +100,7 @@
 <ul><li>I've been working on a tool called <a href="https://github.com/jamesgarfield/goast">goast</a> off and on since they announced this proposal, that aims to to take advantage of the go generate tool.</li><li>Just want to link a tool I've been using for generics-like functionality recently. It's still an early version, but I think it's promising <a href="https://github.com/ncw/gotemplate">https://github.com/ncw/gotemplate</a>.</li><li>this might be a way to implement data structure without interface […] I wrote this <a href="https://github.com/jteeuwen/templates">tool</a> a few days ago as an experiment, to demonstrate just that[…]</li></ul>
 <a href="http://this-plt-life.tumblr.com/post/44373483122/when-somebody-tries-to-add-a-type-system-to-an"><div
     style="float:right;margin:1px"><video
-    autoplay muted loop
+    autoplay muted loop playsinline
     style="width: 180px; height: 101px;"> <source
     src="../../../i/go_ts.mp4" type="video/mp4"
     />No silly animated videos, good for you!</video></div></a><p>This is inevitable. Go programmers like the language and they want more, so they explore meta programming. Unfortunately, the language authors don't want to provide support in the language, so they have resorted to the worst kind of macro implementation, which is text based. So much progress to reimplement C. Not only that, but since you can run arbitrary commands to pre generate code, users are not meant to run these custom preprocessors. Yay for littering our source control systems with pre generated crap no one will ever bother reading! Let's recap:</p>
@@ -108,7 +108,7 @@
 <h2>Conclusion</h2>
 <a href="http://this-plt-life.tumblr.com/post/36425240884/when-everybody-hypes-a-language-that-i-find-crap"><div
     style="float:right;margin:1px"><video
-    autoplay muted loop
+    autoplay muted loop playsinline
     style="width: 147px; height: 90px;"> <source
     src="../../../i/go_hate.mp4" type="video/mp4"
     />No silly animated videos, good for you!</video></div></a><p>Meta programming has come to stay. If you have been conditioned to think macros are bad because you have been spoon fed plenty of C/C++ horror stories, you should think again. More and more languages implement macros. But do yourself a favour and use a language which provides the more saner syntactic macros. Unfortunately that means leaving Go, at least until they reach 2.0 (or later) and improve their meta programming capabilities.</p>
@@ -141,7 +141,7 @@ macros.nim(1, 7) Error: A module cannot import itself</pre>
 			href="../../../feed.xml"><img
 			alt="rss feed" src="../../../i/Feed-icon.svg"
 			width="18pt" height="18pt"></a><br>
-		Copyright 2018 by <a href="../../../about.html">Grzegorz Adam Hankiewicz</a>.<br>
+		Copyright 2019 by <a href="../../../about.html">Grzegorz Adam Hankiewicz</a>.<br>
 		Generated with <a href="https://github.com/dom96/ipsumgenera">ipsum
 			genera</a>. Look at <a
 		href="https://github.com/gradha/gradha.github.io">the
