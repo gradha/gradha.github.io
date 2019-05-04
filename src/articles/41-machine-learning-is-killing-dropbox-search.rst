@@ -169,7 +169,7 @@ which have the convenience of actually working and returning useful results.
 Unfortunately this program was never meant to be public, so it is not prepared
 to work easily, and you have to do your own Dropbox developer token
 provisioning. If you are interested, I described this in the `requirements
-section of the project READM
+section of the project README
 <https://gitlab.com/gradha/dropbox-file-racoon#requirements>`_, so you can set
 the project right and actually use it. In fact, that README commit is the only
 change I did recently, because it has been working forever since, and will keep
