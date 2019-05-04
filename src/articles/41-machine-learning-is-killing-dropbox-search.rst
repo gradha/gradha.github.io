@@ -59,16 +59,13 @@ was born (the `first commit points to my Christmas holidays
 <https://gitlab.com/gradha/dropbox-file-racoon/commit/afb228cdc16ff1587f79a801ccf47e48e3e87f69>`_,
 which is the only reason I know the approximate timeline of events).
 
-.. raw:: html
-
-    <br clear="right">
-
 At this very moment, if I use Dropbox web search feature to look up for the
 ``rm_4`` filename part, I get 5 lousy results, as shown by the following
 screenshot you can click to enlarge:
 
 .. raw:: html
 
+    <br clear="right">
     <center><a href="../../../i/dropbox_search_rm_4.jpg"
         ><img src="../../../i/dropbox_search_rm_4.jpg"
         alt="Dropbox search results for the rm_4 string"
