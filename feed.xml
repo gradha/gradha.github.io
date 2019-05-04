@@ -5,7 +5,19 @@
   <link href="https://gradha.github.io/feed.xml" rel="self" />
   <id>https://gradha.github.io/</id>
   <generator>ipsumgenera</generator>
-  <updated>2019-03-26T21:15:06Z</updated>
+  <updated>2019-05-04T19:47:45Z</updated>
+    <entry>
+      <title>Machine learning is killing Dropbox search</title>
+      <link href="https://gradha.github.io/articles/2019/05/machine-learning-is-killing-dropbox-search.html" rel="alternate" type="text/html" />
+      <id>https://gradha.github.io/articles/2019/05/machine-learning-is-killing-dropbox-search.html</id>
+      <published>2019-05-04T19:50:00Z</published>
+      <updated>2019-05-04T19:50:00Z</updated>
+      <author><name>Grzegorz Adam Hankiewicz</name></author>
+      <content type="html">
+&lt;h1&gt;Machine learning is killing Dropbox search&lt;/h1&gt;
+&lt;a href="https://toodur2.tistory.com/1938"&gt;&lt;img src="../../../i/dropbox_searching.jpg" alt="A webapp in Nim? What is he smoking? Is that possible at all?" style="width:100%;max-width:600px" align="right" hspace="8pt" vspace="8pt" /&gt;&lt;/a&gt;&lt;h2&gt;Waking up with your left foot&lt;/h2&gt;&lt;p&gt;Recently the &lt;a href="https://blogs.dropbox.com/tech/"&gt;Dropbox Tech Blog&lt;/a&gt; published one article titled &lt;a href="https://blogs.dropbox.com/tech/2019/05/content-suggestions-machine-learning/"&gt;Using machine learning to predict what file you need next&lt;/a&gt; which ended ticking me off. The reason is simple, Dropbox search feature stopped working for me about two years ago. Unfortunately I'm used to dozens of products having bugs that make them inconvenient, and you simply learn to live with crap because fixing it is more expensive than ignoring it. As a programmer you learn that software is far from being the product of a single person, and groups of different people have different views on what quality is, means, or how it is achieved. We are all slaves to the financial aspect of business anyway, and we know the business side doesn't really care about bugs unless they torpedo their income, so priorities tend to be somewhere else (shiny new features! Shinyyyyyyy!). So seeing the Dropbox blog gloat about how awesome machine learning is finally prompted me to make public how crap their search actually is, and has been for years.&lt;/p&gt;
+1475 bytes out of 12455.</content>
+    </entry>
     <entry>
       <title>From Python windows console to Nim Karax webapp</title>
       <link href="https://gradha.github.io/articles/2019/03/from-python-windows-console-to-nim-karax-webapp.html" rel="alternate" type="text/html" />
@@ -63,17 +75,5 @@
 &lt;h1&gt;Apple's Core Data greatest feature: brainwashing&lt;/h1&gt;
 &lt;a href="http://www.idol-grapher.com/1695"&gt;&lt;img src="../../../i/core_data_pretty.jpg" alt="Core Data, pretty on the outside, but painful once you use it" style="width:100%;max-width:600px" align="right" hspace="8pt" vspace="8pt" /&gt;&lt;/a&gt;&lt;p&gt;Now that another project is ending for me, it's always a good idea to review the good and bad things, a postmortem. This time, thanks to Sir Arthur's Legacy from Crazy Hipster Land (you know who you are!) I got to deal with Apple's Core Data &lt;span style="font-style: italic;"&gt;yet&lt;/span&gt; another time, for a project which didn't really need it. Thanks to Apple being idiots, it's never possible to hard link any kind of their documentation with confidence because it seems to move every year with each new SDK update, so I have now the &lt;a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreData/index.html"&gt;following documentation link&lt;/a&gt; in case you don't know what Core Data is, but who knows for how long it will last. Your best chance is to Google &amp;quot;Apple's Core Data&amp;quot;.&lt;/p&gt;
 &lt;p&gt;Now, just like any tool, framework, library, etc, you can use stuff just for the sake of it even if you don't need it. And sometimes the use can be justified through external reasons, like using a &lt;span style="font-style: italic;"&gt;lesser&lt;/span&gt; programming language because it is easier to find programmers for your team. But regardless of justification, C...&lt;/p&gt;1484 bytes out of 18712.</content>
-    </entry>
-    <entry>
-      <title>Static vs dynamic linking is the wrong discussion</title>
-      <link href="https://gradha.github.io/articles/2016/12/static-vs-dynamic-linking-is-the-wrong-discussion.html" rel="alternate" type="text/html" />
-      <id>https://gradha.github.io/articles/2016/12/static-vs-dynamic-linking-is-the-wrong-discussion.html</id>
-      <published>2016-12-26T09:41:00Z</published>
-      <updated>2016-12-26T09:41:00Z</updated>
-      <author><name>Grzegorz Adam Hankiewicz</name></author>
-      <content type="html">
-&lt;h1&gt;Static vs dynamic linking is the wrong discussion&lt;/h1&gt;
-&lt;a href="http://www.idol-grapher.com/1977"&gt;&lt;img src="../../../i/static_things.jpg" alt="I've seen things, thing you wouldn't believe" style="width:100%;max-width:600px" align="right" hspace="8pt" vspace="8pt" /&gt;&lt;/a&gt;&lt;p&gt;The developer &lt;a href="http://catb.org/jargon/html/H/holy-wars.html"&gt;holy war&lt;/a&gt; between static and dynamic linking continues to threaten our peace. Missiles in favour of &lt;a href="https://www.akkadia.org/drepper/no_static_linking.html"&gt;dynamic linking&lt;/a&gt; or &lt;a href="http://sta.li/faq"&gt;static linking&lt;/a&gt; won't allow us to sleep at night, with debris &lt;a href="https://www.reddit.com/r/learnprogramming/comments/4bo951/eli5_this_whole_fiasco_with_javascript_node_and/"&gt;reaching unexpected areas&lt;/a&gt; previously thought to be safe. When my own zealotry was at an all high I wrote that &lt;a href="https://gradha.github.io/articles/2016/12/../../2013/08/users-prefer-static-linking.html"&gt;Users prefer static linking&lt;/a&gt;, but the wounds of war have opened my eyes and I need no more cripples among my friends and family to understand that we are all wrong and should make peace. Static linking needs to be banished from our lands, or maybe upgraded into a new concept, but in any case we need to unite and fight against the true source of our despair: operating systems.&lt;/p&gt;
-&lt;h2&gt;Useless options&lt;/h2&gt;&lt;p&gt;The main reason developers still argue about static or dynamic linking is because that's as far as thei...&lt;/p&gt;1484 bytes out of 11096.</content>
     </entry>
 </feed>
