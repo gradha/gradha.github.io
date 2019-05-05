@@ -98,7 +98,7 @@ due to an idiotic web redesign which wasted screen space.  Which is totally
 useful if you don't care about filenames. Looking at their website now it seems
 that the same idiots are still in charge. Here is a screenshot of the results
 page on my browser window, maximized to the full extent my laptop screen allows
-me to (you might need to click the image to appreciate the details):
+(you might need to click the image to appreciate the details):
 
 .. raw:: html
 
