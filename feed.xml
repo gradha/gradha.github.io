@@ -5,18 +5,18 @@
   <link href="https://gradha.github.io/feed.xml" rel="self" />
   <id>https://gradha.github.io/</id>
   <generator>ipsumgenera</generator>
-  <updated>2019-05-04T19:47:45Z</updated>
+  <updated>2019-05-07T23:19:16Z</updated>
     <entry>
       <title>Machine learning is killing Dropbox search</title>
       <link href="https://gradha.github.io/articles/2019/05/machine-learning-is-killing-dropbox-search.html" rel="alternate" type="text/html" />
       <id>https://gradha.github.io/articles/2019/05/machine-learning-is-killing-dropbox-search.html</id>
       <published>2019-05-04T19:50:00Z</published>
-      <updated>2019-05-04T19:50:00Z</updated>
+      <updated>2019-05-08T00:19:00Z</updated>
       <author><name>Grzegorz Adam Hankiewicz</name></author>
       <content type="html">
 &lt;h1&gt;Machine learning is killing Dropbox search&lt;/h1&gt;
 &lt;a href="https://toodur2.tistory.com/1938"&gt;&lt;img src="../../../i/dropbox_searching.jpg" alt="A webapp in Nim? What is he smoking? Is that possible at all?" style="width:100%;max-width:600px" align="right" hspace="8pt" vspace="8pt" /&gt;&lt;/a&gt;&lt;h2&gt;Waking up with your left foot&lt;/h2&gt;&lt;p&gt;Recently the &lt;a href="https://blogs.dropbox.com/tech/"&gt;Dropbox Tech Blog&lt;/a&gt; published one article titled &lt;a href="https://blogs.dropbox.com/tech/2019/05/content-suggestions-machine-learning/"&gt;Using machine learning to predict what file you need next&lt;/a&gt; which ended ticking me off. The reason is simple, Dropbox search feature stopped working for me about two years ago. Unfortunately I'm used to dozens of products having bugs that make them inconvenient, and you simply learn to live with crap because fixing it is more expensive than ignoring it. As a programmer you learn that software is far from being the product of a single person, and groups of different people have different views on what quality is, means, or how it is achieved. We are all slaves to the financial aspect of business anyway, and we know the business side doesn't really care about bugs unless they torpedo their income, so priorities tend to be somewhere else (shiny new features! Shinyyyyyyy!). So seeing the Dropbox blog gloat about how awesome machine learning is finally prompted me to make public how crap their search actually is, and has been for years.&lt;/p&gt;
-1475 bytes out of 12455.</content>
+1475 bytes out of 12476.</content>
     </entry>
     <entry>
       <title>From Python windows console to Nim Karax webapp</title>
