@@ -1,7 +1,7 @@
 ---
 title: Machine learning is killing Dropbox search
 pubdate: 2019-05-04 20:50
-moddate: 2019-05-04 20:50
+moddate: 2019-05-08 01:19
 tags: programming, dropbox, kotlin, design, politics, tools, user experience
 ---
 
@@ -133,7 +133,7 @@ In fact, my last *encounter* with a designer to whom I raised accessibility
 issues was met with a polite shut the fuck up and presume this feature, or
 users who use it, doesn't exist. I can also count the times I've had to
 implement accessibility on mobile apps with a single finger from my… a single
-finger (guess which one, ha!). And this happened only after those inexistent
+finger (guess which one, ha!). And this happened only after those *inexistent*
 users complained.
 
 Also, in case you were not paying attention, the first screenshot shows the
@@ -166,7 +166,7 @@ queries can be run
 <https://gitlab.com/gradha/dropbox-file-racoon/blob/master/src/main/kotlin/fileracoon/database.kt#L106>`_,
 which have the convenience of actually working and returning useful results.
 
-Unfortunately this program was never meant to be public, so it is not prepared
+This program was never meant to be public, so it is not prepared
 to work easily, and you have to do your own Dropbox developer token
 provisioning. If you are interested, I described this in the `requirements
 section of the project README
@@ -207,7 +207,7 @@ I'm pretty sure the guys at Dropbox, *a highly collaborative cross-team effort
 between the product, infrastructure, and machine learning teams* can figure
 out, sometime in the future, that their search sucks. They only need to use
 it. I mean, they have time to blog post how awesome they are, but they can't
-spare a few minutes to set up a test case where a few search texts are tried
+spare a few minutes to set up a test case where a few searches are tried
 against a static corpus and the number of results should be the same on every
 iteration of their product?
 
@@ -224,7 +224,7 @@ languishes since 2017 <https://github.com/dropbox/pyston/commits/py3>`_, which
 is dangerously close in time to when search stopped working for me…
 coincidence?
 
-There is always something good in `all of this despair
+But there is always something good in `all of this despair
 <https://www.youtube.com/watch?v=yoU2sf0bHI8>`_: Skynet won't find John Connor.
 It will try to use machine learning to search for the guy and instead `the Jar
 Jar Binks actor <https://www.imdb.com/name/nm0078886/>`_ will be terminated to
