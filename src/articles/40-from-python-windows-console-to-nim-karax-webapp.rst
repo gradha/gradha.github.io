@@ -394,7 +394,7 @@ Trying to compile the webapp will spit out the following error::
     crazycommentgenerator.nim(379, 15) Error: Expected a node of kind nnkIdent, got nnkOpenSymChoice
 
 So just like with Karax weird input vs button behaviour I decided to look
-elsewhere and copy&paste the necessary repetition. Life is to short to look
+elsewhere and copy&paste the necessary repetition. Life is too short to look
 into obscure compiler meta programming bugs.
 
 
