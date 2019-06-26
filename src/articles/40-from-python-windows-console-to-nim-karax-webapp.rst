@@ -1,7 +1,7 @@
 ---
 title: From Python windows console to Nim Karax webapp
 pubdate: 2019-03-26 21:58
-moddate: 2019-03-26 21:58
+moddate: 2019-06-26 21:58
 tags: metaprogramming, programming, languages, python, nim
 ---
 
@@ -29,8 +29,9 @@ facts about his persona, but you will miss that he has released `sp00ky
 interactive Halloween fanfiction
 <https://kpopalypse.com/2018/10/19/stan-loona-or-else/>`_ or adventure games
 like `Escape from the Idol Dungeon
-<https://kpopalypse.com/2019/01/24/escape-from-the-idol-dungeon-an-adventure-game-by-kpopalypse/>`_,
-showing higher than average levels of determination to understand and dominate
+<https://kpopalypse.com/2019/01/24/escape-from-the-idol-dungeon-an-adventure-game-by-kpopalypse/>`_
+or `Try Not To Have Gay Sex With Yves <https://kpopalypse.com>`_, showing
+higher than average levels of determination to understand and dominate
 technology.
 
 Most recently Kpopalypse released a `fan comment generator
