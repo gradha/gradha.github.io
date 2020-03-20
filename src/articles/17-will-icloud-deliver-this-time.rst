@@ -1,7 +1,7 @@
 ---
 title: Will iCloud deliver this time?
 pubDate: 2014-07-29 01:19
-modDate: 2014-07-29 01:19
+modDate: 2020-03-20 19:53
 tags: apple, user experience
 ---
 
@@ -75,7 +75,7 @@ the notification, the iPhone task appears as non checked the next time you open
 the app. And with a badge too!
 
 It's as if the iphone is sending the check, then the mac is sending the check,
-something goes terribly wrong and one things it has not been done. Sometimes
+something goes terribly wrong and one thinks it has not been done. Sometimes
 this happens to me with dates. I change the date of a reminder and other
 devices don't have it updated, but I check them anyway. Only later the
 reminders reappear with the modified date. As if the *I-modified-the-date*
