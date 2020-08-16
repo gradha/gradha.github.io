@@ -1,7 +1,7 @@
 ---
 title: Adding Objective-C properties to Nimrod objects with macros
 pubDate: 2014-10-12 22:46
-moddate: 2017-06-05 09:02
+moddate: 2020-08-16 13:45
 tags: nim, programming, languages, objc, metaprogramming
 ---
 
@@ -626,18 +626,18 @@ Conclusion
 `programming <http://www.youtube.com/watch?v=2w-nmLcZUFA>`_
 `language <http://www.youtube.com/watch?v=2x_4Odo8BzI>`_
 `which <http://www.youtube.com/watch?v=39B3AeTD0lY>`_
-`hasn't <http://www.youtube.com/watch?v=3Tw-90vdfnQ>`_
+`hasn't <http://www.youtube.com/watch?v=7HFwjrrPx7A>`_
 `yet <http://www.youtube.com/watch?v=43dbZq6bv1o>`_
 `reached <http://www.youtube.com/watch?v=4ZBDWpneAgw>`_
 `version <http://www.youtube.com/watch?v=4oL9XLCktOQ>`_
 `1.0 <http://www.youtube.com/watch?v=58xk5L5pCMg>`_
 `and <http://www.youtube.com/watch?v=5P7QGBIFAgo>`_
-`is <http://www.youtube.com/watch?v=5XHEgyNZPQA>`_
+`is <http://www.youtube.com/watch?v=EZ487LebWt8>`_
 `already <http://www.youtube.com/watch?v=6JhZhMYx780>`_
 `running <http://www.youtube.com/watch?v=6_HHut7u29w>`_
 `circles <http://www.youtube.com/watch?v=6hqSmVRXwTE>`_
 `around <http://www.youtube.com/watch?v=85kgIuq3HY4>`_
-`established <http://www.youtube.com/watch?v=91FleKcgKbE>`_
+`established <http://www.youtube.com/watch?v=1xKE1H8BXmE>`_
 `programming <http://www.youtube.com/watch?v=9g2YPmzDfkI>`_
 `languages, <http://www.youtube.com/watch?v=A_MCEHd6now>`_
 `macros <http://www.youtube.com/watch?v=Ac7SN63L6po>`_
@@ -655,15 +655,15 @@ Conclusion
 `a <http://www.youtube.com/watch?v=GnJ1KMY_k_M>`_
 `compiler <http://www.youtube.com/watch?v=Gnsjy8lpIH8>`_
 `developer <http://www.youtube.com/watch?v=HIymqJtD3fw>`_
-`and <http://www.youtube.com/watch?v=Hpp4mXPihZg>`_
+`and <http://www.youtube.com/watch?v=llWWXuY52v4>`_
 `extend <http://www.youtube.com/watch?v=Htjh6Vyxkws>`_
 `the <http://www.youtube.com/watch?v=Hxxoyc05hWQ>`_
-`language <http://www.youtube.com/watch?v=IJDckhfF0Z4>`_
+`language <http://www.youtube.com/watch?v=6yWl2DX3-gY>`_
 `just <http://www.youtube.com/watch?v=J9_rfRC49P0>`_
 `that <http://www.youtube.com/watch?v=JfBzQQ12W5M>`_
 `little <http://www.youtube.com/watch?v=KCfyNlp7rmw>`_
 `bit <http://www.youtube.com/watch?v=KYwyzTFQ_W4>`_
-`in <http://www.youtube.com/watch?v=Kf-naZmRJoI>`_
+`in <http://www.youtube.com/watch?v=Ma2Hr0sb5jw>`_
 `the <http://www.youtube.com/watch?v=KvfmywBHNaI>`_
 `direction <http://www.youtube.com/watch?v=L-I0o5bB0D0>`_
 `you <http://www.youtube.com/watch?v=LRnblsA54ZI>`_
@@ -699,17 +699,17 @@ Conclusion
 `how <http://www.youtube.com/watch?v=RjwjFmfLfps>`_
 `to <http://www.youtube.com/watch?v=SQq8lPtK65g>`_
 `write <http://www.youtube.com/watch?v=dQw4w9WgXcQ>`_
-`them <http://www.youtube.com/watch?v=aM39aNatdF8>`_
-`is <http://www.youtube.com/watch?v=1umrU4TzHZY>`_
+`them <http://www.youtube.com/watch?v=-Pk5Mgby5MM>`_
+`is <http://www.youtube.com/watch?v=L_yV2-bWXwI>`_
 `in <http://www.youtube.com/watch?v=n_hGvuawYu0>`_
 `itself <http://www.youtube.com/watch?v=atKdIJclUfc>`_
-`a <http://www.youtube.com/watch?v=ynEj9Cu7Cng>`_
+`a <http://www.youtube.com/watch?v=RYCuH5aargc>`_
 `fun <http://www.youtube.com/watch?v=SnmUALfrJMw>`_
 `exercise. <http://www.youtube.com/watch?v=TUrxPOF9kZs>`_
 
-`I'd <http://www.youtube.com/watch?v=UzkAGgBDHTM>`_
+`I'd <http://www.youtube.com/watch?v=weqhr9PaSG0>`_
 `also <http://www.youtube.com/watch?v=VDJRMjtzvlg>`_
-`like <http://www.youtube.com/watch?v=V_lvh4HuOKA>`_
+`like <http://www.youtube.com/watch?v=P_eywF1ATFQ>`_
 `to <http://www.youtube.com/watch?v=Vdd-z87h0Ek>`_
 `thank <http://www.youtube.com/watch?v=WyN7uzv55Qs>`_
 `the <http://www.youtube.com/watch?v=XSxbmpBMz0E>`_
@@ -724,7 +724,7 @@ Conclusion
 `the <http://www.youtube.com/watch?v=ZpgTevBUStE>`_
 `dozens <http://www.youtube.com/watch?v=_2oVTghzm5I>`_
 `of <http://www.youtube.com/watch?v=_39a5TJC47E>`_
-`Korean <http://www.youtube.com/watch?v=_9l_xrpg9J4>`_
+`Korean <http://www.youtube.com/watch?v=SUibrPIhQvY>`_
 `camera <http://www.youtube.com/watch?v=_HizAsI9KnM>`_
 `men <http://www.youtube.com/watch?v=_R1W21n5f74>`_
 `offering <http://www.youtube.com/watch?v=_sBtnpRE4r0>`_
@@ -737,7 +737,7 @@ Conclusion
 `were <http://www.youtube.com/watch?v=dC2iOh831Jg>`_
 `crucial <http://www.youtube.com/watch?v=dCDij8E7fwo>`_
 `to <http://www.youtube.com/watch?v=dLTSeAiPK34>`_
-`overcome <http://www.youtube.com/watch?v=d_SO284MFfs>`_
+`overcome <http://www.youtube.com/watch?v=JsQjs-mQ-Ko>`_
 `the <http://www.youtube.com/watch?v=eK3KJ7AlxNs>`_
 `hurdles <http://www.youtube.com/watch?v=ePuj3g2giUY>`_
 `mentioned <http://www.youtube.com/watch?v=f0uY0zFG0y8>`_
@@ -765,7 +765,7 @@ Conclusion
 `you <http://www.youtube.com/watch?v=ooJiMFG-Uuo>`_
 `are <http://www.youtube.com/watch?v=otJ8jzIBtMM>`_
 `looking <http://www.youtube.com/watch?v=ozDnGDxh7ZA>`_
-`at <http://www.youtube.com/watch?v=pW7NSL9STp4>`_
+`at <http://www.youtube.com/watch?v=vvpMLSFxnOs>`_
 `inspires <http://www.youtube.com/watch?v=qeOycPTKbl0>`_
 `you <http://www.youtube.com/watch?v=qgen0Hv4rBk>`_
 `to <http://www.youtube.com/watch?v=r-4_j1V6frE>`_

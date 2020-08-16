@@ -32,18 +32,18 @@ fighting!
 2w-nmLcZUFA
 2x_4Odo8BzI
 39B3AeTD0lY
-3Tw-90vdfnQ
+7HFwjrrPx7A
 43dbZq6bv1o
 4ZBDWpneAgw
 4oL9XLCktOQ
 58xk5L5pCMg
 5P7QGBIFAgo
-5XHEgyNZPQA
+EZ487LebWt8
 6JhZhMYx780
 6_HHut7u29w
 6hqSmVRXwTE
 85kgIuq3HY4
-91FleKcgKbE
+1xKE1H8BXmE
 9g2YPmzDfkI
 A_MCEHd6now
 Ac7SN63L6po
@@ -61,15 +61,15 @@ G2r5KVosjIw
 GnJ1KMY_k_M
 Gnsjy8lpIH8
 HIymqJtD3fw
-Hpp4mXPihZg
+llWWXuY52v4
 Htjh6Vyxkws
 Hxxoyc05hWQ
-IJDckhfF0Z4
+6yWl2DX3-gY
 J9_rfRC49P0
 JfBzQQ12W5M
 KCfyNlp7rmw
 KYwyzTFQ_W4
-Kf-naZmRJoI
+Ma2Hr0sb5jw
 KvfmywBHNaI
 L-I0o5bB0D0
 LRnblsA54ZI
@@ -107,16 +107,17 @@ SQq8lPtK65g
 
 dQw4w9WgXcQ
 
-aM39aNatdF8
-1umrU4TzHZY
+-Pk5Mgby5MM
+L_yV2-bWXwI
 n_hGvuawYu0
 atKdIJclUfc
-ynEj9Cu7Cng
+RYCuH5aargc
 SnmUALfrJMw
 TUrxPOF9kZs
-UzkAGgBDHTM
+phKycO8cssg
+weqhr9PaSG0
 VDJRMjtzvlg
-V_lvh4HuOKA
+P_eywF1ATFQ
 Vdd-z87h0Ek
 WyN7uzv55Qs
 XSxbmpBMz0E
@@ -131,7 +132,7 @@ ZiRcTCfAjdM
 ZpgTevBUStE
 _2oVTghzm5I
 _39a5TJC47E
-_9l_xrpg9J4
+SUibrPIhQvY
 _HizAsI9KnM
 _R1W21n5f74
 _sBtnpRE4r0
@@ -144,7 +145,7 @@ chkdylyKgJE
 dC2iOh831Jg
 dCDij8E7fwo
 dLTSeAiPK34
-d_SO284MFfs
+JsQjs-mQ-Ko
 eK3KJ7AlxNs
 ePuj3g2giUY
 f0uY0zFG0y8
@@ -172,7 +173,7 @@ ojvES51dOUY
 ooJiMFG-Uuo
 otJ8jzIBtMM
 ozDnGDxh7ZA
-pW7NSL9STp4
+vvpMLSFxnOs
 qeOycPTKbl0
 qgen0Hv4rBk
 r-4_j1V6frE
@@ -182,7 +183,6 @@ sQdoijEyc3g
 sbG87-GbQWM
 stBjpAXjRpY
 t4b2Zb67_Ro
-weqhr9PaSG0
 Lm-x444gSOk
 Rkk-_Auv6hI
 aHOt9makl2o
@@ -192,20 +192,6 @@ ITDp7Z7s6gs
 
   extra = """
 
-7HFwjrrPx7A
-EZ487LebWt8
-1xKE1H8BXmE
-llWWXuY52v4
-6yWl2DX3-gY
-Ma2Hr0sb5jw
--Pk5Mgby5MM
-L_yV2-bWXwI
-RYCuH5aargc
-phKycO8cssg
-P_eywF1ATFQ
-SUibrPIhQvY
-JsQjs-mQ-Ko
-vvpMLSFxnOs
 VlPd3pxtYds
 CpUPKf6LGeU
 Ecl-evf8Jxk
@@ -218,7 +204,6 @@ _x2aPpEew6M
 gKU7xvv5fdQ
 I9CcyTfHn6M
 X6E03oOB3HE
-aD2aOIpY-gs
 Yx0OX4ZI6BY
 twqt32inx40
 E_rv646M9D0
@@ -417,20 +402,24 @@ mdK8tyKd0iI
 
 """
 
+const
+  old_whitespace = Whitespace + Newlines
+
 proc main() =
   var links: seq[string] = @[]
-  for url in urls.split:
-    links.add("http://www.youtube.com/watch?v=" & url)
+  for url in urls.strip.split(seps = old_whitespace):
+    if url.len > 0:
+      links.add("http://www.youtube.com/watch?v=" & url)
 
   var
-    total_words = text.split
+    total_words = text.split(seps = old_whitespace)
     total_links = total_words
 
   #echo "Got ", total_words.len, " words, and ", links.len, " urls."
   assert total_words.len <= links.len
 
-  for f in 0 .. <total_words.len:
-    if f < links.len:
+  for f in 0 ..< total_words.len:
+    if f < links.len and total_words[f].len > 0:
       total_links[f] = "`" & total_words[f] & " <" & links[f] & ">`_"
 
   # Now reverse back from the split words attempting to replace their links.
@@ -443,14 +432,16 @@ proc main() =
   total_links.reverse
 
   for word in total_words:
-    pos = final_text.rfind(word, pos)
-    if pos < 0:
-      echo final_text
-      echo("Failed for word " & word & ", count " & $count)
-      assert pos >= 0
-    final_text = final_text[0 .. <pos] &
-      total_links[count] &
-      final_text[pos + word.len .. final_text.high]
+    if word.len > 0:
+      pos = final_text.rfind(word, last = pos)
+      if pos < 0:
+        echo final_text
+        echo final_text.len
+        echo("Failed for word " & word & ", count " & $count & " at pos " & $pos)
+        assert pos >= 0
+      final_text = final_text[0 ..< pos] &
+        total_links[count] &
+        final_text[pos + word.len .. final_text.high]
     count.inc
   echo final_text
 
