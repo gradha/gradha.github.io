@@ -5,7 +5,19 @@
   <link href="https://gradha.github.io/feed.xml" rel="self" />
   <id>https://gradha.github.io/</id>
   <generator>ipsumgenera</generator>
-  <updated>2019-06-26T21:08:02Z</updated>
+  <updated>2021-05-30T18:28:25Z</updated>
+    <entry>
+      <title>Jetbrains backs off on Kotlin/Native memory model, Android devs too stupid to learn new tricks</title>
+      <link href="https://gradha.github.io/articles/2021/05/jetbrains-backs-off-on-kotlinnative-memory-model-android-devs-too-stupid-to-learn-new-tricks.html" rel="alternate" type="text/html" />
+      <id>https://gradha.github.io/articles/2021/05/jetbrains-backs-off-on-kotlinnative-memory-model-android-devs-too-stupid-to-learn-new-tricks.html</id>
+      <published>2021-05-30T19:28:00Z</published>
+      <updated>2021-05-30T19:28:00Z</updated>
+      <author><name>Grzegorz Adam Hankiewicz</name></author>
+      <content type="html">
+&lt;h1&gt;Jetbrains backs off on Kotlin/Native memory model, Android devs too stupid to learn new tricks&lt;/h1&gt;&lt;p&gt;Now that &lt;a href="https://events.google.com/io/"&gt;Google IO 2021&lt;/a&gt; is behind our backs and it essentially boiled down to refining existing libs, &lt;a href="https://arstechnica.com/gadgets/2021/05/google-shows-off-android-12s-huge-ui-overhaul/"&gt;fresh coat of paint&lt;/a&gt;, and &lt;a href="https://android-developers.googleblog.com/2021/05/android-security-and-privacy-recap.html"&gt;copying Apple Privacy policies&lt;/a&gt;, the most shocking revelation to me was &lt;a href="https://blog.jetbrains.com/kotlin/2021/05/kotlin-native-memory-management-update/"&gt;Jetbrains update on the Kotlin/Native memory model&lt;/a&gt; which dropped like a bomb:&lt;/p&gt;
+&lt;blockquote&gt;&lt;span style="font-style: italic;"&gt;TL;DR: The original Kotlin/Native memory management approach was very easy to implement, but it created a host of problems for developers trying to share their Kotlin code between different platforms.&lt;/span&gt;&lt;/blockquote&gt;&lt;p&gt;Of course this reversal is hidden among piles of marketing speech, but is happily pointed out by the comments, where Roman Elizarov can't say much other than, &lt;span style="font-style: italic;"&gt;&amp;quot;yeah, we will make that work&amp;quot;&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;This &lt;span style="font-weight: bold;"&gt;needed&lt;/span&gt; change comes a bit too late to the party, because most Android developers with an interest in Kotlin/Native have probably already touched the big pile of poo that Kotlin/Native memory model ...&lt;/p&gt;1499 bytes out of 20323.</content>
+    </entry>
     <entry>
       <title>Machine learning is killing Dropbox search</title>
       <link href="https://gradha.github.io/articles/2019/05/machine-learning-is-killing-dropbox-search.html" rel="alternate" type="text/html" />
@@ -63,17 +75,5 @@
 &lt;h1&gt;Chromecast without internet is the Shitcast&lt;/h1&gt;&lt;p&gt;Summer is one of those times of the year technical savvy people need to step away from their usual hardware devices or face being labelled geeks, nerds, autists, aspergers, freaks, or whatever the hip word is among the non technical people. Writing software on the computer or teaching yourself new stuff at home is bad. On the other hand, risking skin cancer and cirrhosis at the beach while forwarding stale memes with privative messaging apps is cool.&lt;/p&gt;
 &lt;a href="http://www.idol-grapher.com/2052"&gt;&lt;img src="../../../i/shitcast_summer.jpg" alt="Summer? They'll force me to dance nearly naked in front of fat, ugly, smelly virgins. Again." style="width:100%;max-width:600px" align="right" hspace="8pt" vspace="8pt" /&gt;&lt;/a&gt;&lt;p&gt;Visiting my parents far away from civilization for a week I wanted to test this thingy called &lt;a href="http://chromecast.com/"&gt;Chromecast&lt;/a&gt;, sold by &lt;a href="http://lmgtfy.com/?q=google"&gt;Google&lt;/a&gt; in supermarkets. It's a cheap computer/Android streaming receiver you connect to a screen. My parents like watching low quality videos of old memes sent through &lt;a href="http://www.whatsapp.com"&gt;WhatsApp&lt;/a&gt;, but prefer to do so on a big screen rather than their small phones, so I thought of bringing it along some downloaded stuff.&lt;/p&gt;
 &lt;h2&gt;The experiment&lt;/h2&gt;&lt;p&gt;Of course I tested the Chromecast first at home. The setup went really smooth, and even when I tried to switch WiFi networks or i...&lt;/p&gt;1483 bytes out of 12506.</content>
-    </entry>
-    <entry>
-      <title>Apple's Core Data greatest feature: brainwashing</title>
-      <link href="https://gradha.github.io/articles/2017/05/apples-core-data-greatest-feature-brainwashing.html" rel="alternate" type="text/html" />
-      <id>https://gradha.github.io/articles/2017/05/apples-core-data-greatest-feature-brainwashing.html</id>
-      <published>2017-05-28T09:45:00Z</published>
-      <updated>2018-12-05T23:42:00Z</updated>
-      <author><name>Grzegorz Adam Hankiewicz</name></author>
-      <content type="html">
-&lt;h1&gt;Apple's Core Data greatest feature: brainwashing&lt;/h1&gt;
-&lt;a href="http://www.idol-grapher.com/1695"&gt;&lt;img src="../../../i/core_data_pretty.jpg" alt="Core Data, pretty on the outside, but painful once you use it" style="width:100%;max-width:600px" align="right" hspace="8pt" vspace="8pt" /&gt;&lt;/a&gt;&lt;p&gt;Now that another project is ending for me, it's always a good idea to review the good and bad things, a postmortem. This time, thanks to Sir Arthur's Legacy from Crazy Hipster Land (you know who you are!) I got to deal with Apple's Core Data &lt;span style="font-style: italic;"&gt;yet&lt;/span&gt; another time, for a project which didn't really need it. Thanks to Apple being idiots, it's never possible to hard link any kind of their documentation with confidence because it seems to move every year with each new SDK update, so I have now the &lt;a href="https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreData/index.html"&gt;following documentation link&lt;/a&gt; in case you don't know what Core Data is, but who knows for how long it will last. Your best chance is to Google &amp;quot;Apple's Core Data&amp;quot;.&lt;/p&gt;
-&lt;p&gt;Now, just like any tool, framework, library, etc, you can use stuff just for the sake of it even if you don't need it. And sometimes the use can be justified through external reasons, like using a &lt;span style="font-style: italic;"&gt;lesser&lt;/span&gt; programming language because it is easier to find programmers for your team. But regardless of justification, C...&lt;/p&gt;1484 bytes out of 18712.</content>
     </entry>
 </feed>
