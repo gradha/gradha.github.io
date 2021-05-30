@@ -1,21 +1,12 @@
 ---
 title: Jetbrains backs off on Kotlin/Native memory model, Android devs too stupid to learn new tricks
-pubdate: 2021-05-30 12:38
-moddate: 2021-05-30 12:38
+pubdate: 2021-05-30 20:28
+moddate: 2021-05-30 20:28
 tags: programming, kotlin, languages, java, design, politics, tools
 ---
 
 Jetbrains backs off on Kotlin/Native memory model, Android devs too stupid to learn new tricks
 ==============================================================================================
-
-.. raw:: html
-
-    <!--<a href="https://toodur2.tistory.com/1938"
-        ><img src="../../../i/dropbox_searching.jpg"
-        alt="A webapp in Nim? What is he smoking? Is that possible at all?"
-        style="width:100%;max-width:600px" align="right"
-        hspace="8pt" vspace="8pt"></a>
-        -->
 
 Now that `Google IO 2021 <https://events.google.com/io/>`_ is behind our backs
 and it essentially boiled down to refining existing libs, `fresh coat of paint
@@ -64,15 +55,23 @@ writing themselves some CV item for a job hire.
 Mutable state between threads is evil
 -------------------------------------
 
+.. raw:: html
+
+    <a href="https://idol-grapher.com/1553"
+        ><img src="../../../i/42_mutate_shared_memory.jpg"
+        alt="Mutate shared memory? Disgusting. What are you, a caveman?"
+        style="width:100%;max-width:600px" align="right"
+        hspace="8pt" vspace="8pt"></a>
+
 So what happened here? What did we miss? What was wrong and made KMM unpopular
-among *the masses*? Well, the `Nine Highlights form the Kotlin Roadmap, point 4
-<https://blog.jetbrains.com/kotlin/2021/05/nine-highlights-from-the-kotlin-roadmap/>`_
+among *the masses*? Well, point 4 of `Nine Highlights form the Kotlin Roadmap
+<https://blog.jetbrains.com/kotlin/2021/05/nine-highlights-from-the-kotlin-roadmap/#kn-gc>`_
 explains it briefly:
 
     *"Prepare to say goodbye to your old buddy* ``InvalidMutabilityException``,
     *as you’ll stop seeing it every time you work with Kotlin/Native!"*
 
-When the first Kotlin/Native documentation was published, you had to carefully
+When the first Kotlin/Native documentation was published you had to carefully
 look for it but it stated that the garbage collector would disallow sharing
 memory between threads. At some point after 1.x the documentation started to
 mention this more up front, but it doesn't change the fact that it's a pretty
@@ -189,6 +188,14 @@ Kotlin to replace it in many places incrementally. After all, if your old code
 doesn't work and you have to write new code, why not use a different tool other
 than Kotlin anyway?
 
+.. raw:: html
+
+    <center><a href="https://idol-grapher.com/2043"
+        ><img src="../../../i/42_mutating_business_objects.jpg"
+        alt="Mutating business objects from the UI layer? I've heard enough. You better start running now or I'm going to solve all your memory model problems once and for all."
+        style="width:100%;max-width:750px" align="center"
+        hspace="8pt" vspace="8pt"></a></center>
+
 
 Who cares about garbage collection with separate heaps?
 -------------------------------------------------------
@@ -222,11 +229,12 @@ other thread is accessing the same data. On the other hand, Python marketeers,
 say its **thanks** to the Global Interpreter Lock that Python is so popular.
 You know, like:
 
-- *"Oh my God, look at this sweet code"*
+- *"Oh my God, look at this sweet Python code"*
 - *"Yeah, pretty"*
-- *"Look at this other language, ugh"*
-- *"Yuck, so bad, it doesn't lock your runtime performance to a single thread"*
-- *"Disgusting"*
+- *"Look at this other language though, ugh"*
+- *"Yuck, so bad, it doesn't tie your runtime performance to a single thread
+  like JavaScript?"*
+- *"The horror"*
 
 Man, imagine if we had some sort of Virtual Machine which allowed different
 threads to **not** have a Global Virtual Machine Lock and `somebody implemented
@@ -263,6 +271,14 @@ If they kept pushing their original memory model, chances are Kotlin/Native
 would never flourish like Kotlin Android has.  Essentially, you can't teach an
 old dog new programming tricks.
 
+.. raw:: html
+
+    <center><a href="https://en.wikipedia.org/wiki/On_the_Internet,_nobody_knows_you%27re_a_dog"
+        ><img src="../../../i/42-dog-on-the-internet-by-peter-steiner.jpg"
+        alt="On the Internet, nobody knows you're a dog"
+        style="width:100%;max-width:600px" align="center"
+        hspace="8pt" vspace="8pt"></a></center>
+
 
 Conclusion
 ----------
@@ -295,7 +311,7 @@ change, since he seems to be the one spearheading Jetbrain's efforts at
 <https://elizarov.medium.com/structured-concurrency-722d765aa952>`_ and the
 memory model could potentially impact it. After all, once the restriction of
 immutable memory between threads is lifted, why learn structured concurrency at
-all when your good'ol unstructured concurrency *works™*.
+all when your good'ol unstructured concurrency *works™*?.
 
 We could also see these news the other way round: developers are too stupid to
 learn new ways to code, and so we must sacrifice future performance for ease of
@@ -305,4 +321,4 @@ use.  `This is why we can't have nice things
 
 ::
     $ nim c -r threaded_code.nim
-    Error, no users found.
+    Error, no programmers found.
