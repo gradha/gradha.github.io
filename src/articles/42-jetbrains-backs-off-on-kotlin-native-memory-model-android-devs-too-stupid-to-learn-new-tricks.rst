@@ -1,7 +1,7 @@
 ---
 title: Jetbrains backs off on Kotlin/Native memory model, Android devs too stupid to learn new tricks
 pubdate: 2021-05-30 20:28
-moddate: 2021-05-30 20:28
+moddate: 2021-05-31 12:29
 tags: programming, kotlin, languages, java, design, politics, tools
 ---
 
@@ -33,12 +33,12 @@ are waiting for `somebody else to do the hard work
 <https://blog.jetbrains.com/ktor/2021/05/28/ktor-1-6-0-released/>`_. In
 `related articles
 <https://blog.jetbrains.com/kotlin/2021/05/whats-new-in-kmm-since-going-alpha/>`_
-the change is mentioned briefly, but more important than that is the highlight
-of study cases where KMM (Kotlin Multiplatform Mobile, implicitly
-Kotlin/Native). Why? Well, if you go into advocacy content, you will see on
-`Google's own blog <https://android-developers.googleblog.com/2021/05/>`_ that
-Kotlin is the most used primary language by professional Android developers and
-is included in 80% of the top 1000 apps.
+the change is mentioned briefly, but more damning is the continuous highlight
+of KMM success cases (Kotlin Multiplatform Mobile, implicitly Kotlin/Native).
+Why? Well, if you go into advocacy content, you will see on `Google's own blog
+<https://android-developers.googleblog.com/2021/05/>`_ that Kotlin is the most
+used primary language by professional Android developers and is included in 80%
+of the top 1000 apps.
 
 But when I go to `Youtube <https://www.youtube.com>`_, a Google product, it
 suggests me videos like `Is Kotlin Multiplatform Mobile Ready for Production?
