@@ -5,18 +5,18 @@
   <link href="https://gradha.github.io/feed.xml" rel="self" />
   <id>https://gradha.github.io/</id>
   <generator>ipsumgenera</generator>
-  <updated>2021-05-30T18:28:25Z</updated>
+  <updated>2021-05-31T10:29:24Z</updated>
     <entry>
       <title>Jetbrains backs off on Kotlin/Native memory model, Android devs too stupid to learn new tricks</title>
       <link href="https://gradha.github.io/articles/2021/05/jetbrains-backs-off-on-kotlinnative-memory-model-android-devs-too-stupid-to-learn-new-tricks.html" rel="alternate" type="text/html" />
       <id>https://gradha.github.io/articles/2021/05/jetbrains-backs-off-on-kotlinnative-memory-model-android-devs-too-stupid-to-learn-new-tricks.html</id>
       <published>2021-05-30T19:28:00Z</published>
-      <updated>2021-05-30T19:28:00Z</updated>
+      <updated>2021-05-31T11:29:00Z</updated>
       <author><name>Grzegorz Adam Hankiewicz</name></author>
       <content type="html">
 &lt;h1&gt;Jetbrains backs off on Kotlin/Native memory model, Android devs too stupid to learn new tricks&lt;/h1&gt;&lt;p&gt;Now that &lt;a href="https://events.google.com/io/"&gt;Google IO 2021&lt;/a&gt; is behind our backs and it essentially boiled down to refining existing libs, &lt;a href="https://arstechnica.com/gadgets/2021/05/google-shows-off-android-12s-huge-ui-overhaul/"&gt;fresh coat of paint&lt;/a&gt;, and &lt;a href="https://android-developers.googleblog.com/2021/05/android-security-and-privacy-recap.html"&gt;copying Apple Privacy policies&lt;/a&gt;, the most shocking revelation to me was &lt;a href="https://blog.jetbrains.com/kotlin/2021/05/kotlin-native-memory-management-update/"&gt;Jetbrains update on the Kotlin/Native memory model&lt;/a&gt; which dropped like a bomb:&lt;/p&gt;
 &lt;blockquote&gt;&lt;span style="font-style: italic;"&gt;TL;DR: The original Kotlin/Native memory management approach was very easy to implement, but it created a host of problems for developers trying to share their Kotlin code between different platforms.&lt;/span&gt;&lt;/blockquote&gt;&lt;p&gt;Of course this reversal is hidden among piles of marketing speech, but is happily pointed out by the comments, where Roman Elizarov can't say much other than, &lt;span style="font-style: italic;"&gt;&amp;quot;yeah, we will make that work&amp;quot;&lt;/span&gt;.&lt;/p&gt;
-&lt;p&gt;This &lt;span style="font-weight: bold;"&gt;needed&lt;/span&gt; change comes a bit too late to the party, because most Android developers with an interest in Kotlin/Native have probably already touched the big pile of poo that Kotlin/Native memory model ...&lt;/p&gt;1499 bytes out of 20323.</content>
+&lt;p&gt;This &lt;span style="font-weight: bold;"&gt;needed&lt;/span&gt; change comes a bit too late to the party, because most Android developers with an interest in Kotlin/Native have probably already touched the big pile of poo that Kotlin/Native memory model ...&lt;/p&gt;1499 bytes out of 20318.</content>
     </entry>
     <entry>
       <title>Machine learning is killing Dropbox search</title>
