@@ -214,11 +214,11 @@ can surely expect the result by now::
 
 .. raw:: html
 
-    <center><img
+    <center><a href="https://youtu.be/4Rg3sAb8Id8?t=158"><img
         src="../../../i/christina_punch.jpg"
         alt="Hitting adversaries one macro at a time"
         style="width:100%;max-width:750px"
-        hspace="8pt" vspace="8pt"></center><br>
+        hspace="8pt" vspace="8pt"></a></center><br>
 
 
 Conclusion
