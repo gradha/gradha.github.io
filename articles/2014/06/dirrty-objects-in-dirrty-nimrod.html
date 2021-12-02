@@ -97,11 +97,11 @@ SS_DIRRTY_RETAIN_SETTER(setFooter, NSString*, footer)</pre><p>Not the prettiest 
 <p>What follows is a basic <code>test</code> proc which verifies our assumptions by creating a <code>Person</code> object, then echoing to screen the state of the <span style="font-weight: bold;">dirrty</span> flag after using the generated setter to name it <span style="font-weight: bold;">Christina</span>. You can surely expect the result by now:<pre class='literal'>
 Is Christina dirrty? true</pre></p>
 
-<center><img
+<center><a href="https://youtu.be/4Rg3sAb8Id8?t=158"><img
     src="../../../i/christina_punch.jpg"
     alt="Hitting adversaries one macro at a time"
     style="width:100%;max-width:750px"
-    hspace="8pt" vspace="8pt"></center><br><h1>Conclusion</h1><p>In these few lines of code we have not just solved the hypothetical problem of marking automatically a flag in setter procs: we have actually implemented Objective-C style properties. Let that sink in. Nim doesn't provide properties, but instead it is flexible enough that it allows you, the end user programmer, to define your own language constructs. And you know what happens if you program in a language not flexible enough to stand the test of time? Yes, you are <a href="https://developer.apple.com/swift/">forced to switch to new incompatible languages</a>. Otherwise you are stuck in the past.</p>
+    hspace="8pt" vspace="8pt"></a></center><br><h1>Conclusion</h1><p>In these few lines of code we have not just solved the hypothetical problem of marking automatically a flag in setter procs: we have actually implemented Objective-C style properties. Let that sink in. Nim doesn't provide properties, but instead it is flexible enough that it allows you, the end user programmer, to define your own language constructs. And you know what happens if you program in a language not flexible enough to stand the test of time? Yes, you are <a href="https://developer.apple.com/swift/">forced to switch to new incompatible languages</a>. Otherwise you are stuck in the past.</p>
 <p>Could advanced Nim meta programming improve this example further?  Could we get rid of having to repeat the type of the field when creating the setters and getters and let the compiler figure it out? Could we avoid having to separate the definition of the object from the definition of the procs?</p>
 <p><a href="../10/adding-objectivec-properties-to-nimrod-objects-with-macros.html">Who knows…</a></p>
 <pre class='literal'>$ playback slutdrop.m4a
@@ -123,7 +123,7 @@ Kernel DRM module not found</pre>
 			href="../../../feed.xml"><img
 			alt="rss feed" src="../../../i/Feed-icon.svg"
 			width="18pt" height="18pt"></a><br>
-		Copyright 2019 by <a href="../../../about.html">Grzegorz Adam Hankiewicz</a>.<br>
+		Copyright 2021 by <a href="../../../about.html">Grzegorz Adam Hankiewicz</a>.<br>
 		Generated with <a href="https://github.com/dom96/ipsumgenera">ipsum
 			genera</a>. Look at <a
 		href="https://github.com/gradha/gradha.github.io">the
