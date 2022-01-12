@@ -1,8 +1,8 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 import glob
 import os
 import os.path
@@ -25,11 +25,11 @@ def ns(s): return '{http://www.w3.org/2005/Atom}' + s
 
 def reduce_html(random_input, total_size):
     if len(random_input) < 10:
-        print "Bailing out!"
+        print("Bailing out!")
         sys.exit(1)
 
-    parsed_html = unicode(BeautifulSoup(random_input + "..."))
-    return unicode(parsed_html + str(len(parsed_html)) + " bytes out of "
+    parsed_html = BeautifulSoup(random_input + "...")
+    return (str(parsed_html) + str(len(parsed_html)) + " bytes out of "
         + str(total_size) + ".")
 
 
@@ -41,8 +41,8 @@ for entry in root.iter(ns("entry")):
 
 tree.write(TMP, encoding="utf-8", xml_declaration = True)
 # LOL, etree generates wrong xml for ellipsis, so we need to get rid of it.
-after = open(TMP, "rb").read().replace("…", "...")
+after = open(TMP, "r").read().replace("…", "...")
 
 if before != after:
-    print "Xml changed"
-    open(RSS, "wb").write(after)
+    print("Xml changed")
+    open(RSS, "w").write(after)
