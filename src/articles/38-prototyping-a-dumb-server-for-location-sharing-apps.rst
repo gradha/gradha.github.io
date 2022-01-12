@@ -127,7 +127,7 @@ located doesn't really matter, it could be `Google App Engine
 .. raw:: html
 
     <div style="background-color:yellow;float:left;margin:1px"
-        ><a href="https://youtu.be/ZAeNaWv8V7o?t=32"><video autoplay muted loop playsinline
+        ><a href="https://youtu.be/ZhU8EPFqLgY?t=23"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_06.mp4" type="video/mp4"
         /><img src="../../../i/omb_06.gif" width=166 height=166></video></a></div>
@@ -594,7 +594,7 @@ could send a request to fetch all the stored information so far:
 .. raw:: html
 
     <div style="background-color:yellow;float:right;margin:1px"
-        ><a href="https://youtu.be/PpZgSXcQ3k8?t=137"><video autoplay muted loop playsinline
+        ><a href="https://youtu.be/Xwkbfz7l7U8?t=124"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_23.mp4" type="video/mp4"
         /><img src="../../../i/omb_23.gif" width=166 height=166></video></a></div>
@@ -657,7 +657,7 @@ Out of marbles
 .. raw:: html
 
     <div style="background-color:yellow;float:right;margin:1px"
-        ><a href="https://youtu.be/xxCmQa5zV_c?t=7"><video autoplay muted loop playsinline
+        ><a href="https://youtu.be/42UcF0dRX7c?t=4"><video autoplay muted loop playsinline
         style="width: 166px; height: 166px;"> <source
         src="../../../i/omb_25.mp4" type="video/mp4"
         /><img src="../../../i/omb_25.gif" width=166 height=166></video></a></div>
