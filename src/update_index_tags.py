@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import glob
 import os
@@ -37,5 +37,5 @@ open(TMP, "wt").writelines(prefix + body + sufix)
 after = open(TMP, "rb").read()
 
 if before != after:
-    print "Tags changed"
+    print("Tags changed")
     open(INDEX, "wb").write(after)
