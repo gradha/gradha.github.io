@@ -1,7 +1,7 @@
 ---
 title: En España te pueden obligar a trabajar sin salario durante más de un año
-pubdate: 2025-03-12 17:33
-moddate: 2025-03-12 17:33
+pubdate: 2025-03-12 19:22
+moddate: 2025-03-12 19:22
 tags: politics, bureaucracy
 ---
 
@@ -402,6 +402,9 @@ Conclusiones
 ------------
 
 Soy un idiota. No seas idiota.
+
+De nada sirven las leyes si luego la justicia no puede hacerlas cumplir. O en
+términos informáticos, idea vs implementación.
 
 Todos los que me decían que buscase otro trabajo cuando dejé de percibir la
 primera nómina son genios.
