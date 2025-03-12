@@ -5,7 +5,18 @@
   <link href="https://gradha.github.io/feed.xml" rel="self" />
   <id>https://gradha.github.io/</id>
   <generator>ipsumgenera</generator>
-  <updated>2021-05-31T10:29:24Z</updated>
+  <updated>2025-03-12T18:23:19Z</updated>
+    <entry>
+      <title>En España te pueden obligar a trabajar sin salario durante más de un año</title>
+      <link rel="alternate" type="text/html" href="https://gradha.github.io/articles/2025/03/en-espa%C3%B1a-te-pueden-obligar-a-trabajar-sin-salario-durante-m%C3%A1s-de-un-a%C3%B1o.html" />
+      <id>https://gradha.github.io/articles/2025/03/en-espa%C3%B1a-te-pueden-obligar-a-trabajar-sin-salario-durante-m%C3%A1s-de-un-a%C3%B1o.html</id>
+      <published>2025-03-12T18:22:00Z</published>
+      <updated>2025-03-12T18:22:00Z</updated>
+      <author><name>Grzegorz Adam Hankiewicz</name></author>
+      <content type="html">
+&lt;h1&gt;En España te pueden obligar a trabajar sin salario durante más de un año&lt;/h1&gt;&lt;h2&gt;La vida normal de una hormiga&lt;/h2&gt;&lt;p&gt;Si uno enciende la televisión en cualquier momento del día, en un programa de debate económico, da la sensación de que los trabajadores son tiranos que dominan a las empresas de España, y dictan unilateralmente y a su antojo normas estúpidas como reducir la jornada de trabajo, tener permisos de paternidad, o incluso cobrar las horas extra. Sin embargo la ley favorece en muchos casos a las empresas, y este artículo desentrañará la facilidad con la que algunos empresarios pueden decidir pagar o no a sus empleados. En particular, siguiendo la ley a pié juntillas, es posible que un trabajador por cuenta ajena no reciba su salario durante más de un año. Todo lo que se comenta aquí es experiencia personal sufrida en primera persona, no hablo de oídas.&lt;/p&gt;
+&lt;p&gt;En España los dos modos de trabajo más populares son el trabajo por cuenta ajena (currito) y el trabajo por cuenta propia (autónomo). El trabajo por cuenta propia tiene muchos menos derechos y seguridad que el trabajo por cuenta ajena, al fin y al cabo, te conviertes en una especie de empresa personal, un emprendedor pero empezando de la nada. Fui autónomo durante 7 años y decidí volver a la vida de &lt;span style="font-style: italic;"&gt;currito&lt;/span&gt;, simplemente porque trabajando no me voy a hacer rico, así que al menos vivir sin preocuparme por si voy a comer el próximo mes, ¿no? (dejemos los funcion...&lt;/p&gt;6 bytes out of 25872.</content>
+    </entry>
     <entry>
       <title>Jetbrains backs off on Kotlin/Native memory model, Android devs too stupid to learn new tricks</title>
       <link rel="alternate" type="text/html" href="https://gradha.github.io/articles/2021/05/jetbrains-backs-off-on-kotlinnative-memory-model-android-devs-too-stupid-to-learn-new-tricks.html" />
@@ -63,17 +74,5 @@
       <content type="html">
 &lt;h1&gt;Prototyping a dumb server for location sharing apps&lt;/h1&gt;
 &lt;div style="background-color:yellow;float:right;margin:1px"&gt;&lt;a href="https://youtu.be/p4tLL59NtZc?t=51"&gt;&lt;video autoplay="" loop="" muted="" playsinline="" style="width: 166px; height: 166px;"&gt; &lt;source src="../../../i/omb_01.mp4" type="video/mp4"/&gt;&lt;img height="166" src="../../../i/omb_01.gif" width="166"/&gt;&lt;/video&gt;&lt;/a&gt;&lt;/div&gt;&lt;p&gt;At the beginning of the year 2009 Google created &lt;a href="https://en.wikipedia.org/wiki/Google_Latitude"&gt;Google Latitude&lt;/a&gt;, which was a service to report your own mobile location to their servers so that other users could see where you are. It is funny to me that I didn't even know such a thing existed until 2010, when one of my previous coworkers released &lt;a href="https://web.archive.org/web/20101027221033/http://www.latitudie.com/"&gt;Latitudie&lt;/a&gt;, which was an iOS app using Google's Latitude service (I even did buy it and use it for my nefarious purposes!). But you had to wait until the end of 2011 (&lt;a href="https://arstechnica.com/gadgets/2011/04/how-apple-tracks-your-location-without-your-consent-and-why-it-matters/"&gt;after possibly the most public false start&lt;/a&gt;) for &lt;a href="https://en.wikipedia.org/wiki/Find_My_Friends"&gt;Apple to innovate with their Find My Friends app&lt;/a&gt;, offering pretty much the same service as Google, except for the fact that you were limited to using Apple devices and, at least at that time, there was no way to view a friend's location on a desktop web brow...&lt;/p&gt;5 bytes out of 41557.</content>
-    </entry>
-    <entry>
-      <title>Chromecast without internet is the Shitcast</title>
-      <link rel="alternate" type="text/html" href="https://gradha.github.io/articles/2017/07/chromecast-without-internet-is-the-shitcast.html" />
-      <id>https://gradha.github.io/articles/2017/07/chromecast-without-internet-is-the-shitcast.html</id>
-      <published>2017-07-20T19:12:00Z</published>
-      <updated>2017-07-20T21:00:00Z</updated>
-      <author><name>Grzegorz Adam Hankiewicz</name></author>
-      <content type="html">
-&lt;h1&gt;Chromecast without internet is the Shitcast&lt;/h1&gt;&lt;p&gt;Summer is one of those times of the year technical savvy people need to step away from their usual hardware devices or face being labelled geeks, nerds, autists, aspergers, freaks, or whatever the hip word is among the non technical people. Writing software on the computer or teaching yourself new stuff at home is bad. On the other hand, risking skin cancer and cirrhosis at the beach while forwarding stale memes with privative messaging apps is cool.&lt;/p&gt;
-&lt;a href="http://www.idol-grapher.com/2052"&gt;&lt;img align="right" alt="Summer? They'll force me to dance nearly naked in front of fat, ugly, smelly virgins. Again." hspace="8pt" src="../../../i/shitcast_summer.jpg" style="width:100%;max-width:600px" vspace="8pt"/&gt;&lt;/a&gt;&lt;p&gt;Visiting my parents far away from civilization for a week I wanted to test this thingy called &lt;a href="http://chromecast.com/"&gt;Chromecast&lt;/a&gt;, sold by &lt;a href="http://lmgtfy.com/?q=google"&gt;Google&lt;/a&gt; in supermarkets. It's a cheap computer/Android streaming receiver you connect to a screen. My parents like watching low quality videos of old memes sent through &lt;a href="http://www.whatsapp.com"&gt;WhatsApp&lt;/a&gt;, but prefer to do so on a big screen rather than their small phones, so I thought of bringing it along some downloaded stuff.&lt;/p&gt;
-&lt;h2&gt;The experiment&lt;/h2&gt;&lt;p&gt;Of course I tested the Chromecast first at home. The setup went really smooth, and even when I tried to switch WiFi networks or i...&lt;/p&gt;9 bytes out of 12506.</content>
     </entry>
 </feed>
