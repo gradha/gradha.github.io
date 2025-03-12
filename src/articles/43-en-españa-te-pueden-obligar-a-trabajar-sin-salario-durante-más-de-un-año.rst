@@ -31,6 +31,14 @@ volver a la vida de *currito*, simplemente porque trabajando no me voy a hacer
 rico, así que al menos vivir sin preocuparme por si voy a comer el próximo mes,
 ¿no? (dejemos los funcionarios para otro siglo).
 
+.. raw:: html
+
+    <img src="../../../i/43-geodb_2022_05_es.jpg"
+        alt="Equipo éxito. GEO DATA BLOCK, SL. circa Mayo 2022. ¿Puedes adivinar qué rata de éstas se quedó atrás?"
+        style="width:100%;max-width:750px" align="right"
+        hspace="8pt" vspace="8pt"></a>
+
+
 El azar me llevó en 2018 a entrar a formar parte de la empresa
 `Wave App, S.L (CIF B86942901) <https://waveapplication.com>`_. Una pequeña empresa dirigida
 por `Luis Gelado Crespo <https://www.linkedin.com/in/luisgelado/>`_ y `Manuel
@@ -227,6 +235,14 @@ panorama laboral, pero aún hay más…
 
 El chollo de trabajar gratis
 ----------------------------
+
+.. raw:: html
+
+    <a href="https://toodur2.tistory.com/2036"
+        ><img src="../../../i/43-toodur2_2036-05-es.jpg"
+        alt="¿Y NO COBRAS? ¿Y sigues trabajando para la empresa? ¿Estás mal de la cabeza?"
+        style="width:100%;max-width:600px" align="right"
+        hspace="8pt" vspace="8pt"></a>
 
 Obviamente el contrato debe ser respetado y el trabajador cobrar el dinero o se
 debe interrumpir la relación laboral en algún momento. No me refiero a dejar
