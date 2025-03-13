@@ -17,9 +17,8 @@ This is Grzegorz Adam Hankiewicz, extraordinary programmer.
 .. image:: i/hello_kitty_avatar.jpg
 
 I like to write `open source software <https://github.com/gradha>`_ but have to
-make a living with `closed source software <http://www.elhaso.es>`_. You can
-`take a look at my CV <http://gradha.sdf-eu.org/CV.en.pdf>`_.  If you want to
-contact me about something, send your bytes to `rants@gradha.imap.cc
+make a living with closed source software. If you want to contact me about
+something, send your bytes to `rants@gradha.imap.cc
 <mailto:rants@gradha.imap.cc>`_.
 
 ```nimrod
