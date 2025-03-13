@@ -8,6 +8,13 @@ tags: politics, bureaucracy
 En España te pueden obligar a trabajar sin salario durante más de un año
 ========================================================================
 
+  **NOTE**: While most of the blog content is in English, this article is very
+  specific to Spain, so it is written in Spanish. You can read `a translation
+  to English
+  <in-spain-they-can-force-you-to-work-without-payment-for-more-than-a-year.html>`_
+  if you wish so.
+
+
 La vida normal de una hormiga
 -----------------------------
 
@@ -48,7 +55,7 @@ la entrevista de trabajo, durante la cual me preguntaron qué es lo que yo le
 pediría a la empresa y dije inocentemente: "Que me paguen a fin de mes". Tras
 un breve silencio estallaron todos en carcajadas por la ocurrencia. Como si no
 tuviese una bola de cristal, o no viniese escaldado de anteriores pequeñas y
-medianas empresas).
+medianas empresas.
 
 Sea por la bola de cristal o no, cuatro años después, en Abril del 2022, la
 empresa Wave App, S.L *cerró*, y casi toda su plantilla fue recontratada por
@@ -211,15 +218,15 @@ que dedicar para ir a reclamar, presentarse ante el servicio de arbitraje y
 demás, y deciden que lo poco que pueden reclamar no merece el esfuerzo.
 
 Mi recomendación personal es: aprende a hacerlo digitalmente. Es verdad que es
-un rollo, pero si obtienes un certificado digital para demandar ante el juzgado
-de lo social de manera electrónica, el único momento en el que necesitas
-desplazarte físicamente a ninguna parte es durante el acto de conciliación
-antes del juicio. Esto significa que en cualquier fin de semana tonto que no
-tengas nada mejor que hacer, puedes dedicarle media hora o una hora a revisar
-tus ingresos, hacer cuentas y solicitar tus intereses, sin necesidad de
-moverte. Claro, aquí hay una barrera tecnológica que muchos trabajadores no
-serán capaces de sortear. De hecho, muchos pensarán que es necesario contratar
-abogado (`no lo es
+un rollo, pero si obtienes un certificado digital personal puedes usarlo para
+demandar ante el juzgado de lo social de manera electrónica, el único momento
+en el que necesitas desplazarte físicamente a ninguna parte es durante el acto
+de conciliación antes del juicio. Esto significa que en cualquier fin de semana
+tonto que no tengas nada mejor que hacer, puedes dedicarle media hora o una
+hora a revisar tus ingresos, hacer cuentas y solicitar tus intereses, sin
+necesidad de moverte. Claro, aquí hay una barrera tecnológica que muchos
+trabajadores no serán capaces de sortear. De hecho, muchos pensarán que es
+necesario contratar abogado (`no lo es
 <https://laboro-spain.blogspot.com/2009/09/abogado-gratis-para-casos-laborales.html>`_).
 Y si vas a reclamar 400€, el abogado de qué va a vivir.
 
@@ -275,8 +282,8 @@ certificado de que se ha celebrado el acto de conciliación sin éxito formulas
 una demanda al Juzgado de lo Social y… vuelves a esperar. Aquí llega lo
 divertido. Yo presenté mi demanda en Octubre del 2024. Cuando recibí una semana
 después la comunicación del juzgado me indicaron que el juicio se celebraría en
-Octubre del 2025. Y ojito: tú tienes que seguir en tu puesto, trabajando gratis
-para la empresa.
+Octubre del 2025. Y ojito: tú tienes que seguir en tu puesto hasta el juicio,
+trabajando gratis para la empresa.
 
 Pero ahí no acaba la cosa, si el juez decide que sí, que se
 interrumpe el contrato, entonces tú tienes que reclamar al juzgado que la
