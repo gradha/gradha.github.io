@@ -1,7 +1,7 @@
 ---
 title: En España te pueden obligar a trabajar sin salario durante más de un año
 pubdate: 2025-03-12 19:22
-moddate: 2025-03-12 19:22
+moddate: 2025-03-13 13:18
 tags: politics, bureaucracy
 ---
 
@@ -25,11 +25,11 @@ personal sufrida en primera persona, no hablo de oídas.
 En España los dos modos de trabajo más populares son el trabajo por cuenta
 ajena (currito) y el trabajo por cuenta propia (autónomo). El trabajo por
 cuenta propia tiene muchos menos derechos y seguridad que el trabajo por cuenta
-ajena, al fin y al cabo, te conviertes en una especie de empresa personal, un
-emprendedor pero empezando de la nada. Fui autónomo durante 7 años y decidí
-volver a la vida de *currito*, simplemente porque trabajando no me voy a hacer
-rico, así que al menos vivir sin preocuparme por si voy a comer el próximo mes,
-¿no? (dejemos los funcionarios para otro siglo).
+ajena, al fin y al cabo te conviertes en una especie de empresa personal, un
+emprendedor empezando de la nada. Fui autónomo durante 7 años y decidí volver a
+la vida de *currito*, simplemente porque trabajando no me voy a hacer rico, así
+que al menos vivir sin preocuparme por si voy a comer el próximo mes, ¿no?
+(dejemos los funcionarios para otro siglo).
 
 .. raw:: html
 
@@ -121,7 +121,8 @@ por su dinero pactado pero no cobrado.
 **peor** de los casos acaba recibiendo su nómina pactada. Dicho de otro modo:
 no hay diferencia para el empresario pagarte ahora, o con un retraso de 60
 días. Tu tienes que seguir haciendo tu trabajo. Si no lo haces y te cruzas de
-brazos, recibes un despido disciplinario.
+brazos, recibes un despido disciplinario. Y esto es posiblemente el objetivo
+del empresario que deja de pagar, despedir sin tener que pagar indemnización.
 
 Creo recordar que hubo al menos dos *grandes reuniones* entre los empleados y
 `Luis Gelado Crespo <https://www.linkedin.com/in/luisgelado/>`_ y `Manuel De La
@@ -150,10 +151,10 @@ esto pasó en todas las ocasiones anteriores por las que hubo cribas, había
 
 Las razones por la que hasta este momento había continuado eran porque por un
 lado tenía curiosidad por ver todo el proceso judicial, el salario era alto
-(mientras pudiesen pagarlo), quería ver cómo se vivía por dentro un hipotético
-caso de muerte de la empresa (que no llegué a ver, porque la empresa sigue con
-otros proyectos), y en parte porque al haber sido autónomo sentía empatía por
-las mentiras que decían sobre llegar a fin de mes, que los "jefes" no cobraban,
+(mientras llegase), quería ver cómo se vivía por dentro un hipotético caso de
+muerte de la empresa (que no llegué a ver, porque la empresa sigue con otros
+proyectos), y en parte porque al haber sido autónomo sentía empatía por las
+mentiras que decían sobre llegar a fin de mes, que los "jefes" no cobraban,
 etc. De hecho, cuando fui autónomo llegué a un punto donde para seguir
 creciendo en beneficios y trabajo tendría que montar mi empresa y contratar
 gente. Y no lo hice porque no tengo estómago para jugar con el futuro de
@@ -274,11 +275,11 @@ certificado de que se ha celebrado el acto de conciliación sin éxito formulas
 una demanda al Juzgado de lo Social y… vuelves a esperar. Aquí llega lo
 divertido. Yo presenté mi demanda en Octubre del 2024. Cuando recibí una semana
 después la comunicación del juzgado me indicaron que el juicio se celebraría en
-Octubre del 2025. Y ojito: tu tienes que seguir en tu puesto, trabajando gratis
+Octubre del 2025. Y ojito: tú tienes que seguir en tu puesto, trabajando gratis
 para la empresa.
 
 Pero ahí no acaba la cosa, si el juez decide que sí, que se
-interrumpe el contrato, entonces tu tienes que reclamar al juzgado que la
+interrumpe el contrato, entonces tú tienes que reclamar al juzgado que la
 empresa te pague ese dinero. Esto implica más tiempo de espera aún, y si la
 empresa no paga en plazo entonces hay que intervenir las cuentas, y si no hay
 nada en las cuentas entonces te queda pedir al `Fondo de Garantía Salarial
@@ -293,7 +294,7 @@ Dicho de otro modo, un trabajador que quiera seguir la ley para interrumpir su
 contrato con indemnización y terminar cobrando (supuestamente) necesita esperar
 primero cuatro meses para poder solicitar la interrupción del contrato. Luego
 pongamos que necesitas dos semanas para el acto de conciliación, y finalmente
-un año para que lo vea el juez. Y hasta que el juez vea el caso, tu, como
+un año para que lo vea el juez. Y hasta que el juez vea el caso, tú, como
 trabajador hormiga, debes seguir en tu puesto de trabajo, trabajando y
 produciendo para la empresa. ¿No es fascinante lo protegido que está el
 trabajador ante una empresa que no paga?
@@ -318,7 +319,7 @@ qué pagar el trabajador acudirá al `Fondo de Garantía Salarial (FOGASA)
 solicitado. Y aquí viene el remate definitivo: el FOGASA `impone límites en las
 cantidades que pueden ser reclamadas
 <https://www.mites.gob.es/fogasa/faqs.html>`_. En concreto, se establece que
-pagará como máximo por tu salario el doble al salario mínimo interprofesional
+pagará como máximo por tu salario el doble al Salario Mínimo Interprofesional
 limitado a 120 días (4 meses). Esto significa que el límite total de salario
 que paga el FOGASA son 10.534,80€.
 
@@ -328,21 +329,26 @@ Estadística
 año 2023 (no encontré datos más recientes) el salario bruto medio a jornada
 completa es 2.503,81€. Y para el FOGASA el SMI en 2024 es 1.134€, con lo que el
 tope son 2268€. Es decir, el trabajador medio en España, si tiene que reclamar
-su nómina al fogasa pierde 235€ por mes. ¡Qué casualidad que el límite de meses
+su nómina al FOGASA pierde 235€ por mes. ¡Qué casualidad que el límite de meses
 de salario del FOGASA coincida con el número de meses que hay que esperar para
 solicitar la extinción del contrato laboral por impagos!
 
-Si presuponemos que tengo un salario medio, con los plazos de tiempo que voy
-recibiendo perdería 943€ por los primeros cuatro meses de espera. Hay que
-añadir luego el siguiente mes de espera de la conciliación más el año de espera
-para llegar al juicio de Octubre del 2025, son unos 13 meses que el FOGASA
-**no** va pagar: 13 * 2.268€ = 29.484€ de pérdida de salario para el trabajador
-medio que tenga que esperar eso. Que ojo, puede ser menos como puede ser más
-según lo saturados que estén los juzgados. Mi salario en la empresa superaba el
-salario medio del 2023, así que voy a perder aun más dinero por ser idiota,
-perdón, creer que la ley laboral en España protege a los trabajadores.
+Si presuponemos un salario medio, usando como guía los plazos de tiempo que he
+obtenido, perdería 943€ por los primeros cuatro meses de espera. Hay que añadir
+luego el siguiente mes de espera de la conciliación más el año de espera para
+llegar al juicio de Octubre del 2025, son unos 13 meses que el FOGASA **no** va
+pagar: 13 * 2.268€ = 29.484€ de pérdida de salario para el trabajador medio que
+quiera esperar al juicio. Que ojo, puede ser menos como puede ser más según lo
+saturados que estén los juzgados. Mi salario en la empresa superaba el salario
+medio del 2023, así que yo pierdo aun más dinero por mes al ser idiota, perdón,
+creer que la ley laboral en España protege a los trabajadores.
 
-Por cierto, para las indemnizaciones también hay límite, que es de 32.043,35€.
+Por cierto, para las indemnizaciones también hay límite absoluto, que es de
+32.043,35€. Pero con `los recortes que
+<https://laboro-spain.blogspot.com/2023/07/resumen-reforma-laboral-PP.html>`_
+`llevamos acumulados
+<https://laboro-spain.blogspot.com/2023/07/rebaja-despido-PP.html>`_, parece
+complicado llegar al límite.
 
 
 ¿Cuál es el verdadero problema? ¿Tiene solución?
@@ -356,10 +362,10 @@ El resumen de la letra pequeña es que `en lugar de esperar 4 meses de impagos
 ahora bastará con 3 meses de impagos para hacer la demanda al juzgado
 <https://laboro-spain.blogspot.com/2025/01/indemnizacion-paro-impago-retrasos-pago-sueldo.html>`_.
 Pero casi todo lo demás sigue igual. Bueno, la enumeración de retrasos en las
-nóminas quizás pudiesen haber ayudado antes a saltar del barco que se hunde
-antes de tener que llegar a la situación de impagos. Y los impagos ahora no
-deben ser consecutivos para acumularse. En cualquier caso éstas normas no serán
-efectivas hasta al menos Abril del 2025, demasiado tarde para mi.
+nóminas quizás pudiese haber ayudado antes a saltar del barco que se hunde sin
+tener que llegar a la situación de impagos. Y los impagos ahora no deben ser
+consecutivos para acumularse. En cualquier caso éstas normas no serán efectivas
+hasta al menos Abril del 2025, demasiado tarde para mi.
 
 Esto es un claro ejemplo donde los políticos pueden obtener votos con facilidad
 y no cambiar nada sustancialmente. Desde mi primer impago hasta el juicio hay
@@ -368,24 +374,25 @@ hipotéticamente. Es decir, de manera sustancial para el trabajador no cambia
 nada. Los políticos se pueden hacer una bonita foto *porque lucharon por los
 trabajadores*. Los empresarios y la patronal pueden hacerse una bonita foto
 porque *tienen corazón* (aunque otras cosas habrá que recortar igual). Y
-mientras tu puedes hacerte una selfie intentando pagar como por arte de magia
-tu alquiler, el agua, y otros servicios esenciales para vivir durante más de un
-año mientras sigues trabajando.
+mientras tanto, tú puedes hacerte una *selfie* intentando pagar como por arte
+de magia tu alquiler, el agua, y otros servicios esenciales para vivir durante
+más de un año mientras sigues trabajando.
 
 La solución real para que la justicia sea efectiva es que los juzgados tengan
 recursos para funcionar de manera rápida. De lo contrario, los trabajadores
-obtendrán una pésima protección si `algunos juzgados empiezan a dar fechas para
-el 2027
+obtendrán una nula protección si `algunos juzgados empiezan ya a dar fechas
+para el 2027
 <https://www.eldiario.es/catalunya/retraso-juzgar-despidos-deudas-actos-administracion-cronifica-no-seguir_1_11775145.html>`_,
-siguiendo la estela de las mejores colas de espera sanitaria. Pero prometer eso
-significa subir impuestos o reducir el presupuesto de otros servicios, y
-ninguna de esas opciones da votos. ¿Y de quién es el sistema judicial? Del
-gobierno. Se trata además de una de esas cosas que por muchos recortes que
-deseen los liberales no se puede externalizar, porque las leyes las impone el
-Gobierno, y es el Gobierno el que debe proporcionar los mecanismos para cumplir
-esas leyes. A no ser, claro, que lleguemos a la situación en la que los
-trabajadores tengan que pagar directamente al juez, y el juez no quiera
-levantarse de la cama por menos de cierta cantidad…
+es decir, 2 años para ver al juez, siguiendo la estela de las mejores colas de
+espera sanitaria. Pero prometer eso significa subir impuestos o reducir el
+presupuesto de otros servicios que dependen del Gobierno, y ninguna de esas
+opciones da votos. ¿Y de quién es el sistema judicial? Del gobierno. Se trata
+además de una de esas cosas que por muchos recortes que deseen los liberales no
+se puede externalizar, porque las leyes las impone el Gobierno, y es el
+Gobierno el que debe proporcionar los mecanismos para cumplir esas leyes. A no
+ser, claro, que lleguemos a la situación en la que los trabajadores tengan que
+pagar directamente al juez, y el juez no quiera levantarse de la cama por menos
+de cierta cantidad…
 
 Tras mencionar estas noticias a mi abogado me confirmó lo mismo: no sirven para
 nada. Podrían incluso modificar la ley para que con un solo mes de impago
@@ -403,11 +410,12 @@ Conclusiones
 
 Soy un idiota. No seas idiota.
 
-De nada sirven las leyes si luego la justicia no puede hacerlas cumplir. O en
+De nada sirven las leyes si luego la justicia no puede hacerlas cumplir a
+tiempo, o si el cumplimiento de la ley te va a hacer perder dinero (FOGASA). En
 términos informáticos, idea vs implementación.
 
 Todos los que me decían que buscase otro trabajo cuando dejé de percibir la
-primera nómina son genios.
+primera nómina son sabios.
 
 Este artículo ha salido muy caro.
 
