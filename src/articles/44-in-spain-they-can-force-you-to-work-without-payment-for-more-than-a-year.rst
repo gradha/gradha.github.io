@@ -1,7 +1,7 @@
 ---
 title: In Spain they can force you to work without payment for more than a year
 pubdate: 2025-03-14 00:27
-moddate: 2025-03-14 00:27
+moddate: 2025-03-15 13:18
 tags: politics, bureaucracy
 ---
 
@@ -146,12 +146,12 @@ couldn't do so, they had to stay working for free. That I wasn't paid any more
 wasn't related to my performance, simply the firm had finished all the projects
 related to my job position, didn't have any more projects where I could
 *collaborate*, and therefore I didn't *deserve* to be paid. And this had
-happened throughout all case where people were purged, there were *chosen ones*
-who were paid, and others weren't.
+happened throughout all cases where people were purged, there were *chosen
+ones* who were paid, and others weren't.
 
 The reasons why I had stayed so far were because I was curious about the whole
 legal process, the salary was high (while it lasted), I wanted to see how a
-hypothetical firm death was lived from inside (which didn't reach, since the
+hypothetical firm death was lived from inside (which didn't happen, since the
 firm continued with other projects), and partly because since I had been
 self-employed I felt empathy for the lies they spewed about hardships to make
 ends meet, the "bosses" not earning money, etc. In fact, when I was
@@ -194,20 +194,20 @@ would ask for interests with the payment of the loan. Precisely during one of
 the worker purges mentioned before when there was below two weeks of delay in
 the payment, one of the employees left angry because he had to ask for loans to
 friends and/or family to pay his immediate debts. He left the firm, but as far
-as I know didn't sue the delays.
+as I know didn't sue the firm for the delays.
 
 And while I believed before that this was wrong, that he had to ask for
 compensation, when I learned about the legal process to ask for them I realised
 why few are interested: they are pitiful. These interests can be claimed up
 until a year since they were generated. Well, I claimed all the interests
-generated through a full year, being some of the included salary delays
-spanning a few months and the total sum was… about 400€. Which is not pocket
-money, you could buy a mobile or some gadget. But you aren't even getting the
-sum immediately. Since I asked them through legal procedure until I received
-them in my bank, 12 months elapsed, a year. With these times and these profits,
-many employees calculate the amount of free time in their life they need to
-dedicate to go to the arbitration court first, request a claim and then go to
-court ask for trial, and they decide it's not worth it.
+generated through a full year, with some of the included salary delays spanning
+a few months and the total sum was… about 400€. Which is not pocket money, you
+could buy a mobile or some gadget. But you aren't even getting the sum
+immediately. Since I asked them through legal procedure until I received them
+in my bank, 12 months elapsed, a year. With these times and these profits, many
+employees calculate the amount of free time in their life they need to dedicate
+to go to the arbitration court first, request a claim and then go to court ask
+for trial, and they decide it's not worth it.
 
 My personal recommendation is: learn to do this digitally. It's true that it's
 no fun at all, but if you get a personal digital certificate you can make your
