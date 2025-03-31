@@ -1,7 +1,7 @@
 ---
 title: En España te pueden obligar a trabajar sin salario durante más de un año
 pubdate: 2025-03-12 19:22
-moddate: 2025-03-13 13:18
+moddate: 2025-03-31 23:34
 tags: politics, bureaucracy
 ---
 

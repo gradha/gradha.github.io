@@ -1,7 +1,7 @@
 ---
 title: In Spain they can force you to work without payment for more than a year
 pubdate: 2025-03-14 00:27
-moddate: 2025-03-15 13:18
+moddate: 2025-03-31 23:34
 tags: politics, bureaucracy
 ---
 
