@@ -43,7 +43,7 @@ que al menos vivir sin preocuparme por si voy a comer el próximo mes, ¿no?
     <img src="../../../i/43-geodb_2022_05_es.jpg"
         alt="Equipo éxito. GEO DATA BLOCK, SL. circa Mayo 2022. ¿Puedes adivinar qué rata de éstas se quedó atrás?"
         style="width:100%;max-width:750px" align="right"
-        hspace="8pt" vspace="8pt"></a>
+        hspace="8pt" vspace="8pt">
 
 
 El azar me llevó en 2018 a entrar a formar parte de la empresa
@@ -171,6 +171,15 @@ sólo un número en una hoja de resultados.
 
 Te quiero por el interés
 ------------------------
+
+.. raw:: html
+
+    <a href="https://www.elespanol.com/invertia/disruptores-innovadores/innovadores/tecnologicas/20200310/sister-app-localiza-mujer-peligro-metros-precision/473454292_0.html"
+    ><img src="../../../i/43-wave_2020_03_es.jpg"
+        alt="Disruptores, del mercado laboral"
+        style="width:100%;max-width:750px" align="right"
+        hspace="8pt" vspace="8pt"></a>
+
 
 De trabajos anteriores yo ya había vivido lo que es no recibir la nómina a
 tiempo, ver a la gente airada gritar y patalear, y luego irse por su propio pié

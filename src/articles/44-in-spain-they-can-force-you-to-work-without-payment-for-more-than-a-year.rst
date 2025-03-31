@@ -164,6 +164,15 @@ people are just a number on a result excel sheet.
 Clawing back 
 ------------
 
+.. raw:: html
+
+    <a href="https://www.elespanol.com/invertia/disruptores-innovadores/innovadores/tecnologicas/20200310/sister-app-localiza-mujer-peligro-metros-precision/473454292_0.html"
+    ><img src="../../../i/43-wave_2020_03_en.jpg"
+        alt="Disruptors, of the labor market"
+        style="width:100%;max-width:750px" align="right"
+        hspace="8pt" vspace="8pt"></a>
+
+
 From previous jobs I had already lived through the experience of not getting
 paid on time, see angry people shout and flounder, and then leave on their own
 foot because immediate debts were eating them alive. I did this myself a few
