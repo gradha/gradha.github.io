@@ -176,6 +176,15 @@ yet, but at least I think this is the right direction.
 
 It's Christmas, so let's ask for a gift and have this feature ready in 2017.
 
+**UPDATE 2025**: Oh, look, `Google is creating separate sandboxed SDKs which
+are downloaded separately but also from the Android Store
+<https://youtu.be/a7BMBZE1Nbc?t=270>`_. It seems that it works `by creating a
+shim library
+<https://privacysandbox.google.com/private-advertising/sdk-runtime/developer-guide/key-concepts#migrate_existing_sdks>`_
+which uses Inter Process Communication to talk to the separate SDK running in
+an outside process. What did my Nostradamus forecast give me? Just this lousy
+blog footnote.
+
 .. raw:: html
 
     <center>
