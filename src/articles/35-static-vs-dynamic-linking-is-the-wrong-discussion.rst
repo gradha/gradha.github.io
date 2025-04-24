@@ -182,8 +182,9 @@ are downloaded separately but also from the Android Store
 shim library
 <https://privacysandbox.google.com/private-advertising/sdk-runtime/developer-guide/key-concepts#migrate_existing_sdks>`_
 which uses Inter Process Communication to talk to the separate SDK running in
-an outside process. What did my Nostradamus forecast give me? Just this lousy
-blog footnote.
+an outside process. `Another more detailed video here
+<https://www.youtube.com/watch?v=uzy1pWzWPfc>`_. What did my Nostradamus
+forecast give me? Just this lousy blog footnote.
 
 .. raw:: html
 
